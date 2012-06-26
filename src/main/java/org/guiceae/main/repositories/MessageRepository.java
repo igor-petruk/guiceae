@@ -6,6 +6,7 @@ import com.google.inject.persist.Transactional;
 import org.guiceae.main.model.Message;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
 @Transactional

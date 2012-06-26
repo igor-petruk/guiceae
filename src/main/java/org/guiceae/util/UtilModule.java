@@ -9,7 +9,8 @@ import javax.persistence.EntityManager;
 public class UtilModule extends AbstractModule{
     @Override
     protected void configure() {
-        SecurityInterceptor securityInterceptor = new SecurityInterceptor(getProvider(EntityManager.class));
+        SecurityInterceptor securityInterceptor = new SecurityInterceptor(getProvider(UserPrincipalHolder.class));
+
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(RolesAllowed.class), securityInterceptor);
         bindInterceptor(Matchers.annotatedWith(RolesAllowed.class), Matchers.any(), securityInterceptor);
     }

@@ -1,25 +1,25 @@
 package org.guiceae.main.web;
 
 import com.sun.jersey.api.view.Viewable;
-import org.guiceae.util.model.UserRoles;
+import org.guiceae.main.model.UserDetails;
+import org.guiceae.main.repositories.UserRepository;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import java.util.List;
+import java.util.Collection;
 
 @Path("/app/users")
 @RolesAllowed("admin")
 public class UsersController {
     @Inject
-    EntityManager entityManager;
+    UserRepository userRepository;
 
     @GET
     @Path("/")
     public Viewable users(){
-        List<UserRoles> userRoles = entityManager.createQuery("select u from UserRoles u").getResultList();
-        return new Viewable("/users.jsp",userRoles);
+        Collection<UserDetails> userDetailsList = userRepository.getAll();
+        return new Viewable("/users.jsp",userDetailsList);
     }
 }
