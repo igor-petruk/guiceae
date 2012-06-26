@@ -1,6 +1,7 @@
 package org.guiceae.util;
 
 import org.guiceae.main.web.MainController;
+import org.guiceae.main.web.PhotoController;
 import org.guiceae.main.web.UsersController;
 
 import javax.ws.rs.core.Application;
@@ -12,6 +13,7 @@ public class JaxrsControllersConfig extends Application {
         Set<Class<?>> s = new HashSet<Class<?>>();
         s.add(MainController.class);
         s.add(UsersController.class);
+        s.add(PhotoController.class);
         return s;
     }
 
