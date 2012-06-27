@@ -21,7 +21,7 @@ public class GuiceConfig extends GuiceServletContextListener {
     protected Injector getInjector() {
 
         final Map<String, String> params = new HashMap<String, String>();
-        params.put("javax.ws.rs.Application", "org.guiceae.util.JaxrsControllersConfig");
+        params.put("javax.ws.rs.Application", JaxrsControllersConfig.class.getName());
         params.put(JSONConfiguration.FEATURE_POJO_MAPPING,"true");
         params.put("com.sun.jersey.config.property.JSPTemplatesBasePath","/WEB-INF/jsp");
 
