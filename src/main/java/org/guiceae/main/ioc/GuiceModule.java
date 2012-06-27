@@ -10,6 +10,8 @@ import org.guiceae.main.web.PhotoController;
 import org.guiceae.main.web.UsersController;
 import org.guiceae.main.web.MainController;
 import org.guiceae.util.UserPrincipalProvider;
+import org.guiceae.util.bootstrap.Bootstrap;
+import org.guiceae.util.bootstrap.DevelopmentBootstrap;
 
 public class GuiceModule extends AbstractModule {
 
@@ -26,5 +28,8 @@ public class GuiceModule extends AbstractModule {
 
         // security
         bind(UserPrincipalProvider.class).to(UserRepository.class);
+        
+        // bootstrap
+        bind(Bootstrap.class).annotatedWith(DevelopmentBootstrap.class).to(TestingBootstrap.class);
     }
 }

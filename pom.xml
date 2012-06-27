@@ -277,7 +277,7 @@
                 <version>0.9.3</version>
                 <configuration>
                     <serverId>appengine.google.com</serverId>
-                    <!--        <appDir>${basedir}/target/vktestapp-1.0-SNAPSHOT</appDir> -->
+                    <disableUpdateCheck>true</disableUpdateCheck>
                 </configuration>
             </plugin>
 
