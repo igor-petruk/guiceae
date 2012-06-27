@@ -17,7 +17,6 @@ public class UsersController {
     UserRepository userRepository;
 
     @GET
-    @Path("/")
     public Viewable users(){
         Collection<UserDetails> userDetailsList = userRepository.getAll();
         return new Viewable("/users.jsp",userDetailsList);
