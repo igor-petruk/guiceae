@@ -12,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,25 +33,4 @@ public class PhotoController {
     public Viewable uploadPage() {
         return new Viewable("/photo.jsp");
     }
-
-    @POST
-    @Path("/upload")
-    @Consumes("multipart/form-data")
-    public Response keyServing(HttpServletRequest request) throws URISyntaxException {
-        BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-        Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(request);
-        List<BlobKey> blobKeys = blobs.get("photos");
-
-        if (blobKeys == null && blobKeys.isEmpty()) {
-            return Response.seeOther(new URI("/app/index")).build();
-        } else {
-            return Response.seeOther(new URI("/serve?blob-key=" + blobKeys.get(0).getKeyString())).build();
-        }
-    }
-//
-//    @GET
-//    @Path("/alboms")
-//    public Viewable albomsView(){
-//        return new Viewable("/index.jsp",model);
-//    }
 }

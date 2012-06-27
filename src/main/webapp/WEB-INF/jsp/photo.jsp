@@ -9,7 +9,7 @@
 <body>
 <%BlobstoreService blobstorageService = BlobstoreServiceFactory.getBlobstoreService();%>
 
-<form action="<%= blobstorageService.createUploadUrl("/app/photo/upload")%>" method="POST"
+<form action="<%= blobstorageService.createUploadUrl("/app/upload")%>" method="POST"
       enctype="multipart/form-data">
     <input type="file" name="photos"/>
     <input type="submit" value="Upload"/>

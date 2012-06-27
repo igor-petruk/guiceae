@@ -9,6 +9,7 @@ import com.google.inject.servlet.ServletModule;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import org.guiceae.main.ioc.GuiceModule;
+import org.guiceae.main.web.UploadServlet;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class GuiceConfig extends GuiceServletContextListener {
                     protected void configureServlets() {
                         bind(UserPrincipalHolder.class);
 
+                        serve("/app/upload").with(UploadServlet.class);
                         serve("/*").with(GuiceContainer.class, params);
                         filter("/*").through(InjectorFilter.class);
                         filter("/*").through(EncodingFilter.class);
