@@ -1,5 +1,4 @@
-<%@ page import="org.guiceae.util.JSPInjector" %>
-<%@ page import="com.google.inject.name.Names" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>

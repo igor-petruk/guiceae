@@ -36,7 +36,7 @@ public class SecurityFilter implements Filter{
             if (userService.isUserAdmin()){
                 roles.add("admin");
             }
-            UserPrincipal userPrincipal = userPrincipalProvider.get().loadUser(user.getUserId());
+            UserPrincipal userPrincipal = userPrincipalProvider.get().loadUser(user.getEmail());
             if (userPrincipal!=null){
                 roles.addAll(userPrincipal.getRoles());
             }

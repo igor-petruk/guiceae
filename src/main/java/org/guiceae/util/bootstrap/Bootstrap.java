@@ -8,5 +8,5 @@ import javax.persistence.EntityManager;
  * Time: 21:47
  */
 public interface Bootstrap {
-    void bootstrap(EntityManager entityManager);
+    void bootstrap();
 }

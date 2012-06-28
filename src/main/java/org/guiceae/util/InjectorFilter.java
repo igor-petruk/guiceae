@@ -3,7 +3,6 @@ package org.guiceae.util;
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.persist.UnitOfWork;
 import org.guiceae.util.bootstrap.Bootstrap;
 import org.guiceae.util.bootstrap.DevelopmentBootstrap;
 
@@ -28,9 +27,6 @@ public class InjectorFilter implements Filter {
     @DevelopmentBootstrap
     Provider<Bootstrap> developmentBootstrapProvider;
 
-    @Inject
-    EntityManagerFactory entityManagerFactory;
-
     boolean bootstrapped = false;
 
     @Override
@@ -41,13 +37,7 @@ public class InjectorFilter implements Filter {
         if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Development){
             Bootstrap developmentBootstrap = developmentBootstrapProvider.get();
             if (developmentBootstrap!=null){
-                EntityManager entityManager = null;
-                try{
-                    entityManager = entityManagerFactory.createEntityManager();
-                    developmentBootstrap.bootstrap(entityManager);
-                }finally {
-                    entityManager.close();
-                }
+                developmentBootstrap.bootstrap();
             }
         }
         bootstrapped = true;
