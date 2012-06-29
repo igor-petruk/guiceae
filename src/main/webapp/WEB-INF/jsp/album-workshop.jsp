@@ -16,7 +16,7 @@
         $(document).ready(function () {
             $("a[rel^='prettyPhoto']").each(
                     function () {
-                        $(this).prettyPhoto({});
+                        $(this).prettyPhoto();
                     }
             );
 

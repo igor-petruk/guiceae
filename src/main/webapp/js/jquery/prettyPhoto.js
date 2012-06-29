@@ -51,7 +51,8 @@
        <div class="pp_right"></div> \
       </div> \
      </div> \
-     <div class="pp_overlay"></div>', gallery_markup:'<div class="pp_gallery"> \
+     <div class="pp_overlay"></div>',
+            gallery_markup:'<div class="pp_gallery"> \
         <a href="#" class="pp_arrow_previous">Previous</a> \
         <div> \
          <ul> \

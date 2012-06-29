@@ -5,20 +5,22 @@
     <guiceae:head/>
 </head>
 <body>
-<guiceae:menu/>
+<div class="ui-widget-content">
+    <guiceae:menu/>
 
-<ul>
-    <c:forEach var="message" items="${it.messages}">
-        <li>
-            <div><c:out value="${message.text}"/></div>
-            <div><a href="index/deleteitem/<c:out value="${message.id}"/>">Delete</a></div>
-        </li>
-    </c:forEach>
-</ul>
+    <ul>
+        <c:forEach var="message" items="${it.messages}">
+            <li>
+                <div><c:out value="${message.text}"/></div>
+                <div><a href="index/deleteitem/<c:out value="${message.id}"/>">Delete</a></div>
+            </li>
+        </c:forEach>
+    </ul>
 
-<form action="index/addmessage" method="post">
-    <input name="text"/>
-    <input type="submit"/>
-</form>
+    <form action="index/addmessage" method="post">
+        <input name="text"/>
+        <input type="submit"/>
+    </form>
+</div>
 </body>
 </html>
