@@ -1,10 +1,14 @@
 package org.guiceae.main.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.guiceae.util.JSONHelper;
 import org.guiceae.util.UserPrincipal;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,20 +19,24 @@ import java.util.List;
  * Time: 23:16
  */
 @Entity
-public class UserDetails implements UserPrincipal{
+public class UserDetails implements UserPrincipal, Serializable{
     @Id
-    String userId;
+    String email;
 
     @Basic
     List<String> roles = new ArrayList<String>();
 
     @Override
     public String getUserId() {
-        return userId;
+        return email;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -38,9 +46,5 @@ public class UserDetails implements UserPrincipal{
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
-    }
-
-    public String getRolesString(){
-        return Arrays.toString(roles.toArray());
     }
 }

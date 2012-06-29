@@ -191,6 +191,12 @@
             <artifactId>jsr250-api</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>10.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -277,7 +283,10 @@
                 <version>0.9.3</version>
                 <configuration>
                     <serverId>appengine.google.com</serverId>
-                    <!--        <appDir>${basedir}/target/vktestapp-1.0-SNAPSHOT</appDir> -->
+                    <disableUpdateCheck>true</disableUpdateCheck>
+                    <jvmFlags>
+                        <jvmFlag>-Ddatastore.default_high_rep_job_policy_unapplied_job_pct=20</jvmFlag>
+                    </jvmFlags>
                 </configuration>
             </plugin>
 
@@ -303,6 +312,25 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>settings.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <excludes>
+                    <exclude>settings.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 
     <!-- Specify hard-coded project properties here -->

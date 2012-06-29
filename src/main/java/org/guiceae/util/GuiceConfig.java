@@ -35,9 +35,9 @@ public class GuiceConfig extends GuiceServletContextListener {
 
                         serve("/app/upload").with(UploadServlet.class);
                         serve("/*").with(GuiceContainer.class, params);
-                        filter("/*").through(InjectorFilter.class);
                         filter("/*").through(EncodingFilter.class);
                         filter("/*").through(PersistFilter.class);
+                        filter("/*").through(InjectorFilter.class);
                         filter("/*").through(SecurityFilter.class);
                     }
                 },

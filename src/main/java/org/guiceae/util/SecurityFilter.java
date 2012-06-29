@@ -36,7 +36,7 @@ public class SecurityFilter implements Filter{
             if (userService.isUserAdmin()){
                 roles.add("admin");
             }
-            UserPrincipal userPrincipal = userPrincipalProvider.get().loadUser(user.getUserId());
+            UserPrincipal userPrincipal = userPrincipalProvider.get().loadUser(user.getEmail());
             if (userPrincipal!=null){
                 roles.addAll(userPrincipal.getRoles());
             }
@@ -47,6 +47,8 @@ public class SecurityFilter implements Filter{
         }catch (NotAuthorizedException e){
             HttpServletResponse httpServletResponse = (HttpServletResponse)response;
             httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        }finally {
+            userPrincipalHolder.set(null);
         }
     }
 

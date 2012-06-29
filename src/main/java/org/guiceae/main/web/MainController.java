@@ -16,7 +16,6 @@ public class MainController {
     MessageRepository messageRepository;
 
     @GET
-    @Path("/")
     public Viewable index(){
         Map<String,Object> model = new HashMap<String, Object>();
         model.put("messages",messageRepository.getAll());
