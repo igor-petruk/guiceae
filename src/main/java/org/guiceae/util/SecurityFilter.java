@@ -47,6 +47,8 @@ public class SecurityFilter implements Filter{
         }catch (NotAuthorizedException e){
             HttpServletResponse httpServletResponse = (HttpServletResponse)response;
             httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        }finally {
+            userPrincipalHolder.set(null);
         }
     }
 

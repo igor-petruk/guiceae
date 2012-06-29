@@ -5,7 +5,7 @@
     <guiceae:head>
         <style>
             body { font-size: 72.5%; }
-            div#users-contain { width: 550px; margin: 20px 0; }
+            div#users-contain { width: 650px; margin: 20px 0; }
             div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
             div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
         </style>

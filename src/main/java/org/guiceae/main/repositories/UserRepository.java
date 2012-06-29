@@ -24,6 +24,7 @@ public class UserRepository implements UserPrincipalProvider{
 
     @Override
     public UserDetails loadUser(String userId) {
+        userId = userId.toLowerCase();
         MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
         if (userId==null){
             return null;
@@ -40,6 +41,7 @@ public class UserRepository implements UserPrincipalProvider{
     }
 
     public void delete(String email){
+        email = email.toLowerCase();
         UserDetails oldUser = entityManager.find(UserDetails.class, email);
         if (oldUser!=null){
             entityManager.remove(oldUser);
@@ -48,12 +50,14 @@ public class UserRepository implements UserPrincipalProvider{
     }
     
     private void invalidateCache(String email){
-        String key = "User"+email;
+        String key = "User"+email.toLowerCase();
         MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
         memcacheService.delete(key);
     }
 
     public void saveOrUpdate(String email, UserDetails userDetails){
+        email = email.toLowerCase();
+        userDetails.setEmail(userDetails.getEmail().toLowerCase());
         invalidateCache(email);
         if (email.equals(userDetails.getEmail())){
             UserDetails old = entityManager.find(UserDetails.class, email);
