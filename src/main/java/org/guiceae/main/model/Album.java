@@ -2,10 +2,9 @@ package org.guiceae.main.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * User: boui
@@ -14,11 +13,34 @@ import java.util.List;
 @Entity
 public class Album implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    List<Photo> albom;
+    String title;
+    String description;
+
+    public Album() {
+    }
+
+    public Album(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -28,12 +50,12 @@ public class Album implements Serializable {
         this.id = id;
     }
 
-    public List<Photo> getAlbom() {
-        return albom;
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
-
-    public void setAlbom(List<Photo> albom) {
-        this.albom = albom;
-    }
-
 }

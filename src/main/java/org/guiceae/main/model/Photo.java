@@ -2,6 +2,7 @@ package org.guiceae.main.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -12,10 +13,30 @@ import java.io.Serializable;
 @Entity
 public class Photo implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String blobstoreId;
+
+    private String title;
+    private String blobKey;
+    private String servingUrl;
     private String description;
+    private String albumId;
+
+    public Photo() {
+    }
+
+    public Photo(String servingUrl, String blobKey) {
+        this.servingUrl = servingUrl;
+        this.blobKey = blobKey;
+    }
+
+    public String getBlobKey() {
+        return blobKey;
+    }
+
+    public void setBlobKey(String blobKey) {
+        this.blobKey = blobKey;
+    }
 
     public Long getId() {
         return id;
@@ -25,12 +46,12 @@ public class Photo implements Serializable {
         this.id = id;
     }
 
-    public String getBlobstoreId() {
-        return blobstoreId;
+    public String getServingUrl() {
+        return servingUrl;
     }
 
-    public void setBlobstoreId(String blobstoreId) {
-        this.blobstoreId = blobstoreId;
+    public void setServingUrl(String servingUrl) {
+        this.servingUrl = servingUrl;
     }
 
     public String getDescription() {
@@ -41,11 +62,28 @@ public class Photo implements Serializable {
         this.description = description;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(String albumId) {
+        this.albumId = albumId;
+    }
+
     @Override
     public String toString() {
-        return "Photo{" +
-                "id=" + id +
-                ", blobstoreId='" + blobstoreId + '\'' +
+        return "Photo{ " +
+                "id = " + id +
+                ", blobstoreKey = '" + blobKey + '\'' +
+                ", servingUrl = " + servingUrl + " " +
                 '}';
     }
 }

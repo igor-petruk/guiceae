@@ -3,17 +3,21 @@ package org.guiceae.main.web;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.inject.Inject;
+import org.guiceae.main.model.Album;
+import org.guiceae.main.model.Photo;
+import org.guiceae.main.repositories.AlbumRepository;
+import org.guiceae.main.repositories.PhotoRepository;
 
 import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.net.URI;
-import java.sql.Blob;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,23 +27,38 @@ import java.util.Map;
  * Time: 1:43
  */
 @Singleton
-public class UploadServlet extends HttpServlet{
+public class UploadServlet extends HttpServlet {
+    @Inject
+    PhotoRepository photoRepository;
+    @Inject
+    AlbumRepository albumRepository;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
-        resp.getWriter().println(Arrays.toString(blobs.keySet().toArray()));
         List<BlobKey> blobKeys = blobs.get("photos");
-        
-        int i = 0;
-        for (BlobKey key:blobKeys){
-            resp.getWriter().print(i+": "+key.getKeyString());
-            resp.getWriter().print("<br/>");
-            i++;    
-        }
-        
+
+        ImagesService imagesService = ImagesServiceFactory.getImagesService();
         if (blobKeys != null) {
-            resp.getWriter().println(Arrays.toString(blobKeys.toArray()));
+            List<Photo> photos = new ArrayList<Photo>();
+            for (BlobKey key : blobKeys) {
+                photos.add(new Photo(imagesService.getServingUrl(key), key.getKeyString()));
+            }
+            photos = photoRepository.persistPhoto(photos);
+            req.setAttribute("newPhotos", photos);
+
+            List<Album> albums = albumRepository.getAll();
+            if (albums == null || albums.isEmpty()) {
+                Album defaultAlbum = new Album("defaultAlbum");
+                albumRepository.persistAlbum(defaultAlbum);
+                albums = albumRepository.getAll();
+            }
+            req.setAttribute("albums", albums);
+            getServletConfig().getServletContext().getRequestDispatcher(
+                    "/WEB-INF/jsp/introduce-photo.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect("/app/index");
         }
     }
 }
