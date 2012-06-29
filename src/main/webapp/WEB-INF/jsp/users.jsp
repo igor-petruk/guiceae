@@ -21,7 +21,12 @@
                         };
 
                 function reloadUsers(){
-                    $.get("/app/users/allUsers",
+                    $.ajax({
+                        url:"/app/users/allUsers",
+                        type:"GET",
+                        cache:false,
+                        dataType:"json",
+                        success:
                             function(data){
                                 var tbody = $("table#users tbody");
                                 tbody.html("");
@@ -62,7 +67,8 @@
                                     }
                                     f(i);
                                 }
-                            }, "json");
+                            }
+                    });
                 }
 
                 function editUser(email){
@@ -71,15 +77,20 @@
                     $("#oldEmail").attr("value","");
                     if (email!=null){
                         $("#oldEmail").attr("value",email);
-                        $.get("/app/users/user/"+email,
-                            function(data){
+                        $.ajax({
+                            url:"/app/users/user/"+email,
+                            type:"GET",
+                            cache:false,
+                            dataType:"json",
+                            success: function(data){
                                 $("#email").attr("value",data.email);
                                 $("#admin").attr("checked",$.inArray("admin", data.roles)!=-1);
                                 $("#cm").attr("checked",$.inArray("cm", data.roles)!=-1);
                                 $("#video").attr("checked",$.inArray("video", data.roles)!=-1);
                                 $("#roles").buttonset("refresh");
                                 $( "#dialog-form" ).dialog( "open" );
-                            }, "json");
+                            }
+                        });
                     }else{
                         $("#roles").buttonset("refresh");
                         $( "#dialog-form" ).dialog( "open" );
@@ -90,6 +101,7 @@
                     $.ajax({
                         url:"/app/users/user/"+email,
                         type:"DELETE",
+                        cache:false,
                         success: function(){
                             reloadUsers();
                         }
@@ -128,6 +140,7 @@
                                 data:JSON.stringify(form),
                                 contentType:"application/json; charset=utf-8",
                                 dataType:"json",
+                                cache:false,
                                 success: function(data){
                                     $("#dialog-form").dialog( "close" );
                                     reloadUsers();
