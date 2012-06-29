@@ -1,7 +1,6 @@
 package org.guiceae.main.repositories;
 
 import org.guiceae.main.model.Album;
-import org.guiceae.main.model.Photo;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -15,14 +14,12 @@ public class AlbumRepository {
     @Inject
     private EntityManager entityManager;
 
-    public Album getAlbumById(Long id) {
-        return entityManager.find(Album.class, id);
+    public List<Album> getAll() {
+        return entityManager.createQuery("select a from Album a").getResultList();
     }
 
-    public void persistAlbum(List<Photo> photos) {
-        for (Photo photo : photos) {
-            entityManager.persist(photo);
-        }
+    public void persistAlbum(Album album) {
+        entityManager.persist(album);
+        entityManager.refresh(album);
     }
-
 }
