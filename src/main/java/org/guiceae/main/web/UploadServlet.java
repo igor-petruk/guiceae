@@ -50,7 +50,7 @@ public class UploadServlet extends HttpServlet {
 
             List<Album> albums = albumRepository.getAll();
             if (albums == null || albums.isEmpty()) {
-                Album defaultAlbum = new Album("defaultAlbum");
+                Album defaultAlbum = new Album("defaultAlbum", "All photos with unspecified albom");
                 albumRepository.persistAlbum(defaultAlbum);
                 albums = albumRepository.getAll();
             }

@@ -1,0 +1,86 @@
+div.menu {
+    display: inline;
+}
+
+div.album-workshop-menu {
+    max-width: 200px;
+    float: left;
+    display: inline-block;
+    position: absolute;
+}
+
+.album-caption {
+    background-color: #d9ffba;
+}
+
+.dock {
+    position: relative;
+    height: 50px;
+    text-align: center;
+}
+
+.dock-container {
+    position: absolute;
+    height: 50px;
+    background: url(/css/images/dock-menu/dock-bg2.gif);
+    padding-left: 20px;
+}
+
+a.dock-item {
+    display: block;
+    width: 40px;
+    color: #000;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    text-decoration: none;
+    font: bold 12px Arial, Helvetica, sans-serif;
+}
+
+.dock-item img {
+    border: none;
+    margin: 5px 10px 0px;
+    width: 100%;
+}
+
+.dock-item span {
+    display: none;
+    padding-left: 20px;
+}
+
+/*skdf*/
+
+.login-dock {
+    position: fixed;
+    height: 50px;
+    text-align: right;
+}
+
+.login-dock-container {
+    position: absolute;
+    height: 50px;
+    background: url(/css/images/dock-menu/dock-bg2.gif);
+}
+
+a.login-dock-item {
+    display: block;
+    width: 40px;
+    color: #000;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    text-decoration: none;
+    font: bold 12px Arial, Helvetica, sans-serif;
+}
+
+.login-dock-item img {
+    border: none;
+    margin: 5px 10px 0px;
+    width: 100%;
+}
+
+.login-dock-item span {
+    display: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}

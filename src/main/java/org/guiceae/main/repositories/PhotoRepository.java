@@ -18,6 +18,10 @@ public class PhotoRepository {
 
     public void updatePhotoDescriptions(Photo photo) {
 
+        System.out.println();
+        System.out.println(photo);
+        System.out.println();
+
         Photo ph = entityManager.find(Photo.class, photo.getId());
         if (ph != null) {
             if (!photo.getTitle().equals(ph.getTitle())) {
@@ -41,6 +45,10 @@ public class PhotoRepository {
             list.add(photo);
         }
         return list;
+    }
+
+    public void deletePhoto(Photo photo) {
+        entityManager.remove(entityManager.find(Photo.class, photo.getId()));
     }
 
     public List<Photo> getAll() {

@@ -8,32 +8,138 @@
 
 <html>
 <head>
-    <guiceae:head/>
-    <guiceae:photo-scripts/>
-
+    <guiceae:head>
+        <guiceae:photo-scripts/>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
-            $("a[rel^='prettyPhoto']").each(
-                    function () {
-                        $(this).prettyPhoto();
-                    }
-            );
 
+//            set all photos into positions
+            $("div.photo").each(function () {
+                var albumId = $(this).attr("id");
+                $("#album-gallery" + albumId + " ul").append('<li>' + $(this).html() + '</li>');
+            });
+
+//            gallerific magic
+            var onMouseOutOpacity = 0.67;
+            $('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
+                mouseOutOpacity:onMouseOutOpacity,
+                mouseOverOpacity:1.0,
+                fadeSpeed:'fast',
+                exemptionSelector:'.selected'
+            });
+
+            $("div.album-gallery").each(function () {
+
+                var gallery = $(this).galleriffic({
+                    delay:2500,
+                    numThumbs:3,
+                    preloadAhead:5,
+                    enableTopPager:true,
+                    enableBottomPager:true,
+                    maxPagesToShow:7,
+                    imageContainerSel:'#slideshow', //+ $(this).attr("id"),
+                    controlsContainerSel:'#controls', // + $(this).attr("id"),
+                    captionContainerSel:'#caption', // + $(this).attr("id"),
+                    loadingContainerSel:'#loading', // + $(this).attr("id"),
+                    renderSSControls:false,
+                    renderNavControls:false,
+                    playLinkText:'Play Slideshow',
+                    pauseLinkText:'Pause Slideshow',
+                    prevLinkText:'&lsaquo; Previous Photo',
+                    nextLinkText:'Next Photo &rsaquo;',
+                    nextPageLinkText:'Next &rsaquo;',
+                    prevPageLinkText:'&lsaquo; Prev',
+                    enableHistory:false,
+                    autoStart:false,
+                    syncTransitions:true,
+                    defaultTransitionDuration:900,
+                    onSlideChange:function (prevIndex, nextIndex) {
+                        // 'this' refers to the gallery, which is an extension of $('#thumbs')
+                        this.find('ul.thumbs').children()
+                                .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+                                .eq(nextIndex).fadeTo('fast', 1.0);
+                    },
+                    onPageTransitionOut:function (callback) {
+                        this.fadeTo('fast', 0.0, callback);
+                    },
+                    onPageTransitionIn:function () {
+                        this.fadeTo('fast', 1.0);
+                    }
+
+                });
+            });
         });
+
     </script>
 
     <title>
         Album workshop page
     </title>
-</head>
+    </guiceae:head>
 <body>
-<div class="content ui-widget-content ui-widget">
-    <c:forEach var="photo" items="${it}">
-        <a href="${photo.servingUrl}" rel="prettyPhoto[pp_gal]" title="${photo.title}"><img
-                src="${photo.servingUrl}=s300" alt="${photo.description}"/></a>
+
+<guiceae:menu>
+    <guiceae:rolesOnly roles="admin">
+        <a href="/app/photo/newPhoto">| New photo |</a>
+        <a href="/app/photo/newAlbumPage">Create new album |</a>
+    </guiceae:rolesOnly>
+</guiceae:menu>
+
+<table>
+    <tr>
+        <td>
+            <div id="slideshow" class="slideshow"></div>
+        </td>
+    </tr>
+
+    <c:forEach var="album" items="${it['albums']}">
+        <tr>
+            <td>
+                <div class="navigation-container">
+                    <a class="pageLink prev" style="visibility: hidden;" href="#" title="Previous Page"></a>
+
+                    <div id="${album.id}" class="album navigation">
+                        <div id="album-gallery${album.id}" class="album-gallery">
+                            <ul class="thumbs noscript"></ul>
+                        </div>
+                    </div>
+                    <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
+                </div>
+            </td>
+            <td>
+                <div class="album-caption">
+                    <div class="album-title">${album.title}</div>
+                    <div class="album-desc">${album.description}</div>
+                    <div class="admin-controls" style="font-size: large;">
+                        <a href="/app/photo/album/update?${album.id}">Update album</a>
+                        <a href="/app/photo/album/delete?${album.id}">Delete album</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
     </c:forEach>
-    <a href="/app/photo/form">Another photo</a>
+
+</table>
+
+<div style="display:none;">
+    <c:forEach var="photo" items="${it['photos']}">
+        <div id="${photo.albumId}" class="photo">
+            <a href="${photo.servingUrl}" class="thumb" title="${photo.title}"><img
+                    src="${photo.servingUrl}=s200" alt="${photo.description}"/></a>
+
+            <div class="caption">
+                <div class="image-title">${photo.title}</div>
+                <div class="image-desc">${photo.description}</div>
+                <div class="admin-controls">
+                    <a href="/app/photo/update?${album.id}">Update photo</a>
+                    <a href="/app/photo/delete?${album.id}">Delete photo</a>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
 </div>
+
+
 </body>
 </html>

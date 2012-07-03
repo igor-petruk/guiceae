@@ -22,8 +22,9 @@ public class Album implements Serializable {
     public Album() {
     }
 
-    public Album(String title) {
+    public Album(String title, String description) {
         this.title = title;
+        this.description = description;
     }
 
     public String getTitle() {

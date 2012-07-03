@@ -8,7 +8,7 @@
 <html>
 <head>
     <guiceae:head/>
-    <guiceae:photo-scripts/>
+    <%--<guiceae:photo-scripts/>--%>
 
     <script type="text/javascript">
         $(function () {
@@ -25,7 +25,7 @@
                 console.log(data);
                 $.ajax({
                     type:"POST",
-                    url:"/app/photo/newPhotos",
+                    url:"/app/photo/updatePhoto",
                     data:JSON.stringify(data),
                     cache:false,
                     contentType:"application/json; charset=utf-8",
