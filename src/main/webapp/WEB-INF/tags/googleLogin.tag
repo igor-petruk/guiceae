@@ -10,15 +10,11 @@
     if (user != null) {
 %>
 <%--<a class="dock-item" href="#"><span>Good day, <c:out value="${user.nickname}"/></span></a>--%>
-<a class="login-dock-item" href="<%= userService.createLogoutURL("/app/index")%>"><img
-        src="/css/images/dock-menu/login.png"
-        alt="contact"/><span>Logout</span></a>
+<a href="<%= userService.createLogoutURL("/app/index")%>">Logout</a>
 <%
 } else {
 %>
-<a class="login-dock-item" href="<%= userService.createLoginURL("/app/index")%>"><img
-        src="/css/images/dock-menu/login.png"
-        alt="contact"/><span>Login</span></a>
+<a href="<%= userService.createLoginURL("/app/index")%>">Login</a>
 <%
     }
 %>

@@ -11,10 +11,12 @@
     <title></title>
 </head>
 <body>
-<form action="/app/photo/newAlbum" method="POST">
-    <input type="text" name="title" maxlength="200"/>
-    <input type="text" name="description" maxlength="200"/>
-    <button>Add new album</button>
-</form>
+<div class="newAlbumForm">
+    <form action="/app/album/addNew" method="POST">
+        <input type="text" name="title" maxlength="200"/>
+        <input type="text" name="description" maxlength="200"/>
+        <button>Add new album</button>
+    </form>
+</div>
 </body>
 </html>

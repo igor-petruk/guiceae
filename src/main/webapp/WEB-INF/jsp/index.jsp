@@ -6,22 +6,20 @@
     <guiceae:head/>
 </head>
 <body>
-<div class="ui-widget-content">
+<div class="main page ui-widget-content">
     <guiceae:menu/>
 
-    <ul>
-        <c:forEach var="message" items="${it.messages}">
-            <li>
-                <div><c:out value="${message.text}"/></div>
-                <div><a href="index/deleteitem/<c:out value="${message.id}"/>">Delete</a></div>
-            </li>
-        </c:forEach>
-    </ul>
+    <div class="collage" id="mainMenuCollage"></div>
 
-    <form action="index/addmessage" method="post">
-        <input name="text"/>
-        <input type="submit"/>
-    </form>
+    <div id="feed-place">
+        <div class="gutter-outer"></div>
+        <div id="news" class="column feed"></div>
+        <div class="gutter"></div>
+        <div id="charity" class="column feed"></div>
+        <div class="gutter"></div>
+        <div id="people-chat" class="column feed"></div>
+        <div class="gutter-outer"></div>
+    </div>
 </div>
 </body>
 </html>

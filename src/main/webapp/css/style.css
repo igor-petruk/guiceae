@@ -5,7 +5,7 @@ div.menu {
 div.album-workshop-menu {
     max-width: 200px;
     float: left;
-    display: inline-block;
+    display: inline;
     position: absolute;
 }
 
@@ -13,74 +13,40 @@ div.album-workshop-menu {
     background-color: #d9ffba;
 }
 
-.dock {
-    position: relative;
-    height: 50px;
-    text-align: center;
-}
-
-.dock-container {
-    position: absolute;
-    height: 50px;
-    background: url(/css/images/dock-menu/dock-bg2.gif);
-    padding-left: 20px;
-}
-
-a.dock-item {
+div#feed-place {
+    width: 960px;
     display: block;
-    width: 40px;
-    color: #000;
-    position: absolute;
-    top: 0px;
-    text-align: center;
-    text-decoration: none;
-    font: bold 12px Arial, Helvetica, sans-serif;
 }
 
-.dock-item img {
-    border: none;
-    margin: 5px 10px 0px;
-    width: 100%;
+.column {
+    margin-top: 40px;
+    float: left;
+    width: 300px;
+    height: 600px;
+    background-color: #f8f8f8;
 }
 
-.dock-item span {
-    display: none;
-    padding-left: 20px;
+.gutter {
+    margin-top: 40px;
+    float: left;
+    width: 20px;
+    height: 600px;
+    background-color: #fefefe;
 }
 
-/*skdf*/
-
-.login-dock {
-    position: fixed;
-    height: 50px;
-    text-align: right;
+.gutter-outer {
+    margin-top: 40px;
+    float: left;
+    width: 10px;
+    height: 600px;
+    background-color: #fefefe;
 }
 
-.login-dock-container {
-    position: absolute;
-    height: 50px;
-    background: url(/css/images/dock-menu/dock-bg2.gif);
+.feed {
+    font-family: Helvetica sans-serif;
 }
 
-a.login-dock-item {
-    display: block;
-    width: 40px;
-    color: #000;
-    position: absolute;
-    top: 0px;
-    text-align: center;
-    text-decoration: none;
-    font: bold 12px Arial, Helvetica, sans-serif;
-}
-
-.login-dock-item img {
-    border: none;
-    margin: 5px 10px 0px;
-    width: 100%;
-}
-
-.login-dock-item span {
-    display: none;
-    padding-left: 20px;
-    padding-right: 20px;
+.menu a {
+    background-color: #bababa;
+    padding: 2px;
 }

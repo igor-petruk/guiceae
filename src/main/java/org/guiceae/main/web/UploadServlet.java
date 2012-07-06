@@ -55,6 +55,8 @@ public class UploadServlet extends HttpServlet {
                 albums = albumRepository.getAll();
             }
             req.setAttribute("albums", albums);
+
+            System.out.println("!!!!TRIED TO FORWARD");
             getServletConfig().getServletContext().getRequestDispatcher(
                     "/WEB-INF/jsp/introduce-photo.jsp").forward(req, resp);
         } else {

@@ -5,10 +5,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
-<head>
-    <guiceae:head/>
-    <%--<guiceae:photo-scripts/>--%>
+<guiceae:head>
+    <title>Album workshop</title>
 
     <script type="text/javascript">
         $(function () {
@@ -25,7 +25,7 @@
                 console.log(data);
                 $.ajax({
                     type:"POST",
-                    url:"/app/photo/updatePhoto",
+                    url:"/app/photo/update",
                     data:JSON.stringify(data),
                     cache:false,
                     contentType:"application/json; charset=utf-8",
@@ -34,14 +34,16 @@
                         console.log("very bad thing happen");
                     }
                 }).done(function () {
-                            window.location.replace("/app/photo/albums");
+                            window.location.replace("/app/album/all");
                         });
             });
         });
     </script>
-    <title>Album workshop</title>
-</head>
+</guiceae:head>
 <body>
+
+<button id="submitNewPhotos">Add photo</button>
+
 <div class="content">
     <c:forEach var="photo" items="${newPhotos}">
         <div class="intr-photo-row-box">
@@ -55,7 +57,6 @@
             </select>
         </div>
     </c:forEach>
-    <button id="submitNewPhotos">Add photos</button>
 </div>
 </body>
 </html>

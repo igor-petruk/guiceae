@@ -79,12 +79,7 @@
     </guiceae:head>
 <body>
 
-<guiceae:menu>
-    <guiceae:rolesOnly roles="admin">
-        <a href="/app/photo/newPhoto">| New photo |</a>
-        <a href="/app/photo/newAlbumPage">Create new album |</a>
-    </guiceae:rolesOnly>
-</guiceae:menu>
+<guiceae:menu></guiceae:menu>
 
 <table>
     <tr>
@@ -112,8 +107,8 @@
                     <div class="album-title">${album.title}</div>
                     <div class="album-desc">${album.description}</div>
                     <div class="admin-controls" style="font-size: large;">
-                        <a href="/app/photo/album/update?${album.id}">Update album</a>
-                        <a href="/app/photo/album/delete?${album.id}">Delete album</a>
+                        <a href="/app/album/update?id=${album.id}">Update album</a>
+                        <a href="/app/album/delete?id=${album.id}">Delete album</a>
                     </div>
                 </div>
             </td>
@@ -132,8 +127,8 @@
                 <div class="image-title">${photo.title}</div>
                 <div class="image-desc">${photo.description}</div>
                 <div class="admin-controls">
-                    <a href="/app/photo/update?${album.id}">Update photo</a>
-                    <a href="/app/photo/delete?${album.id}">Delete photo</a>
+                    <a href="/app/photo/update?id=${photo.id}">Update photo</a>
+                    <a href="/app/photo/delete?id=${photo.id}">Delete photo</a>
                 </div>
             </div>
         </div>
