@@ -2,18 +2,14 @@ package org.guiceae.main.repositories;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TemporalType;
-import java.sql.Timestamp;
-import java.text.Normalizer;
-import java.util.*;
-import java.util.regex.Pattern;
+import java.util.Date;
+import java.util.List;
 
 /**
  * User: Igor Petruk
@@ -39,6 +35,14 @@ public class ArticleRepository {
     }
     
     public List<Article> getFeed(String feed, boolean onlyPublished, Date offset){
+        Query<Article> query = ofy.get().
+                query(Article.class).
+                filter("feed",feed).
+                filter("created <",offset);
+        if (onlyPublished){
+            query = query.filter("state", ArticleState.PUBLISHED);
+        }
+        return query.limit(10).list();
 /*        Query query = entityManager.createQuery(
                 "select a from Article a " +
                         "where (a.feed=:feed) " +
@@ -53,7 +57,6 @@ public class ArticleRepository {
         }
         query.setMaxResults(10);
         return query.getResultList();*/
-        return new ArrayList<Article>();
     }
 }
 

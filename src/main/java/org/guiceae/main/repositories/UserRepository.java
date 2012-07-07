@@ -26,37 +26,12 @@ public class UserRepository implements UserPrincipalProvider{
     @Override
     public UserDetails loadUser(String userId) {
         userId = userId.toLowerCase();
-/*        MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
-        if (userId==null){
-            return null;
-        }
-        String key = "User"+userId;
-        UserDetails userDetails = (UserDetails)memcacheService.get(key);
-        if (userDetails==null){
-            System.out.println("USER ID:" +userId);
-            userDetails = entityManager.find(UserDetails.class, userId);
-            if (userDetails!=null)
-                memcacheService.put(key, userDetails);
-        }
-        return userDetails;*/
-
         return ofy.get().find(UserDetails.class, userId);
     }
 
     public void delete(String email){
         email = email.toLowerCase();
-/*        UserDetails oldUser = entityManager.find(UserDetails.class, email);
-        if (oldUser!=null){
-            entityManager.remove(oldUser);
-        }
-        invalidateCache(email);*/
         ofy.get().delete(UserDetails.class, email);
-    }
-    
-    private void invalidateCache(String email){
-        String key = "User"+email.toLowerCase();
-        MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService();
-        memcacheService.delete(key);
     }
 
     public void save(UserDetails userDetails){
@@ -67,7 +42,6 @@ public class UserRepository implements UserPrincipalProvider{
         Objectify ofy = this.ofy.get();
         email = email.toLowerCase();
         userDetails.setEmail(userDetails.getEmail().toLowerCase());
-        //invalidateCache(email);
         if (email.equals(userDetails.getEmail())){
             UserDetails old = ofy.find(UserDetails.class, email);
             if (old!=null){

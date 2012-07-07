@@ -1,5 +1,6 @@
 package org.guiceae.main.model;
 
+import com.googlecode.objectify.annotation.Cached;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.guiceae.util.JSONHelper;
 import org.guiceae.util.UserPrincipal;
@@ -19,6 +20,7 @@ import java.util.List;
  * Time: 23:16
  */
 @Entity
+@Cached
 public class UserDetails implements UserPrincipal, Serializable{
     @Id
     String email;
