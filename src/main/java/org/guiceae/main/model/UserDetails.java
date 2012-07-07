@@ -23,7 +23,6 @@ public class UserDetails implements UserPrincipal, Serializable{
     @Id
     String email;
 
-    @Basic
     List<String> roles = new ArrayList<String>();
 
     @Override

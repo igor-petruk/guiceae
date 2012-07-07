@@ -5,11 +5,12 @@ import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
 import org.guiceae.main.model.Message;
 import org.guiceae.main.model.UserDetails;
+import org.guiceae.main.repositories.ArticleRepository;
+import org.guiceae.main.repositories.MessageRepository;
+import org.guiceae.main.repositories.UserRepository;
 import org.guiceae.util.bootstrap.Bootstrap;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import java.util.Date;
 
 import static org.guiceae.main.model.Roles.*;
@@ -21,27 +22,31 @@ import static org.guiceae.main.model.Roles.*;
  */
 
 public class TestingBootstrap implements Bootstrap{
+    UserRepository userRepository;
+    ArticleRepository articleRepository;
+    MessageRepository messageRepository;
+
     @Inject
-    EntityManagerFactory entityManagerFactory;
-    
-    private void persist(Object o){
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.persist(o);
-        entityManager.close();
+    public TestingBootstrap(UserRepository userRepository,
+                            ArticleRepository articleRepository,
+                            MessageRepository messageRepository) {
+        this.userRepository = userRepository;
+        this.articleRepository = articleRepository;
+        this.messageRepository = messageRepository;
     }
-    
+
     @Override
     public void bootstrap() {
         Message message = new Message();
         message.setText(new Date().toString());
 
-        persist(message);
+        messageRepository.create(message);
 
         UserDetails userDetails = new UserDetails();
         userDetails.setEmail("test@example.com");
         userDetails.getRoles().addAll(ImmutableSet.of(ADMIN,CONTENT_MANAGER,VIDEO_MANAGER));
 
-        persist(userDetails);
+        userRepository.save(userDetails);
 
         Article article = new Article();
         article.setAuthor("test@examle.com");
@@ -52,6 +57,6 @@ public class TestingBootstrap implements Bootstrap{
         article.setLastUpdated(new Date());
         article.setTitle("Super title");
         article.setPermalink("super-title");
-        persist(article);
+        articleRepository.storeArticle(article);
     }
 }

@@ -2,7 +2,6 @@ package org.guiceae.main.ioc;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import org.guiceae.main.model.Article;
 import org.guiceae.main.repositories.ArticleRepository;
 import org.guiceae.main.repositories.MessageRepository;
 import org.guiceae.main.repositories.UserRepository;

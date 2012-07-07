@@ -1,9 +1,11 @@
 package org.guiceae.main.repositories;
 
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Album;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import javax.inject.Provider;
 import java.util.List;
 
 /**
@@ -12,14 +14,17 @@ import java.util.List;
  */
 public class AlbumRepository {
     @Inject
-    private EntityManager entityManager;
+    private Provider<Objectify> ofy;
+
+    static{
+        ObjectifyService.register(Album.class);
+    }
 
     public List<Album> getAll() {
-        return entityManager.createQuery("select a from Album a").getResultList();
+        return ofy.get().query(Album.class).list();
     }
 
     public void persistAlbum(Album album) {
-        entityManager.persist(album);
-        entityManager.refresh(album);
+        ofy.get().put(album);
     }
 }

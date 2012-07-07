@@ -11,6 +11,13 @@
 
     <name>guiceae</name>
 
+    <repositories>
+        <repository>
+            <id>objectify-appengine</id>
+            <url>http://objectify-appengine.googlecode.com/svn/maven</url>
+        </repository>
+    </repositories>
+
     <dependencies>
 
         <!-- Google App Engine meta-package -->
@@ -90,6 +97,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify</artifactId>
+            <version>3.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>0.9.26</version>
@@ -147,12 +160,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-persist</artifactId>
-            <version>3.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-lgpl</artifactId>
             <version>1.9.7</version>
@@ -201,60 +208,6 @@
 
     <build>
         <plugins>
-            <!--
-                   This plug-in "enhances" your domain model objects (i.e. makes them
-                   persistent for datanucleus)
-               -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>maven-datanucleus-plugin</artifactId>
-                <version>1.1.4</version>
-                <configuration>
-                    <!--
-                             Make sure this path contains your persistent classes!
-                         -->
-                    <mappingIncludes>**/model/*.class</mappingIncludes>
-                    <verbose>true</verbose>
-                    <enhancerName>ASM</enhancerName>
-                    <api>JPA</api>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-core</artifactId>
-                        <version>${datanucleus.version}</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>javax.transaction</groupId>
-                                <artifactId>transaction-api</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-rdbms</artifactId>
-                        <version>${datanucleus.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-enhancer</artifactId>
-                        <version>1.1.4</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-jpa_3.0_spec</artifactId>
-                        <version>1.1.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
