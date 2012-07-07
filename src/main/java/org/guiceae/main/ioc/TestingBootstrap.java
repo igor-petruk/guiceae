@@ -1,6 +1,8 @@
 package org.guiceae.main.ioc;
 
 import com.google.common.collect.ImmutableSet;
+import org.guiceae.main.model.Article;
+import org.guiceae.main.model.ArticleState;
 import org.guiceae.main.model.Message;
 import org.guiceae.main.model.UserDetails;
 import org.guiceae.util.bootstrap.Bootstrap;
@@ -40,5 +42,16 @@ public class TestingBootstrap implements Bootstrap{
         userDetails.getRoles().addAll(ImmutableSet.of(ADMIN,CONTENT_MANAGER,VIDEO_MANAGER));
 
         persist(userDetails);
+
+        Article article = new Article();
+        article.setAuthor("test@examle.com");
+        article.setCreated(new Date());
+        article.setState(ArticleState.PUBLISHED);
+        article.setFeed("news");
+        article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+        article.setLastUpdated(new Date());
+        article.setTitle("Super title");
+        article.setPermalink("super-title");
+        persist(article);
     }
 }

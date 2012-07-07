@@ -1,10 +1,9 @@
 
 package org.guiceae.main.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.google.appengine.api.datastore.Text;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,21 +15,22 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-	private String text;
+    @Lob
+	private Text text;
 
     public Message(String text) {
-        this.text = text;
+        this.text = new Text(text);
     }
 
     public Message() {
     }
 
     public String getText() {
-		return text;
+		return text.getValue();
 	}
 	
 	public void setText(String text) {
-		this.text = text;
+		this.text = new Text(text);
 	}
 
     public Long getId() {

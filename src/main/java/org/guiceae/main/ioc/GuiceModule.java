@@ -2,12 +2,11 @@ package org.guiceae.main.ioc;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
+import org.guiceae.main.model.Article;
+import org.guiceae.main.repositories.ArticleRepository;
 import org.guiceae.main.repositories.MessageRepository;
 import org.guiceae.main.repositories.UserRepository;
-import org.guiceae.main.web.AlbumController;
-import org.guiceae.main.web.MainController;
-import org.guiceae.main.web.PhotoController;
-import org.guiceae.main.web.UsersController;
+import org.guiceae.main.web.*;
 import org.guiceae.util.UserPrincipalProvider;
 import org.guiceae.util.bootstrap.Bootstrap;
 import org.guiceae.util.bootstrap.DevelopmentBootstrap;
@@ -34,12 +33,14 @@ public class GuiceModule extends AbstractModule {
         // repos
         bind(MessageRepository.class);
         bind(UserRepository.class);
+        bind(ArticleRepository.class);
 
         // controllers
         bind(MainController.class);
         bind(UsersController.class);
         bind(PhotoController.class);
         bind(AlbumController.class);
+        bind(FeedsController.class);
 
         // security
         bind(UserPrincipalProvider.class).to(UserRepository.class);
