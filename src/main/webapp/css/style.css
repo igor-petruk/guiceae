@@ -1,52 +1,132 @@
-div.menu {
-    display: inline;
+/*elements */
+html,
+body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    height: 100%;
 }
 
-div.album-workshop-menu {
-    max-width: 200px;
-    float: left;
-    display: inline;
-    position: absolute;
+a {
+    text-decoration: none;
 }
+
+/*collage*/
+
+.collage {
+    width: 960px;
+    height: 300px;
+    background-color: #fdfd78;
+    margin: 25px 0 0 0;
+}
+
+.collage>div#greetings {
+    background-color: #fefefe;
+    margin: 10px 20px 10px 200px;
+    height: 280px;
+    padding: 10px 10px 10px 10px;
+}
+
+/*menu*/
+.menu {
+    display: block;
+    padding: 10px 10px 10px 10px;
+    background-color: #fdfbe5;
+}
+
+.menu>div {
+    background-color: #fdfbe5;
+    display: inline;
+    position: relative;
+    padding: 10px 30px 10px 30px;
+}
+
+.menu>div>a {
+    color: #9fd1a9;
+    margin: 20px 0px 20px 0px;
+    text-decoration: none;
+}
+
+.menu>div>a:hover {
+    color: #769e81;
+    font-family: Verdana;
+    font: 14px;
+    margin: 20px 0px 20px 0px;
+}
+
+.activeMenuItem {
+    color: #769e81;
+    font-family: Verdana;
+    font: 14px;
+    margin: 20px 0px 20px 0px;
+}
+
+.menuItemJS {
+    margin-top: -100px;
+    position: absolute;
+    float: left;
+}
+
+/*body*/
+#body {
+    padding-bottom: 10px;
+}
+
+#main-container {
+    min-height: 100%;
+    position: relative;
+}
+
+/*footer*/
+
+#footer {
+    background-color: #fdfbe5;
+    height: 60px;
+    bottom: 0;
+    position: static;
+}
+
+#footer div {
+    background-color: #fdfbe5;
+    float: right;
+    color: #9fd1a9;
+    margin: 30px 0 0 0;
+    text-decoration: none;
+}
+
+/*albums*/
 
 .album-caption {
     background-color: #d9ffba;
 }
 
-div#feed-place {
-    width: 960px;
-    display: block;
-}
+/*main page*/
 
 .column {
-    margin-top: 40px;
     float: left;
     width: 300px;
-    height: 600px;
+    height: 200px;
     background-color: #f8f8f8;
 }
 
 .gutter {
-    margin-top: 40px;
     float: left;
     width: 20px;
-    height: 600px;
+    height: 200px;
     background-color: #fefefe;
 }
 
 .gutter-outer {
-    margin-top: 40px;
     float: left;
     width: 10px;
-    height: 600px;
+    height: 200px;
     background-color: #fefefe;
 }
 
-.feed {
-    font-family: Helvetica sans-serif;
-}
+/*feeds*/
 
-.menu a {
-    background-color: #bababa;
-    padding: 2px;
+#feed-place {
+    margin-top: 15px;
+    width: 960px;
+    display: block;
+    height: 200px;
 }
