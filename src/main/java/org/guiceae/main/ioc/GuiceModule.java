@@ -40,6 +40,7 @@ public class GuiceModule extends AbstractModule {
         bind(PhotoController.class);
         bind(AlbumController.class);
         bind(FeedsController.class);
+        bind(ArticleController.class);
 
         // security
         bind(UserPrincipalProvider.class).to(UserRepository.class);

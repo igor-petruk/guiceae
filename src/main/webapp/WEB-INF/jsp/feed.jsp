@@ -3,9 +3,6 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
     <guiceae:head>
-        <style>
-            body { font-size: 72.5%; }
-        </style>
         <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     </guiceae:head>
     <body>

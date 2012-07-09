@@ -51,7 +51,7 @@ public class TestingBootstrap implements Bootstrap{
         Article article = new Article();
         article.setAuthor("test@examle.com");
         article.setCreated(new Date());
-        article.setState(ArticleState.PUBLISHED);
+        article.setState(ArticleState.PENDING);
         article.setFeed("news");
         article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
         article.setLastUpdated(new Date());
