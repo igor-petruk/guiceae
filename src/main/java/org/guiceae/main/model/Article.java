@@ -1,6 +1,7 @@
 package org.guiceae.main.model;
 
 import com.google.appengine.api.datastore.Text;
+import com.google.common.base.Objects;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -24,7 +25,7 @@ public class Article {
     Date created, lastUpdated;
 
     @Enumerated(EnumType.STRING)
-    ArticleState state;
+    ArticleState state = ArticleState.PENDING;
 
     @Lob
     Text content;
@@ -99,5 +100,20 @@ public class Article {
 
     public void setState(ArticleState state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", feed='" + feed + '\'' +
+                ", title='" + title + '\'' +
+                ", permalink='" + permalink + '\'' +
+                ", author='" + author + '\'' +
+                ", created=" + created +
+                ", lastUpdated=" + lastUpdated +
+                ", state=" + state +
+                ", content=" + content +
+                '}';
     }
 }

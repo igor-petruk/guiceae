@@ -23,15 +23,7 @@ public class MessageRepository {
     }
 
     public void create(Message message) {
-        /* User user = UserServiceFactory.getUserService().getCurrentUser();
-        UserRoles roles = new UserRoles();
-        roles.setUserId(user.getUserId());
-        roles.getRoles().add("admin");
-        entityManager.persist(roles);*/
         ofy.get().put(message);
-        //entityManager.getTransaction().commit();
-        //entityManager.getTransaction().begin();
-        //System.out.println(Arrays.toString(getAll().toArray()));
     }
 
     public void deleteById(long id) {

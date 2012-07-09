@@ -1,5 +1,6 @@
 package org.guiceae.main.repositories;
 
+import com.google.appengine.api.datastore.Transaction;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
@@ -25,13 +26,25 @@ public class ArticleRepository {
     Provider<Objectify> ofy;
 
     public Article storeArticle(Article article){
-        Objectify ofy = this.ofy.get();
-        ofy.put(article);
-        if (article.getPermalink()==null || "".equals(article.getPermalink())){
-            article.setPermalink(String.valueOf(article.getId()));
+        Objectify ofy = ObjectifyService.beginTransaction();
+        try{
+            ofy.put(article);
+            if (article.getPermalink()==null || "".equals(article.getPermalink())){
+                article.setPermalink(String.valueOf(article.getId()));
+            }
+            ofy.put(article);
+            return article;
+        }finally {
+            ofy.getTxn().commit();
         }
-        ofy.put(article);
-        return article;
+    }
+    
+    public Article getArticle(Long id){
+        return ofy.get().get(Article.class, id);
+    }
+    
+    public void delete(Long id){
+        ofy.get().delete(Article.class, id);
     }
     
     public List<Article> getFeed(String feed, boolean onlyPublished, Date offset){
@@ -43,20 +56,22 @@ public class ArticleRepository {
             query = query.filter("state", ArticleState.PUBLISHED);
         }
         return query.limit(10).list();
-/*        Query query = entityManager.createQuery(
-                "select a from Article a " +
-                        "where (a.feed=:feed) " +
-                        "and (a.created<:offset) " +
-                        ((onlyPublished)?
-                                "and (a.state==:state)":"")+
-                        "order by a.created desc");
-        query.setParameter("feed",feed);
-        query.setParameter("offset",offset);
-        if (onlyPublished){
-            query.setParameter("state", ArticleState.PUBLISHED);
+    }
+
+    public void mergeArticle(Article article){
+        if (article.getId()==null || article.getId()==0){
+            article.setId(null);
+            ofy.get().put(article);
+        }else{
+            Objectify ofy = this.ofy.get();
+            Article oldArticle = ofy.get(Article.class, article.getId());
+            oldArticle.setLastUpdated(new Date());
+            oldArticle.setContent(article.getContent());
+            oldArticle.setFeed(article.getFeed());
+            oldArticle.setTitle(article.getTitle());
+            oldArticle.setPermalink(article.getPermalink());
+            ofy.put(oldArticle);
         }
-        query.setMaxResults(10);
-        return query.getResultList();*/
     }
 }
 
