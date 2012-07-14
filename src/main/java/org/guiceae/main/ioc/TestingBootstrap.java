@@ -54,6 +54,7 @@ public class TestingBootstrap implements Bootstrap{
         article.setState(ArticleState.PENDING);
         article.setFeed("news");
         article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+        article.setShortContent("<p><b>Short</b> version<p>");
         article.setLastUpdated(new Date());
         article.setTitle("Super title");
         article.setPermalink("super-title");

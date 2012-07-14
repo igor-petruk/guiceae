@@ -12,6 +12,20 @@ function registerDelete(id){
     });
 }
 
+function registerSimpleDelete(id, feed){
+    $("#delete"+id).click(function(){
+        $.ajax({
+            url:"/app/article/delete/"+id,
+            type:"DELETE",
+            cache:false,
+            dataType:"json",
+            success:function(data){
+                window.location="/app/feed/"+feed;
+            }
+        });
+    });
+}
+
 function registerPublish(id){
     $("#publish"+id).click(function(){
         $.ajax({

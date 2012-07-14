@@ -28,7 +28,10 @@ public class Article {
     ArticleState state = ArticleState.PENDING;
 
     @Lob
-    Text content;
+    Text content = new Text("");
+
+    @Lob
+    Text shortContent = new Text("");
 
     public Long getId() {
         return id;
@@ -102,18 +105,11 @@ public class Article {
         this.state = state;
     }
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", feed='" + feed + '\'' +
-                ", title='" + title + '\'' +
-                ", permalink='" + permalink + '\'' +
-                ", author='" + author + '\'' +
-                ", created=" + created +
-                ", lastUpdated=" + lastUpdated +
-                ", state=" + state +
-                ", content=" + content +
-                '}';
+    public String getShortContent() {
+        return shortContent.getValue();
+    }
+
+    public void setShortContent(String shortContent) {
+        this.shortContent = new Text(shortContent);
     }
 }

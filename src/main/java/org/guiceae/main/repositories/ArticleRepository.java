@@ -1,14 +1,19 @@
 package org.guiceae.main.repositories;
 
 import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
+import org.guiceae.util.UserPrincipalHolder;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +29,9 @@ public class ArticleRepository {
 
     @Inject
     Provider<Objectify> ofy;
+
+    @Inject
+    UserPrincipalHolder userPrincipalHolder;
 
     public Article storeArticle(Article article){
         Objectify ofy = ObjectifyService.beginTransaction();
@@ -42,13 +50,27 @@ public class ArticleRepository {
     public void publish(Long id){
         Article article = getArticle(id);
         article.setState(ArticleState.PUBLISHED);
+        article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
+        article.setCreated(new Date());
+        article.setLastUpdated(new Date());
         storeArticle(article);
     }
 
     public Article getArticle(Long id){
         return ofy.get().get(Article.class, id);
     }
-    
+
+    public Article getArticleByPermalink(String permalink){
+        List<Article> strings = ofy.get().query(Article.class).filter("permalink",permalink).list();
+        if (strings.isEmpty()){
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }else if (strings.size()==1){
+            return strings.get(0);
+        }else {
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public void delete(Long id){
         ofy.get().delete(Article.class, id);
     }
@@ -67,12 +89,14 @@ public class ArticleRepository {
     public void mergeArticle(Article article){
         if (article.getId()==null || article.getId()==0){
             article.setId(null);
+            article.setLastUpdated(new Date());
             ofy.get().put(article);
         }else{
             Objectify ofy = this.ofy.get();
             Article oldArticle = ofy.get(Article.class, article.getId());
             oldArticle.setLastUpdated(new Date());
             oldArticle.setContent(article.getContent());
+            oldArticle.setShortContent(article.getShortContent());
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
             oldArticle.setPermalink(article.getPermalink());

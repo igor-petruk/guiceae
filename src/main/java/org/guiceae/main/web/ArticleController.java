@@ -26,12 +26,22 @@ public class ArticleController {
     }
 
     @GET
+    @Path("/detail/{permalink}")
+    public Viewable detail(@PathParam("permalink") String permalink){
+        Article article = articleRepository.getArticleByPermalink(permalink);
+        return new Viewable("/articleDetail.jsp",article);
+    }
+
+    @GET
     @Path("/add/{feed}")
     public Viewable givenFeed(@PathParam("feed") String feed){
         Article article = new Article();
         article.setFeed(feed);
         article.setId(0L);
-        article.setContent("");
+        article.setContent("Зміст");
+        article.setShortContent("Короткий зміст");
+        article.setTitle("Заголовок статті");
+        article.setPermalink("zagolovok-statti");
         return new Viewable("/editArticle.jsp",article);
     }
 
@@ -55,7 +65,8 @@ public class ArticleController {
                                 @FormParam("feed") String feed,
                                 @FormParam("title") String title,
                                 @FormParam("permalink") String permalink,
-                                @FormParam("content") String content) throws URISyntaxException{
+                                @FormParam("content") String content,
+                                @FormParam("shortContent") String shortContent) throws URISyntaxException{
         Article article = new Article();
         article.setId(id);
         article.setContent(content);
@@ -63,6 +74,7 @@ public class ArticleController {
         article.setTitle(title);
         article.setPermalink(permalink);
         article.setContent(content);
+        article.setShortContent(shortContent);
         if (article.getAuthor()==null){
             article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
         }

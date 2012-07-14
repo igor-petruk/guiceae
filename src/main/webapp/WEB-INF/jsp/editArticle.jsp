@@ -6,7 +6,12 @@
         <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
         <script type="text/javascript">
             $(function(){
-                CKEDITOR.replace( 'textarea',
+                CKEDITOR.replace( 'content',
+                        {
+                            toolbar : 'Basic',
+                            uiColor : '#9AB8F3'
+                        });
+                CKEDITOR.replace( 'shortContent',
                         {
                             toolbar : 'Basic',
                             uiColor : '#9AB8F3'
@@ -30,7 +35,13 @@
                 <input id="permalink" name="permalink" type="text" value="${it.permalink}"/>
                 <br/>
 
-                <textarea id="textarea" name="content">
+                <label for="shortContent">Короткий зміст</label>
+                <textarea id="shortContent" name="shortContent">
+                    ${it.shortContent}
+                </textarea>
+
+                <label for="content">Зміст статті</label>
+                <textarea id="content" name="content">
                     ${it.content}
                 </textarea>
 

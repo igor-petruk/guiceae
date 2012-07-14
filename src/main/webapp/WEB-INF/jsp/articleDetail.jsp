@@ -8,6 +8,8 @@
     <body>
         <guiceae:menu/>
 
-        <guiceae:feed shortView="true"/>
+        <div>
+            <guiceae:article shortView="false" simpleDelete="true" article="${it}"/>
+        </div>
     </body>
 </html>
