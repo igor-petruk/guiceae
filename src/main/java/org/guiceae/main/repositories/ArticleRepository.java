@@ -1,6 +1,5 @@
 package org.guiceae.main.repositories;
 
-import com.google.appengine.api.datastore.Transaction;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
@@ -18,51 +17,55 @@ import java.util.List;
  * Time: 21:49
  */
 public class ArticleRepository {
-    static{
+    static {
         ObjectifyService.register(Article.class);
     }
 
     @Inject
     Provider<Objectify> ofy;
 
-    public Article storeArticle(Article article){
+    public Article storeArticle(Article article) {
         Objectify ofy = ObjectifyService.beginTransaction();
-        try{
+        try {
             ofy.put(article);
-            if (article.getPermalink()==null || "".equals(article.getPermalink())){
+            if (article.getPermalink() == null || "".equals(article.getPermalink())) {
                 article.setPermalink(String.valueOf(article.getId()));
             }
             ofy.put(article);
             return article;
-        }finally {
+        } finally {
             ofy.getTxn().commit();
         }
     }
-    
-    public Article getArticle(Long id){
+
+    public Article getArticle(Long id) {
         return ofy.get().get(Article.class, id);
     }
-    
-    public void delete(Long id){
+
+    public void delete(Long id) {
         ofy.get().delete(Article.class, id);
     }
-    
-    public List<Article> getFeed(String feed, boolean onlyPublished, Date offset){
+
+    public List<Article> getFeed(String feed, boolean onlyPublished, Date offset, Integer number) {
         Query<Article> query = ofy.get().
                 query(Article.class).
-                filter("feed",feed).
-                filter("created <",offset);
-        if (onlyPublished){
+                filter("feed", feed).
+                filter("created <", offset);
+        if (onlyPublished) {
             query = query.filter("state", ArticleState.PUBLISHED);
         }
-        return query.limit(10).list();
+        return query.limit(number).list();
     }
 
-    public void mergeArticle(Article article){
-        if (article.getId()==null || article.getId()==0){
+    public List<Article> getFeed(String feed, boolean onlyPublished, Date offset) {
+        return getFeed(feed, onlyPublished, offset, 10);
+    }
+
+    public void mergeArticle(Article article) {
+        if (article.getId() == null || article.getId() == 0) {
             article.setId(null);
             ofy.get().put(article);
-        }else{
+        } else {
             Objectify ofy = this.ofy.get();
             Article oldArticle = ofy.get(Article.class, article.getId());
             oldArticle.setLastUpdated(new Date());

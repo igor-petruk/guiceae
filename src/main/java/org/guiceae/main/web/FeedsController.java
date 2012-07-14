@@ -8,7 +8,6 @@ import org.guiceae.util.UserPrincipalHolder;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -29,20 +28,28 @@ public class FeedsController {
 
     @GET
     @Path("/{feed}")
-    public Viewable givenFeed(@PathParam("feed") String feed, @QueryParam("offset") String offset){
+    public Viewable givenFeed(@PathParam("feed") String feed, @QueryParam("offset") String offset) {
         Date date = new Date();
-        if (offset!=null){
+        if (offset != null) {
             date = new Date(Long.parseLong(offset));
         }
         return produceFeed(feed, date);
     }
 
-    private Viewable produceFeed(String feed, Date offset){
+    private Viewable produceFeed(String feed, Date offset) {
         boolean showPending = userPrincipalHolder.get().contains("cm");
         List<Article> articles = articleRepository.getFeed(feed, !showPending, offset);
         Map<String, Object> it = new HashMap<String, Object>();
-        it.put("feed",articles);
-        it.put("feedName",feed);
-        return new Viewable("/feed.jsp",it);
+        it.put("feed", articles);
+        it.put("feedName", feed);
+        return new Viewable("/feed.jsp", it);
     }
+
+    @GET
+    @Path("/{feed}/{number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Article> getArticlesFromFeed(@PathParam("feed") String feed, @PathParam("num") Integer number) {
+        return articleRepository.getFeed(feed, true, new Date(), 3);
+    }
+
 }

@@ -41,22 +41,23 @@
     </script>
 </guiceae:head>
 <body>
+<div class="introduce-photo-div">
+    <button id="submitNewPhotos">Add photo</button>
 
-<button id="submitNewPhotos">Add photo</button>
-
-<div class="content">
-    <c:forEach var="photo" items="${newPhotos}">
-        <div class="intr-photo-row-box">
-            <img src="${photo.servingUrl}=s200" class="thumbnailPhoto" alt=""/>
-            <input id="title" maxlength="200"/>
-            <textarea cols="100" rows="5" type="text" class="newDescription" id="${photo.id}"></textarea>
-            <select id="album">
-                <c:forEach var="album" items="${albums}">
-                    <option value="${album.id}">${album.title}</option>
-                </c:forEach>
-            </select>
-        </div>
-    </c:forEach>
+    <div class="content">
+        <c:forEach var="photo" items="${newPhotos}">
+            <div class="intr-photo-row-box">
+                <img src="${photo.servingUrl}=s200" class="thumbnailPhoto" alt=""/>
+                <input id="title" maxlength="200"/>
+                <textarea cols="100" rows="5" type="text" class="newDescription" id="${photo.id}"></textarea>
+                <select id="album">
+                    <c:forEach var="album" items="${albums}">
+                        <option value="${album.id}">${album.title}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 </body>
 </html>

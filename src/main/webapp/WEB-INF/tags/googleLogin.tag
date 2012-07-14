@@ -9,16 +9,23 @@
 
     if (user != null) {
 %>
-<%--<a class="dock-item" href="#"><span>Good day, <c:out value="${user.nickname}"/></span></a>--%>
-<div style="margin-top: -40px;float: right;"><a href="<%= userService.createLogoutURL("/app/index")%>">
+
+
+<div class="login"><a href="<%= userService.createLogoutURL("/app/index")%>">
     <img src="/css/images/system/hr3.png" alt="Logout" height="64" width="64"/>
 </a></div>
+
+
 <%
 } else {
 %>
-<div style="margin-top: -40px;float: right;"><a href="<%= userService.createLoginURL("/app/index")%>">
+
+
+<div class="login"><a href="<%= userService.createLoginURL("/app/index")%>">
     <img src="/css/images/system/hr.png" alt="Login" height="64" width="64"/>
 </a></div>
+
+
 <%
     }
 %>

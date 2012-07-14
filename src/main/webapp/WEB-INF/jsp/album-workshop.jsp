@@ -43,7 +43,7 @@
                     captionContainerSel:'#caption', // + $(this).attr("id"),
                     loadingContainerSel:'#loading', // + $(this).attr("id"),
                     renderSSControls:false,
-                    renderNavControls:false,
+                    renderNavControls:true,
                     playLinkText:'Play Slideshow',
                     pauseLinkText:'Pause Slideshow',
                     prevLinkText:'&lsaquo; Previous Photo',
@@ -79,6 +79,7 @@
     </guiceae:head>
 <body>
 
+<guiceae:admin-menu></guiceae:admin-menu>
 <guiceae:menu></guiceae:menu>
 
 <table>

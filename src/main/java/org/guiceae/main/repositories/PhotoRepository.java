@@ -2,13 +2,11 @@ package org.guiceae.main.repositories;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
-import org.guiceae.main.model.Message;
 import org.guiceae.main.model.Photo;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
-import javax.persistence.EntityManager;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,7 +15,7 @@ import java.util.List;
  */
 
 public class PhotoRepository {
-    static{
+    static {
         ObjectifyService.register(Photo.class);
     }
 
@@ -57,5 +55,10 @@ public class PhotoRepository {
 
     public List<Photo> getAll() {
         return ofy.get().query(Photo.class).list();
+    }
+
+    public Collection<Photo> getByAlbumId(Long albumId) {
+        Collection<Photo> photos = ofy.get().query(Photo.class).list();
+        return photos;
     }
 }
