@@ -4,6 +4,7 @@ body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     height: 100%;
+    background-color: #ffffff;
 }
 
 a {
@@ -27,76 +28,77 @@ a {
 }
 
 /*menu*/
-.menu {
-    display: block;
-    padding: 10px 10px 10px 10px;
-    background-color: #fdfbe5;
+
+.login {
+    right: 10px;
+    position: absolute;
 }
 
-.menu>div {
-    background-color: #fdfbe5;
+.menu {
+    padding: 10px 10px 10px 10px;
+    display: inline;
+}
+
+.menu div {
     display: inline;
     position: relative;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 0 10px 30px;
 }
 
-.menu>div>a {
-    color: #9fd1a9;
-    margin: 20px 0px 20px 0px;
+.menu div a {
+    color: #ffd700;
+    margin: 20px 0 20px 0;
+    font-size: 16px;
+    font-family: Helvetica sans-serif;
     text-decoration: none;
 }
 
-.menu>div>a:hover {
-    color: #769e81;
-    font-family: Verdana;
-    font: 14px;
+.menu div a:hover {
+    color: #222222;
+    font-size: 16px;
+    font-family: Helvetica sans-serif;
     margin: 20px 0px 20px 0px;
 }
 
 .activeMenuItem {
-    color: #769e81;
-    font-family: Verdana;
-    font: 14px;
-    margin: 20px 0px 20px 0px;
 }
 
 .menuItemJS {
-    margin-top: -100px;
-    position: absolute;
-    float: left;
+    margin: -100px 0 0 -15px;
+    position: relative;
+    display: inline;
+
+}
+
+.menuItemJS img {
+    margin: -150px 0 0 -30px;
 }
 
 /*body*/
-#body {
+.body {
+    left: 50%;
     padding-bottom: 10px;
 }
 
-#main-container {
+.main-container {
     min-height: 100%;
-    position: relative;
 }
 
 /*footer*/
 
 #footer {
-    background-color: #fdfbe5;
+    background-color: #fdfd78;
     height: 60px;
     bottom: 0;
-    position: static;
+    text-decoration: none;
+    text-align: center;
 }
 
 #footer div {
-    background-color: #fdfbe5;
     float: right;
-    color: #9fd1a9;
+    color: #333333;
     margin: 30px 0 0 0;
-    text-decoration: none;
-}
-
-/*albums*/
-
-.album-caption {
-    background-color: #d9ffba;
+    display: block;
 }
 
 /*main page*/
@@ -104,29 +106,81 @@ a {
 .column {
     float: left;
     width: 300px;
-    height: 200px;
-    background-color: #f8f8f8;
+    background-color: #86caff;
 }
 
 .gutter {
     float: left;
     width: 20px;
-    height: 200px;
-    background-color: #fefefe;
+    background-color: #2277DD;
 }
 
 .gutter-outer {
     float: left;
     width: 10px;
-    height: 200px;
-    background-color: #fefefe;
+    background-color: #2277DD;
 }
 
 /*feeds*/
 
 #feed-place {
-    margin-top: 15px;
+    padding: 10px 0 0 10px;
+    margin: 15px 0 0 0;
     width: 960px;
     display: block;
-    height: 200px;
+    height: 400px;
+    font-size: 16px;
+    font-family: Georgia sans-serif;
+}
+
+.article {
+
+}
+
+.title {
+
+}
+
+.content {
+
+}
+
+/*====>   admin tools*/
+
+.admin-menu {
+    border-radius: 10%;
+    display: block;
+    width: 130px;
+    position: absolute;
+    top: 200px;
+    right: 0;
+    background-color: #599fcf;
+
+}
+
+.admin-menu div {
+    text-align: center;
+    border-radius: 40%;
+    width: 120px;
+    background-color: #fdfd78;
+    margin: 10px 10px 10px 10px;
+}
+
+.admin-menu div a {
+    font-size: 16px;
+    font-family: Helvetica sans-serif;
+    padding: 10px 10px 10px 10px;
+    color: #599fcf;
+}
+
+/*image-gallery*/
+
+.album-main-thumb {
+    width: 200px;
+}
+
+#slideshow {
+    width: 40px;
+    height: 100px;
+    background-color: red;
 }

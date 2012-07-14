@@ -16,12 +16,16 @@ public class AlbumRepository {
     @Inject
     private Provider<Objectify> ofy;
 
-    static{
+    static {
         ObjectifyService.register(Album.class);
     }
 
     public List<Album> getAll() {
         return ofy.get().query(Album.class).list();
+    }
+
+    public Album getById(Long id) {
+        return ofy.get().get(Album.class, id);
     }
 
     public void persistAlbum(Album album) {

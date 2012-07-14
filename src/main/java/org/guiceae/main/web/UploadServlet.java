@@ -41,6 +41,7 @@ public class UploadServlet extends HttpServlet {
 
         ImagesService imagesService = ImagesServiceFactory.getImagesService();
         if (blobKeys != null) {
+
             List<Photo> photos = new ArrayList<Photo>();
             for (BlobKey key : blobKeys) {
                 photos.add(new Photo(imagesService.getServingUrl(key), key.getKeyString()));
@@ -56,7 +57,6 @@ public class UploadServlet extends HttpServlet {
             }
             req.setAttribute("albums", albums);
 
-            System.out.println("!!!!TRIED TO FORWARD");
             getServletConfig().getServletContext().getRequestDispatcher(
                     "/WEB-INF/jsp/introduce-photo.jsp").forward(req, resp);
         } else {

@@ -5,10 +5,7 @@ import org.guiceae.main.model.Photo;
 import org.guiceae.main.repositories.PhotoRepository;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -33,13 +30,6 @@ public class PhotoController {
     @Consumes(value = {MediaType.APPLICATION_JSON})
     public Response processNewPhotos(Photo info) {
         photoRepository.updatePhotoDescriptions(info);
-        return Response.ok().build();
-    }
-
-    @GET
-    @Path("/delete")
-    public Response processDeletePhoto(Photo info) {
-        photoRepository.deletePhoto(info);
         return Response.ok().build();
     }
 }

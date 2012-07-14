@@ -5,18 +5,11 @@
 <div class="menu">
     <div><a href="/app/index">Home</a></div>
     <div><a href="/app/contacts">Contact</a></div>
-    <div><a href="/app/contacts">Charity</a></div>
-    <div><a href="/app/contacts">News</a></div>
-    <div><a href="/app/contacts">Biography</a></div>
-    <div><a href="/app/rss">RSS</a></div>
-    <%--<guiceae:rolesOnly roles="admin">--%>
-    <%--<div><a href="/app/users">Users</a></div>--%>
-    <%--<div><a href="/app/photo/new">Add photo</a></div>--%>
-    <%--<div><a href="/app/album/new">Add album</a></div>--%>
-    <%--<div><a href="/app/article/new">Add article</a></div>--%>
-    <%--<div><a href="/app/feed/new">Add feed</a></div>--%>
-    <%--<div><a href="/app/album/all">Albums</a></div>--%>
-    <%--</guiceae:rolesOnly>--%>
+    <div><a href="/app/feed/charity">Charity</a></div>
+    <div><a href="/app/feed/news">News</a></div>
+    <div><a href="/app/feed/biography">Biography</a></div>
+    <div><a href="/app/feed/rss">RSS</a></div>
+    <div><a href="/app/album/gallery">Gallery</a></div>
     <jsp:doBody/>
 </div>
 <guiceae:googleLogin/>

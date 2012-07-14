@@ -10,17 +10,12 @@ import org.guiceae.main.repositories.AlbumRepository;
 import org.guiceae.main.repositories.PhotoRepository;
 
 import javax.inject.Inject;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: boui
@@ -54,6 +49,14 @@ public class AlbumController {
         return new Viewable("/album-workshop.jsp", map);
     }
 
+
+    @GET
+    @Path("/get/{albumId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Album getAlbumById(@PathParam("albumId") Long albumId) {
+        return albumRepository.getById(albumId);
+    }
+
     @GET
     @Path("/new")
     public Viewable newAlbumPage() {
@@ -69,5 +72,19 @@ public class AlbumController {
         return Response.seeOther(new URI("/app/album/all")).build();
     }
 
+    @GET
+    @Path("/gallery")
+    public Viewable getGallery() {
+        Map<String, List<? extends Object>> map = new HashMap<String, List<? extends Object>>();
+        map.put("albums", albumRepository.getAll());
+        return new Viewable("/gallery.jsp", map);
+    }
+
+    @GET
+    @Path("/photos/{albumId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<Photo> getByAlbumId(@PathParam("albumId") Long albumId) {
+        return photoRepository.getByAlbumId(albumId);
+    }
 
 }
