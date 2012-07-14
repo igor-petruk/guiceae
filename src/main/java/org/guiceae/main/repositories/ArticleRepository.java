@@ -30,15 +30,21 @@ public class ArticleRepository {
             ofy.put(article);
             if (article.getPermalink() == null || "".equals(article.getPermalink())) {
                 article.setPermalink(String.valueOf(article.getId()));
+                ofy.put(article);
             }
-            ofy.put(article);
             return article;
         } finally {
             ofy.getTxn().commit();
         }
     }
 
-    public Article getArticle(Long id) {
+    public void publish(Long id){
+        Article article = getArticle(id);
+        article.setState(ArticleState.PUBLISHED);
+        storeArticle(article);
+    }
+
+    public Article getArticle(Long id){
         return ofy.get().get(Article.class, id);
     }
 
