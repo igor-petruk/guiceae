@@ -9,6 +9,8 @@
         <guiceae:menu/>
 
         <div>
+            <a href="/app/feed/${it.feed}">Назад</a>
+
             <guiceae:article shortView="false" simpleDelete="true" article="${it}"/>
         </div>
     </body>
