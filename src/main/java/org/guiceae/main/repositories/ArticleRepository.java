@@ -1,6 +1,7 @@
 package org.guiceae.main.repositories;
 
 import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
