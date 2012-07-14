@@ -43,6 +43,13 @@ public class ArticleController {
     }
 
     @POST
+    @Path("/publish/{id}")
+    public Response publish(@PathParam("id") Long id) throws URISyntaxException{
+        articleRepository.publish(id);
+        return Response.ok().build();
+    }
+
+    @POST
     @Path("/save")
     public Response saveArticle(@FormParam("id") Long id,
                                 @FormParam("feed") String feed,

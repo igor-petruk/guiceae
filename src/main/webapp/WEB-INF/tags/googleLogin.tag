@@ -1,3 +1,4 @@
+<%@ tag pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ tag import="com.google.appengine.api.users.User" %>
 <%@ tag import="com.google.appengine.api.users.UserService" %>

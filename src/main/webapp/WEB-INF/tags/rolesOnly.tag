@@ -1,3 +1,4 @@
+<%@ tag pageEncoding="UTF-8" %>
 <%@ tag import="org.guiceae.util.UserPrincipalHolder" %>
 <%@ tag import="java.util.Set" %>
 <%@ tag import="org.guiceae.util.JSPInjector" %>

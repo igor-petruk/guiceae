@@ -1,3 +1,4 @@
+<%@ tag pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 
@@ -17,19 +18,18 @@
                 <a href="#" id="delete${article.id}">Delete</a>
                 <script type="text/javascript">
                     $(function(){
-                       $("#delete${article.id}").click(function(){
-                           $.ajax({
-                               url:"/app/article/delete/${article.id}",
-                               type:"DELETE",
-                               cache:false,
-                               dataType:"json",
-                               success:function(data){
-                                    $("#article${article.id}").remove();
-                               }
-                           });
-                       });
+                        registerDelete("${article.id}");
                     });
                 </script>
+                <c:if test="${article.state=='PENDING'}">
+                    Стаття <b>не опублікована</b>
+                    <a href="#" id="publish${article.id}">Опублікувати</a>
+                    <script type="text/javascript">
+                        $(function(){
+                            registerPublish("${article.id}");
+                        });
+                    </script>
+                </c:if>
                 <!-- <button id="edit${article.id}">Edit</button>
 
                 <script type="text/javascript">

@@ -3,7 +3,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
     <guiceae:head>
-        <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="/js/feed.js"></script>
     </guiceae:head>
     <body>
         <guiceae:menu/>
