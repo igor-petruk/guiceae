@@ -42,6 +42,7 @@ public class GuiceModule extends AbstractModule {
 
         // controllers
         bind(MainController.class);
+        bind(SearchController.class);
         bind(UsersController.class);
         bind(PhotoController.class);
         bind(AlbumController.class);
