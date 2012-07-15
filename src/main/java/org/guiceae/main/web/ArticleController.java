@@ -6,6 +6,7 @@ import org.guiceae.main.model.Article;
 import org.guiceae.main.repositories.ArticleRepository;
 import org.guiceae.util.UserPrincipalHolder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +21,8 @@ public class ArticleController {
 
     @GET
     @Path("/edit/{id}")
-    public Viewable givenFeed(@PathParam("id") Long id){
+    @RolesAllowed("cm")
+    public Viewable editArticle(@PathParam("id") Long id){
         Article article = articleRepository.getArticle(id);
         return new Viewable("/editArticle.jsp",article);
     }
@@ -34,7 +36,8 @@ public class ArticleController {
 
     @GET
     @Path("/add/{feed}")
-    public Viewable givenFeed(@PathParam("feed") String feed){
+    @RolesAllowed("cm")
+    public Viewable addArticle(@PathParam("feed") String feed){
         Article article = new Article();
         article.setFeed(feed);
         article.setId(0L);
@@ -47,6 +50,7 @@ public class ArticleController {
 
     @DELETE
     @Path("/delete/{id}")
+    @RolesAllowed("cm")
     public Response delete(@PathParam("id") Long id) throws URISyntaxException{
         articleRepository.delete(id);
         return Response.ok().build();
@@ -54,6 +58,7 @@ public class ArticleController {
 
     @POST
     @Path("/publish/{id}")
+    @RolesAllowed("cm")
     public Response publish(@PathParam("id") Long id) throws URISyntaxException{
         articleRepository.publish(id);
         return Response.ok().build();
@@ -61,6 +66,7 @@ public class ArticleController {
 
     @POST
     @Path("/save")
+    @RolesAllowed("cm")
     public Response saveArticle(@FormParam("id") Long id,
                                 @FormParam("feed") String feed,
                                 @FormParam("title") String title,

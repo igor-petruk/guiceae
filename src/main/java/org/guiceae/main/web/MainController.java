@@ -22,17 +22,4 @@ public class MainController {
         return new Viewable("/index.jsp",model);
     }
 
-    @GET
-    @Path("/deleteitem/{id}")
-    public Response delete(@PathParam("id") Integer id) throws URISyntaxException{
-        messageRepository.deleteById(id);
-        return Response.seeOther(new URI("/app/index")).build();
-    }
-
-    @POST
-    @Path("/addmessage")
-    public Response addMessage(@FormParam("text") String text) throws URISyntaxException{
-        messageRepository.create(new Message(text));
-        return Response.seeOther(new URI("/app/index")).build();
-    }
 }

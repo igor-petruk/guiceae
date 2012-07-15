@@ -2,6 +2,7 @@ package org.guiceae.main.model;
 
 import com.google.appengine.api.datastore.Text;
 import com.google.common.base.Objects;
+import com.googlecode.objectify.annotation.Cached;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 
 @Entity
+@Cached
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
