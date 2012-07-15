@@ -112,4 +112,20 @@ public class Article {
     public void setShortContent(String shortContent) {
         this.shortContent = new Text(shortContent);
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", feed='" + feed + '\'' +
+                ", title='" + title + '\'' +
+                ", permalink='" + permalink + '\'' +
+                ", author='" + author + '\'' +
+                ", created=" + created +
+                ", lastUpdated=" + lastUpdated +
+                ", state=" + state +
+                ", content=" + content +
+                ", shortContent=" + shortContent +
+                '}';
+    }
 }

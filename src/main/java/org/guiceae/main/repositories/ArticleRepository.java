@@ -110,7 +110,7 @@ public class ArticleRepository {
             oldArticle.setTitle(article.getTitle());
             oldArticle.setPermalink(article.getPermalink());
             if (ArticleState.PUBLISHED.equals(oldArticle.getState())){
-                searchRepository.submitToSearch(article);
+                searchRepository.submitToSearch(oldArticle);
             }
             ofy.put(oldArticle);
         }
