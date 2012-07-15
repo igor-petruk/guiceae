@@ -1,13 +1,11 @@
 package org.guiceae.main.repositories;
 
-import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
-import org.guiceae.util.UserPrincipalHolder;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -30,19 +28,8 @@ public class ArticleRepository {
     @Inject
     Provider<Objectify> ofy;
 
-    public Article storeArticle(Article article) {
-        Objectify ofy = ObjectifyService.beginTransaction();
-        try {
-            ofy.put(article);
-            if (article.getPermalink() == null || "".equals(article.getPermalink())) {
-                article.setPermalink(String.valueOf(article.getId()));
-                ofy.put(article);
-            }
-            return article;
-        } finally {
-            ofy.getTxn().commit();
-        }
-    }
+    @Inject
+    SearchRepository searchRepository;
 
     public void publish(Long id){
         Article article = getArticle(id);
@@ -50,7 +37,8 @@ public class ArticleRepository {
         article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
         article.setCreated(new Date());
         article.setLastUpdated(new Date());
-        storeArticle(article);
+        searchRepository.submitToSearch(article);
+        ofy.get().put(article);
     }
 
     public Article getArticle(Long id){
@@ -69,6 +57,7 @@ public class ArticleRepository {
     }
 
     public void delete(Long id){
+        searchRepository.deleteFromSearch(getArticle(id));
         ofy.get().delete(Article.class, id);
     }
 
@@ -98,7 +87,7 @@ public class ArticleRepository {
         Query<Article> query = ofy.get()
                 .query(Article.class)
                 .filter("feed", feed)
-                .filter("state",ArticleState.PUBLISHED)
+                .filter("state", ArticleState.PUBLISHED)
                 .order("-created")
                 .offset(offset)
                 .limit(5);
@@ -120,6 +109,9 @@ public class ArticleRepository {
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
             oldArticle.setPermalink(article.getPermalink());
+            if (ArticleState.PUBLISHED.equals(oldArticle.getState())){
+                searchRepository.submitToSearch(article);
+            }
             ofy.put(oldArticle);
         }
     }

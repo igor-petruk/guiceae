@@ -7,6 +7,7 @@ import org.guiceae.main.model.Message;
 import org.guiceae.main.model.UserDetails;
 import org.guiceae.main.repositories.ArticleRepository;
 import org.guiceae.main.repositories.MessageRepository;
+import org.guiceae.main.repositories.SearchRepository;
 import org.guiceae.main.repositories.UserRepository;
 import org.guiceae.util.bootstrap.Bootstrap;
 
@@ -25,14 +26,17 @@ public class TestingBootstrap implements Bootstrap{
     UserRepository userRepository;
     ArticleRepository articleRepository;
     MessageRepository messageRepository;
+    SearchRepository searchRepository;
 
     @Inject
     public TestingBootstrap(UserRepository userRepository,
                             ArticleRepository articleRepository,
-                            MessageRepository messageRepository) {
+                            MessageRepository messageRepository,
+                            SearchRepository searchRepository) {
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
         this.messageRepository = messageRepository;
+        this.searchRepository = searchRepository;
     }
 
     @Override
@@ -58,7 +62,8 @@ public class TestingBootstrap implements Bootstrap{
         article.setLastUpdated(new Date());
         article.setTitle("Super title");
         article.setPermalink("super-title");
-        articleRepository.storeArticle(article);
+        articleRepository.mergeArticle(article);
+        searchRepository.submitToSearch(article);
 
         article = new Article();
         article.setAuthor("test@example.com");
@@ -70,6 +75,7 @@ public class TestingBootstrap implements Bootstrap{
         article.setLastUpdated(new Date());
         article.setTitle("Another article");
         article.setPermalink("another-article");
-        articleRepository.storeArticle(article);
+        articleRepository.mergeArticle(article);
+        searchRepository.submitToSearch(article);
     }
 }
