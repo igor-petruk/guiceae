@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,19 +72,38 @@ public class ArticleRepository {
         ofy.get().delete(Article.class, id);
     }
 
-    public List<Article> getFeed(String feed, boolean onlyPublished, Date offset, Integer number) {
+    public int count(String feed, boolean onlyPublished) {
         Query<Article> query = ofy.get().
                 query(Article.class).
-                filter("feed", feed).
-                filter("created <", offset);
+                filter("feed", feed);
         if (onlyPublished) {
             query = query.filter("state", ArticleState.PUBLISHED);
         }
-        return query.limit(number).list();
+        return query.count();
     }
-
-    public List<Article> getFeed(String feed, boolean onlyPublished, Date offset) {
-        return getFeed(feed, onlyPublished, offset, 10);
+    
+    public List<Article> getPendingFeed(String feed) {
+        return ofy.get().query(Article.class)
+                .filter("feed",feed)
+                .filter("state",ArticleState.PENDING)
+                .order("-lastUpdated")
+                .list();
+    }
+    
+    public List<Article> getFeed(String feed, boolean onlyPublished, Integer offset) {
+        List<Article> articles = new ArrayList<Article>();
+        if (!onlyPublished && (offset==0)){
+            articles.addAll(getPendingFeed(feed));
+        }
+        Query<Article> query = ofy.get()
+                .query(Article.class)
+                .filter("feed", feed)
+                .filter("state",ArticleState.PUBLISHED)
+                .order("-created")
+                .offset(offset)
+                .limit(5);
+        articles.addAll(query.list());
+        return articles;
     }
 
     public void mergeArticle(Article article) {

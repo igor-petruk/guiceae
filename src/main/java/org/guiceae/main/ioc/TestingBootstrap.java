@@ -49,15 +49,27 @@ public class TestingBootstrap implements Bootstrap{
         userRepository.save(userDetails);
 
         Article article = new Article();
-        article.setAuthor("test@examle.com");
+        article.setAuthor("test@example.com");
         article.setCreated(new Date());
-        article.setState(ArticleState.PENDING);
+        article.setState(ArticleState.PUBLISHED);
         article.setFeed("news");
         article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
         article.setShortContent("<p><b>Short</b> version<p>");
         article.setLastUpdated(new Date());
         article.setTitle("Super title");
         article.setPermalink("super-title");
+        articleRepository.storeArticle(article);
+
+        article = new Article();
+        article.setAuthor("test@example.com");
+        article.setCreated(new Date());
+        article.setState(ArticleState.PUBLISHED);
+        article.setFeed("news");
+        article.setContent("<h3> Ololoev </h3> <p><b> hey </b> you</p>");
+        article.setShortContent("<p><b>SOmething here too</b> Кириллица<p>");
+        article.setLastUpdated(new Date());
+        article.setTitle("Another article");
+        article.setPermalink("another-article");
         articleRepository.storeArticle(article);
     }
 }

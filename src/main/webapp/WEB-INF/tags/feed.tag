@@ -3,6 +3,12 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 
 <%@ attribute name="shortView" required="true" type="java.lang.Boolean"%>
+<%@ attribute name="pagesCount" required="true"%>
+<%@ attribute name="currentFirst" required="true"%>
+
+<p>
+    <a href="/app/feed/${it.feedName}/rss">RSS</a>
+</p>
 
 <guiceae:rolesOnly roles="cm">
     <p>
@@ -12,4 +18,7 @@
 
 <c:forEach var="article" items="${it.feed}">
     <guiceae:article shortView="${shortView}" article="${article}"  simpleDelete="true"/>
-</c:forEach> 
+</c:forEach>
+
+<guiceae:pagesList feed="${it.feedName}" pagesCount='${it.pagesCount}' currentFirst='${it.currentFirst}'/>
+
