@@ -4,10 +4,7 @@ import com.google.appengine.api.search.*;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
-import org.guiceae.main.repositories.ArticleRepository;
-import org.guiceae.main.repositories.MessageRepository;
-import org.guiceae.main.repositories.SearchRepository;
-import org.guiceae.main.repositories.UserRepository;
+import org.guiceae.main.repositories.*;
 import org.guiceae.main.web.*;
 import org.guiceae.util.UserPrincipalProvider;
 import org.guiceae.util.bootstrap.Bootstrap;
@@ -39,6 +36,7 @@ public class GuiceModule extends AbstractModule {
         bind(UserRepository.class);
         bind(ArticleRepository.class);
         bind(SearchRepository.class);
+        bind(UserQuestionRepository.class);
 
         // controllers
         bind(MainController.class);
@@ -48,6 +46,7 @@ public class GuiceModule extends AbstractModule {
         bind(AlbumController.class);
         bind(FeedsController.class);
         bind(ArticleController.class);
+        bind(FeedbackController.class);
 
         // security
         bind(UserPrincipalProvider.class).to(UserRepository.class);
