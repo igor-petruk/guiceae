@@ -10,7 +10,9 @@
     </guiceae:head>
     <body>
         <guiceae:menu/>
-
-        <guiceae:feed shortView="true" currentFirst="0" pagesCount="10"/>
+        <p>
+            <guiceae:smallFeed feedName="news" feed="${it.feed}"/>
+        </p>
+        <guiceae:feed feedName="${it.feedName}" feed="${it.feed}" shortView="true" currentFirst="0" pagesCount="10"/>
     </body>
 </html>

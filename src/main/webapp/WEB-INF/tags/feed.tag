@@ -5,20 +5,22 @@
 <%@ attribute name="shortView" required="true" type="java.lang.Boolean"%>
 <%@ attribute name="pagesCount" required="true"%>
 <%@ attribute name="currentFirst" required="true"%>
+<%@ attribute name="feed" required="true"  type="java.util.List" %>
+<%@ attribute name="feedName" required="true"%>
 
 <p>
-    <a href="/app/feed/${it.feedName}/rss">RSS</a>
+    <a href="/app/feed/${feedName}/rss">RSS</a>
 </p>
 
 <guiceae:rolesOnly roles="cm">
     <p>
-        <a href="/app/article/add/${it.feedName}">Додати статтю</a>
+        <a href="/app/article/add/${feedName}">Додати статтю</a>
     </p>
 </guiceae:rolesOnly>
 
-<c:forEach var="article" items="${it.feed}">
+<c:forEach var="article" items="${feed}">
     <guiceae:article shortView="${shortView}" article="${article}"  simpleDelete="true"/>
 </c:forEach>
 
-<guiceae:pagesList feed="${it.feedName}" pagesCount='${it.pagesCount}' currentFirst='${it.currentFirst}'/>
+<guiceae:pagesList feed="${feedName}" pagesCount='${pagesCount}' currentFirst='${currentFirst}'/>
 
