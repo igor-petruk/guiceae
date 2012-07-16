@@ -2,12 +2,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen"/>
+    <%--<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen"/>--%>
     <link rel="stylesheet" href="/css/ui-lightness/jquery-ui-1.8.21.custom.css" type="text/css" media="screen"/>
     <script type='text/javascript' src='/js/json2.js'></script>
     <script type='text/javascript' src='/js/jquery/jquery-1.7.2.js'></script>
     <script type='text/javascript' src='/js/jquery/jquery.hoverIntent.js'></script>
     <script type='text/javascript' src='/js/jquery-ui-1.8.21.custom.min.js'></script>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/galleria.classic.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="/js/galleria-1.2.7.min.js"></script>
+    <script type="text/javascript" src="/js/galleria.classic.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            // Load the classic theme
+            Galleria.loadTheme('/js/galleria.classic.min.js');
+            Galleria.configure({
+                thumbnails:false,
+                marginLeft:120
+            });
+            // Initialize Galleria
+            Galleria.run('#galleria-main', {
+                transition:'fade',
+                autoplay:3000,
+                carouselSpeed:1200,
+                imageCrop:true,
+                touch:false,
+                idleMode:true,
+                showCounter:false,
+                showImagenav:false,
+                showInfo:false
+            });
+        });
+    </script>
+
 
     <%--menu handling--%>
     <script type="text/javascript">

@@ -1,11 +1,11 @@
 /*elements */
-html,
-body {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    height: 100%;
-    background-color: #ffffff;
-}
+/*html,*/
+/*body {*/
+/*margin: 0 0 0 0;*/
+/*padding: 0 0 0 0;*/
+/*height: 100%;*/
+/*background-color: #ffffff;*/
+/*}*/
 
 a {
     text-decoration: none;
@@ -29,36 +29,36 @@ a {
 
 /*menu*/
 
-.login {
-    right: 10px;
-    position: absolute;
-}
+/*.login {*/
+/*right: 10px;*/
+/*position: absolute;*/
+/*}*/
 
-.menu {
-    padding: 10px 10px 10px 10px;
-    display: inline;
-}
+/*.menu {*/
+/*padding: 10px 10px 10px 10px;*/
+/*display: inline;*/
+/*}*/
 
-.menu div {
-    display: inline;
-    position: relative;
-    padding: 10px 0 10px 30px;
-}
+/*.menu div {*/
+/*display: inline;*/
+/*position: relative;*/
+/*padding: 10px 0 10px 30px;*/
+/*}*/
 
-.menu div a {
-    color: #ffd700;
-    margin: 20px 0 20px 0;
-    font-size: 16px;
-    font-family: Helvetica sans-serif;
-    text-decoration: none;
-}
+/*.menu div a {*/
+/*color: #ffd700;*/
+/*margin: 20px 0 20px 0;*/
+/*font-size: 16px;*/
+/*font-family: Helvetica sans-serif;*/
+/*text-decoration: none;*/
+/*}*/
 
-.menu div a:hover {
-    color: #222222;
-    font-size: 16px;
-    font-family: Helvetica sans-serif;
-    margin: 20px 0px 20px 0px;
-}
+/*.menu div a:hover {*/
+/*color: #222222;*/
+/*font-size: 16px;*/
+/*font-family: Helvetica sans-serif;*/
+/*margin: 20px 0px 20px 0px;*/
+/*}*/
 
 .activeMenuItem {
 }
@@ -141,9 +141,9 @@ a {
 
 }
 
-.content {
+/*.content {*/
 
-}
+/*}*/
 
 /*====>   admin tools*/
 
