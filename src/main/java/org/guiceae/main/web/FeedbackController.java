@@ -1,14 +1,17 @@
 package org.guiceae.main.web;
 
 import com.google.appengine.api.urlfetch.*;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.utils.SystemProperty;
 import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
-import org.guiceae.main.model.UserQuestion;
-import org.guiceae.main.repositories.UserQuestionRepository;
+import org.guiceae.main.model.Feedback;
+import org.guiceae.main.model.FeedbackFeedType;
+import org.guiceae.main.repositories.FeedbackRepository;
 import org.guiceae.util.UserPrincipalHolder;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -34,7 +37,7 @@ public class FeedbackController {
     String privateKey;
 
     @Inject
-    UserQuestionRepository userQuestionRepository;
+    FeedbackRepository feedbackRepository;
 
     @Inject
     UserPrincipalHolder userPrincipalHolder;
@@ -51,36 +54,54 @@ public class FeedbackController {
     @GET
     @Path("/view/{feed}")
     public Viewable view(
-            @PathParam("feed") String feed,
+            @PathParam("feed") String feedString,
             @QueryParam("offset") @DefaultValue("0") Integer offset) {
+        FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
         return produceFeed(feed, offset);
     }
 
-    private Viewable produceFeed(String feed, Integer offset) {
+    private Viewable produceFeed(FeedbackFeedType feed, Integer offset) {
         boolean showPending = userPrincipalHolder.get().contains("cm");
-        long count = userQuestionRepository.count(feed, !showPending);
-        List<UserQuestion> articles = userQuestionRepository.getFeed(feed, !showPending, offset);
+        long count = feedbackRepository.count(feed, !showPending);
+        List<Feedback> articles = feedbackRepository.getFeed(feed, !showPending, offset);
         Map<String, Object> it = new HashMap<String, Object>();
         it.put("feed", articles);
         it.put("feedName", feed);
         it.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
         it.put("currentFirst", offset);
-        return new Viewable("/questionsFeed.jsp", it);
+        return new Viewable("/feedbackFeed.jsp", it);
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    @RolesAllowed("cm")
+    public Response delete(@PathParam("id") Long id) throws URISyntaxException{
+        feedbackRepository.delete(id);
+        return Response.ok().build();
     }
 
     @POST
     @Path("/publish/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response submit(@PathParam("id") Long id){
-        userQuestionRepository.publish(id);
+        feedbackRepository.publish(id);
         return Response.ok().build();
+    }
+
+    @GET
+    @Path("/edit/{id}")
+    @RolesAllowed("cm")
+    public Viewable editFeedback(@PathParam("id") Long id){
+        Feedback feedback = feedbackRepository.getFeedback(id);
+        return new Viewable("/editFeedback.jsp",feedback);
     }
 
     @POST
     @Path("/submit/{feed}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response submit(QuestionSubmit questionSubmit, @PathParam("feed") String feed,
+    public Response submit(QuestionSubmit questionSubmit, @PathParam("feed") String feedString,
                            @Context HttpServletRequest request) throws URISyntaxException, IOException {
+        FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
         boolean doValidation = (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production);
         if (doValidation){
             boolean validation = validateCaptcha(questionSubmit.getChallenge(),
@@ -96,15 +117,15 @@ public class FeedbackController {
             }
         }
 
-        UserQuestion userQuestion = new UserQuestion();
-        userQuestion.setAnswer("");
-        userQuestion.setAuthor(questionSubmit.getAuthor());
-        userQuestion.setCreated(new Date());
-        userQuestion.setFeed(feed);
-        userQuestion.setQuestion(questionSubmit.getQuestion());
-        userQuestion.setState(ArticleState.PENDING);
+        Feedback feedback = new Feedback();
+        feedback.setAnswer("");
+        feedback.setAuthor(questionSubmit.getAuthor());
+        feedback.setCreated(new Date());
+        feedback.setFeed(feed);
+        feedback.setQuestion(questionSubmit.getQuestion());
+        feedback.setState(ArticleState.PENDING);
 
-        userQuestionRepository.submitQuestion(userQuestion);
+        feedbackRepository.submitQuestion(feedback);
 
         return Response.ok().build();
     }
@@ -129,6 +150,25 @@ public class FeedbackController {
         Scanner scanner = new Scanner(new ByteArrayInputStream(httpResponse.getContent()));
         return Boolean.parseBoolean(scanner.nextLine());
     }
+
+    @POST
+    @Path("/save")
+    @RolesAllowed("cm")
+    public Response saveArticle(@FormParam("id") Long id,
+                                @FormParam("feed") String feedString,
+                                @FormParam("question") String question,
+                                @FormParam("answer") String answer,
+                                @FormParam("author") String author) throws URISyntaxException{
+        FeedbackFeedType feedbackFeedType = FeedbackFeedType.valueOf(feedString);
+        Feedback feedback = feedbackRepository.getFeedback(id);
+        feedback.setAuthor(author);
+        feedback.setQuestion(question);
+        feedback.setAnswer(answer);
+        feedback.setFeed(feedbackFeedType);
+        feedbackRepository.submitQuestion(feedback);
+        return Response.seeOther(new URI("/app/feedback/view/"+feedString.toLowerCase())).build();
+    }
+
 }
 
 class QuestionSubmit{

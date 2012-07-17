@@ -5,7 +5,7 @@
         <property name="state" direction="asc"/>
         <property name="created" direction="desc"/>
     </datastore-index>
-    <datastore-index kind="UserQuestion" ancestor="false" source="manual">
+    <datastore-index kind="Feedback" ancestor="false" source="manual">
         <property name="feed" direction="asc"/>
         <property name="state" direction="asc"/>
         <property name="created" direction="desc"/>

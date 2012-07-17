@@ -53,3 +53,18 @@ function registerPublishQuestion(id){
         });
     });
 }
+
+function registerSimpleFeedbackDelete(id, feed){
+    $("#delete"+id).click(function(){
+        $.ajax({
+            url:"/app/feedback/delete/"+id,
+            type:"DELETE",
+            cache:false,
+            dataType:"json",
+            success:function(data){
+                setTimeout(function(){window.location="/app/feedback/view/"+feed;}, 1000);
+            }
+        });
+    });
+}
+

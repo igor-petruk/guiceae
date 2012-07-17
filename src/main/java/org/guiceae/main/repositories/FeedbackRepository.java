@@ -5,28 +5,33 @@ import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
-import org.guiceae.main.model.UserQuestion;
+import org.guiceae.main.model.Feedback;
+import org.guiceae.main.model.FeedbackFeedType;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserQuestionRepository {
+public class FeedbackRepository {
     static{
-        ObjectifyService.register(UserQuestion.class);
+        ObjectifyService.register(Feedback.class);
     }
 
     @Inject
     Provider<Objectify> ofy;
 
-    public void submitQuestion(UserQuestion userQuestion){
-        ofy.get().put(userQuestion);
+    public void submitQuestion(Feedback feedback){
+        ofy.get().put(feedback);
     }
 
-    public int count(String feed, boolean onlyPublished) {
-        Query<UserQuestion> query = ofy.get().
-                query(UserQuestion.class).
+    public Feedback getFeedback(Long id){
+        return ofy.get().get(Feedback.class, id);
+    }
+
+    public int count(FeedbackFeedType feed, boolean onlyPublished) {
+        Query<Feedback> query = ofy.get().
+                query(Feedback.class).
                 filter("feed", feed);
         if (onlyPublished) {
             query = query.filter("state", ArticleState.PUBLISHED);
@@ -34,21 +39,21 @@ public class UserQuestionRepository {
         return query.count();
     }
 
-    public List<UserQuestion> getPendingFeed(String feed) {
-        return ofy.get().query(UserQuestion.class)
+    public List<Feedback> getPendingFeed(FeedbackFeedType feed) {
+        return ofy.get().query(Feedback.class)
                 .filter("feed",feed)
                 .filter("state", ArticleState.PENDING)
                 .order("-created")
                 .list();
     }
 
-    public List<UserQuestion> getFeed(String feed, boolean onlyPublished, Integer offset) {
-        List<UserQuestion> questions = new ArrayList<UserQuestion>();
+    public List<Feedback> getFeed(FeedbackFeedType feed, boolean onlyPublished, Integer offset) {
+        List<Feedback> questions = new ArrayList<Feedback>();
         if (!onlyPublished && (offset==0)){
             questions.addAll(getPendingFeed(feed));
         }
-        Query<UserQuestion> query = ofy.get()
-                .query(UserQuestion.class)
+        Query<Feedback> query = ofy.get()
+                .query(Feedback.class)
                 .filter("feed", feed)
                 .filter("state", ArticleState.PUBLISHED)
                 .order("-created")
@@ -60,8 +65,12 @@ public class UserQuestionRepository {
 
     public void publish(Long id) {
         Objectify ofy = this.ofy.get();
-        UserQuestion userQuestion = ofy.get(UserQuestion.class, id);
-        userQuestion.setState(ArticleState.PUBLISHED);
-        ofy.put(userQuestion);
+        Feedback feedback = ofy.get(Feedback.class, id);
+        feedback.setState(ArticleState.PUBLISHED);
+        ofy.put(feedback);
+    }
+
+    public void delete(Long id) {
+        ofy.get().delete(Feedback.class,id);
     }
 }

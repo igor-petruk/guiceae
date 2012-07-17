@@ -3,12 +3,15 @@ package org.guiceae.main.model;
 import javax.persistence.*;
 import java.util.Date;
 
-public class UserQuestion {
+public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    String feed, author;
+    String author;
+
+    @Enumerated(EnumType.STRING)
+    FeedbackFeedType feed;
 
     Date created;
 
@@ -25,11 +28,11 @@ public class UserQuestion {
         this.id = id;
     }
 
-    public String getFeed() {
+    public FeedbackFeedType getFeed() {
         return feed;
     }
 
-    public void setFeed(String feed) {
+    public void setFeed(FeedbackFeedType feed) {
         this.feed = feed;
     }
 
