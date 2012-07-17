@@ -87,4 +87,11 @@ public class AlbumController {
         return photoRepository.getByAlbumId(albumId);
     }
 
+    @GET
+    @Path("/photos/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<Photo> startWork() {
+        return null;
+    }
+
 }

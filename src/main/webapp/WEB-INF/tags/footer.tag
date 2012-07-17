@@ -1,6 +1,7 @@
 <%@ tag pageEncoding="UTF-8" %>
-<div id="footer">
-    <div>
-        <span>All rights reserved@</span><a href="#">Boui</a>
+
+<div id="foot">
+    <div id="foot_cen">
+        <p>© 2012, IPARS Team Development</p>
     </div>
 </div>

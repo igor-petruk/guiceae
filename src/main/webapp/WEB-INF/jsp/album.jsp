@@ -6,10 +6,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
-    <guiceae:head/>
-    <title></title>
-</head>
+<guiceae:head/>
 <body>
 <div class="newAlbumForm">
     <form action="/app/album/addNew" method="POST">
