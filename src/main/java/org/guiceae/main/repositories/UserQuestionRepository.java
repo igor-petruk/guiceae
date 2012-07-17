@@ -58,4 +58,10 @@ public class UserQuestionRepository {
         return questions;
     }
 
+    public void publish(Long id) {
+        Objectify ofy = this.ofy.get();
+        UserQuestion userQuestion = ofy.get(UserQuestion.class, id);
+        userQuestion.setState(ArticleState.PUBLISHED);
+        ofy.put(userQuestion);
+    }
 }

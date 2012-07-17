@@ -69,6 +69,14 @@ public class FeedbackController {
     }
 
     @POST
+    @Path("/publish/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response submit(@PathParam("id") Long id){
+        userQuestionRepository.publish(id);
+        return Response.ok().build();
+    }
+
+    @POST
     @Path("/submit/{feed}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response submit(QuestionSubmit questionSubmit, @PathParam("feed") String feed,

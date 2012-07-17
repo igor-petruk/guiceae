@@ -26,11 +26,11 @@
                 <c:if test="${question.state=='PENDING'}">
                     Питання <b>не опубліковане</b>
                     <a href="#" id="publish${question.id}">Опублікувати</a>
-                    <!--<script type="text/javascript">
+                    <script type="text/javascript">
                         $(function(){
-                            registerPublish("${question.id}");
+                            registerPublishQuestion("${question.id}");
                         });
-                    </script>-->
+                    </script>
                 </c:if>
 
             </c:forEach>

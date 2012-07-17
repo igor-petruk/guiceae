@@ -39,3 +39,17 @@ function registerPublish(id){
         });
     });
 }
+
+function registerPublishQuestion(id){
+    $("#publish"+id).click(function(){
+        $.ajax({
+            url:"/app/feedback/publish/"+id,
+            type:"POST",
+            cache:false,
+            dataType:"json",
+            success:function(data){
+                setTimeout(function(){location.reload();}, 1000);
+            }
+        });
+    });
+}
