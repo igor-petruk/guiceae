@@ -1,5 +1,6 @@
 package org.guiceae.main.web;
 
+import com.google.common.collect.ImmutableMap;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.syndication.feed.synd.*;
 import com.sun.syndication.io.FeedException;
@@ -17,7 +18,10 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * User: Igor Petruk
@@ -32,10 +36,18 @@ public class FeedsController {
     @Inject
     UserPrincipalHolder userPrincipalHolder;
 
+    Map<String, String> feeds = new ImmutableMap.Builder<String, String>()
+            .put("news", "Новини")
+            .put("charity", "Благодійність")
+            .put("activity", "Депутатська діяльність")
+            .put("biography", "Автобіографія")
+            .build();
+
+
     @GET
     @Path("/{feed}")
     public Viewable givenFeed(
-            @PathParam("feed") String feed, 
+            @PathParam("feed") String feed,
             @QueryParam("offset") @DefaultValue("0") Integer offset) {
         return produceFeed(feed, offset);
     }
@@ -49,6 +61,7 @@ public class FeedsController {
         it.put("feedName", feed);
         it.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
         it.put("currentFirst", offset);
+        it.put("feedsNames", feeds);
         return new Viewable("/feed.jsp", it);
     }
 
@@ -57,7 +70,7 @@ public class FeedsController {
     @Produces("application/rss+xml")
     public Response rssFeed(@PathParam("feed") String feedName,
                             @Context HttpServletRequest request,
-                            @Context HttpServletResponse response)throws IOException, FeedException{
+                            @Context HttpServletResponse response) throws IOException, FeedException {
         SyndFeed feed = buildFeed(feedName, request);
 
         feed.setFeedType("rss_2.0");
@@ -68,25 +81,25 @@ public class FeedsController {
         return Response.ok().build();
     }
 
-    private SyndFeed buildFeed(String feedName, HttpServletRequest request) throws MalformedURLException{
+    private SyndFeed buildFeed(String feedName, HttpServletRequest request) throws MalformedURLException {
         final String siteUrl = new URL(request.getRequestURL().toString()).getAuthority();
-        
+
         SyndFeed feed = new SyndFeedImpl();
-        feed.setTitle("Канал "+feedName);
+        feed.setTitle("Канал " + feedName);
         feed.setLink("http://" + siteUrl + "/");
         feed.setDescription("RSS канал " + feedName);
         feed.setEncoding("UTF-8");
-        List<Article> articles = articleRepository.getFeed(feedName,true, 0);
+        List<Article> articles = articleRepository.getFeed(feedName, true, 0);
         List<SyndEntry> entries = new ArrayList<SyndEntry>();
-        
-        for (Article article: articles){
+
+        for (Article article : articles) {
             SyndEntry entry = new SyndEntryImpl();
             entry.setAuthor(article.getAuthor());
             entry.setUpdatedDate(article.getLastUpdated());
             entry.setPublishedDate(article.getCreated());
             entry.setTitle(article.getTitle());
-            entry.setLink("http://"+siteUrl
-                    +"/app/article/detail/"+article.getPermalink());
+            entry.setLink("http://" + siteUrl
+                    + "/app/article/detail/" + article.getPermalink());
             SyndContent description = new SyndContentImpl();
             description.setType("text/html");
             description.setValue("<html><body>" + article.getShortContent() + "</body></html>");

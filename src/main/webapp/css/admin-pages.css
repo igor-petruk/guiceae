@@ -4,3 +4,23 @@
     margin: 0 0 0 0;
     padding: 10px 10px 10px 10px;
 }
+
+div {
+    position: relative;
+}
+
+.newAlbumForm {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.new-photo {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.introduce-photo-div {
+    width: 100%;
+    max-width: 1200px;
+
+}

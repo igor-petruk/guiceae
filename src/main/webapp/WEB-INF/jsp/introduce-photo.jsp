@@ -41,6 +41,7 @@
     </script>
 </guiceae:head>
 <body>
+
 <div class="introduce-photo-div">
     <button id="submitNewPhotos">Add photo</button>
 

@@ -88,7 +88,8 @@
     <div id="content_cen">
         <div id="content_sup">
 
-            <div class="album-place">
+            <div class="left-place">
+                <span>Оберіть альбом ↓</span>
                 <c:forEach items="${it['albums']}" var="album">
 
                     <div class="album-view" albumId="${album.id}">
@@ -102,7 +103,7 @@
                 </c:forEach>
             </div>
 
-            <div class="view-gallery">
+            <div class="view-right-place">
                 <div id="galleria" style="z-index:1">
                 </div>
             </div>

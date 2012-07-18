@@ -1,13 +1,10 @@
 package org.guiceae.main.model;
 
 import com.google.appengine.api.datastore.Text;
-import com.google.common.base.Objects;
 import com.googlecode.objectify.annotation.Cached;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 /**
  * User: Igor Petruk
@@ -25,6 +22,8 @@ public class Article {
     String feed, title, permalink, author;
 
     Date created, lastUpdated;
+
+    String mainPhotoUrl;
 
     @Enumerated(EnumType.STRING)
     ArticleState state = ArticleState.PENDING;
@@ -114,6 +113,16 @@ public class Article {
     public void setShortContent(String shortContent) {
         this.shortContent = new Text(shortContent);
     }
+
+
+    public String getMainPhotoUrl() {
+        return mainPhotoUrl;
+    }
+
+    public void setMainPhotoUrl(String mainPhotoUrl) {
+        this.mainPhotoUrl = mainPhotoUrl;
+    }
+
 
     @Override
     public String toString() {

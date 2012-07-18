@@ -96,11 +96,12 @@
             <ul id="infoPan">
                 <li id="charity">
 
-                    <h3><span>Благодійність</span> <img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>
+                    <h3><a href="/app/feed/charity">Благодійність</a> <img src="/css/images/system/rss.png"
+                                                                           alt="Підписатися на розсилку"/>
                     </h3>
 
                     <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
                         <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
                             vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
@@ -124,16 +125,10 @@
                 </li>
 
                 <li id="law">
-                    <h3><span>Громадська приймальня</span><img src="/css/images/system/rss.png"
-                                                               alt="Підписатися на розсилку"/></h3>
+                    <h3><a href="/app/feedback/view/question">Громадська приймальня</a><img
+                            src="/css/images/system/rss.png"
+                            alt="Підписатися на розсилку"/></h3>
 
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
                     <div class="article">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
@@ -150,7 +145,8 @@
                     </div>
                 </li>
                 <li id="news">
-                    <h3><span>Новини, Події </span><img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>
+                    <h3><a href="/app/feed/news">Новини</a><img src="/css/images/system/rss.png"
+                                                                alt="Підписатися на розсилку"/>
                     </h3>
 
                     <div class="article">

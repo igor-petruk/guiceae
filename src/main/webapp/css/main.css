@@ -75,7 +75,7 @@ li {
 }
 
 #head div.inputs {
-    padding: 10px 10px 10px 10px;
+    padding: 9px 10px 10px 10px;
     width: auto;
     float: right;
 }
@@ -131,7 +131,7 @@ h1.logo a {
 #head ul {
     height: 44px;
     float: left;
-    margin: 0 0 0 30px;
+    margin: 5px 0 0 30px;
 }
 
 #head ul li {
@@ -164,14 +164,14 @@ h1.logo a {
 #menu {
     position: relative;
     z-index: 20;
-    margin: 0 0 0 50px;
+    margin: 0px 0 0 50px;
 }
 
 #menu ul {
-    width: 800px;
+    width: 960px;
     height: 44px;
     float: left;
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 #menu ul li {
@@ -266,7 +266,7 @@ h1.logo a {
     color: #2277DD;
 }
 
-.album-place {
+.left-place {
     display: inline;
 }
 
@@ -450,17 +450,17 @@ ul#infoPan li:first-child {
 
 ul#infoPan li h3 {
     width: 100%;
-    height: 67px;
+    height: 40px;
     float: left;
-    font-size: 26px;
+    font-size: 20px;
     color: #31a1ff;
-    font-weight: bold;
+    font-weight: bolder;
     line-height: 60px;
-    letter-spacing: -1.7px
+    letter-spacing: 1px
 }
 
 ul#infoPan li h3 span {
-    color: #3b3b3b;
+    color: #738cad;
     margin-right: 2px
 }
 
@@ -469,14 +469,16 @@ ul#infoPan li h3 img {
     float: right
 }
 
-ul#infoPan li p {
+ul#infoPan li p.title {
     width: 100%;
-    margin-top: 25px;
+    margin-top: 5px;
     float: left;
-    font-size: 14px;
-    color: #848484;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #2b66c9;
+    opacity: 0.9;
+    font-weight: 500;
     line-height: 24px;
-    letter-spacing: -0.8px
 }
 
 ul#infoPan li p.descrip {
@@ -742,21 +744,76 @@ ul#infoPan li p.descrip {
     width: 860px;
 }
 
-.view-gallery {
+.view-right-place {
     margin-top: 10px;
     margin-right: 10px;
-    background: #aaaaaa;
+    background: #fbfbfb;
     height: 600px;
     width: 860px;
     float: right;
 }
 
-.album-place {
+.left-place {
     background: #e2e6ff url("/css/images/main/pat.png") repeat;
     margin: 10px 10px 10px 10px;
     height: 600px;
     width: 270px;
     float: left;
+}
+
+.feed-name {
+    color: #818181;
+    padding: 10px;
+    opacity: 0.9;
+    font-family: "Trebuchet MS";
+    font-size: 14px;
+    text-indent: 5px;
+    word-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.feed-name.active {
+    border-left: 7px solid #2277DD;
+    background-color: #b1b1b1;
+    opacity: 0.9;
+    padding-left: -7px;
+}
+
+.feed-name.active a {
+    color: #ffffff;
+}
+
+.feed-name:hover {
+    border-left: 7px solid #2277DD;
+    cursor: pointer;
+    opacity: 0.6;
+    background-color: #b1b1b1;
+    padding-left: -7px;
+}
+
+.feed-name:hover a {
+    color: #ffffff;
+}
+
+.feed-full-view p {
+    float: right;
+    margin-right: 10px;
+}
+
+Ї
+.feed-full-view a#add-article {
+    float: right;
+    display: inline;
+    background-image: url("/css/images/main/searchbtn.png");
+}
+
+.feed-full-view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px
 }
 
 .album-view {
