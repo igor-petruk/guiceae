@@ -202,10 +202,10 @@ h1.logo a {
 }
 
 #content {
+    text-align: left;
     min-width: 1000px;
     max-width: 1170px;
     width: 100%;
-    text-align: center;
     padding: 0 0 0 36px;
     margin-bottom: 20px;
     float: left;
@@ -560,7 +560,7 @@ h3 span {
 
 #foot_cen {
     width: 100%;
-    margin: 10px auto 0 20px;
+    margin: 0 auto 0 20px;
 }
 
 /*#foot h6									{width:160px; height:36px; margin:0 auto; text-indent:-9999px;}*/
@@ -681,6 +681,7 @@ h3 span {
 }
 
 .left-place {
+    text-align: center;
     background: #e2e6ff url("/css/images/main/pat.png") repeat;
     margin: 10px 10px 10px 10px;
     height: 600px;

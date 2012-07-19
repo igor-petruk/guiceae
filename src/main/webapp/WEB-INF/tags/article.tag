@@ -1,5 +1,6 @@
 <%@ tag pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <%@ attribute name="shortView" required="true" type="java.lang.Boolean" %>
 <%@ attribute name="article" required="true" type="org.guiceae.main.model.Article" %>
@@ -8,29 +9,41 @@
 
 <div class="article" id="article${article.id}">
 
-    <span class="title">
+    <div class="title">
         <a href="/app/article/detail/${article.permalink}">${article.title}</a>
-    </span>
-
-    <div class="author">
-        ${article.author}
     </div>
 
+    <%--<div class="author">--%>
+    <%--${article.author}--%>
+    <%--</div>--%>
+
     <div class="createdDate">
-        ${article.created}
+        <fmt:formatDate value="${article.created}" pattern="dd/MM/YYYY HH:mm"></fmt:formatDate>
     </div>
 
     <c:choose>
         <c:when test="${shortView}">
-            <span class="mainPhoto">
-                <img src="${article.mainPhotoUrl}"/>
-            </span>
+            <c:choose>
+                <c:when test="${article.mainPhotoUrl}">
+                    <span class="mainPhoto">
+                        <img src="${article.mainPhotoUrl}=s200"/>
+                    </span>
 
-            <div class="short-content">
-                    ${article.shortContent}
+                    <div class="short-content _70">
+                            ${article.shortContent}
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="short-content _100">
+                            ${article.shortContent}
+                    </div>
+                </c:otherwise>
+            </c:choose>
+
+
+            <div class="more-div">
+                <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
             </div>
-
-            <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
         </c:when>
         <c:otherwise>
             <div class="long-content">
@@ -38,6 +51,7 @@
             </div>
         </c:otherwise>
     </c:choose>
+    <div class="separator"></div>
 </div>
 
 
