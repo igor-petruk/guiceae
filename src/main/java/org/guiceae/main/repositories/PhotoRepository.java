@@ -1,5 +1,9 @@
 package org.guiceae.main.repositories;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreFailureException;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Photo;
@@ -25,10 +29,6 @@ public class PhotoRepository {
     public void updatePhotoDescriptions(Photo photo) {
         Objectify ofy = this.ofy.get();
 
-        System.out.println();
-        System.out.println(photo);
-        System.out.println();
-
         Photo ph = ofy.find(Photo.class, photo.getId());
         if (ph != null) {
             if (!photo.getTitle().equals(ph.getTitle())) {
@@ -49,8 +49,12 @@ public class PhotoRepository {
         return photos;
     }
 
-    public void deletePhoto(Photo photo) {
-        ofy.get().delete(Photo.class, photo.getId());
+    public void deletePhoto(Long id) {
+        Objectify ofy = this.ofy.get();
+        Photo photo = ofy.get(Photo.class, id);
+        BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+        blobstoreService.delete(new BlobKey(photo.getBlobKey()));
+        ofy.delete(Photo.class, id);
     }
 
     public List<Photo> getAll() {
