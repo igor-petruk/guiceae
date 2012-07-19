@@ -3,10 +3,8 @@ package org.guiceae.main.ioc;
 import com.google.common.collect.ImmutableSet;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
-import org.guiceae.main.model.Message;
 import org.guiceae.main.model.UserDetails;
 import org.guiceae.main.repositories.ArticleRepository;
-import org.guiceae.main.repositories.MessageRepository;
 import org.guiceae.main.repositories.SearchRepository;
 import org.guiceae.main.repositories.UserRepository;
 import org.guiceae.util.bootstrap.Bootstrap;
@@ -25,27 +23,19 @@ import static org.guiceae.main.model.Roles.*;
 public class TestingBootstrap implements Bootstrap {
     UserRepository userRepository;
     ArticleRepository articleRepository;
-    MessageRepository messageRepository;
     SearchRepository searchRepository;
 
     @Inject
     public TestingBootstrap(UserRepository userRepository,
                             ArticleRepository articleRepository,
-                            MessageRepository messageRepository,
                             SearchRepository searchRepository) {
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
-        this.messageRepository = messageRepository;
         this.searchRepository = searchRepository;
     }
 
     @Override
     public void bootstrap() {
-        Message message = new Message();
-        message.setText(new Date().toString());
-
-        messageRepository.create(message);
-
         UserDetails userDetails = new UserDetails();
         userDetails.setEmail("test@example.com");
         userDetails.getRoles().addAll(ImmutableSet.of(ADMIN, CONTENT_MANAGER, VIDEO_MANAGER));

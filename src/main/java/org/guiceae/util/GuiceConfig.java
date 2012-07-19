@@ -10,6 +10,7 @@ import com.googlecode.objectify.ObjectifyService;
 import com.sun.jersey.api.json.JSONConfiguration;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import org.guiceae.main.ioc.GuiceModule;
+import org.guiceae.main.web.CkUploadServlet;
 import org.guiceae.main.web.UploadServlet;
 
 import javax.ws.rs.ext.Provider;
@@ -40,6 +41,7 @@ public class GuiceConfig extends GuiceServletContextListener {
                         bind(UserPrincipalHolder.class);
 
                         serve("/app/upload").with(UploadServlet.class);
+                        serve("/app/ckupload").with(CkUploadServlet.class);
                         serve("/*").with(GuiceContainer.class, params);
                         filter("/*").through(EncodingFilter.class);
                         filter("/*").through(InjectorFilter.class);

@@ -5,6 +5,9 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import org.guiceae.main.model.Album;
 import org.guiceae.main.model.Photo;
@@ -22,13 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * User: Igor Petruk
- * Date: 27.06.12
- * Time: 1:43
- */
 @Singleton
-public class UploadServlet extends HttpServlet {
+public class CkUploadServlet  extends HttpServlet {
     @Inject
     PhotoRepository photoRepository;
     @Inject
@@ -40,23 +38,24 @@ public class UploadServlet extends HttpServlet {
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
         List<BlobKey> blobKeys = blobs.get("photos");
-
+        Preconditions.checkArgument(blobKeys.size()==1);
+        
         ImagesService imagesService = ImagesServiceFactory.getImagesService();
         if (blobKeys != null) {
 
-            List<Photo> photos = new ArrayList<Photo>();
-            for (BlobKey key : blobKeys) {
-                photos.add(new Photo(imagesService.getServingUrl(key), key.getKeyString()));
+            BlobKey key = blobKeys.get(0);
+            Photo photo = new Photo(imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(key)),
+                    key.getKeyString()); 
+            photo = photoRepository.persistPhoto(ImmutableList.of(photo)).get(0);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            photos = photoRepository.persistPhoto(photos);
-            req.setAttribute("newPhotos", photos);
-
-            req.setAttribute("albums",  albumRepository.getAll());
-
-            getServletConfig().getServletContext().getRequestDispatcher(
-                    "/WEB-INF/jsp/introduce-photo.jsp").forward(req, resp);
+            resp.sendRedirect("/app/album/browse/0?CKEditorFuncNum="+req.getParameter("CKEditorFuncNum"));
         } else {
             resp.sendRedirect("/app/index");
         }
     }
+
 }

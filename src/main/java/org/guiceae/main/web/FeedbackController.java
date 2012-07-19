@@ -83,6 +83,7 @@ public class FeedbackController {
     @POST
     @Path("/publish/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("cm")
     public Response submit(@PathParam("id") Long id){
         feedbackRepository.publish(id);
         return Response.ok().build();

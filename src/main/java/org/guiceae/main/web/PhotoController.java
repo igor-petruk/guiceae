@@ -4,6 +4,7 @@ import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Photo;
 import org.guiceae.main.repositories.PhotoRepository;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -21,6 +22,7 @@ public class PhotoController {
 
     @GET
     @Path("/new")
+    @RolesAllowed("cm")
     public Viewable uploadPage() {
         return new Viewable("/photo.jsp");
     }
@@ -28,6 +30,7 @@ public class PhotoController {
     @POST
     @Path("/update")
     @Consumes(value = {MediaType.APPLICATION_JSON})
+    @RolesAllowed("cm")
     public Response processNewPhotos(Photo info) {
         photoRepository.updatePhotoDescriptions(info);
         return Response.ok().build();

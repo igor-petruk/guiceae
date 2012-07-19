@@ -51,6 +51,7 @@ public class UsersController {
     @GET
     @Path("/rolesCheck")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("cm")
     public Collection<String> rolesCheck(){
         return userPrincipalHolder.get();
     }

@@ -105,8 +105,8 @@
             </td>
             <td>
                 <div class="album-caption">
-                    <div class="album-title">${album.title}</div>
-                    <div class="album-desc">${album.description}</div>
+                    <div class="album-title"><c:out value="${album.title}"/></div>
+                    <div class="album-desc"><c:out value="${album.description}"/></div>
                     <div class="admin-controls" style="font-size: large;">
                         <a href="/app/album/update?id=${album.id}">Update album</a>
                         <a href="/app/album/delete?id=${album.id}">Delete album</a>
@@ -121,12 +121,12 @@
 <div style="display:none;">
     <c:forEach var="photo" items="${it['photos']}">
         <div id="${photo.albumId}" class="photo">
-            <a href="${photo.servingUrl}" class="thumb" title="${photo.title}"><img
-                    src="${photo.servingUrl}=s200" alt="${photo.description}"/></a>
+            <a href="${photo.servingUrl}" class="thumb" title='<c:out value="${photo.title}"/>'><img
+                    src="${photo.servingUrl}=s200" alt='<c:out value="${photo.description}"/>'/></a>
 
             <div class="caption">
-                <div class="image-title">${photo.title}</div>
-                <div class="image-desc">${photo.description}</div>
+                <div class="image-title"><c:out value="${photo.title}"/></div>
+                <div class="image-desc"><c:out value="${photo.description}"/></div>
                 <div class="admin-controls">
                     <a href="/app/photo/update?id=${photo.id}">Update photo</a>
                     <a href="/app/photo/delete?id=${photo.id}">Delete photo</a>

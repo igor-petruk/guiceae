@@ -20,7 +20,7 @@ public class Photo implements Serializable {
     private String blobKey;
     private String servingUrl;
     private String description;
-    private String albumId;
+    private Long albumId = 0L;
 
     public Photo() {
     }
@@ -70,11 +70,11 @@ public class Photo implements Serializable {
         this.title = title;
     }
 
-    public String getAlbumId() {
+    public Long getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(String albumId) {
+    public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
 
