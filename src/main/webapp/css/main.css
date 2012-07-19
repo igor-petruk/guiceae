@@ -14,21 +14,12 @@ body {
     max-width: 1200px;
 }
 
-a {
-    outline: 0;
-    text-decoration: none
-}
-
 img {
     border: 0
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal
-}
-
-li {
-    list-style: none
+#head ul li {
+    list-style: none;
 }
 
 #head {
@@ -175,6 +166,7 @@ h1.logo a {
 }
 
 #menu ul li {
+    list-style: none;
     width: auto;
     margin-left: 1px;
     float: left;
@@ -691,17 +683,16 @@ h3 span {
 
 .feed-name a {
     color: #8d8d8d;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .feed-name {
     padding: 10px;
     opacity: 0.9;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    text-indent: 5px;
-    word-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: bold;
 }
 
 .feed-name.active {
@@ -712,7 +703,8 @@ h3 span {
     cursor: pointer;
 }
 
-.feed-name.active a, .feed-name:hover a {
+.feed-name.active a,
+.feed-name:hover a {
     color: #2277DD;
 }
 
@@ -722,25 +714,6 @@ h3 span {
     opacity: 0.6;
     background-color: #dedede;
     padding-left: -10px;
-}
-
-#infoPan .rss {
-    float: right;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-.feed-full-view .rss {
-    float: right;
-    margin-right: 20px;
-    margin-bottom: 10px;
-}
-
-.feed-full-view span {
-    position: relative;
-    float: left;
-    color: #767676;
-    margin-right: 10px;
 }
 
 #add-article {
@@ -753,7 +726,6 @@ h3 span {
     background-color: #b4b8d1;
     opacity: 0.9;
     max-width: 270px;
-    text-indent: 10px;
     color: #818181;
 }
 

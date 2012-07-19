@@ -118,7 +118,6 @@ a.rss img {
     color: #5c5c5c;
     position: relative;
     width: 100%;
-    text-indent: 10px;
 }
 
 .article div.short-content._70 {
@@ -127,7 +126,6 @@ a.rss img {
     color: #5c5c5c;
     position: relative;
     width: 70%;
-    text-indent: 10px;
     float: left
 }
 
@@ -137,7 +135,6 @@ a.rss img {
     color: #5c5c5c;
     position: relative;
     width: 95%;
-    text-indent: 10px;
     float: left
 }
 
@@ -151,4 +148,17 @@ a.rss img {
 
 .feed-short-view {
     max-width: 380px
+}
+
+.feed-full-view .rss {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.feed-full-view span {
+    position: relative;
+    float: left;
+    color: #767676;
+    margin-right: 10px;
 }
