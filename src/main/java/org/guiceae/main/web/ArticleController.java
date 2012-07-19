@@ -5,6 +5,10 @@ import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.repositories.ArticleRepository;
 import org.guiceae.util.UserPrincipalHolder;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.safety.Whitelist;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -13,6 +17,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 @Path("/app/article")
 public class ArticleController {
@@ -79,12 +86,46 @@ public class ArticleController {
         article.setFeed(feed);
         article.setTitle(title);
         article.setPermalink(permalink);
-        article.setContent(content);
-        article.setShortContent(shortContent);
+        article.setContent(processContent(content));
+        article.setShortContent(processContent(shortContent));
         if (article.getAuthor()==null){
             article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
         }
         articleRepository.mergeArticle(article);
         return Response.seeOther(new URI("/app/feed/"+article.getFeed())).build();
+    }
+    
+    private String processContent(String content){
+        Document doc = Jsoup.parse(Jsoup.clean(content, Whitelist
+            .relaxed()
+            .addTags("span")
+            .addAttributes(":all","style","class")));
+
+        for (Element e: doc.select("img")){
+            String[] styleAttrs = e.attr("style").split(";");
+            Map<String,String> styleMap = new HashMap<String, String>();
+            for (String attr: styleAttrs){
+                if (attr.contains(":")){
+                    String[] token = attr.split(":");
+                    styleMap.put(token[0].trim().toLowerCase(), token[1].trim());
+                }
+            }
+            if (styleMap.containsKey("height") && styleMap.containsKey("width")){
+                String ws = styleMap.get("width");
+                String hs = styleMap.get("height");
+                if (ws.endsWith("px")) ws = ws.substring(0, ws.lastIndexOf("px"));
+                if (hs.endsWith("px")) hs = hs.substring(0, hs.lastIndexOf("px"));
+                System.out.println("("+ws+")");
+                System.out.println("("+hs+")");
+                int width = Integer.parseInt(ws);
+                int height = Integer.parseInt(hs);
+                String url = e.attr("src");
+                if (url.matches("^.*=s\\d+$")){
+                    url = url.substring(0, url.lastIndexOf('='));
+                }
+                e = e.attr("src",url+"=s"+Math.max(height,width));
+            }
+        }
+        return doc.toString();
     }
 }
