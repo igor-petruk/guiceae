@@ -10,6 +10,7 @@ import org.guiceae.main.model.Photo;
 import org.guiceae.main.repositories.AlbumRepository;
 import org.guiceae.main.repositories.PhotoRepository;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -62,6 +63,7 @@ public class AlbumController {
 
     @GET
     @Path("/browse/{albumId}")
+    @RolesAllowed("cm")
     public Viewable browse(@PathParam("albumId") Long albumId, @Context HttpServletRequest request) {
         Map<String, Object> map = new HashMap<String, Object>();
         Collection<Photo> photos = photoRepository.getByAlbumId(albumId);
@@ -75,6 +77,7 @@ public class AlbumController {
 
     @GET
     @Path("/new")
+    @RolesAllowed("cm")
     public Viewable newAlbumPage() {
         return new Viewable("/album.jsp");
     }
@@ -82,6 +85,7 @@ public class AlbumController {
 
     @POST
     @Path("/addNew")
+    @RolesAllowed("cm")
     public Response processNewAlbum(@FormParam("title") String title, @FormParam("description") String desc) throws URISyntaxException {
         Album info = new Album(title, desc);
         albumRepository.persistAlbum(info);
@@ -102,12 +106,4 @@ public class AlbumController {
     public Collection<Photo> getByAlbumId(@PathParam("albumId") Long albumId) {
         return photoRepository.getByAlbumId(albumId);
     }
-
-    @GET
-    @Path("/photos/")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Collection<Photo> startWork() {
-        return null;
-    }
-
 }
