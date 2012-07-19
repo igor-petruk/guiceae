@@ -1,6 +1,7 @@
 package org.guiceae.main.web;
 
 import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.sun.jersey.api.view.Viewable;
@@ -10,7 +11,9 @@ import org.guiceae.main.repositories.AlbumRepository;
 import org.guiceae.main.repositories.PhotoRepository;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
@@ -55,6 +58,19 @@ public class AlbumController {
     @Produces(MediaType.APPLICATION_JSON)
     public Album getAlbumById(@PathParam("albumId") Long albumId) {
         return albumRepository.getById(albumId);
+    }
+
+    @GET
+    @Path("/browse/{albumId}")
+    public Viewable browse(@PathParam("albumId") Long albumId, @Context HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Collection<Photo> photos = photoRepository.getByAlbumId(albumId);
+        System.out.println(photos.size());
+        map.put("funcNum", request.getParameter("CKEditorFuncNum"));
+        map.put("uploadUrl", BlobstoreServiceFactory.getBlobstoreService().createUploadUrl("/app/ckupload"));
+        map.put("photos", photos);
+
+        return new Viewable("/ckBrowse.jsp", map);
     }
 
     @GET

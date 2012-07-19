@@ -58,7 +58,9 @@ public class PhotoRepository {
     }
 
     public Collection<Photo> getByAlbumId(Long albumId) {
-        Collection<Photo> photos = ofy.get().query(Photo.class).list();
+        Collection<Photo> photos = ofy.get().query(Photo.class)
+                .filter("albumId",albumId)
+                .list();
         return photos;
     }
 }

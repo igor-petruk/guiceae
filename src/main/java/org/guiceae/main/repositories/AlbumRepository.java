@@ -6,6 +6,7 @@ import org.guiceae.main.model.Album;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,16 +17,31 @@ public class AlbumRepository {
     @Inject
     private Provider<Objectify> ofy;
 
+    private static Album DEFAULT_ALBUM = new Album();
+
     static {
         ObjectifyService.register(Album.class);
+        DEFAULT_ALBUM.setId(0L);
+        DEFAULT_ALBUM.setTitle("(не в альбомі)");
+    }
+
+    public Album getDefaultAlbum(){
+        return DEFAULT_ALBUM;
     }
 
     public List<Album> getAll() {
-        return ofy.get().query(Album.class).list();
+        List<Album> albums = new ArrayList<Album> ();
+        albums.add(DEFAULT_ALBUM);
+        albums.addAll(ofy.get().query(Album.class).list());
+        return albums;
     }
 
     public Album getById(Long id) {
-        return ofy.get().get(Album.class, id);
+        if (id==null || id.equals(0L)){
+            return DEFAULT_ALBUM;
+        }else{
+            return ofy.get().get(Album.class, id);
+        }
     }
 
     public void persistAlbum(Album album) {
