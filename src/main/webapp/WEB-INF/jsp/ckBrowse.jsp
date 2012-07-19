@@ -11,6 +11,11 @@
     </script>
 </guiceae:head>
     <body>
+        <form action="${it.uploadUrl}" method="post" enctype="multipart/form-data">
+            <input name="CKEditorFuncNum" value="${it.funcNum}" type="hidden"/>
+            <input type="file" name="photos"/>
+            <input type="submit" value="Upload"/>
+        </form>
         <c:forEach items="${it.photos}" var="photo">
             <img class="selectable-image" id="photo${photo.id}" src="${photo.servingUrl}" width="200"/><br/>
         </c:forEach>
@@ -23,10 +28,5 @@
                 })
             })
         </script>
-        <form action="${it.uploadUrl}" method="post" enctype="multipart/form-data">
-            <input name="CKEditorFuncNum" value="${it.funcNum}"/>
-            <input type="file" name="photos"/>
-            <input type="submit" value="Upload"/>
-        </form>
     </body>
 </html>

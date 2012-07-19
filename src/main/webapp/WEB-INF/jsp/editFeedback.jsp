@@ -10,10 +10,10 @@
         <div>
             <form action="/app/feedback/save" method="post">
                 <input name="id" type="hidden" value="${it.id}"/>
-                <input name="feed" type="hidden" value="${it.feed}"/>
+                <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
 
                 <label for="author">Автор</label>
-                <input id="author" name="author" value="${it.author}"/>
+                <input id="author" name="author" value="<c:out value='${it.author}'/>"/>
 
                 <label for="question">Питання</label>
                 <textarea id="question" name="question">

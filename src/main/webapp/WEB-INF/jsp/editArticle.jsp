@@ -30,14 +30,14 @@
         <div>
             <form action="/app/article/save" method="post">
                 <input name="id" type="hidden" value="${it.id}"/>
-                <input name="feed" type="hidden" value="${it.feed}"/>
+                <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
 
                 <label for="title">Назва статті</label>
-                <input id="title" name="title" type="text" value="${it.title}"/>
+                <input id="title" name="title" type="text" value="<c:out value='${it.title}'/>"/>
                 <br/>
 
                 <label for="permalink">Постійна назва</label>
-                <input id="permalink" name="permalink" type="text" value="${it.permalink}"/>
+                <input id="permalink" name="permalink" type="text" value="<c:out value='${it.permalink}'/>"/>
                 <br/>
 
                 <label for="shortContent">Короткий зміст</label>
