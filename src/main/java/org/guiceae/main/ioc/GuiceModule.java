@@ -32,7 +32,6 @@ public class GuiceModule extends AbstractModule {
         loadProperties();
 
         // repos
-        bind(MessageRepository.class);
         bind(UserRepository.class);
         bind(ArticleRepository.class);
         bind(SearchRepository.class);
