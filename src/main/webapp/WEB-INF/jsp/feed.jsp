@@ -42,14 +42,14 @@
                         </c:otherwise>
                     </c:choose>
                     <div class="feed-name ${activate}">
-                        <a href="/app/feed/${it.feedName}">${feed.value}</a>
+                        <a href="/app/feed/${feed.key}">${feed.value}</a>
                     </div>
 
                 </c:forEach>
             </div>
 
             <div class="view-right-place">
-                <guiceae:feed feedName="${it.feedName}" feed="${it.feed}" shortView="true" currentFirst="0"
+                <guiceae:feed feedName="${it.feedName}" feed="${it.feed}" currentFirst="0"
                               pagesCount="10"/>
             </div>
 

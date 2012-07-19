@@ -31,7 +31,7 @@ public class ArticleRepository {
     @Inject
     SearchRepository searchRepository;
 
-    public void publish(Long id){
+    public void publish(Long id) {
         Article article = getArticle(id);
         article.setState(ArticleState.PUBLISHED);
         article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
@@ -41,22 +41,22 @@ public class ArticleRepository {
         ofy.get().put(article);
     }
 
-    public Article getArticle(Long id){
+    public Article getArticle(Long id) {
         return ofy.get().get(Article.class, id);
     }
 
-    public Article getArticleByPermalink(String permalink){
-        List<Article> strings = ofy.get().query(Article.class).filter("permalink",permalink).list();
-        if (strings.isEmpty()){
+    public Article getArticleByPermalink(String permalink) {
+        List<Article> strings = ofy.get().query(Article.class).filter("permalink", permalink).list();
+        if (strings.isEmpty()) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }else if (strings.size()==1){
+        } else if (strings.size() == 1) {
             return strings.get(0);
-        }else {
+        } else {
             throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         searchRepository.deleteFromSearch(getArticle(id));
         ofy.get().delete(Article.class, id);
     }
@@ -70,18 +70,18 @@ public class ArticleRepository {
         }
         return query.count();
     }
-    
+
     public List<Article> getPendingFeed(String feed) {
         return ofy.get().query(Article.class)
-                .filter("feed",feed)
-                .filter("state",ArticleState.PENDING)
+                .filter("feed", feed)
+                .filter("state", ArticleState.PENDING)
                 .order("-lastUpdated")
                 .list();
     }
-    
+
     public List<Article> getFeed(String feed, boolean onlyPublished, Integer offset) {
         List<Article> articles = new ArrayList<Article>();
-        if (!onlyPublished && (offset==0)){
+        if (!onlyPublished && (offset == 0)) {
             articles.addAll(getPendingFeed(feed));
         }
         Query<Article> query = ofy.get()
@@ -92,6 +92,8 @@ public class ArticleRepository {
                 .offset(offset)
                 .limit(5);
         articles.addAll(query.list());
+
+        System.out.println("WHAT WAS GOT:" + articles);
         return articles;
     }
 
@@ -109,7 +111,7 @@ public class ArticleRepository {
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
             oldArticle.setPermalink(article.getPermalink());
-            if (ArticleState.PUBLISHED.equals(oldArticle.getState())){
+            if (ArticleState.PUBLISHED.equals(oldArticle.getState())) {
                 searchRepository.submitToSearch(oldArticle);
             }
             ofy.put(oldArticle);

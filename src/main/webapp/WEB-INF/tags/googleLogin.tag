@@ -12,13 +12,13 @@
 
 
 <a href="<%= userService.createLogoutURL("/app/index")%>">
-    login
+    Вихід із сайту
 </a>
 <%
 } else {
 %>
 <a href="<%= userService.createLoginURL("/app/index")%>">
-    logout
+    Вхід на сайт
 </a>
 <%
     }

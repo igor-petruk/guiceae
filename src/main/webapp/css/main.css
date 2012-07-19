@@ -65,8 +65,8 @@ li {
     width: auto;
     margin: 2px 15px 20px 0;
     float: left;
-    font-family: "Trebuchet MS";
-    font-size: 16px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 12px;
     font-weight: bolder;
     text-indent: 10px;
     color: #ffffff;
@@ -83,7 +83,7 @@ li {
 #head div.inputs input.txt {
     width: 135px;
     height: 21px;
-    margin-right: 7px;
+    margin-left: 3px;
     float: left;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -98,7 +98,7 @@ li {
     float: left;
     border: 0;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     color: #818181;
     text-align: center;
     cursor: pointer;
@@ -168,7 +168,7 @@ h1.logo a {
 }
 
 #menu ul {
-    width: 960px;
+    width: 1200px;
     height: 44px;
     float: left;
     margin: 10px 0 0 0;
@@ -281,17 +281,15 @@ h2 {
     width: auto;
     margin: 9px 0 0 10px;;
     float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
     color: #31a1ff;
     font-weight: bold;
     line-height: 30px;
-    letter-spacing: -1.7px
 }
 
 h2 span {
     color: #3b3b3b;
-    text-transform: uppercase;
     margin-right: 5px
 }
 
@@ -414,77 +412,6 @@ h3 {
 h3 span {
     color: #3b3b3b;
     margin-right: 0px
-}
-
-#infoPan {
-    margin-top: 10px;
-}
-
-ul#infoPan {
-    width: 100%;
-    float: left
-}
-
-ul#infoPan li {
-    width: 380px;
-    margin-left: 10px;
-    float: left
-}
-
-ul#infoPan li div {
-    display: inline;
-}
-
-ul#infoPan li div a {
-    float: right;
-    color: #2277DD;
-    font-family: "Trebuchet MS";
-    font-size: 12px;
-    padding: 2px 2px 2px 2px;
-    background-color: #E0DFE3;
-}
-
-ul#infoPan li:first-child {
-    margin: 0
-}
-
-ul#infoPan li h3 {
-    width: 100%;
-    height: 40px;
-    float: left;
-    font-size: 20px;
-    color: #31a1ff;
-    font-weight: bolder;
-    line-height: 60px;
-    letter-spacing: 1px
-}
-
-ul#infoPan li h3 span {
-    color: #738cad;
-    margin-right: 2px
-}
-
-ul#infoPan li h3 img {
-    margin-right: 36px;
-    float: right
-}
-
-ul#infoPan li p.title {
-    width: 100%;
-    margin-top: 5px;
-    float: left;
-    font-size: 16px;
-    background-color: #ffffff;
-    color: #2b66c9;
-    opacity: 0.9;
-    font-weight: 500;
-    line-height: 24px;
-}
-
-ul#infoPan li p.descrip {
-    margin-top: 13px;
-    font-size: 12px;
-    line-height: 12px;
 }
 
 #quotPan {
@@ -761,11 +688,14 @@ ul#infoPan li p.descrip {
     float: left;
 }
 
+.feed-name a {
+    color: #8d8d8d;
+}
+
 .feed-name {
-    color: #818181;
     padding: 10px;
     opacity: 0.9;
-    font-family: "Trebuchet MS";
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 14px;
     text-indent: 5px;
     word-spacing: 2px;
@@ -774,46 +704,48 @@ ul#infoPan li p.descrip {
 }
 
 .feed-name.active {
-    border-left: 7px solid #2277DD;
-    background-color: #b1b1b1;
+    border-left: 10px solid #2277DD;
+    background-color: #dedede;
     opacity: 0.9;
-    padding-left: -7px;
+    padding-left: -10px;
+    cursor: pointer;
 }
 
-.feed-name.active a {
-    color: #ffffff;
+.feed-name.active a, .feed-name:hover a {
+    color: #2277DD;
 }
 
 .feed-name:hover {
-    border-left: 7px solid #2277DD;
+    border-left: 10px solid #2277DD;
     cursor: pointer;
     opacity: 0.6;
-    background-color: #b1b1b1;
-    padding-left: -7px;
+    background-color: #dedede;
+    padding-left: -10px;
 }
 
-.feed-name:hover a {
-    color: #ffffff;
-}
-
-.feed-full-view p {
+#infoPan .rss {
     float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.feed-full-view .rss {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.feed-full-view span {
+    position: relative;
+    float: left;
+    color: #767676;
     margin-right: 10px;
 }
 
-Ї
-.feed-full-view a#add-article {
+#add-article {
     float: right;
     display: inline;
     background-image: url("/css/images/main/searchbtn.png");
-}
-
-.feed-full-view {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    margin: 10px 10px 10px 10px;
-    padding: 5px 5px 5px 5px
 }
 
 .album-view {
@@ -826,7 +758,7 @@ ul#infoPan li p.descrip {
 
 .album-view div.title {
     text-transform: uppercase;
-    font-family: "Trebuchet MS";
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #363636;
     margin: 10px;
@@ -834,7 +766,7 @@ ul#infoPan li p.descrip {
 
 .album-view div.description {
     margin: 10px;
-    font-family: "Trebuchet MS";
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #363636;
 }
@@ -851,8 +783,8 @@ ul#infoPan li p.descrip {
 }
 
 .login ul li span {
-    font-family: "Trebuchet MS";
-    font-size: 16px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 12px;
     font-weight: bolder;
     text-indent: 10px;
     color: #ffffff;
@@ -883,7 +815,7 @@ ul#infoPan li p.descrip {
 #personal div.name {
     background-color: #fefefe;
     padding: 10px 10px 10px 10px;
-    font-family: "Trebuchet MS" sans-serif;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 26px;
     opacity: 0.7;
     font-weight: bolder;
@@ -914,6 +846,10 @@ ul#infoPan li p.descrip {
 #biography a span img {
 }
 
-.article {
+.article-full {
+
+}
+
+.article-short {
 
 }

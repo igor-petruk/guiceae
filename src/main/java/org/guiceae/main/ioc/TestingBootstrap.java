@@ -22,7 +22,7 @@ import static org.guiceae.main.model.Roles.*;
  * Time: 21:53
  */
 
-public class TestingBootstrap implements Bootstrap{
+public class TestingBootstrap implements Bootstrap {
     UserRepository userRepository;
     ArticleRepository articleRepository;
     MessageRepository messageRepository;
@@ -48,7 +48,7 @@ public class TestingBootstrap implements Bootstrap{
 
         UserDetails userDetails = new UserDetails();
         userDetails.setEmail("test@example.com");
-        userDetails.getRoles().addAll(ImmutableSet.of(ADMIN,CONTENT_MANAGER,VIDEO_MANAGER));
+        userDetails.getRoles().addAll(ImmutableSet.of(ADMIN, CONTENT_MANAGER, VIDEO_MANAGER));
 
         userRepository.save(userDetails);
 
@@ -58,24 +58,24 @@ public class TestingBootstrap implements Bootstrap{
         article.setState(ArticleState.PUBLISHED);
         article.setFeed("news");
         article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
-        article.setShortContent("<p><b>Short</b> version<p>");
+        article.setShortContent("<p><b>Short content</b> version<p>");
         article.setLastUpdated(new Date());
-        article.setTitle("Super title");
+        article.setTitle("title");
         article.setPermalink("super-title");
         articleRepository.mergeArticle(article);
         searchRepository.submitToSearch(article);
-
-        article = new Article();
-        article.setAuthor("test@example.com");
-        article.setCreated(new Date());
-        article.setState(ArticleState.PUBLISHED);
-        article.setFeed("news");
-        article.setContent("<h3> Ololoev </h3> <p><b> hey </b> you</p>");
-        article.setShortContent("<p><b>SOmething here too</b> Кириллица<p>");
-        article.setLastUpdated(new Date());
-        article.setTitle("Another article");
-        article.setPermalink("another-article");
-        articleRepository.mergeArticle(article);
-        searchRepository.submitToSearch(article);
+//
+//        article = new Article();
+//        article.setAuthor("test@example.com");
+//        article.setCreated(new Date());
+//        article.setState(ArticleState.PUBLISHED);
+//        article.setFeed("news");
+//        article.setContent("<h3> Ololoev </h3> <p><b> hey </b> you</p>");
+//        article.setShortContent("<p><b>SHORT CONTENT</b> Кириллица<p>");
+//        article.setLastUpdated(new Date());
+//        article.setTitle("Another article");
+//        article.setPermalink("another-article");
+//        articleRepository.mergeArticle(article);
+//        searchRepository.submitToSearch(article);
     }
 }

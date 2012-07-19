@@ -8,6 +8,7 @@
     <script type='text/javascript' src='/js/jquery/jquery.hoverIntent.js'></script>
     <script type='text/javascript' src='/js/jquery-ui-1.8.21.custom.min.js'></script>
     <link href="/css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
     <script type="text/javascript">
         $(function () {

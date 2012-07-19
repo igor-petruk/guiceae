@@ -73,14 +73,6 @@
                 та побажання!
             </p>
 
-            <p>
-                Тут Ви зможете прочитати
-                про мою діяльність, програму,
-                зрозуміти які основні напрямки моєї роботи,
-                задати питання, що вас хвилюють і залишити відгуки
-                та побажання!
-            </p>
-
             <p style="float:right;">З повагою, Іван Куровський</p><br/>
         </div>
     </div>
@@ -93,89 +85,50 @@
     <div id="content_cen">
         <div id="content_sup">
 
-            <ul id="infoPan">
-                <li id="charity">
+            <div id="infoPan">
+                <div class="gutter-outer"></div>
 
-                    <h3><a href="/app/feed/charity">Благодійність</a> <img src="/css/images/system/rss.png"
-                                                                           alt="Підписатися на розсилку"/>
-                    </h3>
+                <div class="column">
+                    <span class="head">
+                        <a href="/app/feed/charity">Благодійність</a>
+                    </span>
+                    <span>
+                        <a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"
+                                                                         alt="Підписатися на оновлення"></a>
+                    </span>
+                    <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>
+                </div>
 
-                    <div class="article">
-                        <p class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="gutter"></div>
 
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="column">
+                    <span class="head">
+                       <a href="/app/feedback/view/question">Громадська приймальня</a>
+                    </span>
+                    <span>
+                        <a class="rss" href="/app/feed/news/rss">
+                            <img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>
+                        </a>
+                    </span>
+                </div>
 
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="gutter"></div>
 
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-
-                    </div>
-                </li>
-
-                <li id="law">
-                    <h3><a href="/app/feedback/view/question">Громадська приймальня</a><img
-                            src="/css/images/system/rss.png"
-                            alt="Підписатися на розсилку"/></h3>
-
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                </li>
-                <li id="news">
-                    <h3><a href="/app/feed/news">Новини</a><img src="/css/images/system/rss.png"
-                                                                alt="Підписатися на розсилку"/>
-                    </h3>
-
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                    <div class="article">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <p class="descrip">Maecenas ut lacus magna, ut consectetur quam. Etiam pharetra tincidunt massa,
-                            vitae pulvinar eros commodo ut. Sed in orci neque. Mauris eros est, auctor vitae.</p>
-                        <a href="#">Детальніше</a>
-                    </div>
-                </li>
-            </ul>
+                <div class="column">
+                    <span class="head">
+                        <a href="/app/feed/news">Новини</a>
+                    </span>
+                    <span>
+                        <a class="rss" href="/app/feed/news/rss"><img src="/css/images/system/rss.png"
+                                                                      alt="Підписатися на оновлення"></a>
+                    </span>
+                    <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
+                </div>
+                <div class="gutter-outer"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<guiceae:footer/>
+    <guiceae:footer/>
 </body>
 </html>
