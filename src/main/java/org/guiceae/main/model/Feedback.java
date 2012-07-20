@@ -1,8 +1,11 @@
 package org.guiceae.main.model;
 
+import org.guiceae.util.Pollable;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Pollable
 public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,7 @@ public class Feedback {
     String question, answer;
 
     @Enumerated(EnumType.STRING)
+    @Pollable
     ArticleState state = ArticleState.PENDING;
 
     public Long getId() {

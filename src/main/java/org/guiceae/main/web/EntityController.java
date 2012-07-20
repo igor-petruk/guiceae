@@ -2,6 +2,8 @@ package org.guiceae.main.web;
 
 import com.googlecode.objectify.NotFoundException;
 import com.googlecode.objectify.Objectify;
+import org.guiceae.util.Pollable;
+
 import javax.inject.Inject;
 
 import javax.inject.Provider;
@@ -105,7 +107,7 @@ public class EntityController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PollResponse poll(PollRequest request) throws NoSuchFieldException, IllegalAccessException {
-        if (request.getEntity().getAnnotation(Entity.class)!=null){
+        if (request.getEntity().getAnnotation(Pollable.class)!=null){
             Objectify ofy = objectifyProvider.get();
             Object o = null;
             try{
@@ -117,6 +119,9 @@ public class EntityController {
                 case FIELD:
                     if (o!=null){
                         Field field = request.getEntity().getDeclaredField(request.getQuery().getName());
+                        if (field.getAnnotation(Pollable.class)==null){
+                            throw new WebApplicationException(Response.Status.FORBIDDEN);
+                        }
                         field.setAccessible(true);
                         Object value = field.get(o);
                         if (String.valueOf(value).equals(request.getQuery().getValue())){
@@ -131,11 +136,12 @@ public class EntityController {
                     return new PollResponse((o!=null)?PollResponseStatus.OK:PollResponseStatus.FAILED);
                 case NEXISTS:
                     return new PollResponse((o==null)?PollResponseStatus.OK:PollResponseStatus.FAILED);
+                default:
+                    throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
                 }
         }else{
-            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+            throw new WebApplicationException(Response.Status.FORBIDDEN);
         }
-        throw new WebApplicationException(Response.Status.NOT_ACCEPTABLE);
     }
     
 }

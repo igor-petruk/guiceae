@@ -2,6 +2,7 @@ package org.guiceae.main.model;
 
 import com.google.appengine.api.datastore.Text;
 import com.googlecode.objectify.annotation.Cached;
+import org.guiceae.util.Pollable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
 
 @Entity
 @Cached
+@Pollable
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,7 @@ public class Article {
     String mainPhotoUrl;
 
     @Enumerated(EnumType.STRING)
+    @Pollable
     ArticleState state = ArticleState.PENDING;
 
     @Lob
