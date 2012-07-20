@@ -18,7 +18,7 @@
     <%--</div>--%>
 
     <div class="createdDate">
-        <fmt:formatDate value="${article.created}" pattern="dd/MM/YYYY HH:mm"></fmt:formatDate>
+        <fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate>
     </div>
 
     <c:choose>

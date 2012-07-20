@@ -3,6 +3,7 @@ package org.guiceae.main.repositories;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Album;
+import org.guiceae.util.UserPrincipalHolder;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -18,6 +19,9 @@ public class AlbumRepository {
     private Provider<Objectify> ofy;
 
     private static Album DEFAULT_ALBUM = new Album();
+    
+    @Inject
+    UserPrincipalHolder userPrincipalHolder;
 
     static {
         ObjectifyService.register(Album.class);
@@ -31,7 +35,9 @@ public class AlbumRepository {
 
     public List<Album> getAll() {
         List<Album> albums = new ArrayList<Album> ();
-        albums.add(DEFAULT_ALBUM);
+        if (userPrincipalHolder.get().contains("cm")){
+            albums.add(DEFAULT_ALBUM);
+        }
         albums.addAll(ofy.get().query(Album.class).list());
         return albums;
     }
