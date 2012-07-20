@@ -13,13 +13,13 @@
                         {
                             toolbar : 'CustomToobar',
                             uiColor : '#9AB8F3',
-                            filebrowserBrowseUrl : '/app/album/browse/0'
+                            filebrowserBrowseUrl : '/app/album/browse/0?mode=ckeditor'
                         });
                 CKEDITOR.replace( 'shortContent',
                         {
                             toolbar : 'CustomToobar',
                             uiColor : '#9AB8F3',
-                            filebrowserBrowseUrl : '/app/album/browse/0'
+                            filebrowserBrowseUrl : '/app/album/browse/0?mode=ckeditor'
                         });
             })
         </script>

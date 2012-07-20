@@ -64,11 +64,17 @@ public class AlbumController {
     @GET
     @Path("/browse/{albumId}")
     @RolesAllowed("cm")
-    public Viewable browse(@PathParam("albumId") Long albumId, @Context HttpServletRequest request) {
+    public Viewable browse(@PathParam("albumId") Long albumId,
+                           @QueryParam("mode") String mode,
+                           @Context HttpServletRequest request) {
         Map<String, Object> map = new HashMap<String, Object>();
         Collection<Photo> photos = photoRepository.getByAlbumId(albumId);
-        System.out.println(photos.size());
-        map.put("funcNum", request.getParameter("CKEditorFuncNum"));
+        if ("ckeditor".equals(mode)){
+            map.put("callbackCode","window.opener.CKEDITOR.tools.callFunction("+ request.getParameter("CKEditorFuncNum")+", src);");
+            map.put("funcNum", request.getParameter("CKEditorFuncNum"));
+        }else{
+            map.put("callbackCode","window.opener.imageSelected();");
+        }
         map.put("uploadUrl", BlobstoreServiceFactory.getBlobstoreService().createUploadUrl("/app/ckupload"));
         map.put("photos", photos);
 

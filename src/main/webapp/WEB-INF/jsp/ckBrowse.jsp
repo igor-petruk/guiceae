@@ -5,7 +5,7 @@
 <guiceae:head>
     <script type="text/javascript">
         function onClick(src){
-            window.opener.CKEDITOR.tools.callFunction( ${it.funcNum}, src);
+            ${it.callbackCode}
             window.close();
         }
     </script>
