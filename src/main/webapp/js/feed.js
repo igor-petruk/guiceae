@@ -20,7 +20,15 @@ function registerSimpleDelete(id, feed){
             cache:false,
             dataType:"json",
             success:function(data){
-                window.location="/app/feed/"+feed;
+                pollFor({
+                    entity: "org.guiceae.main.model.Article",
+                    id: id,
+                    query: {
+                        type: "NEXISTS"
+                    }
+                },function(){
+                    window.location="/app/feed/"+feed;
+                });
             }
         });
     });
@@ -58,7 +66,17 @@ function registerPublishQuestion(id){
             cache:false,
             dataType:"json",
             success:function(data){
-                setTimeout(function(){location.reload();}, 1000);
+                pollFor({
+                    entity: "org.guiceae.main.model.Feedback",
+                    id: id,
+                    query: {
+                        type: "FIELD",
+                        name: "state",
+                        value: "PUBLISHED"
+                    }
+                },function(){
+                    location.reload();
+                });
             }
         });
     });
@@ -72,7 +90,15 @@ function registerSimpleFeedbackDelete(id, feed){
             cache:false,
             dataType:"json",
             success:function(data){
-                setTimeout(function(){window.location="/app/feedback/view/"+feed;}, 1000);
+                pollFor({
+                    entity: "org.guiceae.main.model.Feedback",
+                    id: id,
+                    query: {
+                        type: "NEXISTS"
+                    }
+                },function(){
+                    window.location="/app/feedback/view/"+feed;
+                });
             }
         });
     });

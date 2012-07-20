@@ -1,5 +1,6 @@
 package org.guiceae.main.web;
 
+import com.googlecode.objectify.NotFoundException;
 import com.googlecode.objectify.Objectify;
 import javax.inject.Inject;
 
@@ -106,7 +107,12 @@ public class EntityController {
     public PollResponse poll(PollRequest request) throws NoSuchFieldException, IllegalAccessException {
         if (request.getEntity().getAnnotation(Entity.class)!=null){
             Objectify ofy = objectifyProvider.get();
-            Object o = ofy.get(request.getEntity(), request.getId());
+            Object o = null;
+            try{
+                o = ofy.get(request.getEntity(), request.getId());
+            }catch (NotFoundException e){
+
+            }
             switch (request.getQuery().getType()){
                 case FIELD:
                     if (o!=null){
