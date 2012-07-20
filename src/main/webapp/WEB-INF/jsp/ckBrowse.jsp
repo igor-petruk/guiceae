@@ -13,6 +13,7 @@
     <body>
         <form action="${it.uploadUrl}" method="post" enctype="multipart/form-data">
             <input name="CKEditorFuncNum" value="${it.funcNum}" type="hidden"/>
+            <input name="mode" value="${it.mode}" type="hidden"/>
             <input type="file" name="photos"/>
             <input type="submit" value="Upload"/>
         </form>

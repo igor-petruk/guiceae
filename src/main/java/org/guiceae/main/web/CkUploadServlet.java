@@ -52,7 +52,9 @@ public class CkUploadServlet  extends HttpServlet {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            resp.sendRedirect("/app/album/browse/0?mode=ckeditor&CKEditorFuncNum="+req.getParameter("CKEditorFuncNum"));
+            resp.sendRedirect("/app/album/browse/0"
+                    +"?mode="+req.getParameter("mode")
+                    +"&CKEditorFuncNum="+req.getParameter("CKEditorFuncNum"));
         } else {
             resp.sendRedirect("/app/index");
         }

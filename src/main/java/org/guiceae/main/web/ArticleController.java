@@ -79,6 +79,7 @@ public class ArticleController {
                                 @FormParam("feed") String feed,
                                 @FormParam("title") String title,
                                 @FormParam("permalink") String permalink,
+                                @FormParam("mainImage") String mainPhotoUrl,
                                 @FormParam("content") String content,
                                 @FormParam("shortContent") String shortContent) throws URISyntaxException{
         Article article = new Article();
@@ -87,6 +88,7 @@ public class ArticleController {
         article.setFeed(feed);
         article.setTitle(title);
         article.setPermalink(permalink);
+        article.setMainPhotoUrl(mainPhotoUrl);
         article.setContent(processContent(content));
         article.setShortContent(processContent(shortContent));
         if (article.getAuthor()==null){

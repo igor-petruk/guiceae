@@ -73,10 +73,11 @@ public class AlbumController {
             map.put("callbackCode","window.opener.CKEDITOR.tools.callFunction("+ request.getParameter("CKEditorFuncNum")+", src);");
             map.put("funcNum", request.getParameter("CKEditorFuncNum"));
         }else{
-            map.put("callbackCode","window.opener.imageSelected();");
+            map.put("callbackCode","window.opener.imageSelected(src);");
         }
         map.put("uploadUrl", BlobstoreServiceFactory.getBlobstoreService().createUploadUrl("/app/ckupload"));
         map.put("photos", photos);
+        map.put("mode",mode);
 
         return new Viewable("/ckBrowse.jsp", map);
     }

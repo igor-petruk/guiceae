@@ -22,6 +22,11 @@
                             filebrowserBrowseUrl : '/app/album/browse/0?mode=ckeditor'
                         });
             })
+
+            function imageSelected(src){
+                $("#mainImageImg").attr("src",src);
+                $("#mainImage").attr("value",src);
+            }
         </script>
     </guiceae:head>
     <body>
@@ -40,6 +45,19 @@
                 <input id="permalink" name="permalink" type="text" value="<c:out value='${it.permalink}'/>"/>
                 <br/>
 
+                <p>
+                    <img id="mainImageImg" src="${it.mainPhotoUrl}" width="200"/>
+                    <input type="hidden" name="mainImage" id="mainImage" value="${it.mainPhotoUrl}"/>
+                    <a id="selectPhotoLink" href="/app/album/browse/0?mode=mainPhoto">Select photo</a>
+                    <script type="text/javascript">
+                        jQuery('#selectPhotoLink').live('click', function(){
+                            newwindow=window.open($(this).attr('href'),'','height=500,width=600');
+                            if (window.focus) {newwindow.focus()}
+                            return false;
+                        });
+                    </script>
+                </p>
+                
                 <label for="shortContent">Короткий зміст</label>
                 <textarea id="shortContent" name="shortContent">
                     ${it.shortContent}
