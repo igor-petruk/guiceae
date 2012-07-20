@@ -26,14 +26,18 @@
         <guiceae:rolesOnly roles="cm">
             <div>
                  <a href="/app/feedback/edit/${question.id}">Редагувати</a>
+                <a href="#" id="delete${question.id}">Видалити</a>
+                <script type="text/javascript">
+                    $(function(){
+                        registerSimpleFeedbackDelete("${question.id}", "${question.feed}".toLowerCase());
+                    });
+                </script>
                  <c:if test="${question.state=='PENDING'}">
                     Питання <b>не опубліковане</b>
                     <a href="#" id="publish${question.id}">Опублікувати</a>
-                     <a href="#" id="delete${question.id}">Видалити</a>
                      <script type="text/javascript">
                         $(function(){
                             registerPublishQuestion("${question.id}");
-                            registerSimpleFeedbackDelete("${question.id}", "${question.feed}".toLowerCase());
                         });
                     </script>
                 </c:if>

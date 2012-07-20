@@ -12,8 +12,16 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
     <script type="text/javascript">
-        $(function () {
+        function twitter(){
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+                    js.src="https://platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js,fjs);
+                }}(document,"script","twitter-wjs");
+        }
 
+        $(function () {
+            twitter();
             $("div.menu div").each(function () {
                 $(this).find("a").before($("#pic").html());
                 $(this).children("div").animate({top:-25}, 100);
