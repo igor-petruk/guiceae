@@ -35,7 +35,8 @@ public class GuiceModule extends AbstractModule {
         bind(UserRepository.class);
         bind(ArticleRepository.class);
         bind(SearchRepository.class);
-        bind(FeedbackRepository.class);
+        bind(FeedbackController.class);
+        bind(EntityRepository.class);
 
         // controllers
         bind(MainController.class);
@@ -46,6 +47,7 @@ public class GuiceModule extends AbstractModule {
         bind(FeedsController.class);
         bind(ArticleController.class);
         bind(FeedbackController.class);
+        bind(EntityController.class);
 
         // security
         bind(UserPrincipalProvider.class).to(UserRepository.class);

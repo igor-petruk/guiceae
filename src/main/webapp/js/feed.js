@@ -34,7 +34,17 @@ function registerPublish(id){
             cache:false,
             dataType:"json",
             success:function(data){
-                setTimeout(function(){location.reload();}, 1000);
+                pollFor({
+                    entity: "org.guiceae.main.model.Article",
+                    id: id,
+                    query: {
+                        type: "FIELD",
+                        name: "state",
+                        value: "PUBLISHED"
+                    }
+                },function(){
+                    location.reload();
+                });
             }
         });
     });
