@@ -59,7 +59,7 @@ public class ArticleRepository {
     public Article getArticleByPermalink(String permalink) {
         List<Article> strings = ofy.get().query(Article.class).filter("permalink", permalink).list();
         if (strings.isEmpty()) {
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
+            return null;
         } else if (strings.size() == 1) {
             return strings.get(0);
         } else {

@@ -38,7 +38,10 @@ public class ArticleController {
     @Path("/detail/{permalink}")
     public Viewable detail(@PathParam("permalink") String permalink){
         Article article = articleRepository.getArticleByPermalink(permalink);
-        return new Viewable("/articleDetail.jsp",article);
+        if (article!=null)
+            return new Viewable("/articleDetail.jsp",article);
+        else
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
     }
 
     @GET
@@ -99,7 +102,8 @@ public class ArticleController {
         article.setContent(content);
         article.setFeed(feed);
         article.setTitle(title);
-        if (articleRepository.permalinkExists(permalink)){
+        Article oldArticle = articleRepository.getArticleByPermalink(permalink);
+        if ((oldArticle!=null) && (oldArticle.getId()!=id)){
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
         article.setPermalink(permalink);
