@@ -103,7 +103,7 @@ public class ArticleController {
         article.setFeed(feed);
         article.setTitle(title);
         Article oldArticle = articleRepository.getArticleByPermalink(permalink);
-        if ((oldArticle!=null) && (oldArticle.getId()!=id)){
+        if ((oldArticle!=null) && !(oldArticle.getId().equals(id))){
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
         article.setPermalink(permalink);
