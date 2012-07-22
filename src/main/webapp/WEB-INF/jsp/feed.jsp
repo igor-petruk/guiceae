@@ -49,8 +49,8 @@
             </div>
 
             <div class="view-right-place">
-                <guiceae:feed feedName="${it.feedName}" feed="${it.feed}" currentFirst="0"
-                              pagesCount="10"/>
+                <guiceae:feed feedName="${it.feedName}" feed="${it.feed}" currentFirst="${it.currentFirst}"
+                              pagesCount="${it.pagesCount}"/>
             </div>
 
         </div>

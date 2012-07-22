@@ -54,7 +54,7 @@ public class FeedsController {
 
     private Viewable produceFeed(String feed, Integer offset) {
         boolean showPending = userPrincipalHolder.get().contains("cm");
-        long count = articleRepository.count(feed, !showPending);
+        long count = articleRepository.count(feed, true);
         List<Article> articles = articleRepository.getFeed(feed, !showPending, offset);
         Map<String, Object> it = new HashMap<String, Object>();
         it.put("feed", articles);
