@@ -5,8 +5,8 @@
 <%@ attribute name="feedName" required="true" %>
 <%@ attribute name="feed" required="true" type="java.util.List" %>
 
-<div class="feed-short-view">
-    <c:forEach var="article" items="${feed}">
-        <guiceae:article shortView="true" article="${article}" simpleDelete="true"/>
+<div class="feedback-short-view">
+    <c:forEach var="feedback" items="${feed}">
+        <guiceae:feedback feedName="${feedName}" feedback="${feedback}" simpleDelete="true"/>
     </c:forEach>
 </div>

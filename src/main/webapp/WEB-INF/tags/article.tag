@@ -15,9 +15,10 @@
 
     <div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en"
-                data-text="${article.title}"
-                data-url="<guiceae:siteName/>app/article/detail/${article.permalink}">Tweet</a>
+           data-text="${article.title}"
+           data-url="<guiceae:siteName/>app/article/detail/${article.permalink}">Tweet</a>
     </div>
+
     <%--<div class="author">--%>
     <%--${article.author}--%>
     <%--</div>--%>

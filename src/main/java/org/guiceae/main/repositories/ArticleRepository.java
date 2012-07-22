@@ -92,8 +92,6 @@ public class ArticleRepository {
                 .offset(offset)
                 .limit(5);
         articles.addAll(query.list());
-
-        System.out.println("WHAT WAS GOT:" + articles);
         return articles;
     }
 

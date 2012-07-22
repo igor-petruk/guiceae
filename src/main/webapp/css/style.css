@@ -162,3 +162,106 @@ a.rss img {
     color: #767676;
     margin-right: 10px;
 }
+
+/*feedback*/
+
+.left-place.feedbackQuestion {
+    padding: 0 20px 0 0;
+    text-align: left;
+    width: 40%;
+    background: #e2e6ff url("/css/images/main/pat.png") repeat;
+    margin: 10px 10px 10px 10px;
+    min-height: 600px;
+    float: right;
+}
+.view-right-place.feedbackQuestion {
+    margin-top: 10px;
+    margin-right: 10px;
+    background: #fbfbfb;
+    min-height: 600px;
+    width: 55%;
+    float: left;
+    border-radius: 5%
+}
+
+.view-right-place.feedbackQuestion span {
+    color: #5e5e55;
+    opacity: 0.5;
+    font-size: 18px;
+    margin: 20px 0 20px 20px;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+.left-place.feedbackQuestion span#left-label {
+    margin-left: 25%;
+}
+
+.question-place {
+    opacity: 0.6;
+    background-color: #dedede;
+    float: left;
+    margin: 10px 10px 10px 10px;
+    padding: 10px;
+}
+
+.question-place label {
+    color: #2277DD;
+}
+
+.question-place input#author {
+    width: 100%;
+}
+
+.question-place input#submit-button {
+    padding: 10px;
+}
+
+.feedback {
+    padding: 10px 10px 10px 10px;
+}
+
+.feedback-short-view {
+    width: 100%;
+    min-height: 600px;
+    min-width: 500px;
+}
+
+.feedback .author {
+    font-size: 14px;
+    float: right;
+    color: #31A1FF;
+    margin: 0 0 10px 0;
+}
+.feedback .createdDate {
+    font-size: 10px;
+    float: left;
+    width: 100%;
+    margin: 2px 0 10px 83%;
+    color: #444444;
+    font-weight: bolder;
+}
+.feedback .question {
+    width: 100%;
+    margin-left: 10px;
+    float: left;
+    color: #31A1FF;
+    font-family: "Trebuchet" Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.feedback .answer {
+    float: left;
+    font-family: "Trebuchet" Arial, Helvetica, sans-serif;
+    color: #5e5e55;
+    word-spacing: -1.2px;
+    word-wrap: break-word;
+    margin: 10px 10px 10px 40px;
+}
+.feedback .separator {
+    margin: 0 0 20px 10%;
+    opacity: 0.3;
+    float: left;
+    width: 80%;
+    border-bottom: 1px solid #818181;
+}

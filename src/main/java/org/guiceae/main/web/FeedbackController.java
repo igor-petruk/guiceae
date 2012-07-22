@@ -1,10 +1,8 @@
 package org.guiceae.main.web;
 
 import com.google.appengine.api.urlfetch.*;
-import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.utils.SystemProperty;
 import com.sun.jersey.api.view.Viewable;
-import org.guiceae.main.model.Article;
 import org.guiceae.main.model.ArticleState;
 import org.guiceae.main.model.Feedback;
 import org.guiceae.main.model.FeedbackFeedType;
@@ -22,7 +20,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.*;
 
 @Singleton
@@ -44,11 +45,25 @@ public class FeedbackController {
 
     @GET
     @Path("/submit/{feed}")
-    public Viewable page(@PathParam("feed")String feed){
+    public Viewable page(@PathParam("feed") String feed) {
+
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("publicKey", publicKey);
-        model.put("feed",feed);
-        return new Viewable("/submitFeedback.jsp", model);
+        model.put("feed", feed);
+
+        if (feed.equalsIgnoreCase("question")) {
+            model.put("theme", "Питання та відповіді");
+            model.put("proposition", "Залиште своє питання тут");
+            model.put("feedbacks", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0));
+        }
+
+        if (feed.equalsIgnoreCase("comment")) {
+            model.put("theme", "Відгуки про нашу роботу");
+            model.put("proposition", "Залиште свій відгук тут");
+            model.put("feedbacks", feedbackRepository.getFeed(FeedbackFeedType.COMMENT, true, 0));
+        }
+        return new Viewable("/feedbacks.jsp", model);
+
     }
 
     @GET
@@ -75,7 +90,7 @@ public class FeedbackController {
     @DELETE
     @Path("/delete/{id}")
     @RolesAllowed("cm")
-    public Response delete(@PathParam("id") Long id) throws URISyntaxException{
+    public Response delete(@PathParam("id") Long id) throws URISyntaxException {
         feedbackRepository.delete(id);
         return Response.ok().build();
     }
@@ -84,7 +99,7 @@ public class FeedbackController {
     @Path("/publish/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @RolesAllowed("cm")
-    public Response submit(@PathParam("id") Long id){
+    public Response submit(@PathParam("id") Long id) {
         feedbackRepository.publish(id);
         return Response.ok().build();
     }
@@ -92,9 +107,9 @@ public class FeedbackController {
     @GET
     @Path("/edit/{id}")
     @RolesAllowed("cm")
-    public Viewable editFeedback(@PathParam("id") Long id){
+    public Viewable editFeedback(@PathParam("id") Long id) {
         Feedback feedback = feedbackRepository.getFeedback(id);
-        return new Viewable("/editFeedback.jsp",feedback);
+        return new Viewable("/editFeedback.jsp", feedback);
     }
 
     @POST
@@ -104,13 +119,13 @@ public class FeedbackController {
                            @Context HttpServletRequest request) throws URISyntaxException, IOException {
         FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
         boolean doValidation = (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production);
-        if (doValidation){
+        if (doValidation) {
             boolean validation = validateCaptcha(questionSubmit.getChallenge(),
                     questionSubmit.getResponse(), request.getRemoteAddr());
             if (!validation)
                 return Response.status(Response.Status.UNAUTHORIZED).build();
-        }else{
-            if (questionSubmit.getResponse()!=null && !"".equals(questionSubmit.getResponse())){
+        } else {
+            if (questionSubmit.getResponse() != null && !"".equals(questionSubmit.getResponse())) {
                 boolean validation = validateCaptcha(questionSubmit.getChallenge(),
                         questionSubmit.getResponse(), request.getRemoteAddr());
                 if (!validation)
@@ -130,7 +145,7 @@ public class FeedbackController {
 
         return Response.ok().build();
     }
-    
+
     private boolean validateCaptcha(String challenge, String response, String ip)
             throws URISyntaxException, IOException {
         URLFetchService urlFetchService = URLFetchServiceFactory.getURLFetchService();
@@ -146,7 +161,7 @@ public class FeedbackController {
                 .append("&response=").append(URLEncoder.encode(response, "UTF-8"));
 
         httpRequest.setPayload(query.toString().getBytes("UTF-8"));
-        httpRequest.setHeader(new HTTPHeader("Content-Type","application/x-www-form-urlencoded"));
+        httpRequest.setHeader(new HTTPHeader("Content-Type", "application/x-www-form-urlencoded"));
         HTTPResponse httpResponse = urlFetchService.fetch(httpRequest);
         Scanner scanner = new Scanner(new ByteArrayInputStream(httpResponse.getContent()));
         return Boolean.parseBoolean(scanner.nextLine());
@@ -159,7 +174,7 @@ public class FeedbackController {
                                 @FormParam("feed") String feedString,
                                 @FormParam("question") String question,
                                 @FormParam("answer") String answer,
-                                @FormParam("author") String author) throws URISyntaxException{
+                                @FormParam("author") String author) throws URISyntaxException {
         FeedbackFeedType feedbackFeedType = FeedbackFeedType.valueOf(feedString);
         Feedback feedback = feedbackRepository.getFeedback(id);
         feedback.setAuthor(author);
@@ -167,12 +182,12 @@ public class FeedbackController {
         feedback.setAnswer(answer);
         feedback.setFeed(feedbackFeedType);
         feedbackRepository.submitQuestion(feedback);
-        return Response.seeOther(new URI("/app/feedback/view/"+feedString.toLowerCase())).build();
+        return Response.seeOther(new URI("/app/feedback/view/" + feedString.toLowerCase())).build();
     }
 
 }
 
-class QuestionSubmit{
+class QuestionSubmit {
     String question, challenge, response, author;
 
     public String getQuestion() {

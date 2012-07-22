@@ -93,7 +93,7 @@
                         <a href="/app/feed/charity">Благодійність</a>
                     </span>
                     <span>
-                        <a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/charity.png"
+                        <a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"
                                                                          alt="Підписатися на оновлення"></a>
                     </span>
                     <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>

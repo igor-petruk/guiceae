@@ -81,6 +81,16 @@
     </tag-file>
 
     <tag-file>
+        <name>smallFeedbackFeed</name>
+        <path>/WEB-INF/tags/smallFeedbackFeed.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>feedback</name>
+        <path>/WEB-INF/tags/feedback.tag</path>
+    </tag-file>
+
+    <tag-file>
         <name>pagesList</name>
         <path>/WEB-INF/tags/pagesList.tag</path>
     </tag-file>

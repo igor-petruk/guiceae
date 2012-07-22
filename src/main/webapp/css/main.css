@@ -14,6 +14,10 @@ body {
     max-width: 1200px;
 }
 
+a {
+    text-decoration: none;
+}
+
 img {
     border: 0
 }
@@ -256,10 +260,6 @@ h1.logo a {
 
 #ct_pan ul li a:hover {
     color: #2277DD;
-}
-
-.left-place {
-    display: inline;
 }
 
 #welcom_pan {
@@ -555,12 +555,6 @@ h3 span {
     margin: 0 auto 0 20px;
 }
 
-/*#foot h6									{width:160px; height:36px; margin:0 auto; text-indent:-9999px;}*/
-/*#foot h6 a									{width:100%; height:100%; float:left}*/
-/*#foot ul									{width:350px; margin:11px auto 0 auto}*/
-/*#foot ul li									{width:auto; float:left; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; color:#767676; line-height:18px}*/
-/*#foot ul li a								{width:auto; float:left; color:inherit}*/
-/*#foot ul li.space							{width:auto; float:left; padding:0 6px}*/
 #foot p {
     width: 100%;
     margin-top: 10px;
@@ -667,16 +661,17 @@ h3 span {
     margin-top: 10px;
     margin-right: 10px;
     background: #fbfbfb;
-    height: 600px;
+    min-height: 600px;
     width: 860px;
     float: right;
+    border-radius: 5%;
 }
 
 .left-place {
     text-align: center;
     background: #e2e6ff url("/css/images/main/pat.png") repeat;
     margin: 10px 10px 10px 10px;
-    height: 600px;
+    min-height: 600px;
     width: 270px;
     float: left;
 }
@@ -780,9 +775,9 @@ h3 span {
     position: absolute;
     top: 45px;
     right: 0;
-
     width: 100%;
     max-width: 472px;
+    margin-bottom: 20px
 }
 
 #personal div.name {
@@ -817,12 +812,4 @@ h3 span {
 }
 
 #biography a span img {
-}
-
-.article-full {
-
-}
-
-.article-short {
-
 }
