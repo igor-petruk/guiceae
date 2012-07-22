@@ -42,13 +42,23 @@ public class ArticleController {
     }
 
     @GET
+    @Path("/validatePermalink/{current}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String validatePermalink(@PathParam("current") String current,@QueryParam("permalink") String permalink){
+        if (current.equals(permalink)){
+            return "true";
+        }else{
+            return String.valueOf(!articleRepository.permalinkExists(permalink));
+        }
+    }
+
+    @GET
     @Path("/add/{feed}")
     @RolesAllowed("cm")
     public Viewable addArticle(@PathParam("feed") String feed){
         Article article = new Article();
         article.setFeed(feed);
         article.setId(0L);
-        article.setMainPhotoUrl("http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Egypt.Giza.Sphinx.01.jpg/312px-Egypt.Giza.Sphinx.01.jpg");
         article.setContent("Зміст");
         article.setShortContent("Короткий зміст");
         article.setTitle("Заголовок статті");

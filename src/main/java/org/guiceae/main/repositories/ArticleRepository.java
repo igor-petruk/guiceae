@@ -45,6 +45,17 @@ public class ArticleRepository {
         return ofy.get().get(Article.class, id);
     }
 
+    public boolean permalinkExists(String permalink) {
+        List<Article> strings = ofy.get().query(Article.class).filter("permalink", permalink).list();
+        if (strings.isEmpty()) {
+            return false;
+        } else if (strings.size() == 1) {
+            return true;
+        } else {
+            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public Article getArticleByPermalink(String permalink) {
         List<Article> strings = ofy.get().query(Article.class).filter("permalink", permalink).list();
         if (strings.isEmpty()) {

@@ -21,6 +21,24 @@
                             uiColor : '#9AB8F3',
                             filebrowserBrowseUrl : '/app/album/browse/0?mode=ckeditor'
                         });
+                var validator = $("#articleForm").validate({
+                    rules: {
+                        title: "required",
+                        permalink: {
+                            required: true,
+                            minlength: 2,
+                            remote: "/app/article/validatePermalink/<c:out value='${it.permalink}'/>"
+                        }
+                    },
+                    messages: {
+                        title: "Введіть назву статті",
+                        permalink: "Така адреса вже існує"
+                    },
+                    success: function(label) {
+                        // set &nbsp; as text for IE
+                        label.html("&nbsp;").addClass("checked");
+                    }
+                });
             })
 
             function imageSelected(src){
@@ -33,7 +51,7 @@
         <guiceae:menu/>
 
         <div>
-            <form action="/app/article/save" method="post">
+            <form id="articleForm" action="/app/article/save" method="post">
                 <input name="id" type="hidden" value="${it.id}"/>
                 <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
 
