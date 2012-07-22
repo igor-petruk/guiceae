@@ -60,20 +60,6 @@ public class FeedbackRepository {
                 .offset(offset)
                 .limit(5);
         questions.addAll(query.list());
-        //todo:remove when finish testing
-        Feedback feedback = new Feedback();
-        feedback.setFeed(FeedbackFeedType.QUESTION);
-        feedback.setAnswer("HELLO! YES I KNOW");
-        feedback.setId(1L);
-        feedback.setAuthor("RoksanaSeletska@kjshdkf");
-        feedback.setCreated(new Date());
-        feedback.setQuestion("Do you know that the sky is blue?");
-        feedback.setState(ArticleState.PUBLISHED);
-        questions.add(feedback);
-        questions.add(feedback);
-
-        for (Feedback f : questions)
-            System.out.println("FEEDBACK-->" + f);
         return questions;
     }
 

@@ -9,10 +9,9 @@
 
 <html>
 <guiceae:head>
-
+    <script type="text/javascript" src="/js/feed.js"></script>
 </guiceae:head>
 <body>
-
 <div id="head">
 
     <guiceae:quick-panel/>
@@ -83,7 +82,7 @@
                                     cache:false,
                                     success:function (data) {
                                         setTimeout(function () {
-                                            window.location = "/app/feedback/view/${it.feed}"
+                                            window.location = "/app/feedback/submit/${it.feed}"
                                         }, 1000);
                                     },
                                     error:function (jqXHR, textStatus, errorThrown) {

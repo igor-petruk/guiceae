@@ -45,22 +45,25 @@ public class FeedbackController {
 
     @GET
     @Path("/submit/{feed}")
-    public Viewable page(@PathParam("feed") String feed) {
+    public Viewable page(@PathParam("feed") String feedString,
+                         @QueryParam("offset") @DefaultValue("0") Integer offset) {
+        boolean showPending = userPrincipalHolder.get().contains("cm");
+        FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
+        long count = feedbackRepository.count(feed, !showPending);
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("publicKey", publicKey);
-        model.put("feed", feed);
+        model.put("feed", feedString);
+        model.put("feedbacks", feedbackRepository.getFeed(feed, !showPending, offset));
+        model.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
+        model.put("currentFirst", offset);
 
-        if (feed.equalsIgnoreCase("question")) {
+        if (feed.equals(FeedbackFeedType.QUESTION)) {
             model.put("theme", "Питання та відповіді");
             model.put("proposition", "Залиште своє питання тут");
-            model.put("feedbacks", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0));
-        }
-
-        if (feed.equalsIgnoreCase("comment")) {
+        } else {
             model.put("theme", "Відгуки про нашу роботу");
             model.put("proposition", "Залиште свій відгук тут");
-            model.put("feedbacks", feedbackRepository.getFeed(FeedbackFeedType.COMMENT, true, 0));
         }
         return new Viewable("/feedbacks.jsp", model);
 
@@ -182,7 +185,7 @@ public class FeedbackController {
         feedback.setAnswer(answer);
         feedback.setFeed(feedbackFeedType);
         feedbackRepository.submitQuestion(feedback);
-        return Response.seeOther(new URI("/app/feedback/view/" + feedString.toLowerCase())).build();
+        return Response.seeOther(new URI("/app/feedback/submit/" + feedString.toLowerCase())).build();
     }
 
 }
