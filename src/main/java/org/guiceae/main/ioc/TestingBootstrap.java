@@ -44,19 +44,20 @@ public class TestingBootstrap implements Bootstrap {
 
         userRepository.save(userDetails);
 
+        for (int i = 0; i< 15; i++){
         Article article = new Article();
-        article.setAuthor("test@example.com");
-        article.setCreated(new Date());
-        article.setState(ArticleState.PUBLISHED);
-        article.setFeed("news");
-        article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
-        article.setShortContent("<p><b>Short content</b> version<p>");
-        article.setLastUpdated(new Date());
-        article.setTitle("title");
-        article.setPermalink("super-title");
-        articleRepository.mergeArticle(article);
-        searchRepository.submitToSearch(article);
-
+            article.setAuthor("test@example.com");
+            article.setCreated(new Date());
+            article.setState(ArticleState.PUBLISHED);
+            article.setFeed("news");
+            article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+            article.setShortContent("<p><b>Short content</b> version<p>");
+            article.setLastUpdated(new Date());
+            article.setTitle("title"+i);
+            article.setPermalink("super-title"+i);
+            articleRepository.mergeArticle(article);
+            searchRepository.submitToSearch(article);
+        }
         Feedback feedback = new Feedback();
         feedback.setFeed(FeedbackFeedType.QUESTION);
         feedback.setAnswer("HELLO! YES I KNOW");

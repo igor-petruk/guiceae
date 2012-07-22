@@ -20,6 +20,6 @@
     </c:forEach>
 
 
-    <%--<guiceae:pagesList feed="${feedName}" pagesCount='${pagesCount}' currentFirst='${currentFirst}'/>--%>
+    <guiceae:pagesList feed="${feedName}" pagesCount='${pagesCount}' currentFirst='${currentFirst}'/>
 
 </div>
