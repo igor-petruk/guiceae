@@ -120,6 +120,9 @@ public class ArticleRepository {
             oldArticle.setMainPhotoUrl(article.getMainPhotoUrl());
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
+            if (!oldArticle.getPermalink().equals(article.getPermalink())){
+                searchRepository.deleteFromSearch(oldArticle);
+            }
             oldArticle.setPermalink(article.getPermalink());
             if (ArticleState.PUBLISHED.equals(oldArticle.getState())) {
                 searchRepository.submitToSearch(oldArticle);

@@ -7,6 +7,6 @@
 
 <div class="feedback-short-view">
     <c:forEach var="feedback" items="${feed}">
-        <guiceae:feedback feedName="${feedName}" feedback="${feedback}" simpleDelete="true"/>
+        <guiceae:feedback feedName="${feedName}" feedback="${feedback}"/>
     </c:forEach>
 </div>

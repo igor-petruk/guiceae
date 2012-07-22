@@ -1,10 +1,9 @@
 package org.guiceae.main.ioc;
 
 import com.google.common.collect.ImmutableSet;
-import org.guiceae.main.model.Article;
-import org.guiceae.main.model.ArticleState;
-import org.guiceae.main.model.UserDetails;
+import org.guiceae.main.model.*;
 import org.guiceae.main.repositories.ArticleRepository;
+import org.guiceae.main.repositories.FeedbackRepository;
 import org.guiceae.main.repositories.SearchRepository;
 import org.guiceae.main.repositories.UserRepository;
 import org.guiceae.util.bootstrap.Bootstrap;
@@ -24,14 +23,17 @@ public class TestingBootstrap implements Bootstrap {
     UserRepository userRepository;
     ArticleRepository articleRepository;
     SearchRepository searchRepository;
+    FeedbackRepository feedbackRepository;
 
     @Inject
     public TestingBootstrap(UserRepository userRepository,
                             ArticleRepository articleRepository,
-                            SearchRepository searchRepository) {
+                            SearchRepository searchRepository,
+                            FeedbackRepository feedbackRepository) {
         this.userRepository = userRepository;
         this.articleRepository = articleRepository;
         this.searchRepository = searchRepository;
+        this.feedbackRepository = feedbackRepository;
     }
 
     @Override
@@ -54,6 +56,16 @@ public class TestingBootstrap implements Bootstrap {
         article.setPermalink("super-title");
         articleRepository.mergeArticle(article);
         searchRepository.submitToSearch(article);
+
+        Feedback feedback = new Feedback();
+        feedback.setFeed(FeedbackFeedType.QUESTION);
+        feedback.setAnswer("HELLO! YES I KNOW");
+        feedback.setId(1L);
+        feedback.setAuthor("RoksanaSeletska@kjshdkf");
+        feedback.setCreated(new Date());
+        feedback.setQuestion("Do you know that the sky is blue?");
+        feedback.setState(ArticleState.PUBLISHED);
+        feedbackRepository.submitQuestion(feedback);
 //
 //        article = new Article();
 //        article.setAuthor("test@example.com");

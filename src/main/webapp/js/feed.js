@@ -97,7 +97,7 @@ function registerSimpleFeedbackDelete(id, feed){
                         type: "NEXISTS"
                     }
                 },function(){
-                    window.location="/app/feedback/view/"+feed;
+                    location.reload();
                 });
             }
         });

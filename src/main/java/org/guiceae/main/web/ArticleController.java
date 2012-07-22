@@ -97,6 +97,9 @@ public class ArticleController {
         article.setContent(content);
         article.setFeed(feed);
         article.setTitle(title);
+        if (articleRepository.permalinkExists(permalink)){
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
         article.setPermalink(permalink);
         article.setMainPhotoUrl(mainPhotoUrl);
         article.setContent(processContent(content));
