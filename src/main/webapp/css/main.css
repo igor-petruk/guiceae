@@ -668,6 +668,37 @@ h3 span {
     border-radius: 5%;
 }
 
+.view-center-place a {
+    color: #7cbff3;
+    margin-left: 20px;
+    padding-bottom: 20px;
+}
+
+.view-center-place {
+    padding: 20px 20px 20px 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    background: #fbfbfb;
+    min-height: 600px;
+    width: 90%;
+    float: left;
+    border-radius: 5%;
+}
+
+.view-center-place span {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #4d4d4d;
+    opacity: 0.5;
+    font-size: 16px;
+    font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
+}
+
+.view-center-place .results {
+    width: 90%;
+    margin-left: 10%;
+}
+
 .left-place {
     text-align: center;
     background: #f6f9fb url("/css/images/main/pat.png") repeat;
@@ -701,7 +732,7 @@ h3 span {
 
 .feed-name.active a,
 .feed-name:hover a {
-    color: #2277DD;
+    color: #7cbff3;
 }
 
 .feed-name:hover {

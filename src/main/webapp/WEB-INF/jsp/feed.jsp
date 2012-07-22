@@ -58,11 +58,5 @@
 </div>
 
 <guiceae:footer/>
-
-<%--OLDY--%>
-
-<%--<p>--%>
-<%--<guiceae:smallFeed feedName="news" feed="${it.feed}"/>--%>
-<%--</p>--%>
 </body>
 </html>

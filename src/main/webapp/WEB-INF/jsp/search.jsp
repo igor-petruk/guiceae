@@ -6,20 +6,40 @@
     <script type="text/javascript" src="/js/feed.js"></script>
 </guiceae:head>
 <body>
-<guiceae:menu/>
 
-<div>
-    <form action="/app/search" method="get">
-        <input name="query" value="${it.query}"/>
-        <input type="submit" value="Пошук"/>
-    </form>
+
+<div id="head">
+    <guiceae:quick-panel query="${it.query}"/>
 </div>
 
-<div>
-    <c:forEach var="result" items="${it.results}">
-        <guiceae:article shortView="true" article="${result}" simpleDelete="true"/>
-        ${result.shortContent}
-    </c:forEach>
+<div id="personal-not-main">
+    <div class="name">Персональний сайт Івана Куровського</div>
+    <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
+    <div class="sub-label">Пошук</div>
 </div>
+
+<guiceae:new-menu/>
+
+
+<div id="content">
+    <div id="content_cen">
+        <div id="content_sup">
+
+            <div class="view-center-place">
+                <span>Результати пошуку за запитом "${it.query}" ↓</span>
+
+                <div class="results">
+                    <c:forEach var="result" items="${it.results}">
+                        <guiceae:article shortView="true" article="${result}" simpleDelete="true"/>
+                        ${result.shortContent}
+                    </c:forEach>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<guiceae:footer/>
 </body>
 </html>

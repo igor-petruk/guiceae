@@ -46,13 +46,13 @@
 
         <div id="galleria-main" style="z-index:1">
             <a href="/css/images/main/kurovskiy/banner1.png">
-                <img data-title="Locomotives Roundhouse"
-                     data-description="Steam locomotives of the Chicago &amp; North Western Railway."
+                <img data-title=""
+                     data-description=""
                      src="/css/images/main/kurovskiy/banner1.png">
             </a>
             <a href="/css/images/main/kurovskiy/field.png">
-                <img data-title="Icebergs in the High Arctic"
-                     data-description="”The debris loading isn't particularly extensive, but the color is usual.”"
+                <img data-title=""
+                     data-description=""
                      src="/css/images/main/kurovskiy/field.png">
             </a>
         </div>
