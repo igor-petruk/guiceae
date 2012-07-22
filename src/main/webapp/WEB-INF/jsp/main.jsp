@@ -58,8 +58,11 @@
         </div>
 
         <div id="personal">
+            <img src="/css/images/system/personal.png"/>
+
             <div class="name">Іван Куровський</div>
             <div class="sub-label">Персональний сайт</div>
+            <div class="separator"></div>
         </div>
 
 
