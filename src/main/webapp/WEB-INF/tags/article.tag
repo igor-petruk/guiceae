@@ -50,36 +50,39 @@
         <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
     </div>
 
+
     <c:choose>
-        <c:when test="${article.mainPhotoUrl!=null}">
-
-            <div class="short-content _70">
-
-                <span class="mainPhoto">
-                    <img src="${article.mainPhotoUrl}=s100"/>
-                </span>
+        <c:when test="${shortView}">
+            <div class="short-content _100">
+                <c:if test="${article.mainPhotoUrl!=null}">
+                    <img class="mainPhoto" src="${article.mainPhotoUrl}=s100"/>
+                </c:if>
                     ${article.shortContent}
-
             </div>
-
-            <div class="more-div">
-                <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
-            </div>
-
         </c:when>
         <c:otherwise>
             <div class="short-content _100">
+                <c:if test="${article.mainPhotoUrl!=null}">
+                    <img class="mainPhoto" src="${article.mainPhotoUrl}=s400"/>
+                </c:if>
                     ${article.shortContent}
             </div>
         </c:otherwise>
     </c:choose>
+    <c:choose>
+        <c:when test="${shortView}">
+            <div class="more-div">
+                <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
+            </div>
+            <div class="separator"></div>
+        </c:when>
+        <c:otherwise>
+            <div class="long-content">
+                    ${article.content}
+            </div>
+        </c:otherwise>
+    </c:choose>
 
-    <c:if test="${!shortView}">
-        <div class="long-content">
-                ${article.content}
-        </div>
-    </c:if>
 
-    <div class="separator"></div>
 </div>
 

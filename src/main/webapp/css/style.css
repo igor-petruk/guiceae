@@ -93,6 +93,7 @@ a.rss img {
 .article div.more-div {
     float: right;
     margin: 10px 25px 5px 0;
+    width: 100%;
 }
 
 .feed-full-view
@@ -143,7 +144,12 @@ a.rss img {
     color: #5c5c5c;
     position: relative;
     width: 95%;
-    float: left
+    float: left;
+}
+
+.article div.short-content._100 img.mainPhoto {
+    float: left;
+    margin: 10px;
 }
 
 .feed-full-view {

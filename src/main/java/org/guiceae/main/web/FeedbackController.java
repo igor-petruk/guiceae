@@ -61,9 +61,11 @@ public class FeedbackController {
         if (feed.equals(FeedbackFeedType.QUESTION)) {
             model.put("theme", "Питання та відповіді");
             model.put("proposition", "Залиште своє питання тут");
+            model.put("proposition_area", "Ваше питання");
         } else {
             model.put("theme", "Відгуки про нашу роботу");
             model.put("proposition", "Залиште свій відгук тут");
+            model.put("proposition_area", "Ваш відгук");
         }
         return new Viewable("/feedbacks.jsp", model);
 

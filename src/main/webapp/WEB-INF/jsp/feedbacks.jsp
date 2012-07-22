@@ -19,7 +19,7 @@
 <div id="personal-not-main">
     <div class="name">Персональний сайт Івана Куровського</div>
     <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-    <div class="sub-label">it.pagetitle</div>
+    <div class="sub-label">${it.theme}</div>
 </div>
 
 <guiceae:new-menu/>
@@ -34,7 +34,7 @@
                     <label for="author">Ваше ім'я: </label>
                     <input name="author" id="author" type="text"/>
 
-                    <label for="question">Ваше питання: </label>
+                    <label for="question">${it.proposition_area}</label>
                     <textarea rows="10" cols="54" id="question" name="question" max-length="1000"></textarea>
 
                     <div class="captcha-error" style="display: none;">

@@ -23,7 +23,7 @@
 <div id="personal-not-main">
     <div class="name">Персональний сайт Івана Куровського</div>
     <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-    <div class="sub-label">it.pagetitle</div>
+    <div class="sub-label">${it.feedName}</div>
 </div>
 
 <guiceae:new-menu/>
