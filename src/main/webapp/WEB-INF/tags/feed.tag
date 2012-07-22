@@ -16,7 +16,7 @@
                                                          alt="Підписатися на оновлення"></a>
 
     <c:forEach var="article" items="${feed}">
-        <guiceae:article shortView="true" article="${article}" simpleDelete="true"/>
+        <guiceae:article shortView="true" article="${article}" simpleDelete="true" social="true"/>
     </c:forEach>
 
 

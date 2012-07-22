@@ -21,6 +21,16 @@
     </tag-file>
 
     <tag-file>
+        <name>twitter</name>
+        <path>/WEB-INF/tags/twitter.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>vkontakte</name>
+        <path>/WEB-INF/tags/vkontakte.tag</path>
+    </tag-file>
+
+    <tag-file>
         <name>menu</name>
         <path>/WEB-INF/tags/menu.tag</path>
     </tag-file>

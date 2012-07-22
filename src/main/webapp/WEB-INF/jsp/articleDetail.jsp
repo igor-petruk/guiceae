@@ -11,7 +11,7 @@
         <div>
             <a href="/app/feed/${it.feed}">Назад до стрічки</a>
 
-            <guiceae:article shortView="false" simpleDelete="true" article="${it}"/>
+            <guiceae:article shortView="false" simpleDelete="true" article="${it}" social="true"/>
         </div>
     </body>
 </html>
