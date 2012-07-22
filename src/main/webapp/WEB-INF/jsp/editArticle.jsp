@@ -27,7 +27,7 @@
                         permalink: {
                             required: true,
                             minlength: 2,
-                            remote: "/app/article/validatePermalink/<c:out value='${it.permalink}'/>"
+                            remote: "/app/article/validatePermalink/${it.id}/<c:out value='${it.permalink}'/>"
                         }
                     },
                     messages: {

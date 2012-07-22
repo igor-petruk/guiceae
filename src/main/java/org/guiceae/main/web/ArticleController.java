@@ -42,10 +42,12 @@ public class ArticleController {
     }
 
     @GET
-    @Path("/validatePermalink/{current}")
+    @Path("/validatePermalink/{id}/{current}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String validatePermalink(@PathParam("current") String current,@QueryParam("permalink") String permalink){
-        if (current.equals(permalink)){
+    public String validatePermalink(@PathParam("current") String current,
+                                    @PathParam("id") Long id,
+                                    @QueryParam("permalink") String permalink){
+        if (id!=0 && current.equals(permalink)){
             return "true";
         }else{
             return String.valueOf(!articleRepository.permalinkExists(permalink));
