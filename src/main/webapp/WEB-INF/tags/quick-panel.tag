@@ -1,4 +1,5 @@
 <%@ tag pageEncoding="UTF-8" %>
+<%@ attribute name="query" type="java.lang.String" %>
 
 <p class="search">
 
@@ -6,8 +7,8 @@
     <span>Пошук</span>
 
     <form action="/app/search" method="get" style="display: inline;">
-        <input name="query" type="text" class="txt" value="${it.query}"/>
-        <input type="submit" class="btn" value="Знайти"/>
+        <input name="query" type="text" class="txt" value="${query}" id="query"/>
+        <input type="submit" class="btn" value="Знайти" id="submit-query"/>
     </form>
 </div>
 

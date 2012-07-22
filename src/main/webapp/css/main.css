@@ -30,6 +30,7 @@ img {
     min-width: 1000px;
     width: 100%;
     float: left;
+    padding-bottom: 20px;
     background: url(/css/images/main/headBg.png) repeat-x
 }
 
@@ -58,7 +59,7 @@ img {
 
 #head div.inputs span {
     width: auto;
-    margin: 2px 15px 20px 0;
+    margin: 2px 15px 10px 0;
     float: left;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -70,7 +71,7 @@ img {
 }
 
 #head div.inputs {
-    padding: 9px 10px 10px 10px;
+    padding: 9px 10px 0px 10px;
     width: auto;
     float: right;
 }
@@ -264,9 +265,9 @@ h1.logo a {
 
 #welcom_pan {
     position: static;
-    margin: 45px 0 0 735px;
+    margin: 95px 0 0 735px;
     padding: 55px 20px 0px 20px;
-    height: 280px;
+    height: 235px;
 }
 
 h2 {
@@ -620,7 +621,7 @@ h3 span {
 }
 
 .view {
-    height: 370px;
+    min-height: 260px;
     min-width: 960px;
     width: 100%;
 }
@@ -632,7 +633,7 @@ h3 span {
     top: 31px;
     left: 0px;
     padding: 0 10px 10px 0px;
-    margin: 41px -200px -300px 30px;
+    margin: 34px -200px 0 30px;
 }
 
 #galleria-main {
@@ -667,9 +668,40 @@ h3 span {
     border-radius: 5%;
 }
 
+.view-center-place a {
+    color: #7cbff3;
+    margin-left: 20px;
+    padding-bottom: 20px;
+}
+
+.view-center-place {
+    padding: 20px 20px 20px 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    background: #fbfbfb;
+    min-height: 600px;
+    width: 90%;
+    float: left;
+    border-radius: 5%;
+}
+
+.view-center-place span {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #4d4d4d;
+    opacity: 0.5;
+    font-size: 16px;
+    font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
+}
+
+.view-center-place .results {
+    width: 90%;
+    margin-left: 10%;
+}
+
 .left-place {
     text-align: center;
-    background: #e2e6ff url("/css/images/main/pat.png") repeat;
+    background: #f6f9fb url("/css/images/main/pat.png") repeat;
     margin: 10px 10px 10px 10px;
     min-height: 600px;
     width: 270px;
@@ -677,7 +709,7 @@ h3 span {
 }
 
 .feed-name a {
-    color: #8d8d8d;
+    color: #7cbff3;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 14px;
     word-spacing: 2px;
@@ -691,7 +723,7 @@ h3 span {
 }
 
 .feed-name.active {
-    border-left: 10px solid #2277DD;
+    border-left: 10px solid #7cbff3;
     background-color: #dedede;
     opacity: 0.9;
     padding-left: -10px;
@@ -700,11 +732,11 @@ h3 span {
 
 .feed-name.active a,
 .feed-name:hover a {
-    color: #2277DD;
+    color: #7cbff3;
 }
 
 .feed-name:hover {
-    border-left: 10px solid #2277DD;
+    border-left: 10px solid #7cbff3;
     cursor: pointer;
     opacity: 0.6;
     background-color: #dedede;
@@ -773,15 +805,15 @@ h3 span {
 
 #personal {
     position: absolute;
-    top: 45px;
+    top: 42px;
     right: 0;
     width: 100%;
     max-width: 472px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 #personal div.name {
-    background-color: #fefefe;
+    margin-top: -65px;
     padding: 10px 10px 10px 10px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 26px;
@@ -794,7 +826,43 @@ h3 span {
     float: right;
     font-size: 14px;
     right: 0;
-    margin: -30px 20px 0 0;
+    margin: -20px 90px 0 0;
+}
+
+#personal div.separator {
+    border-bottom: 1px solid #444444;
+    opacity: 0.5;
+    margin-top: 10px;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 10px;
+}
+
+#personal-not-main {
+    background-color: #f6f9fb;
+    float: left;
+    width: 100%;
+}
+
+#personal-not-main div.name {
+    float: right;
+    padding: 10px;
+    color: #767676;
+    font-size: 25px;
+    font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
+}
+
+#personal-not-main div.sub-label {
+    float: left;
+    margin: 10px 0 0 -20%;
+    color: #4d4d4d;
+    opacity: 0.5;
+    font-size: 20px;
+    word-spacing: 1.5px;
+}
+
+#personal-not-main .background {
+    float: left;
 }
 
 #biography {
