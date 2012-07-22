@@ -27,7 +27,7 @@
     </div>
 
     <c:choose>
-        <c:when test="${article.mainPhotoUrl}">
+        <c:when test="${article.mainPhotoUrl!=null}">
             <span class="mainPhoto">
             <img src="${article.mainPhotoUrl}=s200"/>
             </span>
