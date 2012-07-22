@@ -14,9 +14,19 @@
     </div>
 
     <div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en"
-           data-text="${article.title}"
-           data-url="<guiceae:siteName/>app/article/detail/${article.permalink}">Tweet</a>
+        <c:url value="https://twitter.com/share" var="twitterUrl">
+            <c:param name="text" value="${article.title}"/>
+            <c:param name="url" value="http://${siteUrl}app/article/detail/${article.permalink}"/>
+        </c:url>
+        <a href="${twitterUrl}" class="twitter-share-button" target="_blank"><img src="/css/images/tweet.png"/></a>
+        <script type="text/javascript">
+                document.write(VK.Share.button({
+                            url: "<guiceae:siteName/>app/article/detail/${article.permalink}",
+                            title:"${article.title}",
+                            image:"${article.mainPhotoUrl}=s100",
+                            noparse: true},
+                        {type: "custom", text: "<img src='/css/images/vk.png'/>"}));
+        </script>
     </div>
 
     <%--<div class="author">--%>

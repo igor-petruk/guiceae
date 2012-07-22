@@ -10,6 +10,7 @@
     <script type='text/javascript' src='/js/entityPoller.js'></script>
     <link href="/css/main.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="http://vk.com/js/api/share.js?11" charset="windows-1251"></script>
 
     <script type="text/javascript">
         function twitter(){
@@ -21,7 +22,6 @@
         }
 
         $(function () {
-            twitter();
             $("div.menu div").each(function () {
                 $(this).find("a").before($("#pic").html());
                 $(this).children("div").animate({top:-25}, 100);

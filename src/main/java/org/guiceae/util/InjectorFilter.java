@@ -11,7 +11,9 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * User: Igor Petruk
@@ -49,6 +51,8 @@ public class InjectorFilter implements Filter {
             runBootstrap();
         }
         request.setAttribute("injector", injector);
+        String siteUrl = new URL(((HttpServletRequest)request).getRequestURL().toString()).getAuthority();
+        request.setAttribute("siteUrl",siteUrl);
         chain.doFilter(request, response);
     }
 

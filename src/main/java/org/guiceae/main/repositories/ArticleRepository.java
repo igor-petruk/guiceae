@@ -106,6 +106,7 @@ public class ArticleRepository {
             oldArticle.setLastUpdated(new Date());
             oldArticle.setContent(article.getContent());
             oldArticle.setShortContent(article.getShortContent());
+            oldArticle.setMainPhotoUrl(article.getMainPhotoUrl());
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
             oldArticle.setPermalink(article.getPermalink());
