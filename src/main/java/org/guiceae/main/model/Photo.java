@@ -1,5 +1,7 @@
 package org.guiceae.main.model;
 
+import org.guiceae.util.Pollable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * Date: 6/26/12
  */
 @Entity
+@Pollable
 public class Photo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

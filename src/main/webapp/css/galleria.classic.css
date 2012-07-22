@@ -246,3 +246,13 @@
     background-image: url(images/classic-map.png);
     background-repeat: no-repeat;
 }
+
+div#galleria-browse .galleria-thumb-nav-left,
+div#galleria-browse .galleria-thumb-nav-right,
+div#galleria-browse .galleria-info-link,
+div#galleria-browse .galleria-info-close,
+div#galleria-browse .galleria-image-nav-left,
+div#galleria-browse .galleria-image-nav-right {
+    background-image: url(images/classic-map-black.png);
+    background-repeat: no-repeat;
+}

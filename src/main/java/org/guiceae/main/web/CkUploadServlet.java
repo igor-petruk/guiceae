@@ -9,6 +9,7 @@ import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.guiceae.main.model.Album;
 import org.guiceae.main.model.Photo;
 import org.guiceae.main.repositories.AlbumRepository;
@@ -25,6 +26,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+class PhotoInfo{
+    Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+}
+
 @Singleton
 public class CkUploadServlet  extends HttpServlet {
     @Inject
@@ -37,9 +50,10 @@ public class CkUploadServlet  extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
-        List<BlobKey> blobKeys = blobs.get("photos");
+        List<BlobKey> blobKeys = blobs.get("qqfile");
         Preconditions.checkArgument(blobKeys.size()==1);
-        
+        resp.setContentType("text/html");
+
         ImagesService imagesService = ImagesServiceFactory.getImagesService();
         if (blobKeys != null) {
 
@@ -47,16 +61,12 @@ public class CkUploadServlet  extends HttpServlet {
             Photo photo = new Photo(imagesService.getServingUrl(ServingUrlOptions.Builder.withBlobKey(key)),
                     key.getKeyString()); 
             photo = photoRepository.persistPhoto(ImmutableList.of(photo)).get(0);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            resp.sendRedirect("/app/album/browse/0"
-                    +"?mode="+req.getParameter("mode")
-                    +"&CKEditorFuncNum="+req.getParameter("CKEditorFuncNum"));
+            ObjectMapper objectMapper = new ObjectMapper();
+            PhotoInfo photoInfo = new PhotoInfo();
+            photoInfo.setId(photo.getId());
+            objectMapper.writeValue(resp.getOutputStream(), photoInfo);
         } else {
-            resp.sendRedirect("/app/index");
+            resp.setStatus(500);
         }
     }
 
