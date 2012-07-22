@@ -4,15 +4,15 @@
 <html>
 <guiceae:head>
     <guiceae:photo-scripts/>
-    <link rel="stylesheet" href="/css/fileuploader.css"/>
-    <script src="/js/fileuploader.js"></script>
+  <!--  <link rel="stylesheet" href="/css/fileuploader.css"/>
+    <script src="/js/fileuploader.js"></script>-->
 
     <link rel="stylesheet" href="/css/galleria.classic.css"/>
     <script src="/js/galleria.classic.min.js"></script>
 
     <script type="text/javascript">
         $(function () {
-            var uploader = new qq.FileUploader({
+ /*           var uploader = new qq.FileUploader({
                 // pass the dom node (ex. $(selector)[0] for jQuery users)
                 element: document.getElementById('file-uploader'),
                 // path to server-side upload script
@@ -28,7 +28,7 @@
                         location.reload();
                     });
                 }
-            });
+            });                    */
 
             Galleria.loadTheme('/js/galleria.classic.min.js');
             Galleria.configure({
@@ -60,12 +60,13 @@
     </script>
 </guiceae:head>
     <body>
-        <div id="file-uploader">
-            <noscript>
-                <p>Please enable JavaScript to use file uploader.</p>
-            </noscript>
-        </div>
-            <c:choose>
+    <form action="${it.uploadUrl}" method="post" enctype="multipart/form-data">
+        <input name="CKEditorFuncNum" value="${it.funcNum}" type="hidden"/>
+        <input name="mode" value="${it.mode}" type="hidden"/>
+        <input type="file" name="photos"/>
+        <input type="submit" value="Upload"/>
+    </form>
+           <c:choose>
                 <c:when test="${empty it.photos}">
                     <h1>Не завантажено жодної фотографії</h1>
                 </c:when>
