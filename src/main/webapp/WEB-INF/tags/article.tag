@@ -13,28 +13,57 @@
         <a href="/app/article/detail/${article.permalink}">${article.title}</a>
     </div>
 
-    <c:if test="${social}">
-        <guiceae:twitter article="${article}"/>
-        <guiceae:vkontakte article="${article}"/>
-    </c:if>
 
-    <%--<div class="author">--%>
-    <%--${article.author}--%>
-    <%--</div>--%>
+    <guiceae:rolesOnly roles="cm">
+        <div class="admin">
+            <a href="/app/article/edit/${article.id}">Редагувати</a>
+            <a href="#" id="delete${article.id}">Видалити</a>
+            <c:if test="${article.state=='PENDING'}">
+                Стаття <b>не опублікована</b>
+                <a href="#" id="publish${article.id}">Опублікувати</a>
+                <script type="text/javascript">
+                    $(function () {
+                        registerPublish("${article.id}");
+                    });
+                </script>
+            </c:if>
+            <script type="text/javascript">
+                $(function () {
+                    <c:choose>
+                    <c:when test="${simpleDelete}">
+                    registerSimpleDelete("${article.id}", "${article.feed}");
+                    </c:when>
+                    <c:otherwise>
+                    registerDelete("${article.id}");
+                    </c:otherwise>
+                    </c:choose>
+                });
+            </script>
+        </div>
+    </guiceae:rolesOnly>
 
     <div class="createdDate">
-        <fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate>
+        <c:if test="${social}">
+            <guiceae:twitter article="${article}"/>
+            <guiceae:vkontakte article="${article}"/>
+        </c:if>
+        <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
     </div>
 
     <c:choose>
         <c:when test="${article.mainPhotoUrl!=null}">
             <span class="mainPhoto">
-            <img src="${article.mainPhotoUrl}=s200"/>
+            <img src="${article.mainPhotoUrl}=s100"/>
             </span>
 
             <div class="short-content _70">
                     ${article.shortContent}
             </div>
+
+            <div class="more-div">
+                <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
+            </div>
+
         </c:when>
         <c:otherwise>
             <div class="short-content _100">
@@ -42,11 +71,6 @@
             </div>
         </c:otherwise>
     </c:choose>
-
-
-    <div class="more-div">
-        <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
-    </div>
 
     <c:if test="${!shortView}">
         <div class="long-content">
@@ -56,48 +80,3 @@
     <div class="separator"></div>
 </div>
 
-<guiceae:rolesOnly roles="cm">
-    <div>
-        <a href="/app/article/edit/${article.id}">Редагувати</a>
-        <a href="#" id="delete${article.id}">Видалити</a>
-        <script type="text/javascript">
-            $(function () {
-                <c:choose>
-                <c:when test="${simpleDelete}">
-                registerSimpleDelete("${article.id}", "${article.feed}");
-                </c:when>
-                <c:otherwise>
-                registerDelete("${article.id}");
-                </c:otherwise>
-                </c:choose>
-            });
-        </script>
-        <c:if test="${article.state=='PENDING'}">
-            Стаття <b>не опублікована</b>
-            <a href="#" id="publish${article.id}">Опублікувати</a>
-            <script type="text/javascript">
-                $(function () {
-                    registerPublish("${article.id}");
-                });
-            </script>
-        </c:if>
-
-        <!-- <button id="edit${article.id}">Edit</button>
-
-<script type="text/javascript">
-$("#edit${article.id}").button().click(function(){
-var content = $("#article${article.id}");
-var contentHtml = content.html();
-content.html("");
-var ta = $("<textarea/>").attr("id","textarea${article.id}").text(contentHtml);
-ta.appendTo(content);
-CKEDITOR.replace( 'textarea${article.id}',
-{
-toolbar : 'Basic',
-uiColor : '#9AB8F3'
-});
-$("#edit${article.id}").hide();
-})
-</script> -->
-    </div>
-</guiceae:rolesOnly>

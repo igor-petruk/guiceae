@@ -95,10 +95,10 @@
                     <span class="head">
                         <a href="/app/feed/charity">Благодійність</a>
                     </span>
-                    <span>
-                        <a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"
-                                                                         alt="Підписатися на оновлення"></a>
-                    </span>
+                    <%--<span>--%>
+                    <%--<a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"--%>
+                    <%--alt="Підписатися на оновлення"></a>--%>
+                    <%--</span>--%>
                     <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>
                 </div>
 
@@ -108,11 +108,11 @@
                     <span class="head">
                        <a href="/app/feedback/view/question">Громадська приймальня</a>
                     </span>
-                    <span>
-                        <a class="rss" href="/app/feed/news/rss">
-                            <img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>
-                        </a>
-                    </span>
+                    <%--<span>--%>
+                    <%--<a class="rss" href="/app/feed/news/rss">--%>
+                    <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
+                    <%--</a>--%>
+                    <%--</span>--%>
                 </div>
 
                 <div class="gutter"></div>
@@ -121,10 +121,10 @@
                     <span class="head">
                         <a href="/app/feed/news">Новини</a>
                     </span>
-                    <span>
-                        <a class="rss" href="/app/feed/news/rss"><img src="/css/images/system/rss.png"
-                                                                      alt="Підписатися на оновлення"></a>
-                    </span>
+                    <%--<span>--%>
+                    <%--<a class="rss" href="/app/feed/news/rss"><img src="/css/images/system/rss.png"--%>
+                    <%--alt="Підписатися на оновлення"></a>--%>
+                    <%--</span>--%>
                     <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
                 </div>
                 <div class="gutter-outer"></div>
