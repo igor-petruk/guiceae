@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <%--
   User: boui
   Date: 6/28/12
@@ -79,8 +80,7 @@
     </guiceae:head>
 <body>
 
-<guiceae:admin-menu></guiceae:admin-menu>
-<guiceae:menu></guiceae:menu>
+<guiceae:admin-menu/>
 
 <table>
     <tr>

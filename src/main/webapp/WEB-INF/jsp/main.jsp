@@ -106,7 +106,7 @@
 
                 <div class="column">
                     <span class="head">
-                       <a href="/app/feedback/view/question">Громадська приймальня</a>
+                       <a href="/app/feedback/submit/question">Громадська приймальня</a>
                     </span>
                     <%--<span>--%>
                     <%--<a class="rss" href="/app/feed/news/rss">--%>

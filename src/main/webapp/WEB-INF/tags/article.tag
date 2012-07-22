@@ -52,12 +52,14 @@
 
     <c:choose>
         <c:when test="${article.mainPhotoUrl!=null}">
-            <span class="mainPhoto">
-            <img src="${article.mainPhotoUrl}=s100"/>
-            </span>
 
             <div class="short-content _70">
+
+                <span class="mainPhoto">
+                    <img src="${article.mainPhotoUrl}=s100"/>
+                </span>
                     ${article.shortContent}
+
             </div>
 
             <div class="more-div">
@@ -77,6 +79,7 @@
                 ${article.content}
         </div>
     </c:if>
+
     <div class="separator"></div>
 </div>
 

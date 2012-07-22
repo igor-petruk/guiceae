@@ -78,7 +78,7 @@
 <div id="personal-not-main">
     <div class="name">Персональний сайт Івана Куровського</div>
     <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-    <div class="sub-label">it.pagetitle</div>
+    <div class="sub-label">Галерея</div>
 </div>
 
 
@@ -105,8 +105,12 @@
             </div>
 
             <div class="view-right-place">
+                <guiceae:rolesOnly roles="cm">
+                    <a href="/app/photo/admin">Додати альбом чи фото</a>
+                </guiceae:rolesOnly>
                 <div id="galleria" style="z-index:1">
                 </div>
+
             </div>
 
         </div>

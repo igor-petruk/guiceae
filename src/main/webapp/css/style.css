@@ -15,10 +15,8 @@ a.rss img {
 }
 
 .column {
-    background-color: #fdfdfd;
     float: left;
     width: 380px;
-    opacity: 0.2;
 }
 
 .column .head {
@@ -26,7 +24,7 @@ a.rss img {
     width: 70%;
     margin: 10px 0 0 10px;
     float: left;
-    opacity: 0.5;
+    opacity: 0.9;
     padding: 10px 10px 10px 10px;
 }
 
@@ -232,6 +230,14 @@ a.rss img {
     padding: 10px 10px 10px 10px;
 }
 
+.feedback .admin {
+    float: left;
+    margin: 2px;
+    background-color: #ffffff;
+    color: #31a1ff;
+    font-size: 14px;
+}
+
 .feedback-short-view {
     width: 100%;
     min-height: 600px;
@@ -274,4 +280,17 @@ a.rss img {
     float: left;
     width: 80%;
     border-bottom: 1px solid #818181;
+}
+
+.feed-full-view div.paging {
+    float: left;
+    position: relative;
+    margin: 10px 0 10px 40%;
+}
+
+.feed-full-view div.paging a {
+    background-color: #ffffff;
+    opacity: 0.9;
+    color: #31a1ff;
+    padding: 3px 3px 3px 3px;
 }

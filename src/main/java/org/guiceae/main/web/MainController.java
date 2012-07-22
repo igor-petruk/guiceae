@@ -5,7 +5,6 @@ import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.repositories.ArticleRepository;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import java.util.HashMap;
@@ -23,12 +22,5 @@ public class MainController {
         it.put("newsFeed", articleRepository.getFeed("news", true, 0));
         it.put("charityFeed", articleRepository.getFeed("charity", true, 0));
         return new Viewable("/main.jsp", it);
-    }
-
-    @GET
-    @Path("/admin")
-    @RolesAllowed("cm")
-    public Viewable getAdminMain() {
-        return new Viewable("/adminPage.jsp");
     }
 }

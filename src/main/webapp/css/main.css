@@ -79,10 +79,11 @@ img {
 #head div.inputs input.txt {
     width: 135px;
     height: 21px;
-    margin-left: 3px;
+    margin: 0 10px 0 10px;
+    padding: 0 0 0 10px;
     float: left;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     color: #818181;
     border: 0;
     background: url(/css/images/main/searchbg.png) no-repeat
@@ -95,9 +96,11 @@ img {
     border: 0;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 12px;
-    color: #818181;
+    color: #ffffff;
     text-align: center;
+    text-transform: uppercase;
     cursor: pointer;
+    font-weight: bolder;
     background: url(/css/images/main/searchbtn.png) no-repeat
 }
 
@@ -746,7 +749,6 @@ h3 span {
 #add-article {
     float: right;
     display: inline;
-    background-image: url("/css/images/main/searchbtn.png");
 }
 
 .album-view {
@@ -842,6 +844,7 @@ h3 span {
     background-color: #f6f9fb;
     float: left;
     width: 100%;
+    border-bottom: 1px solid #7CBFF3;
 }
 
 #personal-not-main div.name {
@@ -863,6 +866,7 @@ h3 span {
 
 #personal-not-main .background {
     float: left;
+    margin: 0 0 -5px 0;
 }
 
 #biography {

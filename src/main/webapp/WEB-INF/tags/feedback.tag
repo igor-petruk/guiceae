@@ -12,6 +12,28 @@
         ${feedback.question}
     </div>
 
+    <guiceae:rolesOnly roles="cm">
+        <div class="admin">
+            <a href="/app/feedback/edit/${feedback.id}">Редагувати</a>
+            <a href="#" id="delete${feedback.id}">Видалити</a>
+            <script type="text/javascript">
+                $(function () {
+                    registerSimpleFeedbackDelete("${feedback.id}", "${feedback.feed}");
+                });
+            </script>
+            <c:if test="${feedback.state=='PENDING'}">
+                Стаття <b>не опублікована</b>
+                <a href="#" id="publish${feedback.id}">Опублікувати</a>
+                <script type="text/javascript">
+                    $(function () {
+                        registerPublishQuestion("${feedback.id}");
+                    });
+                </script>
+            </c:if>
+
+        </div>
+    </guiceae:rolesOnly>
+
     <div class="author">
         ${feedback.author}
     </div>
@@ -28,24 +50,3 @@
 </div>
 
 
-<guiceae:rolesOnly roles="cm">
-    <div class="admin-feedback">
-        <a href="/app/feedback/edit/${feedback.id}">Редагувати</a>
-        <a href="#" id="delete${feedback.id}">Видалити</a>
-        <script type="text/javascript">
-            $(function () {
-                registerSimpleFeedbackDelete("${feedback.id}", "${feedback.feed}");
-            });
-        </script>
-        <c:if test="${feedback.state=='PENDING'}">
-            Стаття <b>не опублікована</b>
-            <a href="#" id="publish${feedback.id}">Опублікувати</a>
-            <script type="text/javascript">
-                $(function () {
-                    registerPublishQuestion("${feedback.id}");
-                });
-            </script>
-        </c:if>
-
-    </div>
-</guiceae:rolesOnly>
