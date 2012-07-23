@@ -35,6 +35,9 @@ public class Article {
     Text content = new Text("");
 
     @Lob
+    Text editableContent = new Text("");
+
+    @Lob
     Text shortContent = new Text("");
 
     public Long getId() {
@@ -99,6 +102,14 @@ public class Article {
 
     public void setContent(String content) {
         this.content = new Text(content);
+    }
+
+    public String getEditableContent() {
+        return editableContent.getValue();
+    }
+
+    public void setEditableContent(String editableContent) {
+        this.editableContent = new Text(editableContent);
     }
 
     public ArticleState getState() {

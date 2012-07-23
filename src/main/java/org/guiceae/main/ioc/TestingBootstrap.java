@@ -51,6 +51,7 @@ public class TestingBootstrap implements Bootstrap {
             article.setState(ArticleState.PUBLISHED);
             article.setFeed("news");
             article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+            article.setEditableContent("<h3> something </h3> <p><b> hey </b> you</p>");
             article.setShortContent("<p><b>Short content</b> version<p>");
             article.setLastUpdated(new Date());
             article.setTitle("title"+i);

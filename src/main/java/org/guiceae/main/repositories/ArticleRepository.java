@@ -115,6 +115,7 @@ public class ArticleRepository {
             Objectify ofy = this.ofy.get();
             Article oldArticle = ofy.get(Article.class, article.getId());
             oldArticle.setLastUpdated(new Date());
+            oldArticle.setEditableContent(article.getEditableContent());
             oldArticle.setContent(article.getContent());
             oldArticle.setShortContent(article.getShortContent());
             oldArticle.setMainPhotoUrl(article.getMainPhotoUrl());

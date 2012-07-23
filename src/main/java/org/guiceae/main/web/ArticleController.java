@@ -2,12 +2,15 @@ package org.guiceae.main.web;
 
 import com.google.appengine.api.users.UserServiceFactory;
 import com.sun.jersey.api.view.Viewable;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.guiceae.main.model.Article;
 import org.guiceae.main.repositories.ArticleRepository;
-import org.guiceae.util.UserPrincipalHolder;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.parser.Tag;
 import org.jsoup.safety.Whitelist;
 
 import javax.annotation.security.RolesAllowed;
@@ -15,9 +18,13 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -64,7 +71,7 @@ public class ArticleController {
         Article article = new Article();
         article.setFeed(feed);
         article.setId(0L);
-        article.setContent("Зміст");
+        article.setEditableContent("Зміст");
         article.setShortContent("Короткий зміст");
         article.setTitle("Заголовок статті");
         article.setPermalink("zagolovok-statti");
@@ -95,11 +102,10 @@ public class ArticleController {
                                 @FormParam("title") String title,
                                 @FormParam("permalink") String permalink,
                                 @FormParam("mainImage") String mainPhotoUrl,
-                                @FormParam("content") String content,
-                                @FormParam("shortContent") String shortContent) throws URISyntaxException{
+                                @FormParam("editableContent") String editableContent,
+                                @FormParam("shortContent") String shortContent) throws URISyntaxException, MalformedURLException {
         Article article = new Article();
         article.setId(id);
-        article.setContent(content);
         article.setFeed(feed);
         article.setTitle(title);
         Article oldArticle = articleRepository.getArticleByPermalink(permalink);
@@ -108,8 +114,17 @@ public class ArticleController {
         }
         article.setPermalink(permalink);
         article.setMainPhotoUrl(mainPhotoUrl);
-        article.setContent(processContent(content));
-        article.setShortContent(processContent(shortContent));
+        
+        Document shortContentDoc = parseDocument(shortContent);
+        transformImages(shortContentDoc);
+        article.setShortContent(shortContentDoc.toString());
+        
+        Document contentDoc = parseDocument(editableContent);
+        transformImages(contentDoc);
+        article.setEditableContent(contentDoc.toString());
+        transformVideos(contentDoc);
+        article.setContent(contentDoc.toString());
+        
         if (article.getAuthor()==null){
             article.setAuthor(UserServiceFactory.getUserService().getCurrentUser().getNickname());
         }
@@ -117,13 +132,38 @@ public class ArticleController {
         return Response.seeOther(new URI("/app/feed/"+article.getFeed())).build();
     }
     
-    private String processContent(String content){
+    private Document parseDocument(String content){
         Document doc = Jsoup.parse(Jsoup.clean(content, Whitelist
-            .relaxed()
-            .addTags("span")
-            .addAttributes(":all","style","class")));
+                .relaxed()
+                .addTags("span")
+                .addAttributes(":all","style","class")));
+        return doc;
+    }
 
-        for (Element e: doc.select("img")){
+    private void transformVideos(Document document) throws MalformedURLException, URISyntaxException {
+        for (Element e: document.select("a")){
+            String href = e.attr("href");
+            URI uri=new URI(href);
+            List<NameValuePair> nameValuePairs = URLEncodedUtils.parse(uri,"UTF-8");
+            String v = null;
+            for (NameValuePair nameValuePair: nameValuePairs){
+                if ("v".equals(nameValuePair.getName().toLowerCase())){
+                    v = nameValuePair.getValue();
+                }
+            }
+            if (uri.getHost().toLowerCase().equals("www.youtube.com") && v != null){
+                Node node = new Element(Tag.valueOf("iframe"),"");
+                node.attr("type","text/html");
+                node.attr("src","http://www.youtube.com/embed/"+v);
+                node.attr("width","680");
+                node.attr("height","390");
+                e.replaceWith(node);
+            }
+        }
+    }
+
+    private void transformImages(Document document){
+        for (Element e: document.select("img")){
             String[] styleAttrs = e.attr("style").split(";");
             Map<String,String> styleMap = new HashMap<String, String>();
             for (String attr: styleAttrs){
@@ -148,6 +188,5 @@ public class ArticleController {
                 e = e.attr("src",url+"=s"+Math.max(height,width));
             }
         }
-        return doc.toString();
     }
 }

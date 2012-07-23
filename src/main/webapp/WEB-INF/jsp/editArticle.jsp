@@ -81,8 +81,8 @@
         </textarea>
 
         <label for="content">Зміст статті</label>
-        <textarea id="content" name="content">
-            ${it.content}
+        <textarea id="content" name="editableContent">
+            ${it.editableContent}
         </textarea>
 
         <input type="submit"/>
