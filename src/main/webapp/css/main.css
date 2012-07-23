@@ -30,7 +30,6 @@ img {
     min-width: 1000px;
     width: 100%;
     float: left;
-    padding-bottom: 20px;
     background: url(/css/images/main/headBg.png) repeat-x
 }
 
@@ -268,55 +267,19 @@ h1.logo a {
 
 #welcom_pan {
     position: static;
-    margin: 95px 0 0 735px;
+    margin: 95px 0 0 725px;
     padding: 55px 20px 0px 20px;
     height: 235px;
 }
 
-h2 {
-    width: auto;
-    margin: 9px 0 0 10px;;
-    float: left;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    color: #31a1ff;
-    font-weight: bold;
-    line-height: 30px;
-}
-
-h2 span {
-    color: #3b3b3b;
-    margin-right: 5px
-}
-
-#welcom_pan a.brochure {
-    width: auto;
-    height: 54px;
-    margin-right: 31px;
-    padding: 0 8px 0 0;
-    float: right;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #ffffff;
-    font-weight: bold;
-    line-height: 54px;
-}
-
-#welcom_pan a.brochure span {
-    width: auto;
-    height: 54px;
-    padding: 0 13px 0 23px;
-    float: left;
-}
-
 #welcom_pan p {
     margin: 5px 0 0 14px;
-    padding: 10px 10px 10px 10px;
+    padding: 0px 10px 2px 10px;
     text-indent: 10px;
     float: left;
-    font-size: 14px;
+    font-size: 10px;
     color: #4d4d4d;
-    line-height: 18px;
+    line-height: 14px;
 }
 
 #welcom_pan	iframe {
@@ -335,216 +298,6 @@ h2 span {
 
 #welcom_pan h3 {
     clear: left
-}
-
-.lftWrap {
-    width: 300px;
-    float: left;
-    clear: left
-}
-
-.lftWrap p {
-    width: 100%;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 28px;
-    color: #4d4d4d
-}
-
-.rgtWrap input.txt {
-    width: 176px;
-    margin: 20px 20px 0 0;
-    padding: 3px 5px;
-    height: 30px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    color: #bfbfbf;
-    font-weight: bold;
-    border: #cbcbcb solid 1px;
-    background: #ffffff
-}
-
-.rgtWrap input.btn {
-    width: 113px;
-    height: 42px;
-    margin-top: 18px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    border: 0;
-    background: url(/css/images/main/submitBtn.png) no-repeat
-}
-
-.rgtWrap input.btn:active {
-    background-position: 1px 1px
-}
-
-.rgtWrap {
-    width: 500px;
-    float: left
-}
-
-.rgtWrap h3 {
-    width: 100%
-}
-
-h3 {
-    width: auto;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    color: #31a1ff;
-    font-weight: bold;
-    line-height: 60px;
-    letter-spacing: -1.7px
-}
-
-h3 span {
-    color: #3b3b3b;
-    margin-right: 0px
-}
-
-#quotPan {
-    width: 848px;
-    height: 80px;
-    margin-top: 42px;
-    float: left;
-    position: relative;
-    left: -24px;
-    border-top: #c9c9c9 solid 1px;
-    background: url(/css/images/main/pat.png) repeat
-}
-
-#quotPan h3 {
-    width: 274px;
-    margin: 14px 0 0 24px;
-    float: left;
-    line-height: 45px
-}
-
-#quotPan input.txt {
-    width: 176px;
-    margin: 20px 20px 0 0;
-    padding: 3px 5px;
-    height: 30px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    color: #bfbfbf;
-    font-weight: bold;
-    border: #cbcbcb solid 1px;
-    background: #ffffff
-}
-
-#quotPan input.btn {
-    width: 113px;
-    height: 42px;
-    margin-top: 18px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    border: 0;
-    background: url(/css/images/main/submitBtn.png) no-repeat
-}
-
-#quotPan input.btn:active {
-    background-position: 1px 1px
-}
-
-#blog {
-    width: 506px;
-    margin-top: 24px;
-    float: left
-}
-
-#blog ul {
-    width: 100%;
-    float: left
-}
-
-#blog ul li {
-    width: 100%;
-    margin-top: 21px;
-    float: left;
-    border-top: #c9c9c9 solid 1px
-}
-
-#blog ul li:first-child {
-    margin-top: 0;
-    border: 0
-}
-
-#blog ul li a {
-    width: auto;
-    margin-top: 25px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    color: #848484;
-    line-height: 24px
-}
-
-#blog ul li p {
-    width: 100%;
-    margin-top: 16px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #5c5c5c;
-    line-height: 16px
-}
-
-#latest {
-    width: 233px;
-    margin: 24px 0 0 60px;
-    float: left
-}
-
-#latest ul {
-    width: 100%;
-    float: left
-}
-
-#latest ul li {
-    width: 100%;
-    margin-top: 21px;
-    float: left;
-    border-top: #c9c9c9 solid 1px
-}
-
-#latest ul li:first-child {
-    margin-top: 0;
-    border: 0
-}
-
-#latest ul li a {
-    width: auto;
-    margin-top: 25px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    color: #848484;
-    line-height: 24px
-}
-
-#latest ul li p {
-    width: 100%;
-    margin-top: 16px;
-    float: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #5c5c5c;
-    line-height: 16px
 }
 
 #foot {
@@ -826,7 +579,7 @@ h3 span {
 #personal div.sub-label {
     color: #31a1ff;
     float: right;
-    font-size: 14px;
+    font-size: 10px;
     right: 0;
     margin: -20px 90px 0 0;
 }

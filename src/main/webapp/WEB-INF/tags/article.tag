@@ -54,7 +54,7 @@
     <c:choose>
         <c:when test="${shortView}">
             <div class="short-content _100">
-                <c:if test="${article.mainPhotoUrl!=null}">
+                <c:if test="${article.mainPhotoUrl!=null && article.mainPhotoUrl!=''}">
                     <img class="mainPhoto" src="${article.mainPhotoUrl}=s100"/>
                 </c:if>
                     ${article.shortContent}
