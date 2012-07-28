@@ -8,7 +8,9 @@
 <%@ attribute name="feedName" required="true" %>
 
 <guiceae:rolesOnly roles="cm">
-    <a id="add-article" href="/app/article/add/${feedName}">Додати статтю</a>
+    <div style="float:right; margin: 10px 20px 10px 10px;">
+        <a id="add-article" href="/app/article/add/${feedName}">Додати статтю</a>
+    </div>
 </guiceae:rolesOnly>
 
 <div class="feed-full-view">
@@ -19,7 +21,5 @@
         <guiceae:article shortView="true" article="${article}" simpleDelete="true" social="true"/>
     </c:forEach>
 
-
     <guiceae:pagesList feed="${feedName}" pagesCount='${pagesCount}' currentFirst='${currentFirst}'/>
-
 </div>

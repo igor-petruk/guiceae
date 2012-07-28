@@ -83,9 +83,9 @@
             </p>
             <p>
 
-            <p style="float:left;font-weight:bold; width:100%; margin-left: 85%;">З повагою,</p>
+            <p style="float:left;font-weight:bold;margin-left: 85%;">З повагою,</p>
 
-            <p style="float:left;font-weight:bold; width:100%; margin-left: 50%;">Народний депутат України Іван
+            <p style="float:left;font-weight:bold; margin-left: 50%;">Народний депутат України Іван
                 Куровський</p>
             </p>
         </div>

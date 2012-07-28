@@ -22,15 +22,15 @@ img {
     border: 0
 }
 
-#head ul li {
-    list-style: none;
-}
-
 #head {
     min-width: 1000px;
     width: 100%;
     float: left;
     background: url(/css/images/main/headBg.png) repeat-x
+}
+
+#head ul li {
+    list-style: none;
 }
 
 .head_height {
@@ -79,7 +79,6 @@ img {
     width: 135px;
     height: 21px;
     margin: 0 10px 0 10px;
-    padding: 0 0 0 10px;
     float: left;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -101,10 +100,6 @@ img {
     cursor: pointer;
     font-weight: bolder;
     background: url(/css/images/main/searchbtn.png) no-repeat
-}
-
-#head p.search input.btn:active {
-    background-position: 2px 2px
 }
 
 h1.logo {
@@ -129,7 +124,7 @@ h1.logo a {
 #head ul {
     height: 44px;
     float: left;
-    margin: 5px 0 0 30px;
+    margin: 1px 0 0 30px;
 }
 
 #head ul li {
@@ -150,7 +145,6 @@ h1.logo a {
 #head ul li	a, #head ul li a.active {
     width: auto;
     height: 42px;
-    padding: 0 23px;
     float: left;
     color: inherit;
 }
@@ -166,10 +160,12 @@ h1.logo a {
 }
 
 #menu ul {
-    width: 1200px;
+    max-width: 1200px;
     height: 44px;
     float: left;
     margin: 10px 0 0 0;
+    width: 100%;
+    min-width: 1000px;
 }
 
 #menu ul li {
@@ -268,7 +264,7 @@ h1.logo a {
 #welcom_pan {
     position: static;
     margin: 95px 0 0 725px;
-    padding: 55px 20px 0px 20px;
+    padding: 55px 20px 10px 20px;
     height: 235px;
 }
 
@@ -543,13 +539,13 @@ h1.logo a {
     font-weight: bolder;
     text-indent: 10px;
     color: #ffffff;
+    float: right;
 }
 
 .login ul li a {
-    color: #ffffff;
     padding: 0 5px 2px 5px;
     display: inline;
-    opacity: 0.9;
+    float: left;
 }
 
 .login ul li a>img {
@@ -559,12 +555,16 @@ h1.logo a {
 }
 
 #personal {
+    margin: 0 0 20px 0;
     position: absolute;
     top: 42px;
     right: 0;
     width: 100%;
     max-width: 472px;
-    margin-bottom: 20px;
+}
+
+#personal img {
+    margin: 0 0 0 3px;
 }
 
 #personal div.name {
