@@ -83,9 +83,9 @@
             </p>
             <p>
 
-            <p style="float:left;font-weight:bold;margin-left: 85%;">З повагою,</p>
+            <p style="float:left;font-weight:bold;margin-left: 79%;">З повагою,</p>
 
-            <p style="float:left;font-weight:bold; margin-left: 50%;">Народний депутат України Іван
+            <p style="float:left;font-weight:bold; margin-left: 42%;">Народний депутат України Іван
                 Куровський</p>
             </p>
         </div>
@@ -100,7 +100,7 @@
         <div id="content_sup">
 
             <div id="infoPan">
-                <div class="gutter-outer"></div>
+                <div class="gutter-outer" style="border-left: 20px solid #fefefe"></div>
 
                 <div class="column">
                     <span class="head">
@@ -132,10 +132,6 @@
                     <span class="head">
                         <a href="/app/feed/news">Новини</a>
                     </span>
-                    <%--<span>--%>
-                    <%--<a class="rss" href="/app/feed/news/rss"><img src="/css/images/system/rss.png"--%>
-                    <%--alt="Підписатися на оновлення"></a>--%>
-                    <%--</span>--%>
                     <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
                 </div>
                 <div class="gutter-outer"></div>

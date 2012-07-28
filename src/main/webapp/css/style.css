@@ -195,7 +195,8 @@ a.rss img {
     min-height: 600px;
     width: 55%;
     float: left;
-    border-radius: 5%
+    border-radius: 5%;
+    border: 1px solid #dddddd;
 }
 
 .view-right-place.feedbackQuestion span {

@@ -23,7 +23,7 @@ img {
 }
 
 #head {
-    min-width: 1000px;
+    min-width: 1200px;
     width: 100%;
     float: left;
     background: url(/css/images/main/headBg.png) repeat-x
@@ -142,7 +142,7 @@ h1.logo a {
     margin: 0
 }
 
-#head ul li	a, #head ul li a.active {
+#head ul li	a {
     width: auto;
     height: 42px;
     float: left;
@@ -150,7 +150,7 @@ h1.logo a {
 }
 
 #head ul li	a:hover, #head ul li a.active {
-    color: #31a1ff;
+    color: #f5f8ff;
 }
 
 #menu {
@@ -198,13 +198,11 @@ h1.logo a {
 
 #content {
     text-align: left;
-    min-width: 1000px;
-    max-width: 1170px;
-    width: 100%;
-    padding: 0 0 0 36px;
+    min-width: 1200px;
     margin-bottom: 20px;
     float: left;
-    background: #ffffff url(/css/images/main/contentBg.png) repeat-x
+    opacity: 0.8;
+    background: #ffffff url(/css/images/main/contentBg.png) repeat-x;
 }
 
 #content_cen {
@@ -418,6 +416,7 @@ h1.logo a {
     width: 860px;
     float: right;
     border-radius: 5%;
+    border: 1px solid #dddddd;
 }
 
 .view-center-place a {
@@ -444,6 +443,7 @@ h1.logo a {
     opacity: 0.5;
     font-size: 16px;
     font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
+    border: 1px solid #dddddd;
 }
 
 .view-center-place .results {
