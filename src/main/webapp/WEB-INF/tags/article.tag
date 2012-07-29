@@ -44,9 +44,9 @@
 
     <div class="createdDate">
         <c:if test="${social}">
-            <guiceae:twitter article="${article}"/>
-            <guiceae:facebook article="${article}"/>
-            <guiceae:vkontakte article="${article}"/>
+            <span><guiceae:twitter article="${article}"/></span>
+            <span><guiceae:facebook article="${article}"/></span>
+            <span><guiceae:vkontakte article="${article}"/></span>
         </c:if>
         <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
     </div>

@@ -32,7 +32,6 @@
                 <div class="results">
                     <c:forEach var="result" items="${it.results}">
                         <guiceae:article shortView="true" article="${result}" simpleDelete="true"/>
-                        ${result.shortContent}
                     </c:forEach>
                 </div>
             </div>

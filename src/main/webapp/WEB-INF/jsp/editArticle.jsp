@@ -4,7 +4,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
 
-<guiceae:head>
+<head>
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -45,7 +45,7 @@
             $("#mainImage").attr("value", src);
         }
     </script>
-</guiceae:head>
+</head>
 <body>
 
 <div id="head">
