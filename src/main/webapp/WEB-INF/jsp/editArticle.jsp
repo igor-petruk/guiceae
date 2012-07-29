@@ -8,7 +8,7 @@
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function () {
-            CKEDITOR.replace('content',
+            CKEDITOR.replace('articlecontent',
                     {
                         toolbar:'CustomToobar',
                         uiColor:'#9AB8F3',
@@ -47,47 +47,74 @@
     </script>
 </guiceae:head>
 <body>
-<div>
-    <form id="articleForm" action="/app/article/save" method="post">
-        <input name="id" type="hidden" value="${it.id}"/>
-        <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
 
-        <label for="title">Назва статті</label>
-        <input id="title" name="title" type="text" value="<c:out value='${it.title}'/>"/>
-        <br/>
-
-        <label for="permalink">Постійна назва</label>
-        <input id="permalink" name="permalink" type="text" value="<c:out value='${it.permalink}'/>"/>
-        <br/>
-
-        <p>
-            <img id="mainImageImg" src="${it.mainPhotoUrl}" width="200"/>
-            <input type="hidden" name="mainImage" id="mainImage" value="${it.mainPhotoUrl}"/>
-            <a id="selectPhotoLink" href="/app/album/browse/0?mode=mainPhoto">Select photo</a>
-            <script type="text/javascript">
-                jQuery('#selectPhotoLink').live('click', function () {
-                    newwindow = window.open($(this).attr('href'), '', 'height=500,width=600');
-                    if (window.focus) {
-                        newwindow.focus()
-                    }
-                    return false;
-                });
-            </script>
-        </p>
-
-        <label for="shortContent">Короткий зміст</label>
-        <textarea id="shortContent" name="shortContent">
-            ${it.shortContent}
-        </textarea>
-
-        <label for="content">Зміст статті</label>
-        <textarea id="content" name="editableContent">
-            ${it.editableContent}
-        </textarea>
-
-        <input type="submit"/>
-
-    </form>
+<div id="head">
+    <guiceae:quick-panel/>
 </div>
+<div id="personal-not-main">
+    <div class="name">Персональний сайт Івана Куровського</div>
+    <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
+</div>
+
+<guiceae:new-menu/>
+
+
+<div id="content" style="background-image: none; opacity:1">
+    <div id="content_cen">
+        <div id="content_sup">
+
+            <div class="view-center-place" style="background: none;">
+
+                <a href="/app/feed/${it.feed}">Назад до стрічки</a>
+
+                <div>
+                    <form id="articleForm" action="/app/article/save" method="post">
+                        <input name="id" type="hidden" value="${it.id}"/>
+                        <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
+
+                        <label for="title">Назва статті</label>
+                        <input id="title" name="title" type="text" value="<c:out value='${it.title}'/>"/>
+                        <br/>
+
+                        <label for="permalink">Постійна назва</label>
+                        <input id="permalink" name="permalink" type="text" value="<c:out value='${it.permalink}'/>"/>
+                        <br/>
+
+                        <p>
+                            <img id="mainImageImg" src="${it.mainPhotoUrl}" width="200"/>
+                            <input type="hidden" name="mainImage" id="mainImage" value="${it.mainPhotoUrl}"/>
+                            <a id="selectPhotoLink" href="/app/album/browse/0?mode=mainPhoto">Select photo</a>
+                            <script type="text/javascript">
+                                jQuery('#selectPhotoLink').live('click', function () {
+                                    newwindow = window.open($(this).attr('href'), '', 'height=500,width=600');
+                                    if (window.focus) {
+                                        newwindow.focus()
+                                    }
+                                    return false;
+                                });
+                            </script>
+                        </p>
+
+                        <label for="shortContent">Короткий зміст</label>
+                        <textarea id="shortContent" name="shortContent">
+                            ${it.shortContent}
+                        </textarea>
+
+                        <label for="content">Зміст статті</label>
+                        <textarea id="articlecontent" name="editableContent">
+                            ${it.editableContent}
+                        </textarea>
+
+                        <input type="submit"/>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<guiceae:footer/>
 </body>
 </html>

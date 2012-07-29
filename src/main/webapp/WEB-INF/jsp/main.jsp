@@ -104,8 +104,13 @@
 
                 <div class="column">
                     <span class="head">
-                        <a href="/app/feed/charity">Благодійність</a>
+                        <a href="/app/feed/charity">
+                            <span class="pic"><img class="first" src="/css/images/system/charity.png"
+                                                   alt="Більше про благодійну діяльність"/></span>
+                            <span>Благодійність</span>
+                        </a>
                     </span>
+                    <span class="separator"></span>
                     <%--<span>--%>
                     <%--<a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"--%>
                     <%--alt="Підписатися на оновлення"></a>--%>
@@ -117,8 +122,12 @@
 
                 <div class="column">
                     <span class="head">
-                       <a href="/app/feedback/submit/question">Громадська приймальня</a>
+                       <a href="/app/feedback/submit/question">
+                           <span class="pic"><img src="/css/images/system/chat.png" alt="Задати питання"/></span>
+                           <span>Громадська приймальня</span>
+                       </a>
                     </span>
+                    <span class="separator"></span>
                     <%--<span>--%>
                     <%--<a class="rss" href="/app/feed/news/rss">--%>
                     <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
@@ -130,8 +139,12 @@
 
                 <div class="column">
                     <span class="head">
-                        <a href="/app/feed/news">Новини</a>
+                        <a href="/app/feed/news">
+                            <span class="pic"><img src="/css/images/system/news.png" alt="Більше новин із ЗМІ"/></span>
+                            <span>Новини із ЗМІ</span>
+                        </a>
                     </span>
+                    <span class="separator"></span>
                     <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
                 </div>
                 <div class="gutter-outer"></div>
