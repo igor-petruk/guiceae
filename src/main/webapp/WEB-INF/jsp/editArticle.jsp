@@ -4,7 +4,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
 
-<head>
+<guiceae:head>
     <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -45,12 +45,13 @@
             $("#mainImage").attr("value", src);
         }
     </script>
-</head>
+</guiceae:head>
 <body>
 
 <div id="head">
     <guiceae:quick-panel/>
 </div>
+
 <div id="personal-not-main">
     <div class="name">Персональний сайт Івана Куровського</div>
     <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
@@ -58,14 +59,13 @@
 
 <guiceae:new-menu/>
 
-
 <div id="content" style="background-image: none; opacity:1">
     <div id="content_cen">
         <div id="content_sup">
 
             <div class="view-center-place" style="background: none;">
 
-                <a href="/app/feed/${it.feed}">Назад до стрічки</a>
+                <a class="back" href="/app/feed/${it.feed}">Назад до стрічки</a>
 
                 <div>
                     <form id="articleForm" action="/app/article/save" method="post">

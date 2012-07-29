@@ -419,7 +419,7 @@ h1.logo a {
     border: 1px solid #dddddd;
 }
 
-.view-center-place a {
+.view-center-place a.back {
     color: #7cbff3;
     margin-left: 20px;
     padding-bottom: 20px;
@@ -434,16 +434,15 @@ h1.logo a {
     width: 90%;
     float: left;
     border-radius: 5%;
+    border: 1px solid #dddddd;
 }
 
-.view-center-place span {
+.view-center-place span.title {
     margin-bottom: 10px;
     text-align: center;
     color: #4d4d4d;
-    opacity: 0.5;
     font-size: 16px;
     font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
-    border: 1px solid #dddddd;
 }
 
 .view-center-place .results {

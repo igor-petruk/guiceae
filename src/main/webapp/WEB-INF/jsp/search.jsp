@@ -27,7 +27,7 @@
         <div id="content_sup">
 
             <div class="view-center-place">
-                <span>Результати пошуку за запитом "${it.query}" ↓</span>
+                <span class="title">Результати пошуку за запитом "${it.query}" ↓</span>
 
                 <div class="results">
                     <c:forEach var="result" items="${it.results}">
