@@ -326,3 +326,36 @@ a.rss img {
     color: #31a1ff;
     padding: 3px 3px 3px 3px;
 }
+
+div.editArticle {
+    float: left;
+    width: 100%;
+}
+
+div.editArticle .aricle-name-label {
+    float: left;
+    margin: 5px 0px 5px 20px;
+}
+
+div.editArticle .aricle-name-input {
+    float: left;
+    margin: 5px 10px 5px 20px;
+    display: block;
+    width: 80%;
+}
+
+div.editArticle .aricle-link-label {
+    float: left;
+    margin: 5px 10px 5px 20px;
+}
+
+div.editArticle .aricle-link-input {
+    float: left;
+    width: 80%;
+    margin: 5px 10px 5px 20px;
+}
+
+div.editArticle .main-photo-container {
+    float: left;
+    margin: 25px 10px 5px 20px;
+}

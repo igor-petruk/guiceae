@@ -41,6 +41,10 @@
         })
 
         function imageSelected(src) {
+            if ($("#no-photo").length != 0) {
+                $("#main-photo-container").prepend($("<img id='mainImageImg'/>"));
+                $("#no-photo").remove();
+            }
             $("#mainImageImg").attr("src", src);
             $("#mainImage").attr("value", src);
         }
@@ -67,23 +71,35 @@
 
                 <a class="back" href="/app/feed/${it.feed}">Назад до стрічки</a>
 
-                <div>
+                <div class="editArticle">
                     <form id="articleForm" action="/app/article/save" method="post">
                         <input name="id" type="hidden" value="${it.id}"/>
                         <input name="feed" type="hidden" value="<c:out value='${it.feed}'/>"/>
 
-                        <label for="title">Назва статті</label>
-                        <input id="title" name="title" type="text" value="<c:out value='${it.title}'/>"/>
-                        <br/>
+                        <label class="aricle-name-label" for="title">Назва статті</label>
+                        <input class="aricle-name-input" id="title" name="title" type="text"
+                               value="<c:out value='${it.title}'/>"/>
 
-                        <label for="permalink">Постійна назва</label>
-                        <input id="permalink" name="permalink" type="text" value="<c:out value='${it.permalink}'/>"/>
-                        <br/>
+                        <label class="aricle-link-label" for="permalink">Постійна назва</label>
+                        <input class="aricle-link-input" id="permalink" name="permalink" type="text"
+                               value="<c:out value='${it.permalink}'/>"/>
 
-                        <p>
-                            <img id="mainImageImg" src="${it.mainPhotoUrl}" width="200"/>
+                        <div class="main-photo-container" id="main-photo-container">
+
+                            <c:choose>
+                                <c:when test="${it.mainPhotoUrl==null||it.mainPhotoUrl==''}">
+                                    <img id="no-photo" src="/css/images/system/nophoto.png" width="100"
+                                         alt="Немає фотографії"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <img id="mainImageImg" src="${it.mainPhotoUrl}" width="200"/>
+                                </c:otherwise>
+                            </c:choose>
+
                             <input type="hidden" name="mainImage" id="mainImage" value="${it.mainPhotoUrl}"/>
-                            <a id="selectPhotoLink" href="/app/album/browse/0?mode=mainPhoto">Select photo</a>
+
+                            <a id="selectPhotoLink" href="/app/album/browse/0?mode=mainPhoto">Вибрати фото</a>
+
                             <script type="text/javascript">
                                 jQuery('#selectPhotoLink').live('click', function () {
                                     newwindow = window.open($(this).attr('href'), '', 'height=500,width=600');
@@ -93,20 +109,21 @@
                                     return false;
                                 });
                             </script>
-                        </p>
+                        </div>
 
-                        <label for="shortContent">Короткий зміст</label>
-                        <textarea id="shortContent" name="shortContent">
-                            ${it.shortContent}
-                        </textarea>
+                        <div style="float: left; margin-top: 25px;">
+                            <label for="shortContent">Короткий зміст</label>
+                            <textarea id="shortContent" name="shortContent">
+                                ${it.shortContent}
+                            </textarea>
 
-                        <label for="content">Зміст статті</label>
-                        <textarea id="articlecontent" name="editableContent">
-                            ${it.editableContent}
-                        </textarea>
+                            <label for="content">Зміст статті</label>
+                            <textarea id="articlecontent" name="editableContent">
+                                ${it.editableContent}
+                            </textarea>
 
-                        <input type="submit"/>
-
+                            <input type="submit"/>
+                        </div>
                     </form>
                 </div>
             </div>
