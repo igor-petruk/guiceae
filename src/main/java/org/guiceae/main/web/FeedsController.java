@@ -40,7 +40,7 @@ public class FeedsController {
             .put("news", "Новини")
             .put("charity", "Благодійність")
             .put("activity", "Депутатська діяльність")
-            .put("biography", "Автобіографія")
+            .put("biography", "Біографія")
             .build();
 
 

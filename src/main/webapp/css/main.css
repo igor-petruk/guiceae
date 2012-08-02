@@ -11,7 +11,6 @@ body {
 * {
     margin: 0;
     padding: 0;
-    max-width: 1200px;
 }
 
 a {
@@ -156,7 +155,10 @@ h1.logo a {
 #menu {
     position: relative;
     z-index: 20;
-    margin: 0px 0 0 50px;
+    margin: 10px 10px 10px 0px;
+    float: left;
+    border: 1px solid #e3e3e3;
+    width: 100%;
 }
 
 #menu ul {
@@ -203,6 +205,7 @@ h1.logo a {
     float: left;
     opacity: 0.8;
     background: #ffffff url(/css/images/main/contentBg.png) repeat-x;
+    width: 100%;
 }
 
 #content_cen {
@@ -267,13 +270,15 @@ h1.logo a {
 }
 
 #welcom_pan p {
+    font-style: italic;
     margin: 5px 0 0 14px;
     padding: 0px 10px 2px 10px;
     text-indent: 10px;
     float: left;
-    font-size: 10px;
+    font-size: 14px;
     color: #4d4d4d;
     line-height: 14px;
+    font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
 }
 
 #welcom_pan	iframe {
@@ -288,10 +293,6 @@ h1.logo a {
     margin: 15px 0 0 14px;
     float: left;
     color: #848484
-}
-
-#welcom_pan h3 {
-    clear: left
 }
 
 #foot {
@@ -413,7 +414,7 @@ h1.logo a {
     margin-right: 10px;
     background: #fbfbfb;
     min-height: 600px;
-    width: 860px;
+    width: 75%;
     float: right;
     border-radius: 5%;
     border: 1px solid #dddddd;
@@ -455,7 +456,8 @@ h1.logo a {
     background: #f6f9fb url("/css/images/main/pat.png") repeat;
     margin: 10px 10px 10px 10px;
     min-height: 600px;
-    width: 270px;
+    height: 100%;
+    width: 20%;
     float: left;
 }
 

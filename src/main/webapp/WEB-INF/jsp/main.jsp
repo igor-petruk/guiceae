@@ -69,25 +69,22 @@
         <div id="welcom_pan">
             <p style="font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;">Шановні друзі!</p>
 
-            <p>Моїй команді і меня особисто, як народному депутатові України, видається вкрай необхідним тримати
-                постійний зворотний зв'язок із виборцями, для оцінки наших намірів, думок і діяльності.</p>
+            <p>Мені як народному депутатові України онлайн-спілкування видається
+                важливою ланкою вивчення проблем, які цікавлять людей.</p>
 
-            <p>Користуючись цим ресурсом Ви зможете дізнатися про мої життєві пріоритети,
-                законотворчу, громадську та благодійну діяльність, участь у житті виборчого округу.
-                Я завжди готовий до обміну думками і конструктивної дискусії з усіма,
-                хто цікавиться моєю роботою.</p>
+            <p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду
+                вдячний за ваші запитання і пропозиції.</p>
 
-            <p>Проблеми, які обговорюватимуться тут, стануть предметом майбутніх депутатських запитів,
-                законопроектів, відправною точкою їх вивчення і розв’язання.
-            </p>
-            </p>
-            <p>
+            <p>Користуючись цим ресурсом, Ви зможете дізнатися про мою
+                депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви
+                маєте можливість звернутися до моєї громадської приймальні, щоб отримати
+                відповіді на питання, які вас цікавлять.</p>
 
-            <p style="float:left;font-weight:bold;margin-left: 79%;">З повагою,</p>
+            <div style="float: right;  width: 60%;">
+                <p style="float:right;font-weight:bold;">З повагою,</p>
 
-            <p style="float:left;font-weight:bold; margin-left: 42%;">Народний депутат України Іван
-                Куровський</p>
-            </p>
+                <p style="float:right;font-weight:bold;">Народний депутат України Іван Куровський</p>
+            </div>
         </div>
     </div>
 </div>
@@ -100,7 +97,6 @@
         <div id="content_sup">
 
             <div id="infoPan">
-                <div class="gutter-outer" style="border-left: 20px solid #fefefe"></div>
 
                 <div class="column">
                     <span class="head">
@@ -110,7 +106,7 @@
                             <span>Благодійність</span>
                         </a>
                     </span>
-                    <span class="separator"></span>
+                    <%--<span class="separator"></span>--%>
                     <%--<span>--%>
                     <%--<a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"--%>
                     <%--alt="Підписатися на оновлення"></a>--%>
@@ -118,7 +114,16 @@
                     <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>
                 </div>
 
-                <div class="gutter"></div>
+                <div class="column">
+                    <span class="head">
+                        <a href="/app/feed/news">
+                            <span class="pic"><img src="/css/images/system/news.png" alt="Більше новин із ЗМІ"/></span>
+                            <span>ЗМІ</span>
+                        </a>
+                    </span>
+                    <%--<span class="separator"></span>--%>
+                    <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
+                </div>
 
                 <div class="column">
                     <span class="head">
@@ -127,27 +132,14 @@
                            <span>Громадська приймальня</span>
                        </a>
                     </span>
-                    <span class="separator"></span>
+                    <%--<span class="separator"></span>--%>
+                    <guiceae:smallFeedbackFeed feedName="question" feed="${it.feedbackFeed}" isOnMain="true"/>
                     <%--<span>--%>
                     <%--<a class="rss" href="/app/feed/news/rss">--%>
                     <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
                     <%--</a>--%>
                     <%--</span>--%>
                 </div>
-
-                <div class="gutter"></div>
-
-                <div class="column">
-                    <span class="head">
-                        <a href="/app/feed/news">
-                            <span class="pic"><img src="/css/images/system/news.png" alt="Більше новин із ЗМІ"/></span>
-                            <span>Новини із ЗМІ</span>
-                        </a>
-                    </span>
-                    <span class="separator"></span>
-                    <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
-                </div>
-                <div class="gutter-outer"></div>
             </div>
         </div>
     </div>

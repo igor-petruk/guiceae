@@ -4,6 +4,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
 <guiceae:head>
+    <title>Пошук</title>
     <script type="text/javascript" src="/js/feed.js"></script>
 </guiceae:head>
 <body>

@@ -10,6 +10,7 @@
 <html>
 <guiceae:head>
     <script type="text/javascript" src="/js/feed.js"></script>
+    <title>${it.theme}</title>
 </guiceae:head>
 <body>
 <div id="head">

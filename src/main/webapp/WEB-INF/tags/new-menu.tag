@@ -7,7 +7,7 @@
         <li><a id="menu-main" href="/app/feed/news">Новини</a></li>
         <li><a id="menu-activity" href="/app/feed/activity">Депутатська діяльність</a></li>
         <li><a id="menu-gallery" href="/app/album/gallery">Галерея</a></li>
-        <li><a id="menu-biography" href="/app/feed/biography">Автобіографія</a></li>
+        <li><a id="menu-biography" href="/app/feed/biography">Біографія</a></li>
         <li><guiceae:googleLogin/></li>
     </ul>
     <jsp:doBody/>

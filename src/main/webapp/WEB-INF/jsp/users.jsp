@@ -4,6 +4,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
 <guiceae:head>
+    <title>Права користувачів</title>
     <style>
         body { font-size: 72.5%; }
         div#users-contain { width: 650px; margin: 20px 0; }

@@ -9,6 +9,7 @@
 
 <html>
 <guiceae:head>
+    <title>Галерея</title>
     <guiceae:photo-scripts/>
     <script type="text/javascript" charset="utf-8">
         $(function () {

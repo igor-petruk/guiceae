@@ -1,7 +1,7 @@
 /*main page*/
 
 #infoPan {
-    width: 1180px;
+    width: 100%;
 }
 
 a.rss {
@@ -16,25 +16,28 @@ a.rss img {
 
 .column {
     float: left;
-    width: 380px;
+    min-width: 380px;
+    width: 33%;
 }
 
 .column .head a span.pic {
 }
 .column .head {
     text-align: center;
-    width: 70%;
+    width: 100%;
     float: left;
     opacity: 0.9;
     vertical-align: top;
-    margin: 0 0 10px 0;
+    margin: 0 0 1px 0;
+    background-color: #fbfbff;
+    border-top: 1px solid #75bcf2;
 }
 
 .column span.separator {
     border-bottom: 1px solid #75bcf2;
     width: 50%;
     float: left;
-    margin-left: 25%;
+    margin: 0 0 20px 25%;
 }
 
 .column .head a {
@@ -58,16 +61,6 @@ a.rss img {
 
 .column .head a span {
     margin-left: 7px;
-}
-
-.gutter {
-    float: left;
-    width: 10px;
-}
-
-.gutter-outer {
-    float: left;
-    width: 10px;
 }
 
 /*articles*/
@@ -186,7 +179,6 @@ a.rss img {
 }
 
 .feed-short-view {
-    max-width: 380px
 }
 
 .feed-full-view .rss {
@@ -216,6 +208,7 @@ a.rss img {
 .view-right-place.feedbackQuestion {
     margin-top: 10px;
     margin-right: 10px;
+    margin-left: 10px;
     background: #fbfbfb;
     min-height: 600px;
     width: 55%;
@@ -311,6 +304,48 @@ a.rss img {
     opacity: 0.3;
     float: left;
     width: 80%;
+    border-bottom: 1px solid #818181;
+}
+
+/*feedback on main*/
+.feedback-short-view.main {
+    width: 100%;
+    min-width: 380px;
+}
+
+.feedback .author {
+    font-size: 12px;
+    float: right;
+    color: #31A1FF;
+    margin: 0 0 5px 0;
+}
+.feedback .createdDate {
+    font-size: 10px;
+    float: right;
+    color: #444444;
+    font-weight: bolder;
+}
+.feedback .question {
+    font-size: 12px;
+    width: 100%;
+    float: left;
+    color: #31A1FF;
+    font-family: "Trebuchet" Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.feedback .answer {
+    float: left;
+    font-family: "Trebuchet" Arial, Helvetica, sans-serif;
+    color: #5e5e55;
+    word-spacing: -1.2px;
+    word-wrap: break-word;
+    margin: 3px 3px 3px 10px;
+}
+.feedback .separator.main {
+    margin: 0 15% 20px 15%;
+    opacity: 0.3;
+    float: left;
+    width: 70%;
     border-bottom: 1px solid #818181;
 }
 

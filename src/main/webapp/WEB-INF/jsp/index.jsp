@@ -6,6 +6,7 @@
 <html>
 
 <guiceae:head>
+    <title>Персональний сайт Івана Куровського</title>
     <script type="text/javascript" charset="utf-8">
         $(function () {
             var news = $.ajax({
