@@ -17,20 +17,21 @@ a.rss img {
 .column {
     float: left;
     min-width: 380px;
-    width: 33%;
+    width: 32%;
 }
 
 .column .head a span.pic {
 }
 .column .head {
-    text-align: center;
+    text-align: right;
     width: 100%;
     float: left;
     opacity: 0.9;
     vertical-align: top;
     margin: 0 0 1px 0;
-    background-color: #fbfbff;
-    border-top: 1px solid #75bcf2;
+    background-color: #FFF;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #BBB;
 }
 
 .column span.separator {
@@ -42,10 +43,11 @@ a.rss img {
 
 .column .head a {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: 200;
-    text-transform: uppercase;
-    color: #5F5F5F;
+    font-size: 16px;
+    font-weight: 400;
+    /*text-transform: uppercase;*/
+    color: #AAA;
+    letter-spacing: 4px;
 }
 
 .column .head a img {
@@ -55,7 +57,7 @@ a.rss img {
 }
 .column .head a img.first {
     width: 32px;
-    margin: 0 5px 0 44px;
+    margin: 0 5px 0 0;
     float: left;
 }
 
@@ -197,7 +199,7 @@ a.rss img {
 /*feedback*/
 
 .left-place.feedbackQuestion {
-    padding: 0 20px 0 0;
+    padding: 0 7px 0 0;
     text-align: left;
     width: 40%;
     background: #f6f9fb url("/css/images/main/pat.png") repeat;
@@ -311,6 +313,7 @@ a.rss img {
 .feedback-short-view.main {
     width: 100%;
     min-width: 380px;
+    margin-top: 40px;
 }
 
 .feedback .author {
