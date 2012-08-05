@@ -12,15 +12,18 @@
     <title>Галерея</title>
     <guiceae:photo-scripts/>
     <script type="text/javascript" charset="utf-8">
+        var gal;
         $(function () {
-            $("#galleria").html("");
-            var id = $("#albums-list div:first").attr("albumId");
-            id = "#" + id;
+            var id = $(".album-view:first").attr("albumId");
             sendShowRequest(id);
-            $("#menu div#gallery").addClass("active");
+            Galleria.loadTheme('/js/galleria.classic.min.js');
         });
 
         function sendShowRequest(albumId) {
+
+            $("#galleria").remove();
+            $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
+            console.log("for Album" + albumId);
             var albumInfo = $.ajax({
                 type:'GET',
                 url:'get/' + albumId
@@ -37,36 +40,40 @@
 
         function initializeGalleryView(photos) {
             if (photos && photos.length > 0) {
-
-                $("#galleria").html("");
+                var photoInfo = [];
                 for (var i in photos) {
-
-                    var photoInfo = $(
-                            "<a href='" + photos[i].servingUrl + "'>" +
-                                    "<img data-title='" + photos[i].title + "'" +
-                                    "data-description='" + photos[i].description + "'" +
-                                    "src='" + photos[i].servingUrl + "=s60'/>" +
-                                    "</a>");
-                    $("#galleria").append(photoInfo);
+                    photoInfo.push({
+                                title:photos[i].title,
+                                description:photos[i].description,
+                                image:photos[i].servingUrl,
+                                thumb:photos[i].servingUrl + '=s60'
+                            }
+                    );
+                    console.log("title" + photos[i].title + "image" + photos[i].servingUrl);
                 }
-
-                initGalleria("#galleria");
+                initGalleria(photoInfo);
             }
         }
 
-        function initGalleria(id) {
+        function initGalleria(photoInfo) {
             // Load the classic theme
-            Galleria.loadTheme('/js/galleria.classic.min.js');
+//            if (!gal) {
+            console.log("new galleria");
             Galleria.configure({
                 thumbnails:true
             });
-            // Initialize Galleria
-            Galleria.run(id, {
+            Galleria.run("#galleria", {
                 transition:'fade',
                 imageCrop:false,
                 idleMode:true,
-                showInfo:true
+                showInfo:true,
+                dataSource:photoInfo
             });
+//                gal = true;
+//            }else{
+//                console.log("old galleria");
+//                $("#galleria").load(photoInfo);
+//                }
         }
     </script>
 </guiceae:head>
@@ -97,7 +104,7 @@
                     <div class="album-view" albumId="${album.id}">
                         <div class="title">${album.title}</div>
                         <div class="album-main-thumb">
-                            <a style="text-decoration: none;" onclick="sendShowRequest('${album.id}')">
+                            <a style="text-decoration: none;" onclick="sendShowRequest(${album.id})">
                                 <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
                         </div>
                         <div class="description">${album.description}</div>
