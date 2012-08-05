@@ -4,7 +4,7 @@
 <p class="search">
 
 <div class="inputs">
-    <span>Пошук</span>
+    <span><img style="width:20px;" src="/css/images/system/search.png" title="Пошук"/></span>
 
     <form action="/app/search" method="get" style="display: inline;">
         <input name="query" type="text" class="txt" value="${query}" id="query"/>

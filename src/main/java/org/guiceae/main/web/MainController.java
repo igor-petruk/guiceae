@@ -33,4 +33,10 @@ public class MainController {
         it.put("feedbackFeed", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0));
         return new Viewable("/main.jsp", it);
     }
+
+    @GET
+    @Path("login")
+    public Viewable login() {
+        return new Viewable("/login.jsp");
+    }
 }

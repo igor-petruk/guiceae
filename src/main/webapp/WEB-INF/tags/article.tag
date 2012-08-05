@@ -60,28 +60,32 @@
                 </c:if>
                     ${article.shortContent}
             </div>
-        </c:when>
-        <c:otherwise>
-            <div class="short-content _100">
-                <c:if test="${article.mainPhotoUrl!=null}">
-                    <img class="mainPhoto" src="${article.mainPhotoUrl}=s400"/>
-                </c:if>
-                    ${article.shortContent}
-            </div>
-        </c:otherwise>
-    </c:choose>
-    <c:choose>
-        <c:when test="${shortView}">
+            <div style="clear: both;"></div>
             <div class="more-div">
                 <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
             </div>
             <div class="separator"></div>
         </c:when>
         <c:otherwise>
-            <div class="long-content">
+            <div class="short-content _100">
+                <c:if test="${article.mainPhotoUrl!=null}">
+                    <img class="mainPhoto" src="${article.mainPhotoUrl}=s400"/>
+                </c:if>
+                    ${article.shortContent}<br/>
                     ${article.content}
             </div>
+            <div style="clear: both;"></div>
         </c:otherwise>
     </c:choose>
+    <%--<c:choose>--%>
+    <%--&lt;%&ndash;<c:when test="${shortView}">&ndash;%&gt;--%>
+    <%----%>
+    <%--</c:when>--%>
+    <%--<c:otherwise>--%>
+    <%--<div class="long-content">--%>
+    <%----%>
+    <%--</div>--%>
+    <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
 </div>
 
