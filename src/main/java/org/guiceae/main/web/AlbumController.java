@@ -93,6 +93,7 @@ public class AlbumController {
     @Path("/update")
     @RolesAllowed("cm")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Viewable updateAlbumPage(Album album) {
         return new Viewable("/album.jsp", album);
     }

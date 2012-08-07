@@ -75,7 +75,10 @@
                 dataType:"json",
                 contentType:"application/json; charset=utf-8",
                 cache:false,
-                data:JSON.stringify(album)
+                data:JSON.stringify(album),
+                success:function () {
+
+                }
             });
         }
 

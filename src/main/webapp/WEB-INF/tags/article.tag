@@ -40,6 +40,12 @@
                 });
             </script>
         </div>
+        <div class="createdDate">
+            <span>Дата створення</span>
+            <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
+            <span>Дата останнього оновлення</span>
+            <span><fmt:formatDate value="${article.lastUpdated}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
+        </div>
     </guiceae:rolesOnly>
 
     <div class="createdDate">
@@ -48,7 +54,7 @@
             <span><guiceae:facebook article="${article}"/></span>
             <span><guiceae:vkontakte article="${article}"/></span>
         </c:if>
-        <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
+        <span><fmt:formatDate value="${article.toView}" pattern="dd/MM/yyyy"></fmt:formatDate></span>
     </div>
 
 
@@ -77,15 +83,5 @@
             <div style="clear: both;"></div>
         </c:otherwise>
     </c:choose>
-    <%--<c:choose>--%>
-    <%--&lt;%&ndash;<c:when test="${shortView}">&ndash;%&gt;--%>
-    <%----%>
-    <%--</c:when>--%>
-    <%--<c:otherwise>--%>
-    <%--<div class="long-content">--%>
-    <%----%>
-    <%--</div>--%>
-    <%--</c:otherwise>--%>
-    <%--</c:choose>--%>
 </div>
 

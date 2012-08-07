@@ -23,7 +23,7 @@ public class Article {
 
     String feed, title, permalink, author;
 
-    Date created, lastUpdated;
+    Date created, lastUpdated, toView;
 
     String mainPhotoUrl;
 
@@ -137,6 +137,13 @@ public class Article {
         this.mainPhotoUrl = mainPhotoUrl;
     }
 
+    public Date getToView() {
+        return toView;
+    }
+
+    public void setToView(Date toView) {
+        this.toView = toView;
+    }
 
     @Override
     public String toString() {

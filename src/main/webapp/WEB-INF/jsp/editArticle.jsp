@@ -38,7 +38,8 @@
                     label.html("&nbsp;").addClass("checked");
                 }
             });
-        })
+            $("#datepicker").datepicker();
+        });
 
         function imageSelected(src) {
             if ($("#no-photo").length != 0) {
@@ -83,6 +84,10 @@
                         <label class="aricle-link-label" for="permalink">Постійна назва</label>
                         <input class="aricle-link-input" id="permalink" name="permalink" type="text"
                                value="<c:out value='${it.permalink}'/>"/>
+
+                        <label class="aricle-link-label" for="datepicker">Дата для відображення</label>
+                        <input class="aricle-link-input" id="datepicker" name="toView" type="text"
+                               value="<c:out value='${it.toView}'/>"/>
 
                         <div class="main-photo-container" id="main-photo-container">
 
