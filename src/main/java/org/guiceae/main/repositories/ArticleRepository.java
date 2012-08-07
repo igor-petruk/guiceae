@@ -91,6 +91,10 @@ public class ArticleRepository {
     }
 
     public List<Article> getFeed(String feed, boolean onlyPublished, Integer offset) {
+        return getFeed(feed, onlyPublished, offset, 5);
+    }
+
+    public List<Article> getFeed(String feed, boolean onlyPublished, Integer offset, Integer limit) {
         List<Article> articles = new ArrayList<Article>();
         if (!onlyPublished && (offset == 0)) {
             articles.addAll(getPendingFeed(feed));
@@ -101,7 +105,7 @@ public class ArticleRepository {
                 .filter("state", ArticleState.PUBLISHED)
                 .order("-created")
                 .offset(offset)
-                .limit(5);
+                .limit(limit);
         articles.addAll(query.list());
         return articles;
     }
