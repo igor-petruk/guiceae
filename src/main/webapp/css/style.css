@@ -313,6 +313,11 @@ a.rss img {
     border-bottom: 1px solid #818181;
 }
 
+.edit-feedback {
+    float: left;
+    width: 100%;
+}
+
 /*feedback on main*/
 .feedback-short-view.main {
     width: 100%;

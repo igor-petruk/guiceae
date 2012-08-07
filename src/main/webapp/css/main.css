@@ -146,7 +146,7 @@ h1.logo a {
     height: 42px;
     float: left;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 100;
     color: #aaa;
     letter-spacing: 1px;
 }
@@ -605,7 +605,7 @@ h1.logo a {
     float: left;
     width: 100%;
     min-width: 1200px;
-    border-bottom: 1px solid #7CBFF3;
+    margin-top: 7px;
 }
 
 #personal-not-main div.name {
