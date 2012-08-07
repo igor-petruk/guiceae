@@ -115,13 +115,14 @@ public class ArticleRepository {
             Objectify ofy = this.ofy.get();
             Article oldArticle = ofy.get(Article.class, article.getId());
             oldArticle.setLastUpdated(new Date());
+            oldArticle.setToView(article.getToView());
             oldArticle.setEditableContent(article.getEditableContent());
             oldArticle.setContent(article.getContent());
             oldArticle.setShortContent(article.getShortContent());
             oldArticle.setMainPhotoUrl(article.getMainPhotoUrl());
             oldArticle.setFeed(article.getFeed());
             oldArticle.setTitle(article.getTitle());
-            if (!oldArticle.getPermalink().equals(article.getPermalink())){
+            if (!oldArticle.getPermalink().equals(article.getPermalink())) {
                 searchRepository.deleteFromSearch(oldArticle);
             }
             oldArticle.setPermalink(article.getPermalink());
