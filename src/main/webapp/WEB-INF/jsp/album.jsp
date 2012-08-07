@@ -6,9 +6,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
 <guiceae:head/>
 <body>
+<div id="head">
+    <guiceae:quick-panel/>
+</div>
+<guiceae:new-menu/>
+
 <div class="newAlbumForm">
     <form action="/app/album/addNew" method="POST">
         <input type="hidden" name="id" value="${it.id}"/>
@@ -34,5 +38,7 @@
         </div>
     </form>
 </div>
+
+<guiceae:footer/>
 </body>
 </html>

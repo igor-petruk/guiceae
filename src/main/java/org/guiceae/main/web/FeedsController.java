@@ -37,9 +37,8 @@ public class FeedsController {
     UserPrincipalHolder userPrincipalHolder;
 
     Map<String, String> feeds = new ImmutableMap.Builder<String, String>()
-            .put("news", "ЗМІ")
-            .put("charity", "Благодійність")
-            .put("activity", "Депутатська діяльність")
+            .put("news", "Новини, ЗМІ")
+            .put("charity", "Депутатська діяльність, благодійність")
             .put("biography", "Біографія")
             .build();
 

@@ -41,10 +41,12 @@
             </script>
         </div>
         <div class="createdDate">
-            <span>Дата створення</span>
-            <span><fmt:formatDate value="${article.created}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
-            <span>Дата останнього оновлення</span>
-            <span><fmt:formatDate value="${article.lastUpdated}" pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
+            <span class="admin">Дата створення</span>
+            <span class="admin"><fmt:formatDate value="${article.created}"
+                                                pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
+            <span class="admin">Дата останнього оновлення</span>
+            <span class="admin"><fmt:formatDate value="${article.lastUpdated}"
+                                                pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
         </div>
     </guiceae:rolesOnly>
 

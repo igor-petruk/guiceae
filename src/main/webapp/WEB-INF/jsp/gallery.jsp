@@ -58,34 +58,15 @@
                 imageCrop:false,
                 idleMode:true,
                 showInfo:true,
-                dataSource:photoInfo
-            });
-        }
-
-        function updateAlbum(albumId, albumTitle, albumDescription) {
-            var album = {
-                id:albumId,
-                title:albumTitle,
-                description:albumDescription
-            }
-
-            $.ajax({
-                url:"/app/album/update",
-                type:"POST",
-                dataType:"json",
-                contentType:"application/json; charset=utf-8",
-                cache:false,
-                data:JSON.stringify(album),
-                success:function () {
-
+                dataSource:photoInfo,
+                extend:function (options) {
+                    this.bind('image', function (e) {
+                        // lets make galleria open a lightbox when clicking the main image:
+                        $(e.imageTarget).click(this.proxy(function () {
+                            this.openLightbox();
+                        }));
+                    });
                 }
-            });
-        }
-
-        function deleteAlbum(albumId) {
-            $.ajax({
-                url:"/app/album/delete/" + albumId,
-                type:"POST"
             });
         }
     </script>
@@ -123,11 +104,8 @@
                         <div class="description">${album.description}</div>
                         <guiceae:rolesOnly roles="cm">
                             <div class="crud-place">
-                                <a href="#"
-                                   onclick="updateAlbum( '${album.id}', '${album.title}', '${album.description}')">Редагувати
-                                    фотоальбом</a>
-                                <a href="#" onclick="deleteAlbum( '${album.id}')">Видалити фотоальбом</a>
-                                    <%--<a href="#" onclick="completeDeleteAlbum(${album.id})">Повністю видалити альбом</a>--%>
+                                <a href="/app/album/update/${album.id}">Редагувати фотоальбом</a>
+                                <a href="/app/album/delete/${album.id}">Видалити фотоальбом</a>
                             </div>
                         </guiceae:rolesOnly>
                     </div>

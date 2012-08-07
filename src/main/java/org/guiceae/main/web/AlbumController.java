@@ -89,22 +89,23 @@ public class AlbumController {
         return new Viewable("/album.jsp");
     }
 
-    @POST
-    @Path("/update")
+    @GET
+    @Path("/update/{id}")
     @RolesAllowed("cm")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Viewable updateAlbumPage(Album album) {
-        return new Viewable("/album.jsp", album);
+    public Viewable updateAlbumPage(@PathParam("id") Long id) {
+        return new Viewable("/album.jsp", albumRepository.getById(id));
     }
 
-    @POST
+    @DELETE
     @Path("/delete/{id}")
     @RolesAllowed("cm")
-    public void deletePage(@PathParam("id") Long id) {
-        //todo:need transaction here
-//        albumRepository.deleteAlbum(id);
-//        photoRepository.clearAlbumInfo(id);
+    public Response deletePage(@PathParam("id") Long id) throws URISyntaxException {
+        Collection<Photo> photosInALbum = photoRepository.getByAlbumId(id);
+        if (photosInALbum.isEmpty()) {
+            albumRepository.deleteById(id);
+        }
+        return Response.seeOther(new URI("/app/album/all")).build();
     }
 
     @POST
@@ -130,4 +131,5 @@ public class AlbumController {
     public Collection<Photo> getByAlbumId(@PathParam("albumId") Long albumId) {
         return photoRepository.getByAlbumId(albumId);
     }
+
 }

@@ -12,6 +12,7 @@ div {
 .newAlbumForm {
     width: 100%;
     max-width: 1200px;
+    float: left;
 }
 
 .new-photo {
@@ -22,5 +23,4 @@ div {
 .introduce-photo-div {
     width: 100%;
     max-width: 1200px;
-
 }

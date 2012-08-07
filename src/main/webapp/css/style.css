@@ -93,6 +93,11 @@ a.rss img {
     margin: 2px 30px 5px 2px;
 }
 
+.article div.createdDate span.admin {
+    float: left;
+    width: 100%;
+}
+
 .article div.title a {
     width: 100%;
     margin: 10px 0 0 10px;

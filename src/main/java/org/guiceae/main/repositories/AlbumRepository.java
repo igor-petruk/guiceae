@@ -19,7 +19,7 @@ public class AlbumRepository {
     private Provider<Objectify> ofy;
 
     private static Album DEFAULT_ALBUM = new Album();
-    
+
     @Inject
     UserPrincipalHolder userPrincipalHolder;
 
@@ -29,13 +29,13 @@ public class AlbumRepository {
         DEFAULT_ALBUM.setTitle("(не в альбомі)");
     }
 
-    public Album getDefaultAlbum(){
+    public Album getDefaultAlbum() {
         return DEFAULT_ALBUM;
     }
 
     public List<Album> getAll() {
-        List<Album> albums = new ArrayList<Album> ();
-        if (userPrincipalHolder.get().contains("cm")){
+        List<Album> albums = new ArrayList<Album>();
+        if (userPrincipalHolder.get().contains("cm")) {
             albums.add(DEFAULT_ALBUM);
         }
         albums.addAll(ofy.get().query(Album.class).list());
@@ -43,14 +43,18 @@ public class AlbumRepository {
     }
 
     public Album getById(Long id) {
-        if (id==null || id.equals(0L)){
+        if (id == null || id.equals(0L)) {
             return DEFAULT_ALBUM;
-        }else{
+        } else {
             return ofy.get().get(Album.class, id);
         }
     }
 
     public void persistAlbum(Album album) {
         ofy.get().put(album);
+    }
+
+    public void deleteById(Long id) {
+        ofy.get().delete(Album.class, id);
     }
 }

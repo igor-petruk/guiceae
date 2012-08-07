@@ -115,7 +115,7 @@
                     <span class="head">
                         <a href="/app/feed/news">
                             <span class="pic"><img src="/css/images/system/news.png" alt="Більше новин із ЗМІ"/></span>
-                            <span>ЗМІ</span>
+                            <span>Новини, ЗМІ</span>
                         </a>
                     </span>
                     <%--<span class="separator"></span>--%>

@@ -11,43 +11,18 @@
 <head>
     <guiceae:head>
         <guiceae:photo-scripts/>
-
     <title>
         Album workshop page
     </title>
     </guiceae:head>
 <body>
-
+<div id="head">
+    <guiceae:quick-panel/>
+</div>
+<guiceae:new-menu/>
 <guiceae:admin-menu/>
-<c:forEach var="album" items="${it['albums']}">
-    <tr>
-        <td>
-            <div class="navigation-container">
-                <a class="pageLink prev" style="visibility: hidden;" href="#" title="Previous Page"></a>
 
-                <div id="${album.id}" class="album navigation">
-                    <div id="album-gallery${album.id}" class="album-gallery">
-                        <ul class="thumbs noscript"></ul>
-                    </div>
-                </div>
-                <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
-            </div>
-        </td>
-        <td>
-            <div class="album-caption">
-                <div class="album-title"><c:out value="${album.title}"/></div>
-                <div class="album-desc"><c:out value="${album.description}"/></div>
-                <div class="admin-controls" style="font-size: large;">
-                    <a href="/app/album/update?id=${album.id}">Update album</a>
-                    <a href="/app/album/delete?id=${album.id}">Delete album</a>
-                </div>
-            </div>
-        </td>
-    </tr>
-</c:forEach>
-</table>
-
-<div style="display:none;">
+<div style="float:left">
     <c:forEach var="photo" items="${it['photos']}">
         <div id="${photo.albumId}" class="photo">
             <a href="${photo.servingUrl}" class="thumb" title='<c:out value="${photo.title}"/>'><img
