@@ -65,7 +65,9 @@ public class AlbumController {
     @Path("/new")
     @RolesAllowed("cm")
     public Viewable newAlbumPage() {
-        return new Viewable("/album.jsp");
+        Album album = new Album();
+        album.setId(0L);
+        return new Viewable("/album.jsp", album);
     }
 
     @GET
@@ -94,7 +96,9 @@ public class AlbumController {
                                @FormParam("title") String title,
                                @FormParam("description") String desc) throws URISyntaxException {
         Album info = new Album(title, desc);
-        info.setId(id);
+        if (!id.equals(0L)){
+            info.setId(id);
+        }
         albumRepository.mergeAlbum(info);
         return Response.seeOther(new URI("/app/album/gallery")).build();
     }
