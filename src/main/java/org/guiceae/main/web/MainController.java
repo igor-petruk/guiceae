@@ -28,9 +28,9 @@ public class MainController {
     public Viewable getMain() {
         Map<String, List<?>> it = new HashMap<String, List<?>>();
         boolean onlyPublished = !userPrincipalHolder.get().contains("cm");
-        it.put("newsFeed", articleRepository.getFeed("news", onlyPublished, 0));
-        it.put("charityFeed", articleRepository.getFeed("charity", onlyPublished, 0));
-        it.put("feedbackFeed", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0));
+        it.put("newsFeed", articleRepository.getFeed("news", onlyPublished, 0, 3));
+        it.put("charityFeed", articleRepository.getFeed("charity", onlyPublished, 0, 3));
+        it.put("feedbackFeed", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0, 3));
         return new Viewable("/main.jsp", it);
     }
 

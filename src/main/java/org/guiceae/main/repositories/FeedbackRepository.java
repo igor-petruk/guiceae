@@ -48,6 +48,10 @@ public class FeedbackRepository {
     }
 
     public List<Feedback> getFeed(FeedbackFeedType feed, boolean onlyPublished, Integer offset) {
+        return getFeed(feed, onlyPublished, offset, 5);
+    }
+
+    public List<Feedback> getFeed(FeedbackFeedType feed, boolean onlyPublished, Integer offset, Integer limit) {
         List<Feedback> questions = new ArrayList<Feedback>();
         if (!onlyPublished && (offset == 0)) {
             questions.addAll(getPendingFeed(feed));
@@ -58,7 +62,7 @@ public class FeedbackRepository {
                 .filter("state", ArticleState.PUBLISHED)
                 .order("-created")
                 .offset(offset)
-                .limit(5);
+                .limit(limit);
         questions.addAll(query.list());
         return questions;
     }
