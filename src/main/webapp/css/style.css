@@ -397,3 +397,7 @@ div.editArticle .main-photo-container {
     float: left;
     margin: 25px 10px 5px 20px;
 }
+
+.album-caption {
+    float: left;
+}

@@ -68,7 +68,7 @@
         </c:when>
         <c:otherwise>
             <div class="short-content _100">
-                <c:if test="${article.mainPhotoUrl!=null}">
+                <c:if test="${article.mainPhotoUrl!=null && article.mainPhotoUrl!=''}">
                     <img class="mainPhoto" src="${article.mainPhotoUrl}=s400"/>
                 </c:if>
                     ${article.shortContent}<br/>

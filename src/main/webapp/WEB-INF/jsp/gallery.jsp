@@ -23,11 +23,6 @@
 
             $("#galleria").remove();
             $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
-            console.log("for Album" + albumId);
-            var albumInfo = $.ajax({
-                type:'GET',
-                url:'get/' + albumId
-            });
 
             $.ajax({
                 type:'GET',
@@ -49,16 +44,12 @@
                                 thumb:photos[i].servingUrl + '=s60'
                             }
                     );
-                    console.log("title" + photos[i].title + "image" + photos[i].servingUrl);
                 }
                 initGalleria(photoInfo);
             }
         }
 
         function initGalleria(photoInfo) {
-            // Load the classic theme
-//            if (!gal) {
-            console.log("new galleria");
             Galleria.configure({
                 thumbnails:true
             });
@@ -69,11 +60,30 @@
                 showInfo:true,
                 dataSource:photoInfo
             });
-//                gal = true;
-//            }else{
-//                console.log("old galleria");
-//                $("#galleria").load(photoInfo);
-//                }
+        }
+
+        function updateAlbum(albumId, albumTitle, albumDescription) {
+            var album = {
+                id:albumId,
+                title:albumTitle,
+                description:albumDescription
+            }
+
+            $.ajax({
+                url:"/app/album/update",
+                type:"POST",
+                dataType:"json",
+                contentType:"application/json; charset=utf-8",
+                cache:false,
+                data:JSON.stringify(album)
+            });
+        }
+
+        function deleteAlbum(albumId) {
+            $.ajax({
+                url:"/app/album/delete/" + albumId,
+                type:"POST"
+            });
         }
     </script>
 </guiceae:head>
@@ -104,10 +114,19 @@
                     <div class="album-view" albumId="${album.id}">
                         <div class="title">${album.title}</div>
                         <div class="album-main-thumb">
-                            <a style="text-decoration: none;" onclick="sendShowRequest(${album.id})">
+                            <a style="text-decoration: none;" onclick="sendShowRequest('${album.id}')">
                                 <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
                         </div>
                         <div class="description">${album.description}</div>
+                        <guiceae:rolesOnly roles="cm">
+                            <div class="crud-place">
+                                <a href="#"
+                                   onclick="updateAlbum( '${album.id}', '${album.title}', '${album.description}')">Редагувати
+                                    фотоальбом</a>
+                                <a href="#" onclick="deleteAlbum( '${album.id}')">Видалити фотоальбом</a>
+                                    <%--<a href="#" onclick="completeDeleteAlbum(${album.id})">Повністю видалити альбом</a>--%>
+                            </div>
+                        </guiceae:rolesOnly>
                     </div>
                 </c:forEach>
             </div>

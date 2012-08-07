@@ -69,15 +69,15 @@ public class AlbumController {
                            @Context HttpServletRequest request) {
         Map<String, Object> map = new HashMap<String, Object>();
         Collection<Photo> photos = photoRepository.getByAlbumId(albumId);
-        if ("ckeditor".equals(mode)){
-            map.put("callbackCode","window.opener.CKEDITOR.tools.callFunction("+ request.getParameter("CKEditorFuncNum")+", src);");
+        if ("ckeditor".equals(mode)) {
+            map.put("callbackCode", "window.opener.CKEDITOR.tools.callFunction(" + request.getParameter("CKEditorFuncNum") + ", src);");
             map.put("funcNum", request.getParameter("CKEditorFuncNum"));
-        }else{
-            map.put("callbackCode","window.opener.imageSelected(src);");
+        } else {
+            map.put("callbackCode", "window.opener.imageSelected(src);");
         }
         map.put("uploadUrl", BlobstoreServiceFactory.getBlobstoreService().createUploadUrl("/app/ckupload"));
         map.put("photos", photos);
-        map.put("mode",mode);
+        map.put("mode", mode);
 
         return new Viewable("/ckBrowse.jsp", map);
     }
@@ -89,6 +89,22 @@ public class AlbumController {
         return new Viewable("/album.jsp");
     }
 
+    @POST
+    @Path("/update")
+    @RolesAllowed("cm")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Viewable updateAlbumPage(Album album) {
+        return new Viewable("/album.jsp", album);
+    }
+
+    @POST
+    @Path("/delete/{id}")
+    @RolesAllowed("cm")
+    public void deletePage(@PathParam("id") Long id) {
+        //todo:need transaction here
+//        albumRepository.deleteAlbum(id);
+//        photoRepository.clearAlbumInfo(id);
+    }
 
     @POST
     @Path("/addNew")

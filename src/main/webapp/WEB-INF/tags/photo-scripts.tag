@@ -2,3 +2,7 @@
 <link href="/css/galleria.classic.css" rel="stylesheet" type="text/css" media="all"/>
 <script type="text/javascript" src="/js/galleria-1.2.7.min.js"></script>
 <script type="text/javascript" src="/js/galleria.classic.min.js"></script>
+
+<script type="text/javascript" charset="UTF-8">
+
+</script>
