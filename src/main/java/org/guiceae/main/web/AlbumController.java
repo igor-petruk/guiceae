@@ -1,9 +1,6 @@
 package org.guiceae.main.web;
 
-import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.google.appengine.api.images.ImagesService;
-import com.google.appengine.api.images.ImagesServiceFactory;
 import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Album;
 import org.guiceae.main.model.Photo;
@@ -19,7 +16,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * User: boui
@@ -32,27 +32,6 @@ public class AlbumController {
     AlbumRepository albumRepository;
     @Inject
     PhotoRepository photoRepository;
-
-    @GET
-    @Path("/all")
-    public Viewable showAlbums() {
-        List<Photo> photos = photoRepository.getAll();
-
-        ImagesService imagesService = ImagesServiceFactory.getImagesService();
-        List<Photo> tmp = new ArrayList<Photo>();
-
-        for (Photo photo : photos) {
-            photo.setServingUrl(imagesService.getServingUrl(new BlobKey(photo.getBlobKey())));
-            tmp.add(photo);
-        }
-
-        List<Album> albums = albumRepository.getAll();
-        Map<String, List<? extends Object>> map = new HashMap<String, List<? extends Object>>();
-        map.put("albums", albums);
-        map.put("photos", tmp);
-        return new Viewable("/album-workshop.jsp", map);
-    }
-
 
     @GET
     @Path("/get/{albumId}")
@@ -105,16 +84,19 @@ public class AlbumController {
         if (photosInALbum.isEmpty()) {
             albumRepository.deleteById(id);
         }
-        return Response.seeOther(new URI("/app/album/all")).build();
+        return Response.seeOther(new URI("/app/album/gallery")).build();
     }
 
     @POST
     @Path("/addNew")
     @RolesAllowed("cm")
-    public Response processNewAlbum(@FormParam("title") String title, @FormParam("description") String desc) throws URISyntaxException {
+    public Response mergeAlbum(@FormParam("id") Long id,
+                               @FormParam("title") String title,
+                               @FormParam("description") String desc) throws URISyntaxException {
         Album info = new Album(title, desc);
-        albumRepository.persistAlbum(info);
-        return Response.seeOther(new URI("/app/album/all")).build();
+        info.setId(id);
+        albumRepository.mergeAlbum(info);
+        return Response.seeOther(new URI("/app/album/gallery")).build();
     }
 
     @GET

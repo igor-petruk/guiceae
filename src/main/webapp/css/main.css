@@ -514,6 +514,8 @@ h1.logo a {
     opacity: 0.9;
     max-width: 270px;
     color: #818181;
+    float: left;
+    margin-bottom: 10px;
 }
 
 .album-view div.title {

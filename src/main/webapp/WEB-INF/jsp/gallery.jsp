@@ -114,7 +114,8 @@
 
             <div class="view-right-place">
                 <guiceae:rolesOnly roles="cm">
-                    <a href="/app/photo/admin">Додати альбом чи фото</a>
+                    <a href="/app/album/new">Додати альбом</a> |
+                    <a href="/app/photo/admin">Додати фото</a>
                 </guiceae:rolesOnly>
                 <div id="galleria" style="z-index:1">
                 </div>

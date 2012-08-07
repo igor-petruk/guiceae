@@ -9,10 +9,15 @@
 
 <html>
 <guiceae:head>
-    <title>Album workshop</title>
+    <title>Редагування фотографії</title>
 
     <script type="text/javascript">
         $(function () {
+            var oldAlbumId = $("#oldALbum").val();
+            if (oldAlbumId && oldAlbumId.length > 0) {
+                $("#album" + oldAlbumId).attr("selected", "selected");
+            }
+
             $("#submitNewPhotos").on("click", function () {
                 var data = [];
                 $(".newDescription").each(function () {
@@ -20,7 +25,7 @@
                         id:$(this).attr("id"),
                         description:$(this).val(),
                         albumId:$("#album option:selected").val(),
-                        title:$("#title").val()
+                        title:$(".title").val()
                     }, data);
                 });
                 console.log(data);
@@ -35,7 +40,7 @@
                         console.log("very bad thing happen");
                     }
                 }).done(function () {
-                            window.location.replace("/app/album/all");
+                            window.location.replace("/app/album/gallery");
                         });
             });
         });
@@ -43,19 +48,28 @@
 </guiceae:head>
 <body>
 
-<div class="introduce-photo-div">
+<div>
     <button id="submitNewPhotos">Add photo</button>
 
-    <div class="content">
-        <c:forEach var="photo" items="${newPhotos}">
-            <div class="intr-photo-row-box">
-                <img src="${photo.servingUrl}=s200" class="thumbnailPhoto" alt=""/>
-                <input id="title" maxlength="200"/>
+    <div>
+        <c:forEach var="photo" items="${photos}">
+            <div>
+                <img src="${photo.servingUrl}=s200"/>
+
+                <label for="title">Назва фотографії</label>
+                <input id="title" class="title" maxlength="200" value="${photo.title}"/>
+
+                <label for="${photo.id}">Опис фотографії</label>
                 <textarea cols="100" rows="5" type="text" class="newDescription" id="${photo.id}"></textarea>
+
+                <label for="album">Оберіть альбом</label>
                 <select id="album">
                     <c:forEach var="album" items="${albums}">
-                        <option value="${album.id}">${album.title}</option>
+                        <option value="${album.id}" id="album${album.id}">${album.title}</option>
                     </c:forEach>
+                    <c:if test="${not empty photo.albumId}">
+                        <input type="hidden" value="${photo.albumId}" id="oldAlbum"/>
+                    </c:if>
                 </select>
             </div>
         </c:forEach>

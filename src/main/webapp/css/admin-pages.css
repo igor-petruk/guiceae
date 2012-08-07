@@ -14,6 +14,9 @@ div {
     max-width: 1200px;
     float: left;
 }
+.newAlbumForm * {
+    width: 100%;
+}
 
 .new-photo {
     width: 100%;

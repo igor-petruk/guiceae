@@ -6,7 +6,6 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.inject.Inject;
-import org.guiceae.main.model.Album;
 import org.guiceae.main.model.Photo;
 import org.guiceae.main.repositories.AlbumRepository;
 import org.guiceae.main.repositories.PhotoRepository;
@@ -49,9 +48,9 @@ public class UploadServlet extends HttpServlet {
                 photos.add(new Photo(imagesService.getServingUrl(key), key.getKeyString()));
             }
             photos = photoRepository.persistPhoto(photos);
-            req.setAttribute("newPhotos", photos);
+            req.setAttribute("photos", photos);
 
-            req.setAttribute("albums",  albumRepository.getAll());
+            req.setAttribute("albums", albumRepository.getAll());
 
             getServletConfig().getServletContext().getRequestDispatcher(
                     "/WEB-INF/jsp/introduce-photo.jsp").forward(req, resp);

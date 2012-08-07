@@ -43,6 +43,6 @@ public class PhotoController {
     @Path("/admin")
     @RolesAllowed("cm")
     public Viewable getAdminMain() {
-        return new Viewable("/adminPage.jsp");
+        return new Viewable("/add-photo.jsp");
     }
 }

@@ -50,8 +50,17 @@ public class AlbumRepository {
         }
     }
 
-    public void persistAlbum(Album album) {
-        ofy.get().put(album);
+    public void mergeAlbum(Album album) {
+        if (album.getId() == null || album.getId() == 0) {
+            album.setId(null);
+            ofy.get().put(album);
+        } else {
+            Objectify ofy = this.ofy.get();
+            Album oldAlbum = ofy.get(Album.class, album.getId());
+            oldAlbum.setDescription(album.getDescription());
+            oldAlbum.setTitle(album.getTitle());
+            ofy.put(oldAlbum);
+        }
     }
 
     public void deleteById(Long id) {
