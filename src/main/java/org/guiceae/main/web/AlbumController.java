@@ -123,6 +123,14 @@ public class AlbumController {
         return photoRepository.getByAlbumId(albumId);
     }
 
+
+    @GET
+    @Path("/video/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Video> allVideos() {
+        return albumRepository.getVideoAlbum();
+    }
+
     @GET
     @Path("/video/new")
     public Viewable newVideo() {
@@ -134,6 +142,10 @@ public class AlbumController {
     @Consumes(MediaType.APPLICATION_JSON)
     public void newVideo(Video video) {
         videoRepository.mergeVideo(video);
+        List<Video> videos = albumRepository.getVideoAlbum();
+        for (Video vid : videos) {
+            System.out.println(video);
+        }
     }
 
 }

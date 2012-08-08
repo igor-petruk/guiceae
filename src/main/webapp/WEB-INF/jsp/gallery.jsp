@@ -20,23 +20,29 @@
         });
 
 
-        function showVideoAlbum(videos) {
+        function showVideoAlbum() {
             $("#galleria").remove();
             $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
 
-
-            if (videos && videos.length > 0) {
-                var videoInfo = [];
-                for (var i in photos) {
-                    videoInfo.push({
-                                title:videos[i].title,
-                                description:videos[i].description,
-                                video:videos[i].youtubeUrl
-                            }
-                    );
+            $.ajax({
+                type:'GET',
+                url:'/app/album/video/all',
+                success:function (videos) {
+                    if (videos && videos.length > 0) {
+                        var videoInfo = [];
+                        for (var i in videos) {
+                            videoInfo.push({
+                                        title:videos[i].title,
+                                        description:videos[i].description,
+                                        video:videos[i].youtubeUrl
+                                    }
+                            );
+                        }
+                        initGalleria(videoInfo);
+                    }
                 }
-                initGalleria(videoInfo);
-            }
+            });
+
         }
         function sendShowRequest(albumId) {
 
@@ -126,7 +132,7 @@
                 <div class="video-album-view" albumId="${album.id}">
                     <div class="title">Відеоальбом</div>
                     <div class="album-main-thumb">
-                        <a style="text-decoration: none;" onclick="showVideoAlbum(${videos})">
+                        <a style="text-decoration: none;" onclick="showVideoAlbum()">
                             <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
                     </div>
                 </div>

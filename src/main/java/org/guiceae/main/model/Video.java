@@ -58,4 +58,14 @@ public class Video implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", youtubeUrl='" + youtubeUrl + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

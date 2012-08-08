@@ -7,6 +7,7 @@
         <li><a id="menu-biography" href="/app/feed/biography">Біографія</a></li>
         <li><a id="menu-activity" href="/app/feed/charity">Депутатська діяльність</a></li>
         <li><a id="menu-gallery" href="/app/album/gallery">Фотогалерея</a></li>
+        <li><a id="menu-video-gallery" href="/app/album/gallery">Відеогалерея</a></li>
     </ul>
     <jsp:doBody/>
 </div>

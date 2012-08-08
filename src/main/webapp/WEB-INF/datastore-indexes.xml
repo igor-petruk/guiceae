@@ -3,7 +3,7 @@
     <datastore-index kind="Article" ancestor="false" source="manual">
         <property name="feed" direction="asc"/>
         <property name="state" direction="asc"/>
-        <property name="created" direction="desc"/>
+        <property name="toView" direction="desc"/>
     </datastore-index>
     <datastore-index kind="Feedback" ancestor="false" source="manual">
         <property name="feed" direction="asc"/>
