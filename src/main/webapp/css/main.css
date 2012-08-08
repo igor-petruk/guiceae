@@ -509,6 +509,15 @@ h1.logo a {
     display: inline;
 }
 
+.video-album-view {
+    background-color: #b4b8d1;
+    opacity: 0.9;
+    max-width: 270px;
+    color: #818181;
+    float: left;
+    margin-bottom: 10px;
+}
+
 .album-view {
     background-color: #b4b8d1;
     opacity: 0.9;

@@ -40,7 +40,7 @@
                         console.log("very bad thing happen");
                     }
                 }).done(function () {
-                            window.location.replace("/app/album/gallery");
+                            window.location.replace("/app/album/gallery/photo");
                         });
             });
         });

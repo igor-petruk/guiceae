@@ -90,7 +90,7 @@ public class AlbumController {
         if (photosInALbum.isEmpty()) {
             albumRepository.deleteById(id);
         }
-        return Response.seeOther(new URI("/app/album/gallery")).build();
+        return Response.seeOther(new URI("/app/album/gallery/photo")).build();
     }
 
     @POST
@@ -104,15 +104,16 @@ public class AlbumController {
             info.setId(id);
         }
         albumRepository.mergeAlbum(info);
-        return Response.seeOther(new URI("/app/album/gallery")).build();
+        return Response.seeOther(new URI("/app/album/gallery/photo")).build();
     }
 
     @GET
-    @Path("/gallery")
-    public Viewable getGallery() {
-        Map<String, List<? extends Object>> map = new HashMap<String, List<? extends Object>>();
+    @Path("/gallery/{what}")
+    public Viewable getGallery(@PathParam("what") String whatToView) {
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("videos", albumRepository.getVideoAlbum());
         map.put("albums", albumRepository.getAll());
+        map.put("whatToView", whatToView.equalsIgnoreCase("videos"));
         return new Viewable("/gallery.jsp", map);
     }
 

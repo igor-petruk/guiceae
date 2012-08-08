@@ -14,8 +14,13 @@
     <script type="text/javascript" charset="utf-8">
         var gal;
         $(function () {
-            var id = $(".album-view:first").attr("albumId");
-            sendShowRequest(id);
+            var whatToView = $("#whatToView").val();
+            if (whatToView == 'true') {
+                showVideoAlbum();
+            } else {
+                var id = $(".album-view:first").attr("albumId");
+                sendShowRequest(id);
+            }
             Galleria.loadTheme('/js/galleria.classic.min.js');
         });
 
@@ -83,12 +88,14 @@
                 imageCrop:false,
                 idleMode:true,
                 showInfo:true,
-                dataSource:photoInfo
+                dataSource:photoInfo,
+
             });
         }
     </script>
 </guiceae:head>
 <body>
+
 
 <div id="head">
     <guiceae:quick-panel/>
@@ -103,6 +110,7 @@
 
 <guiceae:new-menu/>
 
+<input type="hidden" value="${it.whatToView}" id="whatToView"/>
 
 <div id="content">
     <div id="content_cen">
