@@ -3,6 +3,7 @@ package org.guiceae.main.repositories;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Album;
+import org.guiceae.main.model.Video;
 import org.guiceae.util.UserPrincipalHolder;
 
 import javax.inject.Inject;
@@ -65,5 +66,9 @@ public class AlbumRepository {
 
     public void deleteById(Long id) {
         ofy.get().delete(Album.class, id);
+    }
+
+    public List<Video> getVideoAlbum() {
+        return ofy.get().query(Video.class).list();
     }
 }

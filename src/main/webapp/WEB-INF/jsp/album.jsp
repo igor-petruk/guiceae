@@ -14,7 +14,7 @@
 <guiceae:new-menu/>
 
 <div class="newAlbumForm">
-    <form action="/app/album/addNew" method="POST">
+    <form action="/app/album/addNew" method="POST" accept-charset="utf-8">
         <div style="float:left; border: 1px solid #AAA">
 
             <input type="hidden" name="id" value="${it.id}"/>

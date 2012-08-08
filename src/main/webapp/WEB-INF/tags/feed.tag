@@ -7,13 +7,13 @@
 <%@ attribute name="feed" required="true" type="java.util.List" %>
 <%@ attribute name="feedName" required="true" %>
 
-<guiceae:rolesOnly roles="cm">
-    <div style="float:right; margin: 10px 20px 10px 10px;">
-        <a id="add-article" href="/app/article/add/${feedName}">Додати статтю</a>
-    </div>
-</guiceae:rolesOnly>
 
 <div class="feed-full-view">
+    <guiceae:rolesOnly roles="cm">
+        <div style="float:left; margin: 10px 20px 10px 10px;">
+            <a id="add-article" href="/app/article/add/${feedName}">Додати статтю</a>
+        </div>
+    </guiceae:rolesOnly>
     <a class="rss" href="/app/feed/${feedName}/rss"><img src="/css/images/system/rss.png"
                                                          alt="Підписатися на оновлення"></a>
 

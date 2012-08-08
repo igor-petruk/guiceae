@@ -103,7 +103,7 @@ public class ArticleRepository {
                 .query(Article.class)
                 .filter("feed", feed)
                 .filter("state", ArticleState.PUBLISHED)
-                .order("-created")
+                .order("-toView")
                 .offset(offset)
                 .limit(limit);
         articles.addAll(query.list());

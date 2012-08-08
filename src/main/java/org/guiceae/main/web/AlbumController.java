@@ -4,8 +4,10 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.sun.jersey.api.view.Viewable;
 import org.guiceae.main.model.Album;
 import org.guiceae.main.model.Photo;
+import org.guiceae.main.model.Video;
 import org.guiceae.main.repositories.AlbumRepository;
 import org.guiceae.main.repositories.PhotoRepository;
+import org.guiceae.main.repositories.VideoRepository;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -32,6 +34,8 @@ public class AlbumController {
     AlbumRepository albumRepository;
     @Inject
     PhotoRepository photoRepository;
+    @Inject
+    VideoRepository videoRepository;
 
     @GET
     @Path("/get/{albumId}")
@@ -96,7 +100,7 @@ public class AlbumController {
                                @FormParam("title") String title,
                                @FormParam("description") String desc) throws URISyntaxException {
         Album info = new Album(title, desc);
-        if (!id.equals(0L)){
+        if (!id.equals(0L)) {
             info.setId(id);
         }
         albumRepository.mergeAlbum(info);
@@ -107,6 +111,7 @@ public class AlbumController {
     @Path("/gallery")
     public Viewable getGallery() {
         Map<String, List<? extends Object>> map = new HashMap<String, List<? extends Object>>();
+        map.put("videos", albumRepository.getVideoAlbum());
         map.put("albums", albumRepository.getAll());
         return new Viewable("/gallery.jsp", map);
     }
@@ -116,6 +121,19 @@ public class AlbumController {
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Photo> getByAlbumId(@PathParam("albumId") Long albumId) {
         return photoRepository.getByAlbumId(albumId);
+    }
+
+    @GET
+    @Path("/video/new")
+    public Viewable newVideo() {
+        return new Viewable("/introduce-video.jsp");
+    }
+
+    @POST
+    @Path("/video/merge")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void newVideo(Video video) {
+        videoRepository.mergeVideo(video);
     }
 
 }

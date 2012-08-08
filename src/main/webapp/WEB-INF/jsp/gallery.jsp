@@ -19,6 +19,25 @@
             Galleria.loadTheme('/js/galleria.classic.min.js');
         });
 
+
+        function showVideoAlbum(videos) {
+            $("#galleria").remove();
+            $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
+
+
+            if (videos && videos.length > 0) {
+                var videoInfo = [];
+                for (var i in photos) {
+                    videoInfo.push({
+                                title:videos[i].title,
+                                description:videos[i].description,
+                                video:videos[i].youtubeUrl
+                            }
+                    );
+                }
+                initGalleria(videoInfo);
+            }
+        }
         function sendShowRequest(albumId) {
 
             $("#galleria").remove();
@@ -58,15 +77,7 @@
                 imageCrop:false,
                 idleMode:true,
                 showInfo:true,
-                dataSource:photoInfo,
-                extend:function (options) {
-                    this.bind('image', function (e) {
-                        // lets make galleria open a lightbox when clicking the main image:
-                        $(e.imageTarget).click(this.proxy(function () {
-                            this.openLightbox();
-                        }));
-                    });
-                }
+                dataSource:photoInfo
             });
         }
     </script>
@@ -110,16 +121,25 @@
                         </guiceae:rolesOnly>
                     </div>
                 </c:forEach>
+
+
+                <div class="video-album-view" albumId="${album.id}">
+                    <div class="title">Відеоальбом</div>
+                    <div class="album-main-thumb">
+                        <a style="text-decoration: none;" onclick="showVideoAlbum(${videos})">
+                            <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
+                    </div>
+                </div>
             </div>
 
             <div class="view-right-place">
                 <guiceae:rolesOnly roles="cm">
                     <a href="/app/album/new">Додати альбом</a> |
-                    <a href="/app/photo/admin">Додати фото</a>
+                    <a href="/app/photo/admin">Додати фото</a> |
+                    <a href="/app/album/video/new">Додати відео</a>
                 </guiceae:rolesOnly>
                 <div id="galleria" style="z-index:1">
                 </div>
-
             </div>
 
         </div>

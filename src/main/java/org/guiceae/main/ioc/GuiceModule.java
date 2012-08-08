@@ -33,12 +33,13 @@ public class GuiceModule extends AbstractModule {
 
         // repos
         bind(UserRepository.class);
+        bind(VideoRepository.class);
         bind(ArticleRepository.class);
         bind(SearchRepository.class);
-        bind(FeedbackController.class);
         bind(EntityRepository.class);
 
         // controllers
+        bind(FeedbackController.class);
         bind(MainController.class);
         bind(SearchController.class);
         bind(UsersController.class);
@@ -59,7 +60,7 @@ public class GuiceModule extends AbstractModule {
     @Provides
     @Singleton
     @Inject
-    public Index index(SearchService searchService){
+    public Index index(SearchService searchService) {
         IndexSpec indexSpec = IndexSpec.newBuilder()
                 .setName("documents")
                 .setConsistency(Consistency.PER_DOCUMENT)
@@ -68,7 +69,7 @@ public class GuiceModule extends AbstractModule {
     }
 
     @Provides
-    SearchService searchService(){
+    SearchService searchService() {
         return SearchServiceFactory.getSearchService();
     }
 }
