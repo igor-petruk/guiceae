@@ -37,6 +37,8 @@
                         var videoInfo = [];
                         for (var i in videos) {
                             videoInfo.push({
+                                        id:videos[i].id,
+                                        showWhen:"videos",
                                         title:videos[i].title,
                                         description:videos[i].description,
                                         video:videos[i].youtubeUrl
@@ -69,6 +71,7 @@
                 for (var i in photos) {
                     photoInfo.push({
                                 id:photos[i].id,
+                                showWhen:"photos",
                                 title:photos[i].title,
                                 description:photos[i].description,
                                 image:photos[i].servingUrl,
@@ -80,7 +83,7 @@
             }
         }
 
-        function initGalleria(photoInfo) {
+        function initGalleria(info) {
             Galleria.configure({
                 thumbnails:true
             });
@@ -89,11 +92,18 @@
                 imageCrop:false,
                 idleMode:true,
                 showInfo:true,
-                dataSource:photoInfo,
+                dataSource:info,
                 extend:function (options) {
                     this.bind('image', function (e) {
+                        $("#dynamic-update-video").remove();
                         $("#dynamic-update-photo").remove();
-                        $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + photoInfo[e.index].id + "'>Редагувати фото</a>"));
+
+                        if (info[e.index].showWhen == 'photos') {
+                            $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + info[e.index].id + "'>Редагувати фото</a>"));
+                        }
+                        if (info[e.index].showWhen == 'videos') {
+                            $("#dynamic-a").after($("<a id='dynamic-update-video' href='/app/album/video/mergePage/" + info[e.index].id + "'>Редагувати відео</a>"));
+                        }
                     });
                 }
 

@@ -3,7 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
-<guiceae:head/>
+<guiceae:head>
+    <script type="text/javascript" charset="UTF-8">
+        $(function () {
+            CKEDITOR.replace('question',
+                    {
+                        toolbar:'CustomToobar',
+                        uiColor:'#9AB8F3',
+                        filebrowserBrowseUrl:'/app/album/browse/0?mode=ckeditor'
+                    });
+            CKEDITOR.replace('answer',
+                    {
+                        toolbar:'CustomToobar',
+                        uiColor:'#9AB8F3',
+                        filebrowserBrowseUrl:'/app/album/browse/0?mode=ckeditor'
+                    });
+        });
+    </script>
+</guiceae:head>
 <body>
 <div id="head">
     <guiceae:quick-panel/>

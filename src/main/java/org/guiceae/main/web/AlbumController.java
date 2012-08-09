@@ -145,4 +145,11 @@ public class AlbumController {
         videoRepository.mergeVideo(video);
     }
 
+    @GET
+    @Path("/video/mergePage/{id}")
+    public Viewable showMergePage(@PathParam("id") Long id) {
+        Video video = videoRepository.getById(id);
+        return new Viewable("/introduce-video.jsp", video);
+    }
+
 }
