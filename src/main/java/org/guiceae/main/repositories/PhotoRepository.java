@@ -1,7 +1,6 @@
 package org.guiceae.main.repositories;
 
 import com.google.appengine.api.blobstore.BlobKey;
-import com.google.appengine.api.blobstore.BlobstoreFailureException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.googlecode.objectify.Objectify;
@@ -25,6 +24,11 @@ public class PhotoRepository {
 
     @Inject
     Provider<Objectify> ofy;
+
+
+    public Photo getById(Long id) {
+        return ofy.get().find(Photo.class, id);
+    }
 
     public void updatePhotoDescriptions(Photo photo) {
         Objectify ofy = this.ofy.get();
@@ -63,7 +67,7 @@ public class PhotoRepository {
 
     public Collection<Photo> getByAlbumId(Long albumId) {
         Collection<Photo> photos = ofy.get().query(Photo.class)
-                .filter("albumId",albumId)
+                .filter("albumId", albumId)
                 .list();
         return photos;
     }

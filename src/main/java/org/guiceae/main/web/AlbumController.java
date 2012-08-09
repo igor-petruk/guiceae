@@ -143,10 +143,6 @@ public class AlbumController {
     @Consumes(MediaType.APPLICATION_JSON)
     public void newVideo(Video video) {
         videoRepository.mergeVideo(video);
-        List<Video> videos = albumRepository.getVideoAlbum();
-        for (Video vid : videos) {
-            System.out.println(video);
-        }
     }
 
 }

@@ -68,6 +68,7 @@
                 var photoInfo = [];
                 for (var i in photos) {
                     photoInfo.push({
+                                id:photos[i].id,
                                 title:photos[i].title,
                                 description:photos[i].description,
                                 image:photos[i].servingUrl,
@@ -89,6 +90,13 @@
                 idleMode:true,
                 showInfo:true,
                 dataSource:photoInfo,
+                extend:function (options) {
+                    this.bind('image', function (e) {
+                        $(e.imageTarget).dblclick(this.proxy(function () {
+                            window.location("/app/photo/" + photoInfo[e.index].id);
+                        }));
+                    });
+                }
 
             });
         }

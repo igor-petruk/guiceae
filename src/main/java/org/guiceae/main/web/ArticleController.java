@@ -177,8 +177,8 @@ public class ArticleController {
                 String hs = styleMap.get("height");
                 if (ws.endsWith("px")) ws = ws.substring(0, ws.lastIndexOf("px"));
                 if (hs.endsWith("px")) hs = hs.substring(0, hs.lastIndexOf("px"));
-                System.out.println("(" + ws + ")");
-                System.out.println("(" + hs + ")");
+//                System.out.println("(" + ws + ")");
+//                System.out.println("(" + hs + ")");
                 int width = Integer.parseInt(ws);
                 int height = Integer.parseInt(hs);
                 String url = e.attr("src");
