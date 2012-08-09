@@ -92,7 +92,8 @@
                 dataSource:photoInfo,
                 extend:function (options) {
                     this.bind('image', function (e) {
-                        $("dynamic-a").after($("<a href='/app/photo/update/" + photoInfo[e.index].id + "'></a>"));
+                        $("#dynamic-update-photo").remove();
+                        $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + photoInfo[e.index].id + "'>Редагувати фото</a>"));
                     });
                 }
 
@@ -156,9 +157,8 @@
                 <guiceae:rolesOnly roles="cm">
                     <a href="/app/album/new">Додати альбом</a> |
                     <a href="/app/photo/admin">Додати фото</a> |
-                    <a href="/app/album/video/new">Додати відео</a>
-
-                    <div id="dynamic-a"></div>
+                    <a href="/app/album/video/new">Додати відео</a>|
+                    <span id="dynamic-a"></span>
                 </guiceae:rolesOnly>
                 <div id="galleria" style="z-index:1">
                 </div>

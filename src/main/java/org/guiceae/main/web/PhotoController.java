@@ -42,16 +42,17 @@ public class PhotoController {
         return Response.ok().build();
     }
 
-    @POST
-    @Path("/update/{id}")
+    @GET
+    @Path("/updatePage/{id}")
     @RolesAllowed("cm")
     public Viewable processUpdatePhoto(@PathParam("id") Long id) {
         Map<String, Object> map = new HashMap<String, Object>();
         List<Photo> photos = new ArrayList<Photo>();
-        photos.add(photoRepository.getById(id));
+        Photo photo = photoRepository.getById(id);
+        photos.add(photo);
         map.put("photos", photos);
         map.put("albums", albumRepository.getAll());
-        return new Viewable("introduce-photo.jsp", map);
+        return new Viewable("/update-photo.jsp", map);
     }
 
     @GET

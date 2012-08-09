@@ -510,6 +510,7 @@ h1.logo a {
 }
 
 .video-album-view {
+    width: 100%;
     background-color: #b4b8d1;
     opacity: 0.9;
     max-width: 270px;
