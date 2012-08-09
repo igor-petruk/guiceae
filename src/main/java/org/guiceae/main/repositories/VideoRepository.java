@@ -32,4 +32,10 @@ public class VideoRepository {
             ofy.put(oldVideo);
         }
     }
+
+    public void deleteById(Long id) {
+        Objectify ofy = this.ofy.get();
+        Video video = ofy.get(Video.class, id);
+        ofy.delete(Video.class, id);
+    }
 }

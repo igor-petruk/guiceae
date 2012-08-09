@@ -96,13 +96,17 @@
                 extend:function (options) {
                     this.bind('image', function (e) {
                         $("#dynamic-update-video").remove();
+                        $("#dynamic-delete-video").remove();
                         $("#dynamic-update-photo").remove();
-
+                        $("#dynamic-delete-photo").remove();
                         if (info[e.index].showWhen == 'photos') {
-                            $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + info[e.index].id + "'>Редагувати фото</a>"));
+                            $("#dynamic-a").after($("<a id='dynamic-delete-photo' href='/app/photo/delete/" + info[e.index].id + "'>_Видалити фото_</a>"));
+                            $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + info[e.index].id + "'> _Редагувати фото</a>"));
                         }
                         if (info[e.index].showWhen == 'videos') {
-                            $("#dynamic-a").after($("<a id='dynamic-update-video' href='/app/album/video/mergePage/" + info[e.index].id + "'>Редагувати відео</a>"));
+                            $("#dynamic-a").after($("<a id='dynamic-delete-video' href='/app/album/video/delete/" + info[e.index].id + "'>_Видалити відео_</a>"));
+                            $("#dynamic-a").after($("<a id='dynamic-update-video' href='/app/album/video/mergePage/" + info[e.index].id + "'>_Редагувати відео</a>"));
+
                         }
                     });
                 }

@@ -152,4 +152,12 @@ public class AlbumController {
         return new Viewable("/introduce-video.jsp", video);
     }
 
+    //    it is delete but who cares
+    @GET
+    @Path("/video/delete/{id}")
+    public Response deleteVideo(@PathParam("id") Long id) throws URISyntaxException {
+        videoRepository.deleteById(id);
+        return Response.seeOther(new URI("/app/album/gallery/videos")).build();
+    }
+
 }
