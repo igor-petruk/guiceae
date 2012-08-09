@@ -92,9 +92,7 @@
                 dataSource:photoInfo,
                 extend:function (options) {
                     this.bind('image', function (e) {
-                        $(e.imageTarget).dblclick(this.proxy(function () {
-                            window.location("/app/photo/" + photoInfo[e.index].id);
-                        }));
+                        $("dynamic-a").after($("<a href='/app/photo/update/" + photoInfo[e.index].id + "'></a>"));
                     });
                 }
 
@@ -159,6 +157,8 @@
                     <a href="/app/album/new">Додати альбом</a> |
                     <a href="/app/photo/admin">Додати фото</a> |
                     <a href="/app/album/video/new">Додати відео</a>
+
+                    <div id="dynamic-a"></div>
                 </guiceae:rolesOnly>
                 <div id="galleria" style="z-index:1">
                 </div>
