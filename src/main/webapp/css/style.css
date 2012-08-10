@@ -20,10 +20,9 @@ a.rss img {
     min-width: 380px;
     width: 32%;
     background-color: #fcfcfc;
+    border-radius: 25px 0 25px 0;
 }
 
-.column .head a span.pic {
-}
 .column .head {
     text-align: right;
     width: 100%;
@@ -32,6 +31,8 @@ a.rss img {
     vertical-align: top;
     margin: 0 0 1px 0;
     background-color: #fffee0;
+    border: 1px solid #cdcdcd;
+    border-radius: 25px 0 25px 0;
 }
 
 .column span.separator {
@@ -191,6 +192,7 @@ a.rss img {
 }
 
 .feed-short-view {
+    border-radius: 25px 0 25px 0;
 }
 
 .feed-full-view .rss {
