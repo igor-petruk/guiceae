@@ -53,7 +53,7 @@ a.rss img {
 
 .column .head a img {
     width: 32px;
-    margin: 0 5px 0 0px;
+    margin: 0 5px 0 0;
     float: left;
 }
 .column .head a img.first {
@@ -63,7 +63,7 @@ a.rss img {
 }
 
 .column .head a span {
-    margin-left: 7px;
+    margin: 0 10px 0 0;
 }
 
 /*articles*/
@@ -149,7 +149,7 @@ a.rss img {
     float: left;
     width: 20%;
     height: 100px;
-    padding: 0px 10px 10px 10px;
+    padding: 0 10px 10px 10px;
 }
 
 .article div.long-content {
@@ -221,8 +221,8 @@ a.rss img {
 }
 .view-right-place.feedbackQuestion {
     margin-top: 10px;
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 0;
+    margin-left: 0;
     background: #fbfbfb;
     min-height: 600px;
     width: 58%;
@@ -254,7 +254,7 @@ a.rss img {
     opacity: 0.6;
     background-color: #dedede;
     float: left;
-    margin: 5px 0px 10px 10px;
+    margin: 5px 0 10px 10px;
     padding: 10px;
     border-radius: 25px;
 }
@@ -389,7 +389,7 @@ div.editArticle {
 
 div.editArticle .aricle-name-label, div.editArticle .aricle-link-label, div.editArticle .article-date-label {
     float: left;
-    margin: 5px 0px 5px 20px;
+    margin: 5px 0 5px 20px;
 }
 
 div.editArticle .aricle-name-input {
