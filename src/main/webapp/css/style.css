@@ -1,6 +1,7 @@
 /*main page*/
 
 #infoPan {
+    margin: 10px 0 10px 0;
     width: 100%;
 }
 
@@ -239,14 +240,19 @@ a.rss img {
 }
 
 .left-place.feedbackQuestion span#left-label {
-    margin-left: 25%;
+    /*border: 1px solid #ddd;*/
+    margin: -5px -10px 0 0;
+    background-color: #fefefe;
+    border-radius: 20px;
+    padding: 5px;
+    float: right;
 }
 
 .question-place {
     opacity: 0.6;
     background-color: #dedede;
     float: left;
-    margin: 10px 10px 10px 10px;
+    margin: 5px 0px 10px 10px;
     padding: 10px;
     border-radius: 25px;
 }
