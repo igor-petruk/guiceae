@@ -180,8 +180,8 @@
 
         </div>
     </div>
+    <guiceae:footer/>
 </div>
 
-<guiceae:footer/>
 </body>
 </html>

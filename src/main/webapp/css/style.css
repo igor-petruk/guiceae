@@ -18,6 +18,7 @@ a.rss img {
     float: left;
     min-width: 380px;
     width: 32%;
+    background-color: #fcfcfc;
 }
 
 .column .head a span.pic {
@@ -29,9 +30,7 @@ a.rss img {
     opacity: 0.9;
     vertical-align: top;
     margin: 0 0 1px 0;
-    background-color: #FFF;
-    border-top: 1px solid #bbb;
-    border-bottom: 1px solid #BBB;
+    background-color: #fffee0;
 }
 
 .column span.separator {
@@ -46,7 +45,7 @@ a.rss img {
     font-size: 16px;
     font-weight: 400;
     /*text-transform: uppercase;*/
-    color: #AAA;
+    color: #555;
     letter-spacing: 4px;
 }
 
@@ -68,6 +67,7 @@ a.rss img {
 /*articles*/
 
 .article {
+    text-indent: 25px;
 }
 
 .article div.admin {
@@ -169,7 +169,7 @@ a.rss img {
 
 .article div.short-content._100 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     color: #5c5c5c;
     position: relative;
     width: 95%;
@@ -210,25 +210,25 @@ a.rss img {
 .left-place.feedbackQuestion {
     padding: 0 7px 0 0;
     text-align: left;
-    width: 40%;
+    width: 41%;
     background: #f6f9fb url("/css/images/main/pat.png") repeat;
-    margin: 10px 10px 10px 10px;
+    margin: 10px -11px 10px 10px;
     min-height: 600px;
     float: right;
 }
 .view-right-place.feedbackQuestion {
     margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
     background: #fbfbfb;
     min-height: 600px;
-    width: 55%;
+    width: 58%;
     float: left;
-    border-radius: 5%;
+    border-radius: 25px;
     border: 1px solid #dddddd;
 }
 
-.view-right-place.feedbackQuestion span {
+.view-right-place.feedbackQuestion span#theme {
     color: #5e5e55;
     opacity: 0.5;
     font-size: 18px;
@@ -248,6 +248,7 @@ a.rss img {
     float: left;
     margin: 10px 10px 10px 10px;
     padding: 10px;
+    border-radius: 25px;
 }
 
 .question-place label {
@@ -259,7 +260,9 @@ a.rss img {
 }
 
 .question-place input#submit-button {
-    padding: 10px;
+    float: right;
+    margin: 10px 10px 10px 30px;
+    padding: 5px;
 }
 
 .feedback {
@@ -298,9 +301,8 @@ a.rss img {
     width: 100%;
     margin-left: 10px;
     float: left;
-    color: #31A1FF;
+    color: #999;
     font-family: "Trebuchet" Arial, Helvetica, sans-serif;
-    font-weight: bold;
 }
 .feedback .answer {
     float: left;
@@ -342,14 +344,7 @@ a.rss img {
     color: #444444;
     font-weight: bolder;
 }
-.feedback .question {
-    font-size: 12px;
-    width: 100%;
-    float: left;
-    color: #31A1FF;
-    font-family: "Trebuchet" Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
+
 .feedback .answer {
     float: left;
     font-family: "Trebuchet" Arial, Helvetica, sans-serif;

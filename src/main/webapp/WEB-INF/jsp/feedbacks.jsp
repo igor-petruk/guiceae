@@ -63,7 +63,7 @@
                                value="manual_challenge">
                     </noscript>
 
-                    <input id="submit-button" type="button" value="Submit"/>
+                    <input id="submit-button" type="button" value="Відправити на розгляд"/>
 
                     <script type="text/javascript">
                         $(function () {
@@ -101,7 +101,7 @@
             </div>
 
             <div class="view-right-place feedbackQuestion">
-                <span>${it.theme} ↓</span>
+                <span id="theme">${it.theme} ↓</span>
                 <guiceae:smallFeedbackFeed feedName="${it.feed}" feed="${it.feedbacks}"/>
             </div
 

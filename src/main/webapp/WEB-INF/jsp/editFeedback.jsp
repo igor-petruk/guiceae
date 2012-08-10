@@ -4,6 +4,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 <html>
 <guiceae:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" charset="UTF-8">
         $(function () {
             CKEDITOR.replace('question',
