@@ -26,7 +26,6 @@ public class AlbumRepository {
 
     static {
         ObjectifyService.register(Album.class);
-        ObjectifyService.register(Video.class);
         DEFAULT_ALBUM.setId(0L);
         DEFAULT_ALBUM.setTitle("(не в альбомі)");
     }
@@ -69,7 +68,4 @@ public class AlbumRepository {
         ofy.get().delete(Album.class, id);
     }
 
-    public List<Video> getVideoAlbum() {
-        return ofy.get().query(Video.class).list();
-    }
 }

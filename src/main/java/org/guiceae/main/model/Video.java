@@ -14,9 +14,6 @@ import java.io.Serializable;
  */
 @Entity
 public class Video implements Serializable {
-    static {
-        ObjectifyService.register(Video.class);
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

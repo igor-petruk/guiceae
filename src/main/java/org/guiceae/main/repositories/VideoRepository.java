@@ -1,10 +1,12 @@
 package org.guiceae.main.repositories;
 
 import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Video;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
+import java.util.List;
 
 /**
  * User: boui
@@ -15,6 +17,9 @@ public class VideoRepository {
     @Inject
     private Provider<Objectify> ofy;
 
+    static{
+        ObjectifyService.register(Video.class);
+    }
 
     public Video getById(Long id) {
         return ofy.get().get(Video.class, id);
@@ -38,4 +43,9 @@ public class VideoRepository {
         Video video = ofy.get(Video.class, id);
         ofy.delete(Video.class, id);
     }
+
+    public List<Video> getVideoAlbum() {
+        return ofy.get().query(Video.class).list();
+    }
+
 }

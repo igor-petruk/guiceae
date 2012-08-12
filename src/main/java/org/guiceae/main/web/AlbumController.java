@@ -111,7 +111,7 @@ public class AlbumController {
     @Path("/gallery/{what}")
     public Viewable getGallery(@PathParam("what") String whatToView) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("videos", albumRepository.getVideoAlbum());
+        map.put("videos", videoRepository.getVideoAlbum());
         map.put("albums", albumRepository.getAll());
         map.put("whatToView", whatToView.equalsIgnoreCase("videos"));
         return new Viewable("/gallery.jsp", map);
@@ -129,7 +129,7 @@ public class AlbumController {
     @Path("/video/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Video> allVideos() {
-        return albumRepository.getVideoAlbum();
+        return videoRepository.getVideoAlbum();
     }
 
     @GET
