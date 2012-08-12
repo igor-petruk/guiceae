@@ -26,6 +26,7 @@ public class AlbumRepository {
 
     static {
         ObjectifyService.register(Album.class);
+        ObjectifyService.register(Video.class);
         DEFAULT_ALBUM.setId(0L);
         DEFAULT_ALBUM.setTitle("(не в альбомі)");
     }
