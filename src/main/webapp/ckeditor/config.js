@@ -22,5 +22,4 @@ CKEDITOR.editorConfig = function (config) {
             { name:'tools', items:[ 'Maximize', 'ShowBlocks' ] }
         ];
 
-    config.setRules('p', {indent:false, breakAfterOpen:false});
 };
