@@ -7,7 +7,6 @@
 <%@ attribute name="feedName" required="true" type="java.lang.String" %>
 
 <div class="feedback" id="feedback${feedback.id}">
-
     <div class="question">
         ${feedback.question}
     </div>
@@ -45,8 +44,22 @@
     <div class="answer">
         ${feedback.answer}
     </div>
-
-    <div class="separator"></div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $("div.question").expander({
+            slicePoint:500, // default is 10
+            expandText:'[далі]', // default is 'read more'
+            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+            userCollapseText:'[згорнути]'  // default is 'read less'
+        });
 
+        $("div.answer").expander({
+            slicePoint:500, // default is 10
+            expandText:'[далі]', // default is 'read more'
+            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+            userCollapseText:'[згорнути]'  // default is 'read less'
+        });
+    });
+</script>
 

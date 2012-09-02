@@ -8,8 +8,8 @@
 
 <div class="feedback" id="feedback${feedback.id}">
 
-    <div class="question main">
-        ${feedback.question}
+    <div class="question main" id="feedbackq${feedback.id}">
+        <p>${feedback.question}</p>
     </div>
 
     <guiceae:rolesOnly roles="cm">
@@ -30,7 +30,6 @@
                     });
                 </script>
             </c:if>
-
         </div>
     </guiceae:rolesOnly>
 
@@ -42,11 +41,31 @@
         <fmt:formatDate value="${feedback.created}" pattern="dd/MM/yyyy hh:mm"/>
     </div>
 
-    <div class="answer main">
-        ${feedback.answer}
+    <div class="answer main" id="answerq${feedback.id}">
+        <p>
+            ${feedback.answer}
+        </p>
     </div>
+
 
     <div class="separator main"></div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $("div.question.main").expander({
+            slicePoint:200, // default is 10
+            expandText:'[далі]', // default is 'read more'
+            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+            userCollapseText:'[згорнути]'  // default is 'read less'
+        });
+
+        $("div.answer.main").expander({
+            slicePoint:200, // default is 10
+            expandText:'[далі]', // default is 'read more'
+            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+            userCollapseText:'[згорнути]'  // default is 'read less'
+        });
+    });
+</script>
 
 

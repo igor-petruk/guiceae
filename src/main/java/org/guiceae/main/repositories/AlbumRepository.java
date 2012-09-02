@@ -3,7 +3,6 @@ package org.guiceae.main.repositories;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import org.guiceae.main.model.Album;
-import org.guiceae.main.model.Video;
 import org.guiceae.util.UserPrincipalHolder;
 
 import javax.inject.Inject;
@@ -16,6 +15,7 @@ import java.util.List;
  * Date: 6/26/12
  */
 public class AlbumRepository {
+
     @Inject
     private Provider<Objectify> ofy;
 

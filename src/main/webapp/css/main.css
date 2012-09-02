@@ -440,15 +440,13 @@ h1.logo a {
 }
 
 .view-center-place {
-    padding: 20px 20px 20px 20px;
+    padding: 20px 30px 30px 20px;
     margin-top: 10px;
-    margin-left: 20px;
-    background: #fbfbfb;
+    background: #FBFBFB;
     min-height: 600px;
-    width: 90%;
     float: left;
     border-radius: 25px;
-    border: 1px solid #dddddd;
+    border: 1px solid #DDD;
 }
 
 .view-center-place span.title {

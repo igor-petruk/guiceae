@@ -62,12 +62,19 @@ public class TestingBootstrap implements Bootstrap {
         }
         Feedback feedback = new Feedback();
         feedback.setFeed(FeedbackFeedType.QUESTION);
-        feedback.setAnswer("HELLO! YES I KNOW");
+
+        StringBuffer strBuf = new StringBuffer();
+        for (int i = 0; i < 1000; i++) {
+            strBuf.append("  ").append(i);
+        }
+
+        feedback.setAnswer("Question:" + strBuf);
         feedback.setId(1L);
         feedback.setAuthor("RoksanaSeletska@kjshdkf");
         feedback.setCreated(new Date());
-        feedback.setQuestion("Do you know that the sky is blue?");
+        feedback.setQuestion("Answer:" + strBuf);
         feedback.setState(ArticleState.PUBLISHED);
+        feedbackRepository.submitQuestion(feedback);
         feedbackRepository.submitQuestion(feedback);
 //
 //        article = new Article();

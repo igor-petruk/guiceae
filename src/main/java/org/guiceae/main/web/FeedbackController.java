@@ -24,7 +24,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 @Singleton
 @Path("/app/feedback")
@@ -70,27 +73,27 @@ public class FeedbackController {
         return new Viewable("/feedbacks.jsp", model);
 
     }
-
-    @GET
-    @Path("/view/{feed}")
-    public Viewable view(
-            @PathParam("feed") String feedString,
-            @QueryParam("offset") @DefaultValue("0") Integer offset) {
-        FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
-        return produceFeed(feed, offset);
-    }
-
-    private Viewable produceFeed(FeedbackFeedType feed, Integer offset) {
-        boolean showPending = userPrincipalHolder.get().contains("cm");
-        long count = feedbackRepository.count(feed, !showPending);
-        List<Feedback> articles = feedbackRepository.getFeed(feed, !showPending, offset);
-        Map<String, Object> it = new HashMap<String, Object>();
-        it.put("feed", articles);
-        it.put("feedName", feed);
-        it.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
-        it.put("currentFirst", offset);
-        return new Viewable("/feedbackFeed.jsp", it);
-    }
+//
+//    @GET
+//    @Path("/view/{feed}")
+//    public Viewable view(
+//            @PathParam("feed") String feedString,
+//            @QueryParam("offset") @DefaultValue("0") Integer offset) {
+//        FeedbackFeedType feed = FeedbackFeedType.valueOf(feedString.toUpperCase());
+//        return produceFeed(feed, offset);
+//    }
+//
+//    private Viewable produceFeed(FeedbackFeedType feed, Integer offset) {
+//        boolean showPending = userPrincipalHolder.get().contains("cm");
+//        long count = feedbackRepository.count(feed, !showPending);
+//        List<Feedback> articles = feedbackRepository.getFeed(feed, !showPending, offset);
+//        Map<String, Object> it = new HashMap<String, Object>();
+//        it.put("feed", articles);
+//        it.put("feedName", feed);
+//        it.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
+//        it.put("currentFirst", offset);
+//        return new Viewable("/feedbackFeed.jsp", it);
+//    }
 
     @DELETE
     @Path("/delete/{id}")

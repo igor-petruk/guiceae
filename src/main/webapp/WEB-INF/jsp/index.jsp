@@ -28,7 +28,7 @@
 
 <body>
 
-<div id="main-container">
+<div id="main-container" style="margin-left:auto;margin-right:auto;">
     <guiceae:admin-menu/>
     <div class="body" align="center">
         <div class="collage">
@@ -42,7 +42,7 @@
 
             </div>
             <div class="gutter"></div>
-            <div id="charity" class="column feed">
+            <div id="charity" class="column center feed">
 
             </div>
             <div class="gutter"></div>

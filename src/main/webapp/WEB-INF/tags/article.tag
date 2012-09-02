@@ -51,12 +51,13 @@
     </guiceae:rolesOnly>
 
     <div class="createdDate">
+        <span style="margin-right: 20px; "><fmt:formatDate value="${article.toView}"
+                                                           pattern="dd/MM/yyyy"></fmt:formatDate></span>
         <c:if test="${social}">
+            <span><guiceae:vkontakte article="${article}"/></span>
             <span><guiceae:twitter article="${article}"/></span>
             <span><guiceae:facebook article="${article}"/></span>
-            <span><guiceae:vkontakte article="${article}"/></span>
         </c:if>
-        <span><fmt:formatDate value="${article.toView}" pattern="dd/MM/yyyy"></fmt:formatDate></span>
     </div>
 
 
