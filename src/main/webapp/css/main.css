@@ -423,14 +423,19 @@ h1.logo a {
 }
 
 .view-right-place {
-    margin-top: 10px;
+    margin-top: 30px;
     margin-right: 10px;
-    background: #fbfbfb;
-    min-height: 600px;
+    background: #363636;
+    min-height: 500px;
     width: 75%;
     float: right;
     border-radius: 25px;
-    border: 1px solid #dddddd;
+    border: 1px solid #2277DD;
+}
+
+.view-right-place a {
+    color: #ffffff;
+    font-weight: bolder;
 }
 
 .view-center-place a.back {

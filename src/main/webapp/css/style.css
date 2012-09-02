@@ -17,10 +17,15 @@ a.rss img {
 
 .column {
     float: left;
-    min-width: 380px;
-    width: 32%;
+    min-width: 200px;
+    width: 20%;
     background-color: #fcfcfc;
     border-radius: 25px 0 25px 0;
+}
+
+.column-center {
+    width: 56%;
+    min-width: 400px;
 }
 
 .column .head {
@@ -245,11 +250,18 @@ a.rss img {
 }
 
 #functional-propose {
-    margin: -5px -10px 0 0;
+    margin: -5px -10px 10px 0;
     background-color: #fefefe;
     border-radius: 20px;
     padding: 5px;
     float: right;
+}
+
+.menu-addon {
+    float: left;
+    margin: 20px 20px 0 20px;
+    border-bottom: 1px solid #2277DD;
+    padding: 10px 10px 10px 10px;
 }
 
 .left-place.feedbackQuestion span#left-label {

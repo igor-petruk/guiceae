@@ -175,17 +175,20 @@
 
             <div class="view-right-place">
                 <guiceae:rolesOnly roles="cm">
+                    <span class="menu-addon">
                     <a href="/app/album/new">Додати альбом</a> |
                     <a href="/app/photo/admin">Додати фото</a> |
                     <a href="/app/album/video/new">Додати відео</a>|
                     <span id="dynamic-a"></span>
+                        </span>
                 </guiceae:rolesOnly>
                 <div id="galleria-place"></div>
                 <div id="galleria" style="z-index:1">
                 </div>
                 <guiceae:rolesOnly roles="cm">
-                    <div id="galleria-admin-info" style="font-weight:bold;">
-                    </div>
+                    <span class="menu-addon">
+                        <div id="galleria-admin-info" style="font-weight:bold;"></div>
+                    </span>
                 </guiceae:rolesOnly>
             </div>
 
