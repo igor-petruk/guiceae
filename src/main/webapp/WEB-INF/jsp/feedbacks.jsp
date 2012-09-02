@@ -29,7 +29,7 @@
         <div id="content_sup">
 
             <div class="left-place feedbackQuestion">
-                <span id="left-label">${it.proposition} ↓</span>
+                <span id="functional-propose">${it.proposition} ↓</span>
 
                 <div class="question-place">
                     <label for="author">Ваше ім'я: </label>

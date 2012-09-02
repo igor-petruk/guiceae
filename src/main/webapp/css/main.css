@@ -519,18 +519,22 @@ h1.logo a {
     background-color: #b4b8d1;
     opacity: 0.9;
     max-width: 270px;
-    color: #818181;
+    color: #fff;
     float: left;
     margin-bottom: 10px;
+    font-weight: bolder;
+    border-radius: 20px;
 }
 
 .album-view {
-    background-color: #b4b8d1;
+    background-color: #c2c3a0;
     opacity: 0.9;
     max-width: 270px;
     color: #818181;
     float: left;
     margin-bottom: 10px;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .album-view div.title {
@@ -618,6 +622,7 @@ h1.logo a {
 }
 
 #personal-not-main {
+    border-radius: 10px 20px 20px 0;
     background-color: #f6f9fb;
     float: left;
     width: 100%;

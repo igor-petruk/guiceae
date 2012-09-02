@@ -27,7 +27,9 @@
 
         function showVideoAlbum() {
             $("#galleria").remove();
-            $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
+            $("#galleria-place").prepend($("<div id='galleria' style='z-index:1'></div>"));
+            $("#galleria-admin-info").html("");
+            $("#dynamic-a").html("");
 
             $.ajax({
                 type:'GET',
@@ -52,9 +54,10 @@
 
         }
         function sendShowRequest(albumId) {
-
             $("#galleria").remove();
-            $('.view-right-place').append($("<div id='galleria' style='z-index:1'></div>"));
+            $("#galleria-place").prepend($("<div id='galleria' style='z-index:1'></div>"));
+            $("#galleria-admin-info").html("");
+            $("#dynamic-a").html("");
 
             $.ajax({
                 type:'GET',
@@ -87,6 +90,11 @@
             Galleria.configure({
                 thumbnails:true
             });
+
+            for (var el in info) {
+                createDynamicLinks(info[el].showWhen == 'photos', "#galleria-admin-info", info[el].title.substring(0, 10) + "...| ", info[el].id);
+            }
+
             Galleria.run("#galleria", {
                 transition:'fade',
                 imageCrop:false,
@@ -95,23 +103,21 @@
                 dataSource:info,
                 extend:function (options) {
                     this.bind('image', function (e) {
-                        $("#dynamic-update-video").remove();
-                        $("#dynamic-delete-video").remove();
-                        $("#dynamic-update-photo").remove();
-                        $("#dynamic-delete-photo").remove();
-                        if (info[e.index].showWhen == 'photos') {
-                            $("#dynamic-a").after($("<a id='dynamic-delete-photo' href='/app/photo/delete/" + info[e.index].id + "'>_Видалити фото_</a>"));
-                            $("#dynamic-a").after($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + info[e.index].id + "'> _Редагувати фото</a>"));
-                        }
-                        if (info[e.index].showWhen == 'videos') {
-                            $("#dynamic-a").after($("<a id='dynamic-delete-video' href='/app/album/video/delete/" + info[e.index].id + "'>_Видалити відео_</a>"));
-                            $("#dynamic-a").after($("<a id='dynamic-update-video' href='/app/album/video/mergePage/" + info[e.index].id + "'>_Редагувати відео</a>"));
-
-                        }
+                        $("#dynamic-a").html("");
+                        createDynamicLinks(info[e.index].showWhen == 'photos', "#dynamic-a", '|', info[e.index].id);
                     });
                 }
-
             });
+        }
+
+        function createDynamicLinks(isPhotos, selector, name, id) {
+            if (isPhotos) {
+                $(selector).append($("<a id='dynamic-update-photo' href='/app/photo/updatePage/" + id + "'>Редагувати фото " + name + "</a>"));
+                $(selector).append($("<a id='dynamic-delete-photo' href='/app/photo/delete/" + id + "'>Видалити фото " + name + "<br/>"));
+            } else {
+                $(selector).append($("<a id='dynamic-update-video' href='/app/album/video/mergePage/" + id + "'>Редагувати відео " + name + "</a>"));
+                $(selector).append($("<a id='dynamic-delete-video' href='/app/album/video/delete/" + id + "'>Видалити відео " + name + "</a><br/>"));
+            }
         }
     </script>
 </guiceae:head>
@@ -138,7 +144,7 @@
         <div id="content_sup">
 
             <div class="left-place">
-                <span>Оберіть альбом ↓</span>
+                <span id="functional-propose">Оберіть альбом ↓</span>
                 <c:forEach items="${it['albums']}" var="album">
 
                     <div class="album-view" albumId="${album.id}">
@@ -174,8 +180,13 @@
                     <a href="/app/album/video/new">Додати відео</a>|
                     <span id="dynamic-a"></span>
                 </guiceae:rolesOnly>
+                <div id="galleria-place"></div>
                 <div id="galleria" style="z-index:1">
                 </div>
+                <guiceae:rolesOnly roles="cm">
+                    <div id="galleria-admin-info" style="font-weight:bold;">
+                    </div>
+                </guiceae:rolesOnly>
             </div>
 
         </div>

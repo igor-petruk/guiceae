@@ -244,6 +244,14 @@ a.rss img {
     float: left;
 }
 
+#functional-propose {
+    margin: -5px -10px 0 0;
+    background-color: #fefefe;
+    border-radius: 20px;
+    padding: 5px;
+    float: right;
+}
+
 .left-place.feedbackQuestion span#left-label {
     /*border: 1px solid #ddd;*/
     margin: -5px -10px 0 0;
