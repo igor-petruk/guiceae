@@ -34,7 +34,7 @@
         <div id="content_sup">
 
             <div class="left-place">
-                <span>Оберіть стрічку новин ↓</span>
+                <span id="functional-propose">Оберіть стрічку новин ↓</span>
 
                 <c:forEach items="${it.feedsNames}" var="feed">
 
