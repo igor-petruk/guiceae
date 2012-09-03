@@ -111,7 +111,7 @@
                     <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>
                 </div>
 
-                <div class="column" style="margin-left: 2%;">
+                <div class="column-center column" style="margin-left: 2%;">
                     <span class="head">
                         <a href="/app/feed/news">
                             <span class="pic"><img src="/css/images/system/news.png" alt="Більше новин із ЗМІ"/></span>

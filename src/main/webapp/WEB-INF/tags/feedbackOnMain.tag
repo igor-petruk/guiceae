@@ -55,14 +55,12 @@
         $("div.question.main").expander({
             slicePoint:200, // default is 10
             expandText:'[далі]', // default is 'read more'
-            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
             userCollapseText:'[згорнути]'  // default is 'read less'
         });
 
         $("div.answer.main").expander({
             slicePoint:200, // default is 10
             expandText:'[далі]', // default is 'read more'
-            collapseTimer:5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
             userCollapseText:'[згорнути]'  // default is 'read less'
         });
     });

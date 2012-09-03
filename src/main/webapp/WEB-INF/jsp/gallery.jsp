@@ -173,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="view-right-place">
+            <div class="view-right-place albums">
                 <guiceae:rolesOnly roles="cm">
                     <span class="menu-addon">
                     <a href="/app/album/new">Додати альбом</a> |

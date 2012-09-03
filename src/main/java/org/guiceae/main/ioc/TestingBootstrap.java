@@ -60,6 +60,23 @@ public class TestingBootstrap implements Bootstrap {
             articleRepository.mergeArticle(article);
             searchRepository.submitToSearch(article);
         }
+
+        for (int i = 0; i < 15; i++) {
+            Article article = new Article();
+            article.setAuthor("test@example.com");
+            article.setCreated(new Date());
+            article.setState(ArticleState.PUBLISHED);
+            article.setToView(new Date());
+            article.setFeed("charity");
+            article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+            article.setEditableContent("<h3> something </h3> <p><b> hey </b> you</p>");
+            article.setShortContent("<p><b>Short content</b> version<p>");
+            article.setLastUpdated(new Date());
+            article.setTitle("title" + i);
+            article.setPermalink("super-title" + i);
+            articleRepository.mergeArticle(article);
+            searchRepository.submitToSearch(article);
+        }
         Feedback feedback = new Feedback();
         feedback.setFeed(FeedbackFeedType.QUESTION);
 

@@ -425,6 +425,17 @@ h1.logo a {
 .view-right-place {
     margin-top: 30px;
     margin-right: 10px;
+    background: #FBFBFB;
+    min-height: 500px;
+    width: 75%;
+    float: right;
+    border-radius: 25px;
+    border: 1px solid #dddddd;
+}
+
+.view-right-place.albums {
+    margin-top: 30px;
+    margin-right: 10px;
     background: #363636;
     min-height: 500px;
     width: 75%;
@@ -489,6 +500,8 @@ h1.logo a {
 .feed-name {
     padding: 10px;
     opacity: 0.9;
+    width: 89%;
+    float: left;
 }
 
 .feed-name.active {
