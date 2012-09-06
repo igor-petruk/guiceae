@@ -6,12 +6,15 @@
 <%@ attribute name="article" required="true" type="org.guiceae.main.model.Article" %>
 <%@ attribute name="simpleDelete" required="true" type="java.lang.Boolean" %>
 <%@ attribute name="social" type="java.lang.Boolean" %>
+<%@ attribute name="feedName" type="java.lang.String" %>
 
 <div class="article" id="article${article.id}">
 
-    <div class="title">
-        <a href="/app/article/detail/${article.permalink}">${article.title}</a>
-    </div>
+    <c:if test="${feedName != 'mainfeed'}">
+        <div class="title">
+            <a href="/app/article/detail/${article.permalink}">${article.title}</a>
+        </div>
+    </c:if>
 
 
     <guiceae:rolesOnly roles="cm">
@@ -40,25 +43,29 @@
                 });
             </script>
         </div>
-        <div class="createdDate">
-            <span class="admin">Дата створення</span>
+        <c:if test="${feedName != 'mainfeed'}">
+            <div class="createdDate">
+                <span class="admin">Дата створення</span>
             <span class="admin"><fmt:formatDate value="${article.created}"
                                                 pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
-            <span class="admin">Дата останнього оновлення</span>
+                <span class="admin">Дата останнього оновлення</span>
             <span class="admin"><fmt:formatDate value="${article.lastUpdated}"
                                                 pattern="dd/MM/yyyy HH:mm"></fmt:formatDate></span>
-        </div>
+            </div>
+        </c:if>
     </guiceae:rolesOnly>
 
-    <div class="createdDate">
+    <c:if test="${feedName != 'mainfeed'}">
+        <div class="createdDate">
         <span style="margin-right: 20px; "><fmt:formatDate value="${article.toView}"
                                                            pattern="dd/MM/yyyy"></fmt:formatDate></span>
-        <c:if test="${social}">
-            <span><guiceae:vkontakte article="${article}"/></span>
-            <span><guiceae:twitter article="${article}"/></span>
-            <span><guiceae:facebook article="${article}"/></span>
-        </c:if>
-    </div>
+            <c:if test="${social}">
+                <span><guiceae:vkontakte article="${article}"/></span>
+                <span><guiceae:twitter article="${article}"/></span>
+                <span><guiceae:facebook article="${article}"/></span>
+            </c:if>
+        </div>
+    </c:if>
 
 
     <c:choose>
@@ -70,10 +77,12 @@
                     ${article.shortContent}
             </div>
             <div style="clear: both;"></div>
-            <div class="more-div">
-                <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
-            </div>
-            <div class="separator"></div>
+            <c:if test="${feedName != 'mainfeed'}">
+                <div class="more-div">
+                    <a class="more" href="/app/article/detail/${article.permalink}">Далі...</a>
+                </div>
+                <div class="separator"></div>
+            </c:if>
         </c:when>
         <c:otherwise>
             <div class="short-content _100">

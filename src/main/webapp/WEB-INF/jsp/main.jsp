@@ -34,7 +34,7 @@
     </script>
 </guiceae:head>
 
-<body>
+<guiceae:body>
 <div id="head">
 
     <guiceae:quick-panel/>
@@ -58,30 +58,31 @@
         </div>
 
         <div id="personal">
-            <%--<img src="/css/images/system/personal.png"/>--%>
+                <%--<img src="/css/images/system/personal.png"/>--%>
             <div class="name">Персональний сайт Івана Куровського</div>
         </div>
 
 
         <div id="welcom_pan">
-            <p style="font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;">Шановні друзі!</p>
+            <guiceae:smallFeed feed="${it.mainFeed}" feedName="mainfeed"/>
+                <%--<p style="font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;">Шановні друзі!</p>--%>
 
-            <p>Мені як народному депутатові України онлайн-спілкування видається
-                важливою ланкою вивчення проблем, які цікавлять людей.</p>
+                <%--<p>Мені як народному депутатові України онлайн-спілкування видається--%>
+                <%--важливою ланкою вивчення проблем, які цікавлять людей.</p>--%>
 
-            <p>Користуючись цим ресурсом, Ви зможете дізнатися про мою
-                депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви
-                маєте можливість звернутися до моєї громадської приймальні, щоб отримати
-                відповіді на питання, які вас цікавлять.</p>
+                <%--<p>Користуючись цим ресурсом, Ви зможете дізнатися про мою--%>
+                <%--депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви--%>
+                <%--маєте можливість звернутися до моєї громадської приймальні, щоб отримати--%>
+                <%--відповіді на питання, які вас цікавлять.</p>--%>
 
-            <p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду
-                вдячний за ваші запитання і пропозиції.</p>
+                <%--<p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду--%>
+                <%--вдячний за ваші запитання і пропозиції.</p>--%>
 
-            <div style="float: right;  width: 60%; min-width: 360px;">
-                <p style="float:right;font-weight:bold;">З повагою,</p>
+                <%--<div style="float: right;  width: 60%; min-width: 360px;">--%>
+                <%--<p style="float:right;font-weight:bold;">З повагою,</p>--%>
 
-                <p style="float:right;font-weight:bold;">Народний депутат України Іван Куровський</p>
-            </div>
+                <%--<p style="float:right;font-weight:bold;">Народний депутат України Іван Куровський</p>--%>
+                <%--</div>--%>
         </div>
     </div>
 </div>
@@ -103,11 +104,11 @@
                             <span>Благодійність</span>
                         </a>
                     </span>
-                    <%--<span class="separator"></span>--%>
-                    <%--<span>--%>
-                    <%--<a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"--%>
-                    <%--alt="Підписатися на оновлення"></a>--%>
-                    <%--</span>--%>
+                        <%--<span class="separator"></span>--%>
+                        <%--<span>--%>
+                        <%--<a class="rss" href="/app/feed/charity/rss"><img src="/css/images/system/rss.png"--%>
+                        <%--alt="Підписатися на оновлення"></a>--%>
+                        <%--</span>--%>
                     <guiceae:smallFeed feedName="charity" feed="${it.charityFeed}"/>
                 </div>
 
@@ -118,28 +119,28 @@
                             <span>Новини, ЗМІ</span>
                         </a>
                     </span>
-                    <%--<span class="separator"></span>--%>
+                        <%--<span class="separator"></span>--%>
                     <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
                 </div>
-                <div class="column" style="margin-left: 2%;">
+                <div class="column" style="margin-left: 2%;background-color: #c2e1f9;">
                     <span class="head">
                        <a href="/app/feedback/submit/question">
                            <span class="pic"><img src="/css/images/system/chat.png" alt="Задати питання"/></span>
                            <span>Громадська приймальня</span>
                        </a>
                     </span>
-                    <%--<span class="separator"></span>--%>
+                        <%--<span class="separator"></span>--%>
                     <guiceae:smallFeedbackFeed feedName="question" feed="${it.feedbackFeed}" isOnMain="true"/>
-                    <%--<span>--%>
-                    <%--<a class="rss" href="/app/feed/news/rss">--%>
-                    <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
-                    <%--</a>--%>
-                    <%--</span>--%>
+                        <%--<span>--%>
+                        <%--<a class="rss" href="/app/feed/news/rss">--%>
+                        <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
+                        <%--</a>--%>
+                        <%--</span>--%>
                 </div>
             </div>
         </div>
     </div>
 
-    <guiceae:footer/>
-</body>
+        <guiceae:footer/>
+    </guiceae:body>
 </html>

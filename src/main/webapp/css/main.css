@@ -25,7 +25,7 @@ img {
 
 #head {
     margin: 10px 0 0 0;
-    min-width: 1200px;
+    min-width: 960px;
     width: 100%;
     float: left;
     background: url(/css/images/main/headBg.png) repeat-x
@@ -46,13 +46,13 @@ img {
 }
 
 #head_cen {
-    min-width: 1200px;
+    min-width: 960px;
     width: 100%;
     margin: 0 auto
 }
 
 #head_sup {
-    min-width: 1200px;
+    min-width: 960px;
     width: 100%;
     float: left;
     position: relative;
@@ -148,7 +148,7 @@ h1.logo a {
     width: auto;
     height: 42px;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 100;
     color: #aaa;
     letter-spacing: 1px;
@@ -166,7 +166,7 @@ h1.logo a {
     float: left;
     border: 1px solid #e3e3e3;
     width: 100%;
-    min-width: 1200px;
+    min-width: 960px;
     background-color: #fffee7;
     opacity: 0.8;
 }
@@ -209,7 +209,7 @@ h1.logo a {
 }
 
 #content {
-    min-width: 1200px;
+    min-width: 960px;
     margin-bottom: 20px;
     float: left;
     opacity: 0.8;
@@ -273,7 +273,7 @@ h1.logo a {
 #welcom_pan {
     position: static;
     margin: 0 0 0 50%;
-    padding: 0 20px 3px 20px;
+    padding: -10px 0 3px 0;
     height: 235px;
     float: left;
 }
@@ -385,7 +385,7 @@ h1.logo a {
 
 .view {
     min-height: 260px;
-    min-width: 1200px;
+    min-width: 960px;
     width: 100%;
     margin-bottom: -20px;
 }
@@ -402,7 +402,7 @@ h1.logo a {
 
 #galleria-main {
     height: 365px;
-    width: 630px;
+    width: 500px;
     position: absolute;
     top: 32px;
     margin: -1px 0 0 -10px;
@@ -418,8 +418,8 @@ h1.logo a {
 #galleria {
     margin-top: 10px;
     padding: 10px 10px 10px 10px;
-    height: 500px;
-    width: 860px;
+    height: 490px;
+    width: 700px;
 }
 
 .view-right-place {
@@ -627,14 +627,13 @@ h1.logo a {
 }
 
 #personal div.name {
-    /*margin-top: -45px;*/
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 22px;
-    opacity: 0.7;
+    opacity: 0.9;
     font-weight: bolder;
     float: left;
     width: 100%;
-    margin: 10px 0 20px 20%;
+    margin: 10px 0 20px 10%;
 }
 
 #personal div.separator {
@@ -648,10 +647,10 @@ h1.logo a {
 
 #personal-not-main {
     border-radius: 10px 20px 20px 0;
-    background-color: #f6f9fb;
+    background: #f6f9fb url("/css/images/main/pat.png") repeat;
     float: left;
     width: 100%;
-    min-width: 1200px;
+    min-width: 960px;
     margin-top: 7px;
 }
 

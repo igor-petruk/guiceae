@@ -39,24 +39,24 @@
         });
     </script>
 </guiceae:head>
-<body>
-
-<div>
-    <button id="submitNewVideo">Add video</button>
+<guiceae:body>
 
     <div>
-        <input type="hidden" value="${it.id}" id="video-id"/>
+        <button id="submitNewVideo">Add video</button>
 
-        <label for="video-title">Назва відео</label>
-        <input id="video-title" class="title" maxlength="200" value="${it.title}"/>
+        <div>
+            <input type="hidden" value="${it.id}" id="video-id"/>
 
-        <label for="video-desc">Опис відео</label>
-        <input type="text" id="video-desc" value="${it.description}"/>
+            <label for="video-title">Назва відео</label>
+            <input id="video-title" class="title" maxlength="200" value="${it.title}"/>
 
-        <label for="video-url">Посилання на відео(url)</label>
-        <input type="text" id="video-url" value="${it.youtubeUrl}"/>
+            <label for="video-desc">Опис відео</label>
+            <input type="text" id="video-desc" value="${it.description}"/>
 
+            <label for="video-url">Посилання на відео(url)</label>
+            <input type="text" id="video-url" value="${it.youtubeUrl}"/>
+
+        </div>
     </div>
-</div>
-</body>
+</guiceae:body>
 </html>

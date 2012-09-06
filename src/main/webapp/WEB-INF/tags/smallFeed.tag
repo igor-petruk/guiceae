@@ -7,6 +7,7 @@
 
 <div class="feed-short-view">
     <c:forEach var="article" items="${feed}">
-        <guiceae:article shortView="true" article="${article}" simpleDelete="true" social="false"/>
+        <guiceae:article shortView="true" article="${article}" simpleDelete="true" social="false"
+                         feedName="${feedName}"/>
     </c:forEach>
 </div>

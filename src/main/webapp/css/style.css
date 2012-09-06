@@ -54,7 +54,6 @@ a.rss img {
     font-weight: 400;
     /*text-transform: uppercase;*/
     color: #555;
-    letter-spacing: 2px;
 }
 
 .column .head a img {
@@ -209,13 +208,6 @@ a.rss img {
     margin-bottom: 10px;
 }
 
-.feed-full-view span {
-    position: relative;
-    float: left;
-    color: #767676;
-    margin-right: 10px;
-}
-
 /*feedback*/
 
 .left-place.feedbackQuestion {
@@ -232,7 +224,7 @@ a.rss img {
     margin-top: 10px;
     margin-right: 0;
     margin-left: 0;
-    background: #fbfbfb;
+    background-color: #c2e1f9;
     min-height: 600px;
     width: 58%;
     float: left;
@@ -260,7 +252,6 @@ a.rss img {
 
 .menu-addon {
     float: left;
-    margin: 20px 20px 0 20px;
     border-bottom: 1px solid #2277DD;
     padding: 10px 10px 10px 10px;
 }
@@ -275,12 +266,14 @@ a.rss img {
 }
 
 .question-place {
-    opacity: 0.6;
-    background-color: #dedede;
+    opacity: 0.9;
+    background-color: #FFFEE7;
     float: left;
-    margin: 5px 0 10px 10px;
+    margin: 5px 0 10px 0;
     padding: 10px;
     border-radius: 25px;
+    box-shadow: 1px 5px 2px #ccc;
+    border: 1px solid #ccc;
 }
 
 .question-place label {
@@ -292,7 +285,6 @@ a.rss img {
 }
 
 .question-place input#submit-button {
-    float: right;
     margin: 10px 10px 10px 30px;
     padding: 5px;
 }
@@ -301,7 +293,7 @@ a.rss img {
     padding: 10px 20px 10px 10px;
     background-color: #fff;
     border-radius: 20px;
-    border: 1px solid #cfcfcf;
+    border: 1px solid #eeeeee;
     margin: 10px 10px 10px 10px;
     float: left;
 }
@@ -312,12 +304,6 @@ a.rss img {
     background-color: #ffffff;
     color: #31a1ff;
     font-size: 14px;
-}
-
-.feedback-short-view {
-    width: 100%;
-    min-height: 600px;
-    min-width: 500px;
 }
 
 .feedback .author {
@@ -340,7 +326,7 @@ a.rss img {
     width: 100%;
     margin-left: 10px;
     float: left;
-    color: #999;
+    color: #555;
     font-family: "Trebuchet" Arial, Helvetica, sans-serif;
 }
 
@@ -369,7 +355,7 @@ a.rss img {
 /*feedback on main*/
 .feedback-short-view.main {
     width: 100%;
-    min-width: 300px;
+    min-width: 200px;
     margin-top: 40px;
 }
 

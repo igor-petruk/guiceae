@@ -77,6 +77,38 @@ public class TestingBootstrap implements Bootstrap {
             articleRepository.mergeArticle(article);
             searchRepository.submitToSearch(article);
         }
+
+        Article article = new Article();
+        article.setAuthor("");
+        article.setCreated(new Date());
+        article.setState(ArticleState.PUBLISHED);
+        article.setToView(new Date());
+        article.setFeed("main");
+        String content = "<p style=\"font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;\">Шановні друзі!</p>\n" +
+                "\n" +
+                "            <p>Мені як народному депутатові України онлайн-спілкування видається\n" +
+                "                важливою ланкою вивчення проблем, які цікавлять людей.</p>\n" +
+                "\n" +
+                "            <p>Користуючись цим ресурсом, Ви зможете дізнатися про мою\n" +
+                "                депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви\n" +
+                "                маєте можливість звернутися до моєї громадської приймальні, щоб отримати\n" +
+                "                відповіді на питання, які вас цікавлять.</p>\n" +
+                "\n" +
+                "            <p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду\n" +
+                "                вдячний за ваші запитання і пропозиції.</p>\n" +
+                "\n" +
+                "            <div style=\"float: right;  width: 60%; min-width: 360px;\">\n" +
+                "                <p style=\"float:right;font-weight:bold;\">З повагою,</p>\n" +
+                "\n" +
+                "                <p style=\"float:right;font-weight:bold;\">Народний депутат України Іван Куровський</p>\n" +
+                "            </div>";
+        article.setContent(content);
+        article.setEditableContent(content);
+        article.setShortContent(content);
+        article.setLastUpdated(new Date());
+        article.setPermalink("Main Page");
+        articleRepository.mergeArticle(article);
+
         Feedback feedback = new Feedback();
         feedback.setFeed(FeedbackFeedType.QUESTION);
 

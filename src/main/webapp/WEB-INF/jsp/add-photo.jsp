@@ -12,6 +12,7 @@
 <html>
 <guiceae:head>
 </guiceae:head>
+
 <body>
 
 <div id="head">

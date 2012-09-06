@@ -5,18 +5,18 @@
 
 <html>
 <guiceae:head/>
-<body>
-<div id="head">
-    <guiceae:quick-panel/>
-</div>
-<guiceae:new-menu/>
-<div id="content">
-    <div id="content_cen">
-        <div id="content_sup">
-            <guiceae:googleLogin/>
+<guiceae:body>
+    <div id="head">
+        <guiceae:quick-panel/>
+    </div>
+    <guiceae:new-menu/>
+    <div id="content">
+        <div id="content_cen">
+            <div id="content_sup">
+                <guiceae:googleLogin/>
+            </div>
         </div>
     </div>
-</div>
-<guiceae:footer/>
-</body>
+    <guiceae:footer/>
+</guiceae:body>
 </html>

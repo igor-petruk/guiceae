@@ -6,10 +6,26 @@
 <guiceae:head>
     <title>Права користувачів</title>
     <style>
-        body { font-size: 72.5%; }
-        div#users-contain { width: 650px; margin: 20px 0; }
-        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-        div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+        body {
+            font-size: 72.5%;
+        }
+
+        div#users-contain {
+            width: 650px;
+            margin: 20px 0;
+        }
+
+        div#users-contain table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        div#users-contain table td, div#users-contain table th {
+            border: 1px solid #eee;
+            padding: .6em 10px;
+            text-align: left;
+        }
     </style>
 
     <script>
@@ -169,40 +185,40 @@
     </script>
 
 </guiceae:head>
-<body>
+<guiceae:body>
 
-<div id="users-contain" class="ui-widget">
-    <table id="users" class="ui-widget ui-widget-content">
-        <thead>
-        <tr class="ui-widget-header ">
-            <th>Email</th>
-            <th>Ролі</th>
-            <th/>
-        </tr>
-        </thead>
-        <tbody/>
-    </table>
-</div>
+    <div id="users-contain" class="ui-widget">
+        <table id="users" class="ui-widget ui-widget-content">
+            <thead>
+            <tr class="ui-widget-header ">
+                <th>Email</th>
+                <th>Ролі</th>
+                <th/>
+            </tr>
+            </thead>
+            <tbody/>
+        </table>
+    </div>
 
-<button id="create-user">Додати користувача</button>
+    <button id="create-user">Додати користувача</button>
 
-<div id="dialog-form" title="Додати користувача">
-    <form>
-        <input id="oldEmail" name="oldEmail" type="hidden" value=""/>
-        <fieldset>
-            <p>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all"/>
-            </p>
-            <label for="roles">Ролі користувача</label>
+    <div id="dialog-form" title="Додати користувача">
+        <form>
+            <input id="oldEmail" name="oldEmail" type="hidden" value=""/>
+            <fieldset>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all"/>
+                </p>
+                <label for="roles">Ролі користувача</label>
 
-            <div id="roles">
-                <input type="checkbox" id="admin"/><label for="admin">Адміністратор</label>
-                <input type="checkbox" id="cm"/><label for="cm">Редактор змісту</label>
-                <input type="checkbox" id="video"/><label for="video">Редактор відео</label>
-            </div>
-        </fieldset>
-    </form>
-</div>
-</body>
+                <div id="roles">
+                    <input type="checkbox" id="admin"/><label for="admin">Адміністратор</label>
+                    <input type="checkbox" id="cm"/><label for="cm">Редактор змісту</label>
+                    <input type="checkbox" id="video"/><label for="video">Редактор відео</label>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</guiceae:body>
 </html>
