@@ -41,6 +41,7 @@
                     <div class="captcha-error" style="display: none;">
                         <span style="color: red;">Помилка</span>
                     </div>
+                    <div id="alerts"></div>
 
 
                     <script type="text/javascript">
@@ -82,9 +83,16 @@
                                     dataType:"json",
                                     cache:false,
                                     success:function (data) {
+                                        var t = ("${it.feed}" == 'question') ? "Ваше питання" : "Ваш відгук";
+                                        $("#alerts").html(t + "відправлено на розгляд." +
+                                                "Після розгляду і формування відповіді, ви зможете прочитати відповідь тут.");
+
                                         setTimeout(function () {
                                             window.location = "/app/feedback/submit/${it.feed}"
                                         }, 1000);
+                                        setTimeout(function () {
+                                            $("#alerts").html("");
+                                        }, 5000);
                                     },
                                     error:function (jqXHR, textStatus, errorThrown) {
                                         if (jqXHR.status === 401) {

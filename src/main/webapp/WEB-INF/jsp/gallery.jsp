@@ -146,7 +146,15 @@
             <div class="left-place">
                 <span id="functional-propose">Оберіть альбом ↓</span>
 
-                <div class="scrollable">
+                <div class="scrollable" style="border-bottom: 3px solid #27D; border-top:3px solid #27D">
+                    <div class="video-album-view" albumId="${album.id}">
+                        <div class="title">Відеоальбом</div>
+                        <div class="album-main-thumb">
+                            <a style="text-decoration: none;" onclick="showVideoAlbum()">
+                                <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
+                        </div>
+                    </div>
+
                     <c:forEach items="${it['albums']}" var="album">
 
                         <div class="album-view" albumId="${album.id}">
@@ -166,13 +174,6 @@
                     </c:forEach>
 
 
-                    <div class="video-album-view" albumId="${album.id}">
-                        <div class="title">Відеоальбом</div>
-                        <div class="album-main-thumb">
-                            <a style="text-decoration: none;" onclick="showVideoAlbum()">
-                                <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
