@@ -145,30 +145,33 @@
 
             <div class="left-place">
                 <span id="functional-propose">Оберіть альбом ↓</span>
-                <c:forEach items="${it['albums']}" var="album">
 
-                    <div class="album-view" albumId="${album.id}">
-                        <div class="title">${album.title}</div>
+                <div class="scrollable">
+                    <c:forEach items="${it['albums']}" var="album">
+
+                        <div class="album-view" albumId="${album.id}">
+                            <div class="title">${album.title}</div>
+                            <div class="album-main-thumb">
+                                <a style="text-decoration: none;" onclick="sendShowRequest('${album.id}')">
+                                    <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
+                            </div>
+                            <div class="description">${album.description}</div>
+                            <guiceae:rolesOnly roles="cm">
+                                <div class="crud-place">
+                                    <a href="/app/album/update/${album.id}">Редагувати фотоальбом</a>
+                                    <a href="/app/album/delete/${album.id}">Видалити фотоальбом</a>
+                                </div>
+                            </guiceae:rolesOnly>
+                        </div>
+                    </c:forEach>
+
+
+                    <div class="video-album-view" albumId="${album.id}">
+                        <div class="title">Відеоальбом</div>
                         <div class="album-main-thumb">
-                            <a style="text-decoration: none;" onclick="sendShowRequest('${album.id}')">
+                            <a style="text-decoration: none;" onclick="showVideoAlbum()">
                                 <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
                         </div>
-                        <div class="description">${album.description}</div>
-                        <guiceae:rolesOnly roles="cm">
-                            <div class="crud-place">
-                                <a href="/app/album/update/${album.id}">Редагувати фотоальбом</a>
-                                <a href="/app/album/delete/${album.id}">Видалити фотоальбом</a>
-                            </div>
-                        </guiceae:rolesOnly>
-                    </div>
-                </c:forEach>
-
-
-                <div class="video-album-view" albumId="${album.id}">
-                    <div class="title">Відеоальбом</div>
-                    <div class="album-main-thumb">
-                        <a style="text-decoration: none;" onclick="showVideoAlbum()">
-                            <img src="/css/images/system/NOT_USED/albums.png" alt="first album"/></a>
                     </div>
                 </div>
             </div>

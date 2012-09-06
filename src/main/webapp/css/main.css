@@ -444,7 +444,7 @@ h1.logo a {
     border: 1px solid #2277DD;
 }
 
-.view-right-place a {
+.view-right-place .menu-addon a {
     color: #ffffff;
     font-weight: bolder;
 }
@@ -530,6 +530,13 @@ h1.logo a {
 #add-article {
     float: right;
     display: inline;
+}
+
+.left-place .scrollable {
+    overflow-y: scroll;
+    padding-right: 10px;
+    width: 100%;
+    max-height: 450px;
 }
 
 .video-album-view {
