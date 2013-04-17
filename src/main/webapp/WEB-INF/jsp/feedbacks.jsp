@@ -19,8 +19,13 @@
 
     <div id="personal-not-main">
         <div class="name">Персональний сайт Івана Куровського</div>
-        <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-        <div class="sub-label">${it.theme}</div>
+        <div class="background">
+            <img src="/css/images/system/personal_not_main.png"/>
+        </div>
+
+        <div class="sub-label"><span id="funny-arrow" style="float:left; margin:2px 10px 0 0;"><img
+                src="/css/images/main/arrow.png"/></span>
+            <span style="float:left;">${it.theme}</span></div>
     </div>
 
     <guiceae:new-menu/>
@@ -46,8 +51,8 @@
 
                         <script type="text/javascript">
                             var RecaptchaOptions = {
-                                theme:'blackglass',
-                                lang:'ru'
+                                theme: 'blackglass',
+                                lang: 'ru'
                             };
                         </script>
                         <div align="center">
@@ -71,21 +76,23 @@
 
                         <script type="text/javascript">
                             $(function () {
+
+                                effectOnArrow();
                                 $("#submit-button").click(function () {
                                     var form = {
-                                        challenge:Recaptcha.get_challenge(),
-                                        response:Recaptcha.get_response(),
-                                        question:$("#question").val(),
-                                        author:$("#author").val()
+                                        challenge: Recaptcha.get_challenge(),
+                                        response: Recaptcha.get_response(),
+                                        question: $("#question").val(),
+                                        author: $("#author").val()
                                     };
                                     $.ajax({
-                                        url:"/app/feedback/submit/${it.feed}",
-                                        type:"POST",
-                                        data:JSON.stringify(form),
-                                        contentType:"application/json; charset=utf-8",
-                                        dataType:"json",
-                                        cache:false,
-                                        success:function (data) {
+                                        url: "/app/feedback/submit/${it.feed}",
+                                        type: "POST",
+                                        data: JSON.stringify(form),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        cache: false,
+                                        success: function (data) {
                                             var t = ("${it.feed}" == 'question') ? "Ваше питання" : "Ваш відгук";
                                             $("#alerts").html(t + " відправлено на розгляд." +
                                                     "Після розгляду, ви зможете побачити відповідь у розділі Громадська Приймальня.");
@@ -93,10 +100,10 @@
                                             $("#alerts:ui-dialog").dialog("destroy");
 
                                             $("#alerts").dialog({
-                                                modal:true,
-                                                buttons:{
-                                                    Ok:function () {
-                                                        $(this).dialog("close");
+                                                modal: true,
+                                                buttons: {
+                                                    Ok: function () {
+                                                        $(this).dialog("close").effect("drop");
                                                         window.location = "/app/feedback/submit/${it.feed}";
                                                     }
                                                 }
@@ -104,7 +111,7 @@
 
 
                                         },
-                                        error:function (jqXHR, textStatus, errorThrown) {
+                                        error: function (jqXHR, textStatus, errorThrown) {
                                             if (jqXHR.status === 401) {
                                                 $(".captcha-error").css("display", "block");
                                                 Recaptcha.reload();
@@ -119,7 +126,7 @@
                 </div>
 
                 <div class="view-right-place feedbackQuestion">
-                    <span id="theme">${it.theme} ↓</span>
+                        <%--<span id="theme">${it.theme} ↓</span>--%>
                     <guiceae:smallFeedbackFeed feedName="${it.feed}" feed="${it.feedbacks}"/>
                 </div
 

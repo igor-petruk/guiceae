@@ -30,8 +30,9 @@ public class MainController {
         boolean onlyPublished = !userPrincipalHolder.get().contains("cm");
         it.put("newsFeed", articleRepository.getFeed("news", onlyPublished, 0, 3));
         it.put("charityFeed", articleRepository.getFeed("charity", onlyPublished, 0, 3));
-        it.put("feedbackFeed", feedbackRepository.getFeed(FeedbackFeedType.QUESTION, true, 0, 3));
+        it.put("feedbackFeed", feedbackRepository.getFeed(FeedbackFeedType.MAIN, true, 0, 3));
         it.put("mainFeed", articleRepository.getFeed("main", onlyPublished, 0, 1));
+        it.put("visit", articleRepository.getFeed("visit", onlyPublished, 0, 1));
         return new Viewable("/main.jsp", it);
     }
 

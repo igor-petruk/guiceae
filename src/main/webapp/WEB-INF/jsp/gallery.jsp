@@ -14,6 +14,7 @@
     <script type="text/javascript" charset="utf-8">
         var gal;
         $(function () {
+            effectOnArrow();
             var whatToView = $("#whatToView").val();
             if (whatToView == 'true') {
                 showVideoAlbum();
@@ -32,18 +33,18 @@
             $("#dynamic-a").html("");
 
             $.ajax({
-                type:'GET',
-                url:'/app/album/video/all',
-                success:function (videos) {
+                type: 'GET',
+                url: '/app/album/video/all',
+                success: function (videos) {
                     if (videos && videos.length > 0) {
                         var videoInfo = [];
                         for (var i in videos) {
                             videoInfo.push({
-                                        id:videos[i].id,
-                                        showWhen:"videos",
-                                        title:videos[i].title,
-                                        description:videos[i].description,
-                                        video:videos[i].youtubeUrl
+                                        id: videos[i].id,
+                                        showWhen: "videos",
+                                        title: videos[i].title,
+                                        description: videos[i].description,
+                                        video: videos[i].youtubeUrl
                                     }
                             );
                         }
@@ -60,9 +61,9 @@
             $("#dynamic-a").html("");
 
             $.ajax({
-                type:'GET',
-                url:'/app/album/photos/' + albumId,
-                success:function (photos) {
+                type: 'GET',
+                url: '/app/album/photos/' + albumId,
+                success: function (photos) {
                     initializeGalleryView(photos);
                 }
             });
@@ -73,12 +74,12 @@
                 var photoInfo = [];
                 for (var i in photos) {
                     photoInfo.push({
-                                id:photos[i].id,
-                                showWhen:"photos",
-                                title:photos[i].title,
-                                description:photos[i].description,
-                                image:photos[i].servingUrl,
-                                thumb:photos[i].servingUrl + '=s60'
+                                id: photos[i].id,
+                                showWhen: "photos",
+                                title: photos[i].title,
+                                description: photos[i].description,
+                                image: photos[i].servingUrl,
+                                thumb: photos[i].servingUrl + '=s60'
                             }
                     );
                 }
@@ -88,7 +89,7 @@
 
         function initGalleria(info) {
             Galleria.configure({
-                thumbnails:true
+                thumbnails: true
             });
 
             for (var el in info) {
@@ -96,12 +97,12 @@
             }
 
             Galleria.run("#galleria", {
-                transition:'fade',
-                imageCrop:false,
-                idleMode:true,
-                showInfo:true,
-                dataSource:info,
-                extend:function (options) {
+                transition: 'fade',
+                imageCrop: false,
+                idleMode: true,
+                showInfo: true,
+                dataSource: info,
+                extend: function (options) {
                     this.bind('image', function (e) {
                         $("#dynamic-a").html("");
                         createDynamicLinks(info[e.index].showWhen == 'photos', "#dynamic-a", '|', info[e.index].id);
@@ -131,7 +132,9 @@
     <div id="personal-not-main">
         <div class="name">Персональний сайт Івана Куровського</div>
         <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-        <div class="sub-label">Галерея</div>
+        <div class="sub-label"><span id="funny-arrow" style="float:left; margin:2px 10px 0 0;"><img
+                src="/css/images/main/arrow.png"/></span>
+            <span style="float:left;">Галерея</span></div>
     </div>
 
 
@@ -146,7 +149,8 @@
                 <div class="left-place">
                     <span id="functional-propose">Оберіть альбом ↓</span>
 
-                    <div class="scrollable" style="border-bottom: 3px solid #27D; border-top:3px solid #27D">
+                    <div class="scrollable"
+                         style="border-bottom: 1px solid #999; border-top:1px solid #999; padding: 2px 0 0 2px;">
                         <div class="video-album-view" albumId="${album.id}">
                             <div class="title">Відеоальбом</div>
                             <div class="album-main-thumb">

@@ -12,20 +12,20 @@
             // Load the classic theme
             Galleria.loadTheme('/js/galleria.classic.min.js');
             Galleria.configure({
-                thumbnails:false
+                thumbnails: false
             });
             // Initialize Galleria
             Galleria.run('#galleria-main', {
-                transition:'fade',
-                autoplay:3000,
-                carousel:false,
-                thumbFit:false,
-                thumbMargin:0,
-                imageCrop:true,
-                touch:false,
-                showCounter:false,
-                showImagenav:false,
-                showInfo:false
+                transition: 'fade',
+                autoplay: 3000,
+                carousel: false,
+                thumbFit: false,
+                thumbMargin: 0,
+                imageCrop: true,
+                touch: false,
+                showCounter: false,
+                showImagenav: false,
+                showInfo: false
             });
             $("#menu div#main").addClass("active");
         });
@@ -122,20 +122,18 @@
                         <%--<span class="separator"></span>--%>
                     <guiceae:smallFeed feedName="news" feed="${it.newsFeed}"/>
                 </div>
-                <div class="column" style="margin-left: 2%;background-color: #c2e1f9;">
+                <div class="column" style="margin-left: 2%;background-color: #ffffff">
                     <span class="head">
                        <a href="/app/feedback/submit/question">
                            <span class="pic"><img src="/css/images/system/chat.png" alt="Задати питання"/></span>
                            <span>Громадська приймальня</span>
                        </a>
                     </span>
-                        <%--<span class="separator"></span>--%>
-                    <guiceae:smallFeedbackFeed feedName="question" feed="${it.feedbackFeed}" isOnMain="true"/>
-                        <%--<span>--%>
-                        <%--<a class="rss" href="/app/feed/news/rss">--%>
-                        <%--<img src="/css/images/system/rss.png" alt="Підписатися на розсилку"/>--%>
-                        <%--</a>--%>
-                        <%--</span>--%>
+                    <c:if test="${not empty it.visit}">
+                        <c:forEach items="${it.visit}" var="visit">
+                            <guiceae:shortArticle article="${visit}" simpleDelete="true" social="true"/>
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
         </div>

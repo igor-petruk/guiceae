@@ -66,7 +66,7 @@ public class FeedbackController {
             model.put("proposition", "Залиште своє питання тут");
             model.put("proposition_area", "Ваше питання");
         } else {
-            model.put("theme", "Відгуки про нашу роботу");
+            model.put("theme", "Відгуки");
             model.put("proposition", "Залиште свій відгук тут");
             model.put("proposition_area", "Ваш відгук");
         }

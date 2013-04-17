@@ -50,23 +50,6 @@ public class TestingBootstrap implements Bootstrap {
             article.setCreated(new Date());
             article.setState(ArticleState.PUBLISHED);
             article.setToView(new Date());
-            article.setFeed("news");
-            article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
-            article.setEditableContent("<h3> something </h3> <p><b> hey </b> you</p>");
-            article.setShortContent("<p><b>Short content</b> version<p>");
-            article.setLastUpdated(new Date());
-            article.setTitle("title" + i);
-            article.setPermalink("super-title" + i);
-            articleRepository.mergeArticle(article);
-            searchRepository.submitToSearch(article);
-        }
-
-        for (int i = 0; i < 15; i++) {
-            Article article = new Article();
-            article.setAuthor("test@example.com");
-            article.setCreated(new Date());
-            article.setState(ArticleState.PUBLISHED);
-            article.setToView(new Date());
             article.setFeed("charity");
             article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
             article.setEditableContent("<h3> something </h3> <p><b> hey </b> you</p>");
@@ -84,30 +67,44 @@ public class TestingBootstrap implements Bootstrap {
         article.setState(ArticleState.PUBLISHED);
         article.setToView(new Date());
         article.setFeed("main");
-        String content = "<p style=\"font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;\">Шановні друзі!</p>\n" +
-                "\n" +
-                "            <p>Мені як народному депутатові України онлайн-спілкування видається\n" +
-                "                важливою ланкою вивчення проблем, які цікавлять людей.</p>\n" +
-                "\n" +
-                "            <p>Користуючись цим ресурсом, Ви зможете дізнатися про мою\n" +
-                "                депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви\n" +
-                "                маєте можливість звернутися до моєї громадської приймальні, щоб отримати\n" +
-                "                відповіді на питання, які вас цікавлять.</p>\n" +
-                "\n" +
-                "            <p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду\n" +
-                "                вдячний за ваші запитання і пропозиції.</p>\n" +
-                "\n" +
-                "            <div style=\"float: right;  width: 60%; min-width: 360px;\">\n" +
-                "                <p style=\"float:right;font-weight:bold;\">З повагою,</p>\n" +
-                "\n" +
-                "                <p style=\"float:right;font-weight:bold;\">Народний депутат України Іван Куровський</p>\n" +
+        String content = "<p style=\"font-weight:bold; float:left; margin-left: 40%;margin-top: 10px;\">Шановні друзі!</p>" +
+
+                "            <p>Мені як народному депутатові України онлайн-спілкування видається " +
+                "                важливою ланкою вивчення проблем, які цікавлять людей.</p> " +
+
+                "            <p>Користуючись цим ресурсом, Ви зможете дізнатися про мою " +
+                "                депутатську, благодійну діяльність, участь у житті виборчого округу. Також ви " +
+                "                маєте можливість звернутися до моєї громадської приймальні, щоб отримати " +
+                "                відповіді на питання, які вас цікавлять.</p>" +
+                "            <p>Я завжди готовий до обміну думками і конструктивної дискусії. Буду " +
+                "                вдячний за ваші запитання і пропозиції.</p>" +
+                "            <div style=\"float: right;  width: 60%; min-width: 360px;\">" +
+                "                <p style=\"float:right;font-weight:bold;\">З повагою,</p>" +
+                "                <p style=\"float:right;font-weight:bold;\">Народний депутат України Іван Куровський</p>" +
                 "            </div>";
         article.setContent(content);
         article.setEditableContent(content);
         article.setShortContent(content);
         article.setLastUpdated(new Date());
-        article.setPermalink("Main Page");
+        article.setTitle("title" + "main");
+        article.setPermalink("Main_Page");
         articleRepository.mergeArticle(article);
+        searchRepository.submitToSearch(article);
+
+        article = new Article();
+        article.setAuthor("test@example.com");
+        article.setCreated(new Date());
+        article.setState(ArticleState.PUBLISHED);
+        article.setToView(new Date());
+        article.setFeed("visit");
+        article.setContent("<h3> something </h3> <p><b> hey </b> you</p>");
+        article.setEditableContent("<h3> something </h3> <p><b> hey </b> you</p>");
+        article.setShortContent("<p><b>Short content</b> version<p>");
+        article.setLastUpdated(new Date());
+        article.setTitle("title" + "any");
+        article.setPermalink("super-title" + "any");
+        articleRepository.mergeArticle(article);
+        searchRepository.submitToSearch(article);
 
         Feedback feedback = new Feedback();
         feedback.setFeed(FeedbackFeedType.QUESTION);
@@ -125,7 +122,8 @@ public class TestingBootstrap implements Bootstrap {
         feedback.setState(ArticleState.PUBLISHED);
         feedbackRepository.submitQuestion(feedback);
         feedbackRepository.submitQuestion(feedback);
-//
+
+
 //        article = new Article();
 //        article.setAuthor("test@example.com");
 //        article.setCreated(new Date());

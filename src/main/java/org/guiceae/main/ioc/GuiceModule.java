@@ -1,6 +1,9 @@
 package org.guiceae.main.ioc;
 
-import com.google.appengine.api.search.*;
+import com.google.appengine.api.search.Index;
+import com.google.appengine.api.search.IndexSpec;
+import com.google.appengine.api.search.SearchService;
+import com.google.appengine.api.search.SearchServiceFactory;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Names;
@@ -63,7 +66,6 @@ public class GuiceModule extends AbstractModule {
     public Index index(SearchService searchService) {
         IndexSpec indexSpec = IndexSpec.newBuilder()
                 .setName("documents")
-                .setConsistency(Consistency.PER_DOCUMENT)
                 .build();
         return searchService.getIndex(indexSpec);
     }

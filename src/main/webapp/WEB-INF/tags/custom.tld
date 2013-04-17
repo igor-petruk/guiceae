@@ -101,6 +101,11 @@
     </tag-file>
 
     <tag-file>
+        <name>shortArticle</name>
+        <path>/WEB-INF/tags/shortArticle.tag</path>
+    </tag-file>
+
+    <tag-file>
         <name>smallFeedbackFeed</name>
         <path>/WEB-INF/tags/smallFeedbackFeed.tag</path>
     </tag-file>

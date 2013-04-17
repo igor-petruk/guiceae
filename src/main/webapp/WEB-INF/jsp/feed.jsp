@@ -9,9 +9,15 @@
 <html>
 <guiceae:head>
     <script type="text/javascript" src="/js/feed.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            effectOnArrow();
+        });
+    </script>
     <LINK REL="alternate" TITLE="${it.feedName} RSS"
           HREF="/app/feed/${it.feedName}/rss"
           TYPE="application/rss+xml">
+
 </guiceae:head>
 <guiceae:body>
 
@@ -22,7 +28,10 @@
     <div id="personal-not-main">
         <div class="name">Персональний сайт Івана Куровського</div>
         <div class="background"><img src="/css/images/system/personal_not_main.png"/></div>
-        <div class="sub-label">${it.feedsNames[it.feedName]}</div>
+
+        <div class="sub-label"><span id="funny-arrow" style="float:left; margin:2px 10px 0 0;"><img
+                src="/css/images/main/arrow.png"/></span>
+            <span style="float:left;">${it.feedsNames[it.feedName]}</span></div>
     </div>
 
     <guiceae:new-menu/>
@@ -50,6 +59,13 @@
                         </div>
 
                     </c:forEach>
+                    <guiceae:rolesOnly roles="cm">
+                        <c:forEach items="${it.adminFeeds}" var="feed">
+                            <div class="feed-name">
+                                <a href="/app/feed/${feed.key}">${feed.value}</a>
+                            </div>
+                        </c:forEach>
+                    </guiceae:rolesOnly>
                 </div>
 
                 <div class="view-right-place">

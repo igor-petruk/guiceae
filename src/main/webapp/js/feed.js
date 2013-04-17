@@ -1,47 +1,47 @@
-function registerDelete(id){
-    $("#delete"+id).click(function(){
+function registerDelete(id) {
+    $("#delete" + id).click(function () {
         $.ajax({
-            url:"/app/article/delete/"+id,
-            type:"DELETE",
-            cache:false,
-            dataType:"json",
-            success:function(data){
-                $("#article"+id).remove();
+            url: "/app/article/delete/" + id,
+            type: "DELETE",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+                $("#article" + id).remove();
             }
         });
     });
 }
 
-function registerSimpleDelete(id, feed){
-    $("#delete"+id).click(function(){
+function registerSimpleDelete(id, feed) {
+    $("#delete" + id).click(function () {
         $.ajax({
-            url:"/app/article/delete/"+id,
-            type:"DELETE",
-            cache:false,
-            dataType:"json",
-            success:function(data){
+            url: "/app/article/delete/" + id,
+            type: "DELETE",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
                 pollFor({
                     entity: "org.guiceae.main.model.Article",
                     id: id,
                     query: {
                         type: "NEXISTS"
                     }
-                },function(){
-                    window.location="/app/feed/"+feed;
+                }, function () {
+                    window.location = "/app/feed/" + feed;
                 });
             }
         });
     });
 }
 
-function registerPublish(id){
-    $("#publish"+id).click(function(){
+function registerPublish(id) {
+    $("#publish" + id).click(function () {
         $.ajax({
-            url:"/app/article/publish/"+id,
-            type:"POST",
-            cache:false,
-            dataType:"json",
-            success:function(data){
+            url: "/app/article/publish/" + id,
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
                 pollFor({
                     entity: "org.guiceae.main.model.Article",
                     id: id,
@@ -50,7 +50,7 @@ function registerPublish(id){
                         name: "state",
                         value: "PUBLISHED"
                     }
-                },function(){
+                }, function () {
                     location.reload();
                 });
             }
@@ -58,14 +58,14 @@ function registerPublish(id){
     });
 }
 
-function registerPublishQuestion(id){
-    $("#publish"+id).click(function(){
+function registerPublishQuestion(id) {
+    $("#publish" + id).click(function () {
         $.ajax({
-            url:"/app/feedback/publish/"+id,
-            type:"POST",
-            cache:false,
-            dataType:"json",
-            success:function(data){
+            url: "/app/feedback/publish/" + id,
+            type: "POST",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
                 pollFor({
                     entity: "org.guiceae.main.model.Feedback",
                     id: id,
@@ -74,7 +74,7 @@ function registerPublishQuestion(id){
                         name: "state",
                         value: "PUBLISHED"
                     }
-                },function(){
+                }, function () {
                     location.reload();
                 });
             }
@@ -82,25 +82,24 @@ function registerPublishQuestion(id){
     });
 }
 
-function registerSimpleFeedbackDelete(id, feed){
-    $("#delete"+id).click(function(){
+function registerSimpleFeedbackDelete(id, feed) {
+    $("#delete" + id).click(function () {
         $.ajax({
-            url:"/app/feedback/delete/"+id,
-            type:"DELETE",
-            cache:false,
-            dataType:"json",
-            success:function(data){
+            url: "/app/feedback/delete/" + id,
+            type: "DELETE",
+            cache: false,
+            dataType: "json",
+            success: function (data) {
                 pollFor({
                     entity: "org.guiceae.main.model.Feedback",
                     id: id,
                     query: {
                         type: "NEXISTS"
                     }
-                },function(){
+                }, function () {
                     location.reload();
                 });
             }
         });
     });
 }
-

@@ -6,23 +6,22 @@ import org.guiceae.main.model.Article;
 import javax.inject.Inject;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class SearchRepository {
     Index index;
     SearchService searchService;
-    
+
     @Inject
     public SearchRepository(Index index, SearchService searchService) {
         this.index = index;
         this.searchService = searchService;
     }
-    
-    public Results<ScoredDocument> search(String query){
+
+    public Results<ScoredDocument> search(String query) {
         return index.search(query);
     }
 
-    public void submitToSearch(Article article){
+    public void submitToSearch(Article article) {
         Document document = Document.newBuilder()
                 .setId(article.getPermalink())
                 .addField(Field.newBuilder().setName("content").setHTML(article.getContent()))
@@ -35,10 +34,10 @@ public class SearchRepository {
                 .addField(Field.newBuilder().setName("id").setText(String.valueOf(article.getId())))
                 .addField(Field.newBuilder().setName("author").setText(article.getAuthor()))
                 .build();
-        index.add(document);
+        index.put(document);
     }
 
-    private Date dateOnly(Date dateTime){
+    private Date dateOnly(Date dateTime) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateTime);
 
@@ -50,7 +49,7 @@ public class SearchRepository {
         return cal.getTime();
     }
 
-    public void deleteFromSearch(Article article){
-       index.remove(article.getPermalink());
+    public void deleteFromSearch(Article article) {
+        index.delete(article.getPermalink());
     }
 }

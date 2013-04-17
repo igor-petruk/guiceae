@@ -41,6 +41,10 @@ public class FeedsController {
             .put("charity", "Депутатська діяльність, благодійність")
             .put("biography", "Біографія")
             .build();
+    Map<String, String> adminFeeds = new ImmutableMap.Builder<String, String>()
+            .put("visit", "Привітання громадської приймальні")
+            .put("main", "Привітання головної сторінки")
+            .build();
 
 
     @GET
@@ -61,6 +65,7 @@ public class FeedsController {
         it.put("pagesCount", (count % 5 == 0) ? count / 5 : count / 5 + 1);
         it.put("currentFirst", offset);
         it.put("feedsNames", feeds);
+        it.put("adminFeeds", adminFeeds);
         return new Viewable("/feed.jsp", it);
     }
 

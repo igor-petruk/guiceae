@@ -33,7 +33,6 @@ a.rss img {
     text-align: right;
     width: 100%;
     float: left;
-    opacity: 0.9;
     vertical-align: top;
     margin: 0 0 1px 0;
     background-color: #fffee0;
@@ -76,6 +75,7 @@ a.rss img {
 
 .article {
     text-indent: 25px;
+    margin-left: 10px;
 }
 
 .article div.admin {
@@ -185,6 +185,19 @@ a.rss img {
     float: left;
 }
 
+.article div.short-content.shortArticle {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #5c5c5c;
+    position: relative;
+    width: 95%;
+    float: left;
+    opacity: 0.9;
+    background-color: white;
+    margin: 0px 2% 5px 2%;
+    border-radius: 20px 20px 20px 0;
+}
+
 .article div.short-content._100 img.mainPhoto {
     float: left;
     margin: 10px;
@@ -204,8 +217,9 @@ a.rss img {
 
 .feed-full-view .rss {
     float: right;
-    margin-right: 20px;
+    margin-right: 0;
     margin-bottom: 10px;
+    margin-top: -40px;
 }
 
 /*feedback*/
@@ -224,7 +238,7 @@ a.rss img {
     margin-top: 10px;
     margin-right: 0;
     margin-left: 0;
-    background-color: #c2e1f9;
+    background-color: #75BCF2;
     min-height: 600px;
     width: 58%;
     float: left;
@@ -271,7 +285,7 @@ a.rss img {
     float: left;
     margin: 5px 0 10px 0;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 25px 25px 100px 100px;
     box-shadow: 1px 5px 2px #ccc;
     border: 1px solid #ccc;
 }
@@ -284,9 +298,12 @@ a.rss img {
     width: 100%;
 }
 
-.question-place input#submit-button {
+.question-place a#submit-button {
     margin: 10px 10px 10px 30px;
     padding: 5px;
+    border-radius: 25px;
+    background: url("/css/images/main/submitbg.png") repeat-x;
+    opacity: 0.75;
 }
 
 .feedback {
@@ -432,4 +449,8 @@ div.editArticle .main-photo-container {
 
 .album-caption {
     float: left;
+}
+
+#funny-arrow img {
+    height: 20px;
 }

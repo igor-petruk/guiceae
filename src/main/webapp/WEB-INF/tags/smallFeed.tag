@@ -3,6 +3,7 @@
 <%@ taglib prefix="guiceae" uri="http://guiceae.org" %>
 
 <%@ attribute name="feedName" required="true" %>
+<%@ attribute name="oneArticle" %>
 <%@ attribute name="feed" required="true" type="java.util.List" %>
 
 <div class="feed-short-view">

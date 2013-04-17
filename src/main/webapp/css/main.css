@@ -1,7 +1,5 @@
 html {
-    padding: 0 10% 0 2%;
-    background: #fefefe;
-    max-width: 1300px;
+    background: #ffffff;
 }
 
 body {
@@ -397,7 +395,7 @@ h1.logo a {
     top: 31px;
     left: 0px;
     padding: 0 10px 10px 0;
-    margin: 45px -200px 0px 0;
+    margin: 43px -200px 0px 0;
 }
 
 #galleria-main {
@@ -498,9 +496,9 @@ h1.logo a {
 }
 
 .feed-name {
-    padding: 10px;
+    padding: 10px 0 10px 0;
     opacity: 0.9;
-    width: 89%;
+    width: 100%;
     float: left;
 }
 
@@ -508,7 +506,7 @@ h1.logo a {
     border-left: 10px solid #7cbff3;
     background-color: #dedede;
     opacity: 0.9;
-    padding-left: -10px;
+    padding-left: -11px;
     cursor: pointer;
 }
 
@@ -534,7 +532,7 @@ h1.logo a {
 
 .left-place .scrollable {
     overflow-y: scroll;
-    padding-right: 10px;
+    padding-right: 5px;
     width: 100%;
     max-height: 450px;
 }
@@ -647,28 +645,31 @@ h1.logo a {
 
 #personal-not-main {
     border-radius: 10px 20px 20px 0;
-    background: #f6f9fb url("/css/images/main/pat.png") repeat;
+    background: #beccd9 url("/css/images/field.png");
     float: left;
     width: 100%;
     min-width: 960px;
     margin-top: 7px;
+    opacity: 0.65;
 }
 
 #personal-not-main div.name {
     float: right;
-    padding: 10px;
-    color: #767676;
+    color: white;
     font-size: 25px;
     font-family: "Trebuchet MS" Arial, Helvetica sans-serif;
+    margin-top: 75px;
+    margin-right: 5px;
 }
 
 #personal-not-main div.sub-label {
     float: left;
-    margin: 10px 0 0 -20%;
-    color: #4d4d4d;
-    opacity: 0.5;
+    margin: 16px 0 0 -45%;
+    color: white;
     font-size: 20px;
     word-spacing: 1.5px;
+    border-radius: 20px;
+    padding: 5px 5px 5px 25px;
 }
 
 #personal-not-main .background {
@@ -692,3 +693,4 @@ h1.logo a {
 
 #biography a span img {
 }
+

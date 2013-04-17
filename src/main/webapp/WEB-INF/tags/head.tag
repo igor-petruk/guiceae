@@ -30,21 +30,21 @@
         $(function () {
             $("div.menu div").each(function () {
                 $(this).find("a").before($("#pic").html());
-                $(this).children("div").animate({top:-25}, 100);
+                $(this).children("div").animate({top: -25}, 100);
                 var config = {
-                    over:function () {
+                    over: function () {
                         if (!$(this).hasClass("activeMenuItem")) {
-                            $(this).children("div").animate({top:20}, 200);
-                            $(this).children("div").animate({top:15}, 300);
-                            $(this).children("div").animate({top:17}, 200);
+                            $(this).children("div").animate({top: 20}, 200);
+                            $(this).children("div").animate({top: 15}, 300);
+                            $(this).children("div").animate({top: 17}, 200);
                         }
                     },
-                    out:function () {
+                    out: function () {
                         if (!$(this).hasClass("activeMenuItem")) {
-                            $(this).children("div").animate({top:-25}, 100);
+                            $(this).children("div").animate({top: -25}, 100);
                         }
                     },
-                    timeout:500
+                    timeout: 500
                 }
                 $(this).hoverIntent(config);
                 $(this).find("a").on("click", function () {
@@ -53,10 +53,10 @@
                                         var s = location.href.split('/');
                                         var href = "/" + s[s.length - 2] + "/" + s[s.length - 1];
                                         if ($(this).find("a").attr("href") == href) {
-                                            $(this).children("div").animate({top:90}, 200);
+                                            $(this).children("div").animate({top: 90}, 200);
                                             $(this).addClass("activeMenuItem");
                                         } else {
-                                            $(this).children("div").animate({top:0}, 100);
+                                            $(this).children("div").animate({top: 0}, 100);
                                             $(this).removeClass("activeMenuItem");
                                         }
                                     }
@@ -68,10 +68,10 @@
             });
 
             $(".admin-menu").hover(function () {
-                        $(".admin-menu").animate({right:0}, 300);
+                        $(".admin-menu").animate({right: 0}, 300);
                     },
                     function () {
-                        $(".admin-menu").animate({right:-100}, 300);
+                        $(".admin-menu").animate({right: -100}, 300);
                     });
 
         });
@@ -91,7 +91,12 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
+    </script>
 
+    <script type="text/javascript">
+        function effectOnArrow() {
+            $("#funny-arrow").effect("bounce", {direction: "right", times: 1}, 300);
+        }
     </script>
 </head>
 

@@ -24,40 +24,40 @@ public class SearchController {
     UserPrincipalHolder userPrincipalHolder;
 
     @Inject
-    public SearchController(SearchRepository searchRepository,UserPrincipalHolder userPrincipalHolder) {
+    public SearchController(SearchRepository searchRepository, UserPrincipalHolder userPrincipalHolder) {
         this.searchRepository = searchRepository;
         this.userPrincipalHolder = userPrincipalHolder;
     }
 
     @GET
-    @Path("/")
-    public Viewable search(@QueryParam("query") @DefaultValue("") String query){
+    // @Path("/")
+    public Viewable search(@QueryParam("query") @DefaultValue("") String query) {
         List<Article> docs = new ArrayList<Article>();
-        if (!"".equals(query)){
+        if (!"".equals(query)) {
             Results<ScoredDocument> scoredDocuments = searchRepository.search(query);
-            for (ScoredDocument scoredDocument: scoredDocuments){
-                ArticleState articleState = ArticleState.valueOf(scoredDocument.getField("state").iterator().next().getText());
-                if (!userPrincipalHolder.get().contains("cm") && ArticleState.PENDING.equals(articleState)){
+            for (ScoredDocument scoredDocument : scoredDocuments) {
+                ArticleState articleState = ArticleState.valueOf(scoredDocument.getFields("state").iterator().next().getText());
+                if (!userPrincipalHolder.get().contains("cm") && ArticleState.PENDING.equals(articleState)) {
                     continue;
                 }
                 Article article = new Article();
-                article.setCreated(scoredDocument.getField("created").iterator().next().getDate());
-                article.setLastUpdated(scoredDocument.getField("updated").iterator().next().getDate());
-                article.setAuthor(scoredDocument.getField("author").iterator().next().getText());
-                article.setContent(scoredDocument.getField("content").iterator().next().getHTML());
-                article.setFeed(scoredDocument.getField("feed").iterator().next().getText());
-                article.setId(Long.parseLong(scoredDocument.getField("id").iterator().next().getText()));
+                article.setCreated(scoredDocument.getFields("created").iterator().next().getDate());
+                article.setLastUpdated(scoredDocument.getFields("updated").iterator().next().getDate());
+                article.setAuthor(scoredDocument.getFields("author").iterator().next().getText());
+                article.setContent(scoredDocument.getFields("content").iterator().next().getHTML());
+                article.setFeed(scoredDocument.getFields("feed").iterator().next().getText());
+                article.setId(Long.parseLong(scoredDocument.getFields("id").iterator().next().getText()));
                 article.setPermalink(scoredDocument.getId());
-                article.setShortContent(scoredDocument.getField("shortContent").iterator().next().getHTML());
+                article.setShortContent(scoredDocument.getFields("shortContent").iterator().next().getHTML());
                 article.setState(articleState);
-                article.setTitle(scoredDocument.getField("title").iterator().next().getText());
-                docs.add(article);    
+                article.setTitle(scoredDocument.getFields("title").iterator().next().getText());
+                docs.add(article);
             }
         }
 
         Map<String, Object> model = new HashMap<String, Object>();
-        model.put("query",query);
-        model.put("results",docs);
+        model.put("query", query);
+        model.put("results", docs);
         return new Viewable("/search.jsp", model);
     }
 
